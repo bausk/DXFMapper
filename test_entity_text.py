@@ -1,10 +1,7 @@
-#!/usr/bin/env python
-#coding:utf-8
-# Purpose:
-# Created: 22.07.12
+# Created: 08.03.13
 # License: MIT License
 from __future__ import unicode_literals
-__author__ = "mozman <mozman@gmx.at>"
+__author__ = "Alex Bausk <bauskas@gmail.com>"
 
 import unittest
 from dxfgrabber.classifiedtags import ClassifiedTags
