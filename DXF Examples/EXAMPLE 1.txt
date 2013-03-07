@@ -1,0 +1,5 @@
+4 Entities:
+- Integer vector LINE (1,1,1)
+- Arbitrary LINE in x0y
+- Arbitrary 3DFACE in x0y
+- Arbitrary 3DSOLID in xyz
