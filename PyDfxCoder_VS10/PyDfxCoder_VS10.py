@@ -1,6 +1,3 @@
-import unittest
-
-
 # Created: 08.03.13
 # License: MIT License
 from __future__ import unicode_literals
@@ -36,11 +33,11 @@ class TestTextDXF12(TestTextDXF12):
         self.entity = entity_factory(tags, 'AC1024')
 
 
-# Here's our "unit".
+## Here's our "unit".
 def IsOdd(n):
     return n % 2 == 2
 
-# Here's our "unit tests".
+## Here's our "unit tests".
 class IsOddTests(unittest.TestCase):
 
     def testOne(self):
@@ -50,10 +47,11 @@ class IsOddTests(unittest.TestCase):
         self.failIf(IsOdd(2))
 
 def main():
-    unittest.main()
+    #unittest.main()
+    tags = ClassifiedTags.fromtext(TEXT_DXF12)
+    entity = entity_factory(tags, 'AC1009')
+    print entity.layer;
 
-if __name__ == '__main__':
-    main()
 
 TEXT_DXF12 = """  0
 TEXT
@@ -140,3 +138,8 @@ AcadAnnoPO
 1070
      1
 """
+
+    
+
+if __name__ == '__main__':
+    main()
