@@ -10,6 +10,8 @@ from sys import argv
 from configobj import ConfigObj
 from validate import Validator
 from dxfgrabber.drawing import Drawing
+from io import StringIO
+
 
 def readSettings():
     v = Validator()
@@ -31,8 +33,13 @@ def main():
     OutputFile = readSettingsKey("Output", "File", settings) or "Default.lir"
 
     #astring = unicode(open("../DXF Examples/" + filename + ".dxf").read())
-    tags = ClassifiedTags.fromtext(unicode(open(InputFile).read()))
-    
+    #tags = ClassifiedTags.fromtext(unicode(open(InputFile).read()))
+    stream = StringIO(unicode(open(InputFile).read()))
+    options = {
+        'grab_blocks': False
+    }
+    dwg = Drawing(stream, options)
+    #DxfDrawing = Drawing
     print tags
 
 
