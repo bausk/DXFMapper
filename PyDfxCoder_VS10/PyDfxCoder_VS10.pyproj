@@ -29,5 +29,9 @@
     <Compile Include="PyDfxCoder_VS10.py" />
     <Compile Include="PyDxfReadFile.py" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Parameters.model" />
+    <Content Include="Parameters.spec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

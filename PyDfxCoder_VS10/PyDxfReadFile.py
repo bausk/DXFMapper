@@ -7,6 +7,8 @@ from dxfgrabber.classifiedtags import ClassifiedTags
 from dxfgrabber.entities import entity_factory
 import dxfgrabber
 from sys import argv
+from configobj import ConfigObj
+from validate import Validator
 
 
 def dxfString():
@@ -59,9 +61,19 @@ def dxfString():
     1070
          1
     """
+def readSettings():
+    v = Validator()
+    spec = ConfigObj("Parameters.spec", encoding = "UTF8", list_values=False)
+    config = ConfigObj("Parameters.model", configspec = spec)
+    config.validate(v)
+    return config
 
 def main():
     script, filename = argv
+    settings = readSettings()
+    for setting in settings:
+        print settings[setting][]
+        
     astring = unicode(open("../DXF Examples/" + filename + ".dxf").read())
     tags = ClassifiedTags.fromtext(unicode(open("../DXF Examples/" + filename + ".dxf").read()))
     #dxf = dxfgrabber.readfile()

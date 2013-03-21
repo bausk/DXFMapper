@@ -1,0 +1,18 @@
+[Coordinate system]
+Type = Coordinate system
+OriginX = 0
+OriginY = 0
+OriginZ = 0
+Transformation = Cylindrical
+
+[Strings filter]
+Type = Entity filter
+Layer = Вантовые элементы
+
+[Volumes filter]
+Type = Entity filter
+Layer = МКЭ Объемные элементы
+
+[Extruders filter]
+Type = Entity filter
+Layer = МКЭ Объемные элементы
