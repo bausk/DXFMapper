@@ -1,5 +1,13 @@
+[Input]
+Type = Interface information
+File = "../DXF Examples/Example 1.dxf"
+
+[Output]
+Type = Interface information
+File = "../Output/Example 3.lir"
+
 [Coordinate system]
-Type = Coordinate system
+Type = Geometric information
 OriginX = 0
 OriginY = 0
 OriginZ = 0
