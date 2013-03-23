@@ -5,13 +5,12 @@ OutputFileList = "../DXF Examples/Example 4.lir"
 OriginX = 0 #Optional
 OriginY = 0 #Optional
 OriginZ = 0 #Optional
-CustomAxisXVector = 1, 0, 0 #Optional
-CustomAxisYVector = 0, 1, 0 #Optional
-CustomAxisZVector = 0, 0, 1 #Optional
-AxisXMapping = CylindricalX, 35
-AxisYMapping = RectangularY
-AxisZMapping = RectangularZ
-
+OriginMappingX = Phi, 35 #Corresponding variable and scale factor
+OriginMappingY = Z, 1
+OriginMappingZ = R, 1
+TargetX = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+TargetY = Transformation, CylindricToRectangular, Y
+TargetZ = Transformation, CylindricToRectangular, Z
 
 [Strings]
 Type = Filter

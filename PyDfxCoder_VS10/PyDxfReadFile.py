@@ -6,6 +6,7 @@ __author__ = "Alex Bausk <bauskas@gmail.com>"
 from dxfgrabber.classifiedtags import ClassifiedTags
 from dxfgrabber.entities import entity_factory
 import dxfgrabber
+import CoordinateTransform
 from sys import argv
 from configobj import ConfigObj
 from validate import Validator
