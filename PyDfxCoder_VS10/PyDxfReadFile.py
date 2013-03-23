@@ -26,21 +26,38 @@ def readSettingsKey(Section, Key, settings):
     else:
         return False
 
-def main():
-    script, filename = argv
-    settings = readSettings()
-    InputFile = readSettingsKey("Input", "File", settings) or "Default.dxf"
-    OutputFile = readSettingsKey("Output", "File", settings) or "Default.lir"
-
-    #astring = unicode(open("../DXF Examples/" + filename + ".dxf").read())
-    #tags = ClassifiedTags.fromtext(unicode(open(InputFile).read()))
-    stream = StringIO(unicode(open(InputFile).read()))
+def getDrawing(InputFile, GrabBlocks) :
+    InputString = unicode(open(InputFile).read().decode('utf-8'))
+    InputStream = StringIO(InputString)
     options = {
         'grab_blocks': False
     }
-    dwg = Drawing(stream, options)
-    #DxfDrawing = Drawing
-    print tags
+    return Drawing(InputStream, options)
+
+def GetSections(Type, settings):
+    SectionsSet = {}
+    for Section in settings:
+        if "Type" in settings[Section] and settings[Section]["Type"] == Type:
+            SectionsSet[Section] = settings[Section]
+    return SectionsSet
+
+def main():
+    script, filename = argv
+    Settings = readSettings()
+
+    Filters = GetSections("Filter", Settings)
+    for FilterName in Filters:
+        #We iterate through filters, accept either filter values or general values or defaults
+        #Then we can match the filter against the whole Drawing.entities collection
+        #and map finite elements according to filter rules
+        InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("General", "InputFileList", Settings) or "Default.dxf"
+        OutputFile = readSettingsKey(FilterName, "OutputFileList", Settings) or readSettingsKey("General", "OutputFileList", Settings) or "Default.lir"
+        AxisXMapping = readSettingsKey(FilterName, "AxisXMapping", Settings) or readSettingsKey("General", "AxisXMapping", Settings) or "Default.lir"
+        InputDxf = getDrawing(InputFile, False)
+        Entities = InputDxf.entities
+
+
+
 
 
 

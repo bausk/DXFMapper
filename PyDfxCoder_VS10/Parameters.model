@@ -1,26 +1,23 @@
-[Input]
-Type = Interface information
-File = "../DXF Examples/Example 1.dxf"
+[General]
+Type = DefaultFilter
+InputFileList = "../DXF Examples/Example 4.dxf"
+OutputFileList = "../DXF Examples/Example 4.lir"
+OriginX = 0 #Optional
+OriginY = 0 #Optional
+OriginZ = 0 #Optional
+CustomAxisXVector = 1, 0, 0 #Optional
+CustomAxisYVector = 0, 1, 0 #Optional
+CustomAxisZVector = 0, 0, 1 #Optional
+AxisXMapping = CylindricalX, 35
+AxisYMapping = RectangularY
+AxisZMapping = RectangularZ
 
-[Output]
-Type = Interface information
-File = "../Output/Example 3.lir"
 
-[Coordinate system]
-Type = Geometric information
-OriginX = 0
-OriginY = 0
-OriginZ = 0
-Transformation = Cylindrical
+[Strings]
+Type = Filter
+Layer = "Вантовые элементы"
 
-[Strings filter]
-Type = Entity filter
-Layer = Вантовые элементы
+[Volumes]
+Type = Filter
+Layer = "МКЭ Объемные элементы"
 
-[Volumes filter]
-Type = Entity filter
-Layer = МКЭ Объемные элементы
-
-[Extruders filter]
-Type = Entity filter
-Layer = МКЭ Объемные элементы
