@@ -52,11 +52,9 @@ def main():
         #Then we can match the filter against the whole Drawing.entities collection
         #and map finite elements according to filter rules
 
-        #InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("General", "InputFileList", Settings) or "Default.dxf"
+        
         #OutputFile = readSettingsKey(FilterName, "OutputFileList", Settings) or readSettingsKey("General", "OutputFileList", Settings) or "Default.lir"
-        #AxisXMapping = readSettingsKey(FilterName, "AxisXMapping", Settings) or readSettingsKey("General", "AxisXMapping", Settings) or "Default.lir"
-        #InputDxf = getDrawing(InputFile, False)
-        #Entities = InputDxf.entities
+
 
         Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
         TransMapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
@@ -78,7 +76,13 @@ def main():
         X = FormulaX( {'R' : 10, 'Theta' : 3} )
 
         #Now we can filter out the entities we want to transform.
-
+        InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
+        InputDxf = getDrawing(InputFile, False)
+        Entities = InputDxf.entities
+        Output = sdxf.Drawing()
+        for Entity in Entities:
+            print Entity.layer
+            Output.append(sdxf.Line(points=[(0, 0), (1, 1)], layer=Entity.layer))
 
 
 if __name__ == '__main__':
