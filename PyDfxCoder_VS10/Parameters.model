@@ -28,27 +28,41 @@ InputFileList = "../DXF Examples/Example 4.dxf"
 		Scale = 1
 		Origin = 0
 
-[Strings]
+#Filters for entities to be included in the model
+
+[Tendons]
 Type = Filter
-Layer = "Вантовые элементы"
+Layer = "Tendons 1", "Tendons 2", "Tendons 3"
+Output = "DXF Output"
 
 [Volumes]
 Type = Filter
-Layer = "МКЭ Объемные элементы"
+Premapping = Preset #Specifies tranformations before mapping.
+PremappingFunction = Extrude3
+PremappingParameter = 0.3, 0.3, 0.3
+Layer = "РњРљР­ РћР±СЉРµРјРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹"
+
+[Other]
+Type = Filter
+Premapping = Preset #Specifies tranformations before mapping.
+PremappingFunction = Extrude3
+PremappingParameter = 0.3, 0.3, 0.3
+
+#Filters for modeling outputs
 
 [Default Output]
 Type = DefaultOutput
 ScenarioType = Preset
-ScenarioName = Lira1
+ScenarioName = DXF
 
 [DXF Output]
+Type = Output
 OutputFile = "../DXF Examples/Example 4.dxf"
-Type = Output
 ScenarioType = Preset
-ScenarioName = Lira1
+ScenarioName = DXF
 
-[Lira Output]
-OutputFile = "../DXF Examples/Example 4.lir"
-Type = Output
-ScenarioType = Preset
-ScenarioName = Lira1
+#[Lira Output]
+#Type = Output
+#OutputFile = "../DXF Examples/Example 4.lir"
+#ScenarioType = Preset
+#ScenarioName = Lira1

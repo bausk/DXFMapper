@@ -14,7 +14,7 @@ OriginAxisY = string
 OriginAxisZ = string
 Transformation = string
 Layer = string
-Color = int
+Color = integer
 AxisXMapping = string
 
 	[[Origin]]

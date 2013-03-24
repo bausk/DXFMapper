@@ -17,7 +17,7 @@ import sdxf
 def readSettings():
     v = Validator()
     spec = ConfigObj("Parameters.spec", encoding = "UTF8", list_values=False)
-    config = ConfigObj("Parameters.model", configspec = spec)
+    config = ConfigObj("Parameters.model", configspec = spec, encoding = "UTF8")
     config.validate(v)
     return config
 
@@ -42,11 +42,25 @@ def GetSections(Type, settings):
             SectionsSet[Section] = settings[Section]
     return SectionsSet
 
+def FilterEntities(Entities, FilterName, Settings):
+    FilteredEntities = []
+    Layer = readSettingsKey(FilterName, "Layer", Settings) or readSettingsKey("DefaultFilter", "Layer", Settings) or False
+    if Layer and not (type(Layer) is list): Layer = [Layer] #prevents from searching for substrings when doing in Layer
+    Color = readSettingsKey(FilterName, "Color", Settings) or readSettingsKey("DefaultFilter", "Color", Settings) or False
+    if Color and not (type(Color) is list): Color = [Color]
+    for entity in Entities:
+        if not Layer or entity.layer in Layer:
+            FilteredEntities.append(entity)
+    return FilteredEntities
+
 def main():
     script, filename = argv
     Settings = readSettings()
 
     Filters = GetSections("Filter", Settings)
+    EntitiesRefs = {} #Map to export entities
+    EntitiesList = [] #Entities list
+
     for FilterName in Filters:
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
@@ -81,9 +95,15 @@ def main():
         InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
         InputDxf = getDrawing(InputFile, False)
         Entities = InputDxf.entities
-        
+        #Iterate through entities and select ones that conform to the filter
+        #Settings: Layer, Color etc.
+        FilteredEntities = FilterEntities(Entities, FilterName, Settings)
+
+
+        #Pre-mapping procedure
+        #Settings:
+
         #Check the list of filters against
-        
         Output = sdxf.Drawing()
         for Entity in Entities:
             print Entity.layer
