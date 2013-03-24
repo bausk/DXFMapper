@@ -57,8 +57,8 @@ def main():
 
 
         Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
-        TransMapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
-        Origin = readSettingsKey(FilterName, "Origin", Settings) or readSettingsKey("DefaultFilter", "Origin", Settings)
+        Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
+        #Origin = readSettingsKey(FilterName, "Origin", Settings) or readSettingsKey("DefaultFilter", "Origin", Settings)
 
         #Sweet sweet higher-order function
         #Parameters['R']['Origin']
@@ -72,13 +72,18 @@ def main():
         #        'Scale' : Scale,
         #        }
         
-        FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = TransMapping)
+        FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
         X = FormulaX( {'R' : 10, 'Theta' : 3} )
+
+
 
         #Now we can filter out the entities we want to transform.
         InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
         InputDxf = getDrawing(InputFile, False)
         Entities = InputDxf.entities
+        
+        #Check the list of filters against
+        
         Output = sdxf.Drawing()
         for Entity in Entities:
             print Entity.layer

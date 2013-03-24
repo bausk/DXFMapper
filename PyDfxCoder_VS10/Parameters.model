@@ -1,7 +1,6 @@
 [DefaultFilter]
 Type = DefaultFilter
 InputFileList = "../DXF Examples/Example 4.dxf"
-OutputFileList = "../DXF Examples/Example 4.lir"
 
 	[[Origin]]
 	X = 0
@@ -37,3 +36,19 @@ Layer = "Вантовые элементы"
 Type = Filter
 Layer = "МКЭ Объемные элементы"
 
+[Default Output]
+Type = DefaultOutput
+ScenarioType = Preset
+ScenarioName = Lira1
+
+[DXF Output]
+OutputFile = "../DXF Examples/Example 4.dxf"
+Type = Output
+ScenarioType = Preset
+ScenarioName = Lira1
+
+[Lira Output]
+OutputFile = "../DXF Examples/Example 4.lir"
+Type = Output
+ScenarioType = Preset
+ScenarioName = Lira1
