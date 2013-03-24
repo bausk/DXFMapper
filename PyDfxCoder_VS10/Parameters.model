@@ -37,16 +37,10 @@ Output = "DXF Output"
 
 [Volumes]
 Type = Filter
-Premapping = Preset #Specifies tranformations before mapping.
-PremappingFunction = Extrude3
-PremappingParameter = 0.3, 0.3, 0.3
-Layer = "МКЭ Объемные элементы"
-
-[Other]
-Type = Filter
-Premapping = Preset #Specifies tranformations before mapping.
-PremappingFunction = Extrude3
-PremappingParameter = 0.3, 0.3, 0.3
+Preprocess = Preset #Specifies tranformations before mapping.
+PreprocessFunction = Extrude4
+PreprocessParameter = 0.3, 0.4, 0.4, 0.3
+Layer = "Основания"
 
 #Filters for modeling outputs
 

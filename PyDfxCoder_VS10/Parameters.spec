@@ -16,6 +16,7 @@ Transformation = string
 Layer = string
 Color = integer
 AxisXMapping = string
+PreprocessParameter = float
 
 	[[Origin]]
 	___many___ = float

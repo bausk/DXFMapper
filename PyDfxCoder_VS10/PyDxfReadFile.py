@@ -61,14 +61,13 @@ def main():
     EntitiesRefs = {} #Map to export entities
     EntitiesList = [] #Entities list
 
+    FilteredEntities = {}
+
+    #1. Filter
     for FilterName in Filters:
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
         #and map finite elements according to filter rules
-
-        
-        #OutputFile = readSettingsKey(FilterName, "OutputFileList", Settings) or readSettingsKey("General", "OutputFileList", Settings) or "Default.lir"
-
 
         Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
         Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
@@ -86,9 +85,10 @@ def main():
         #        'Scale' : Scale,
         #        }
         
+        #To be removed to transformation
         FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
         X = FormulaX( {'R' : 10, 'Theta' : 3} )
-
+        #
 
 
         #Now we can filter out the entities we want to transform.
@@ -97,17 +97,18 @@ def main():
         Entities = InputDxf.entities
         #Iterate through entities and select ones that conform to the filter
         #Settings: Layer, Color etc.
-        FilteredEntities = FilterEntities(Entities, FilterName, Settings)
+        FilteredEntities[FilterName] = FilterEntities(Entities, FilterName, Settings)
+        #End of 1.
 
+    #Pre-mapping procedure
+    #Settings:
 
-        #Pre-mapping procedure
-        #Settings:
 
         #Check the list of filters against
-        Output = sdxf.Drawing()
-        for Entity in Entities:
-            print Entity.layer
-            Output.append(sdxf.Line(points=[(0, 0), (1, 1)], layer=Entity.layer))
+#        Output = sdxf.Drawing()
+#        for Entity in Entities:
+#            print Entity.layer
+#            Output.append(sdxf.Line(points=[(0, 0), (1, 1)], layer=Entity.layer))
 
 
 if __name__ == '__main__':
