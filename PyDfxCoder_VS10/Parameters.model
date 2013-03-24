@@ -16,7 +16,7 @@ OutputFileList = "../DXF Examples/Example 4.lir"
 	[[Transformation mapping]]
 		[[[Theta]]]
 		Mapping = X
-		Scale = 35
+		Scale = 12.738
 		Origin = 0
 
 		[[[R]]]

@@ -75,8 +75,9 @@ def main():
         #        }
         
         FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = TransMapping)
-
         X = FormulaX( {'R' : 10, 'Theta' : 3} )
+
+        #Now we can filter out the entities we want to transform.
 
 
 
