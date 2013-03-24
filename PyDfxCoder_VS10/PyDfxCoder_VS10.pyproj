@@ -27,7 +27,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="PyDfxCoder_VS10.py" />
+    <Compile Include="CoordinateTransform.py" />
     <Compile Include="PyDxfReadFile.py" />
+    <Compile Include="sdxf.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Parameters.model" />

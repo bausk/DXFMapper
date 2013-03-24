@@ -6,13 +6,13 @@ __author__ = "Alex Bausk <bauskas@gmail.com>"
 from dxfgrabber.classifiedtags import ClassifiedTags
 from dxfgrabber.entities import entity_factory
 import dxfgrabber
-import CoordinateTransform
 from sys import argv
 from configobj import ConfigObj
 from validate import Validator
 from dxfgrabber.drawing import Drawing
 from io import StringIO
-
+import CoordinateTransform
+import sdxf
 
 def readSettings():
     v = Validator()
@@ -23,7 +23,7 @@ def readSettings():
 
 def readSettingsKey(Section, Key, settings):
     if Section in settings and Key in settings[Section]:
-        return settings[Section][Key]
+        return (settings[Section][Key] or False)
     else:
         return False
 
@@ -51,14 +51,32 @@ def main():
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
         #and map finite elements according to filter rules
-        InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("General", "InputFileList", Settings) or "Default.dxf"
-        OutputFile = readSettingsKey(FilterName, "OutputFileList", Settings) or readSettingsKey("General", "OutputFileList", Settings) or "Default.lir"
-        AxisXMapping = readSettingsKey(FilterName, "AxisXMapping", Settings) or readSettingsKey("General", "AxisXMapping", Settings) or "Default.lir"
-        InputDxf = getDrawing(InputFile, False)
-        Entities = InputDxf.entities
 
+        #InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("General", "InputFileList", Settings) or "Default.dxf"
+        #OutputFile = readSettingsKey(FilterName, "OutputFileList", Settings) or readSettingsKey("General", "OutputFileList", Settings) or "Default.lir"
+        #AxisXMapping = readSettingsKey(FilterName, "AxisXMapping", Settings) or readSettingsKey("General", "AxisXMapping", Settings) or "Default.lir"
+        #InputDxf = getDrawing(InputFile, False)
+        #Entities = InputDxf.entities
 
+        Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
+        TransMapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
+        Origin = readSettingsKey(FilterName, "Origin", Settings) or readSettingsKey("DefaultFilter", "Origin", Settings)
 
+        #Sweet sweet higher-order function
+        #Parameters['R']['Origin']
+        #ParameterSet = {}
+        #for Variable in TransMapping:
+        #    ReferenceOriginVariable = TransMapping[Variable][0] #Reference
+        #    VariableOrigin = Origin[ReferenceOriginVariable]
+        #    Scale = TransMapping[Variable][1] #Scale
+        #    ParameterSet[Variable] = {
+        #        'Origin' : VariableOrigin,
+        #        'Scale' : Scale,
+        #        }
+        
+        FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = TransMapping)
+
+        X = FormulaX( {'R' : 10, 'Theta' : 3} )
 
 
 

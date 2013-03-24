@@ -1,16 +1,33 @@
-[General]
+[DefaultFilter]
 Type = DefaultFilter
 InputFileList = "../DXF Examples/Example 4.dxf"
 OutputFileList = "../DXF Examples/Example 4.lir"
-OriginX = 0 #Optional
-OriginY = 0 #Optional
-OriginZ = 0 #Optional
-OriginMappingX = Phi, 35 #Corresponding variable and scale factor
-OriginMappingY = Z, 1
-OriginMappingZ = R, 1
-TargetX = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
-TargetY = Transformation, CylindricToRectangular, Y
-TargetZ = Transformation, CylindricToRectangular, Z
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 35
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = 0
+
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
 
 [Strings]
 Type = Filter
