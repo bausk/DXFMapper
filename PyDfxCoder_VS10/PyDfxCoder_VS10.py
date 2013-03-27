@@ -6,7 +6,7 @@ __author__ = "Alex Bausk <bauskas@gmail.com>"
 import unittest
 from dxfgrabber.classifiedtags import ClassifiedTags
 from dxfgrabber.entities import entity_factory
-print "Rjnbot"
+# print "Rjnbot"
 
 
 class TestTextDXF12(unittest.TestCase):
