@@ -99,11 +99,13 @@ def main():
         #4. Postprocessor
         #For the time being, we'll just compile the list of nodes
         #Placed in a separate loop for readability and structure
+        NodeNumber = 0
         for objnum, object in enumerate(ObjectList[FilterName]):
             for i, Point in enumerate(object['points']):
                 if not Point in Points:
-                    Points[Point] = []
-                Points[Point].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=i))
+                    NodeNumber += 1
+                    Points[Point] = { 'number': NodeNumber, 'nodes': [] }
+                Points[Point]['nodes'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=i))
         
 
 
@@ -113,9 +115,30 @@ def main():
     for OutputName in Outputs:
         OutputFileName = readSettingsKey(FilterName, "OutputFile", Settings) or readSettingsKey("DefaultOutput", "OutputFile", Settings) or "Output.dxf"
         OutputFile = sdxf.Drawing()
-        for Point in Points:
+        for FilterName in Filters:
+            for compoundObject in ObjectList[FilterName]:
+                for objectNum, objectType in enumerate(compoundObject['objects']):
+                    if objectType == 'LINE_2NODES':
+                        Point1 = compoundObject['points'][compoundObject['nodes'][objectNum][0]]
+                        Point2 = compoundObject['points'][compoundObject['nodes'][objectNum][1]]
+                        OutputFile.append(sdxf.Line(points=[Point1, Point2], layer="Lines"))
+                    if objectType == 'SOLID_8NODES':
+                        Point1 = compoundObject['points'][compoundObject['nodes'][objectNum][0]]
+                        Point2 = compoundObject['points'][compoundObject['nodes'][objectNum][1]]
+                        Point3 = compoundObject['points'][compoundObject['nodes'][objectNum][2]]
+                        Point4 = compoundObject['points'][compoundObject['nodes'][objectNum][3]]
+                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                        Point1 = compoundObject['points'][compoundObject['nodes'][objectNum][4]]
+                        Point2 = compoundObject['points'][compoundObject['nodes'][objectNum][5]]
+                        Point3 = compoundObject['points'][compoundObject['nodes'][objectNum][6]]
+                        Point4 = compoundObject['points'][compoundObject['nodes'][objectNum][7]]
+                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+
+
+        #A variant
+        #for Point in Points:
             #OutputFile.append(sdxf.Point(Point, layer="0"))
-            OutputFile.append(sdxf.Line(points=[(0,0,0), Point], layer="0"))
+            #OutputFile.append(sdxf.Line(points=[(0,0,0), Point], layer="0"))
         OutputFile.saveas(OutputFileName)
     
 

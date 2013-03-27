@@ -19,7 +19,8 @@ def getFunction(Preprocess, PrepFunctionName):
         Points = GetPoints(Entity)
         prepObject = {
                       'points' : [],
-                      'objects' : [],
+                      'nodes' : [],
+                      'objects': [],
                      }
         for Parameter in Parameters:
             #prepObject['objects'].append([])
@@ -32,13 +33,19 @@ def getFunction(Preprocess, PrepFunctionName):
                 prepObject['points'].append(point)
                 ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
             Points = NextLevel
-            prepObject['objects'].append(ObjectTuple)
+            prepObject['nodes'].append(ObjectTuple)
+
+            if len(Points) == 3:
+                prepObject['objects'].append('SOLID_6NODES')
+            elif len(Points) == 4:
+                prepObject['objects'].append('SOLID_8NODES')
         return prepObject
 
     def Default(Entity, Parameters):
         Points = GetPoints(Entity)
         prepObject = {
                       'points' : [],
+                      'nodes' : [],
                       'objects' : [],
                      }
         ObjectTuple = ()
@@ -46,8 +53,9 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['points'].append(point)
             ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
         #prepObject = [tuple(Points)]
-        prepObject['objects'].append(ObjectTuple)
-
+        prepObject['nodes'].append(ObjectTuple)
+        if len(Points) == 2:
+            prepObject['objects'].append('LINE_2NODES')
         return prepObject
 
     functions = {
