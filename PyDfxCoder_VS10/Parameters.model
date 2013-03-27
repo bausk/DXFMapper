@@ -1,6 +1,6 @@
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../DXF Examples/Example 4.dxf"
+InputFileList = "../DXF Examples/Example 6.dxf"
 
 	[[Origin]]
 	X = 0
@@ -15,13 +15,13 @@ InputFileList = "../DXF Examples/Example 4.dxf"
 	[[Transformation mapping]]
 		[[[Theta]]]
 		Mapping = X
-		Scale = 25
+		Scale = 22.5
 		Origin = 0
 
 		[[[R]]]
 		Mapping = Z
 		Scale = 1
-		Origin = -25
+		Origin = -22.5
 
 		[[[Z]]]
 		Mapping = Y
