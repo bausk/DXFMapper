@@ -21,7 +21,7 @@ InputFileList = "../DXF Examples/Example 4.dxf"
 		[[[R]]]
 		Mapping = Z
 		Scale = 1
-		Origin = 0
+		Origin = -12
 
 		[[[Z]]]
 		Mapping = Y
@@ -38,25 +38,26 @@ Output = "DXF Output"
 [Volumes]
 Type = Filter
 Preprocess = Preset #Specifies tranformations before mapping.
-PreprocessFunction = Extrude4
+PreprocessFunction = "ExtrudeZ"
 PreprocessParameter = 0.3, 0.4, 0.4, 0.3
 Layer = "Основания"
+Output = "DXF Output"
+
 
 #Filters for modeling outputs
 
 [Default Output]
 Type = DefaultOutput
+OutputFile = "../DXF Examples/Example 4.dxf"
 ScenarioType = Preset
 ScenarioName = DXF
 
 [DXF Output]
 Type = Output
-OutputFile = "../DXF Examples/Example 4.dxf"
 ScenarioType = Preset
 ScenarioName = DXF
 
 #[Lira Output]
 #Type = Output
-#OutputFile = "../DXF Examples/Example 4.lir"
 #ScenarioType = Preset
 #ScenarioName = Lira1

@@ -2,14 +2,18 @@ from math import *
 
 def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
 
-    def CylToRectangularX(Variables):
-        return (Variables['R'] - Parameters['R']['Origin']) / Parameters['R']['Scale'] * cos((Variables['Theta'] - Parameters['Theta']['Origin']) / Parameters['Theta']['Scale'])
+    def getVar(Which, Vars):
+        return Vars[Parameters[Which]['Mapping']]
 
-    def CylToRectangularY(Variables):
-        return (Variables['R'] - Parameters['R']['Origin']) / Parameters['R']['Scale'] * sin((Variables['Theta'] - Parameters['Theta']['Origin']) / Parameters['Theta']['Scale'])
+    def CylToRectangularX(Vars):
+        return (getVar('R', Vars) - Parameters['R']['Origin']) / Parameters['R']['Scale'] * cos((getVar('Theta', Vars) - Parameters['Theta']['Origin']) / Parameters['Theta']['Scale'])
+        #return (Variables['R'] - Parameters['R']['Origin']) / Parameters['R']['Scale'] * cos((Variables['Theta'] - Parameters['Theta']['Origin']) / Parameters['Theta']['Scale'])
 
-    def CylToRectangularZ(Variables):
-        return (Variables['Z'] - Parameters['Z']['Origin']) / Parameters['Z']['Scale']
+    def CylToRectangularY(Vars):
+        return (getVar('R', Vars) - Parameters['R']['Origin']) / Parameters['R']['Scale'] * sin((getVar('Theta', Vars) - Parameters['Theta']['Origin']) / Parameters['Theta']['Scale'])
+
+    def CylToRectangularZ(Vars):
+        return (getVar('Z', Vars) - Parameters['Z']['Origin']) / Parameters['Z']['Scale']
         
     functions = {
         'X': {

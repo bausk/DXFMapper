@@ -12,7 +12,9 @@ from validate import Validator
 from dxfgrabber.drawing import Drawing
 from io import StringIO
 import CoordinateTransform
+import ProcessObjects
 import sdxf
+
 
 def readSettings():
     v = Validator()
@@ -62,47 +64,60 @@ def main():
     EntitiesList = [] #Entities list
 
     FilteredEntities = {}
+    ObjectList = {}
+    Points = {}
 
-    #1. Filter
     for FilterName in Filters:
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
         #and map finite elements according to filter rules
 
-        Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
-        Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
-        #Origin = readSettingsKey(FilterName, "Origin", Settings) or readSettingsKey("DefaultFilter", "Origin", Settings)
-
-        #Sweet sweet higher-order function
-        #Parameters['R']['Origin']
-        #ParameterSet = {}
-        #for Variable in TransMapping:
-        #    ReferenceOriginVariable = TransMapping[Variable][0] #Reference
-        #    VariableOrigin = Origin[ReferenceOriginVariable]
-        #    Scale = TransMapping[Variable][1] #Scale
-        #    ParameterSet[Variable] = {
-        #        'Origin' : VariableOrigin,
-        #        'Scale' : Scale,
-        #        }
-        
-        #To be removed to transformation
-        FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
-        X = FormulaX( {'R' : 10, 'Theta' : 3} )
-        #
-
-
-        #Now we can filter out the entities we want to transform.
+        #1. Filter
         InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
         InputDxf = getDrawing(InputFile, False)
         Entities = InputDxf.entities
-        #Iterate through entities and select ones that conform to the filter
-        #Settings: Layer, Color etc.
         FilteredEntities[FilterName] = FilterEntities(Entities, FilterName, Settings)
-        #End of 1.
 
-    #Pre-mapping procedure
-    #Settings:
+        #2. Preprocessor
+        Preprocess = readSettingsKey(FilterName, "Preprocess", Settings) or readSettingsKey("DefaultFilter", "Preprocess", Settings) or False
+        PrepFunctionName = readSettingsKey(FilterName, "PreprocessFunction", Settings) or readSettingsKey("DefaultFilter", "PreprocessFunction", Settings) or False
+        PrepParameters = readSettingsKey(FilterName, "PreprocessParameter", Settings) or readSettingsKey("DefaultFilter", "PreprocessParameter", Settings) or False
+        PrepFunction = ProcessObjects.getFunction(Preprocess, PrepFunctionName)
+        ObjectList[FilterName] = ProcessObjects.prep(FilteredEntities[FilterName], PrepFunction, PrepParameters)
+        
+        #3. Mapping    
+        Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
+        Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
+        FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
+        FormulaY = CoordinateTransform.GetFormula(*Target['Y'], Parameters = Mapping)
+        FormulaZ = CoordinateTransform.GetFormula(*Target['Z'], Parameters = Mapping)
+        #X = FormulaX( {'X' : 10, 'Y' : 3, 'Z' : 1} )
+        for object in ObjectList[FilterName]:
+            for i, Point in enumerate(object['points']):
+                object['points'][i] = FormulaX( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}), FormulaY( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}), FormulaZ( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]})
 
+        #4. Postprocessor
+        #For the time being, we'll just compile the list of nodes
+        #Placed in a separate loop for readability and structure
+        for objnum, object in enumerate(ObjectList[FilterName]):
+            for i, Point in enumerate(object['points']):
+                if not Point in Points:
+                    Points[Point] = []
+                Points[Point].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=i))
+        
+
+
+    #5. Export
+    #We treat each export entry as a different one, but that has to change later
+    Outputs = GetSections("Output", Settings)
+    for OutputName in Outputs:
+        OutputFileName = readSettingsKey(FilterName, "OutputFile", Settings) or readSettingsKey("DefaultOutput", "OutputFile", Settings) or "Output.dxf"
+        OutputFile = sdxf.Drawing()
+        for Point in Points:
+            #OutputFile.append(sdxf.Point(Point, layer="0"))
+            OutputFile.append(sdxf.Line(points=[(0,0,0), Point], layer="0"))
+        OutputFile.saveas(OutputFileName)
+    
 
         #Check the list of filters against
 #        Output = sdxf.Drawing()
