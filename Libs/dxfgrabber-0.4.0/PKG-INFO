@@ -1,0 +1,61 @@
+Metadata-Version: 1.1
+Name: dxfgrabber
+Version: 0.4.0
+Summary: A Python library to grab information from DXF drawings - all DXF versions supported.
+Home-page: http://bitbucket.org/mozman/dxfgrabber
+Author: Manfred Moitzi
+Author-email: mozman@gmx.at
+License: MIT License
+Download-URL: http://bitbucket.org/mozman/dxfgrabber/downloads
+Description: 
+        dxfgrabber
+        ==========
+        
+        Abstract
+        --------
+        
+        A Python library to grab information from DXF drawings - all DXF versions supported.
+        
+        
+        Installation
+        ============
+        
+            python setup.py install
+        
+        Documentation
+        =============
+        
+        http://dxfgrabber.readthedocs.org
+        http://packages.python.org/dxfgrabber/
+        
+        Source at bitbucket.org:
+        
+        http://bitbucket.org/mozman/dxfgrabber
+        
+        mozman -- <mozman@gmx.at>
+        
+        News
+        ====
+        
+        Version 0.4.0 - 2012.08.12
+        
+          * beta status
+        
+        Version 0.1.0 - 2012.07.21
+        
+          * Initial setup
+        
+Keywords: DXF,CAD
+Platform: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Provides: dxfgrabber
