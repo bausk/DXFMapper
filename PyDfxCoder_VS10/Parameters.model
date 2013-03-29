@@ -1,6 +1,6 @@
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../DXF Examples/Example 7.dxf"
+InputFileList = "../DXF Examples/Example 4.dxf"
 
 	[[Origin]]
 	X = 0

@@ -20,7 +20,7 @@ def getFunction(Preprocess, PrepFunctionName):
         prepObject = {
                       'points' : [],
                       'nodes' : [],
-                      'objects': [],
+                      'elements': [],
                      }
         for Parameter in Parameters:
             #prepObject['objects'].append([])
@@ -46,7 +46,7 @@ def getFunction(Preprocess, PrepFunctionName):
         prepObject = {
                       'points' : [],
                       'nodes' : [],
-                      'objects' : [],
+                      'elements' : [],
                      }
         ObjectTuple = ()
         for point in Points:

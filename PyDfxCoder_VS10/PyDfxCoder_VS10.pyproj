@@ -26,6 +26,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="REDOutput.py" />
     <Compile Include="PyDxfTools.py" />
     <Compile Include="ProcessObjects.py" />
     <Compile Include="PyDfxCoder_VS10.py" />

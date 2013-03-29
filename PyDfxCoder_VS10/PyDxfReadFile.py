@@ -66,7 +66,8 @@ def main():
     FilteredEntities = {}
     ObjectList = {}
     Points = {}
-
+    NodeNumber = 0
+    Nodes = []
     for FilterName in Filters:
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
@@ -99,25 +100,34 @@ def main():
         #4. Postprocessor
         #For the time being, we'll just compile the list of nodes
         #Placed in a separate loop for readability and structure
-        NodeNumber = 0
         for objnum, object in enumerate(ObjectList[FilterName]):
             for i, Point in enumerate(object['points']):
                 if not Point in Points:
                     NodeNumber += 1
                     Points[Point] = { 'number': NodeNumber, 'nodes': [] }
+                    Nodes[NodeNumber] = { 'point': Point, 'elements': [] }
                 Points[Point]['nodes'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=i))
+            for i, Element in enumerate(object['elements']):
         
-
-
+    #Points is a dict of dicts 
+    #Ridiculous.
+    #Points[tuple(3)]['number'] = int Node number
+    #Points[tuple(3)]['nodes'] = REMapperPointRef('FilterName', 'ObjectNumber', 'PointNumber'), extracted from ObjectList
+    #Nodes[int] = tuple(3)
+    #ObjectList is formed in prep Functions, which is the ABSOLUTELY WRONG WAY TO DO THINGS
+    #ObjectList[str(filter)]['points'][A] = tuple(3), links to Points
+    #ObjectList[str(filter)]['nodes'][tuple(2..8)] = links to A^
+    #ObjectList[str(filter)]['objects'][many]
     #5. Export
     #We treat each export entry as a different one, but that has to change later
     Outputs = GetSections("Output", Settings)
     for OutputName in Outputs:
+
         OutputFileName = readSettingsKey(FilterName, "OutputFile", Settings) or readSettingsKey("DefaultOutput", "OutputFile", Settings) or "Output.dxf"
         OutputFile = sdxf.Drawing()
         for FilterName in Filters:
             for compoundObject in ObjectList[FilterName]:
-                for objectNum, objectType in enumerate(compoundObject['objects']):
+                for objectNum, objectType in enumerate(compoundObject['elements']):
                     if objectType == 'LINE_2NODES':
                         Point1 = compoundObject['points'][compoundObject['nodes'][objectNum][0]]
                         Point2 = compoundObject['points'][compoundObject['nodes'][objectNum][1]]
