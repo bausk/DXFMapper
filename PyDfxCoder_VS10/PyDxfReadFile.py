@@ -68,6 +68,7 @@ def main():
     Points = {}
     NodeNumber = 0
     Nodes = []
+    Elements = []
     for FilterName in Filters:
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
@@ -95,29 +96,43 @@ def main():
         #X = FormulaX( {'X' : 10, 'Y' : 3, 'Z' : 1} )
         for object in ObjectList[FilterName]:
             for i, Point in enumerate(object['points']):
-                object['points'][i] = FormulaX( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}), FormulaY( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}), FormulaZ( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]})
+                Coords = (
+                        FormulaX( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
+                        FormulaY( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
+                        FormulaZ( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]})
+                        )
+                object['points'][i] = Coords
 
         #4. Postprocessor
         #For the time being, we'll just compile the list of nodes
         #Placed in a separate loop for readability and structure
         for objnum, object in enumerate(ObjectList[FilterName]):
+            ElementPoints = ()
             for i, Point in enumerate(object['points']):
                 if not Point in Points:
                     NodeNumber += 1
-                    Points[Point] = { 'number': NodeNumber, 'nodes': [] }
-                    Nodes[NodeNumber] = { 'point': Point, 'elements': [] }
-                Points[Point]['nodes'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=i))
-            for i, Element in enumerate(object['elements']):
+                    Points[Point] = { 'number': NodeNumber, 'pointrefs': [] }
+                    #Nodes[NodeNumber] = { 'point': Point, 'elements': [] }
+                Points[Point]['pointrefs'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=i))
+                ElementPoints = ElementPoints + (Point, )
+            #for i, Element in enumerate(object['elements']):
+                ##Nodes[NodeNumber]['elements'].append(Element)
+            Element = { 'points' : ElementPoints,
+                       'object' : ObjectList[FilterName][objnum],
+                       'elementnum': objnum
+                       }
+            Elements.append(Element)    
         
     #Points is a dict of dicts 
     #Ridiculous.
-    #Points[tuple(3)]['number'] = int Node number
-    #Points[tuple(3)]['nodes'] = REMapperPointRef('FilterName', 'ObjectNumber', 'PointNumber'), extracted from ObjectList
+    #Points[tuple(3)]['number'] = int Node number, used to reference Nodes[]
+    #Points[tuple(3)]['pointrefs'] = REMapperPointRef('FilterName', 'ObjectNumber', 'PointNumber'), extracted from ObjectList
     #Nodes[int] = tuple(3)
     #ObjectList is formed in prep Functions, which is the ABSOLUTELY WRONG WAY TO DO THINGS
     #ObjectList[str(filter)]['points'][A] = tuple(3), links to Points
-    #ObjectList[str(filter)]['nodes'][tuple(2..8)] = links to A^
-    #ObjectList[str(filter)]['objects'][many]
+    #ObjectList[str(filter)]'[pointlist'][tuple(2..8)] = links to A^
+    #ObjectList[str(filter)]['nodelist'][tuple(2..8)] = links to A^
+    #ObjectList[str(filter)]['elements'] = "LINE_2NODES" etc. Shares index with 'nodes'
     #5. Export
     #We treat each export entry as a different one, but that has to change later
     Outputs = GetSections("Output", Settings)
