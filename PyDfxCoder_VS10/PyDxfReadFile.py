@@ -133,16 +133,12 @@ def main():
                     ElementPoints = ElementPoints + (Point, )
                     if not Point in Points:
                         NodeNumber += 1
-                        Points[Point] = { 'number': NodeNumber, 'elements': [], 'pointrefs': [] }
+                        Points[Point] = { 'number': NodeNumber, 'elementnumbers': [], 'pointObjectReferences': [] }
                         PointsNumbered.append(None)
                         PointsNumbered[NodeNumber] = Point
                     #This one is used to reference ObjectList, possibly not needed
-                    if len(Points[Point]['pointrefs']) > 1:
-                        if Points[Point]['pointrefs'][-1][0] != FilterName:
-                            print Point, NodeNumber
-                    Points[Point]['pointrefs'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=NodeNumber))
-
-                    Points[Point]['elements'].append(ElementNumber)
+                    Points[Point]['pointObjectReferences'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=pointref))
+                    Points[Point]['elementnumbers'].append(ElementNumber)
                 Element = { 'points' : ElementPoints,
                            'elementclass' : ElementName,
                            'elementnum': ElementNumber

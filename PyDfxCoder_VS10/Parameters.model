@@ -45,8 +45,7 @@ Layer = "Основания"
 Output = "DXF Output"
 
 
-#Filters for modeling outputs
-
+#Output model and semantics
 [Default Output]
 Type = DefaultOutput
 OutputFile = "../DXF Examples/Example 4 results.dxf"
@@ -58,9 +57,20 @@ Type = Output
 OutputFile = "../DXF Examples/Example 4 results.dxf"
 OutputType = Preset
 Name = DXF
+	[[Element Actions]]
+		[[[Assign Layer]]]
+		Tendons = Tendons
+		Volumes = Volumes
 
 [Lira Output]
 Type = Output
 OutputFile = "../DXF Examples/Example 4 results.txt"
 OutputType = Preset
 Name = Lira-Custom
+	[[Point Actions]]
+		[[[Compatible Nodes]]]
+		Action = Volumes, Tendons
+
+		[[[Rotate nodes]]]
+		Action = VectorSum(Tendons)
+

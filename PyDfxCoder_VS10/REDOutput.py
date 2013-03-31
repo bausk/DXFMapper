@@ -46,21 +46,28 @@ def getFormatWriter(SettingsDict):
         OutputFile.saveas(SettingsDict['OutputFile'])
         return True
 
-    def LiraCustom(Objects, Filters, Points, Nodes, Elements):
-        #Points[tuple(3)]['number'] = int Node number, used to reference Nodes[]
-        #Points[tuple(3)]['pointrefs'] = REMapperPointRef('FilterName', 'ObjectNumber', 'PointNumber'), extracted from ObjectList
-        #Nodes[int] = tuple(3)
+    def LiraCustom(Objects, Filters, Points, NumberedPoints, Elements):
         #Objects is formed in prep Functions, which is the ABSOLUTELY WRONG WAY TO DO THINGS
         #Objects[str(filter)]['points'][A] = tuple(3), links to Points
         #Objects[str(filter)]'[pointlist'][tuple(2..8)] = links to A^
         #Objects[str(filter)]['nodelist'][tuple(2..8)] = links to A^
         #Objects[str(filter)]['elements'] = "LINE_2NODES" etc. Shares index with 'nodes'
-        #Elements[i]['points']
-        #           ['elementclass']
-        #           ['elementnum']
-        #Points[(x,y,z)]['number']
-        #               ['elements']
-        #PointsNumbered[i]['point']
+        #Elements[PointNumber]['points']        = ((Point), ...)
+        #                     ['elementclass']  = ElementClass
+        #                     ['elementnum']    = ElementNumber
+        #Points[(Point)]['number']                = PointNumber
+        #               ['elements']              = (ElementNumber, ...)
+        #               ['pointObjectReferences'] = (FilterName, ObjectNumber, PointNumber)
+        #PointsNumbered[PointNumber]['point']   = pointTuple
+        #Okay let's go.
+
+        #First: routine to check point actions
+        for Point in Points:
+            #Check if there are points with filters belonging to actions
+            #
+            PointActions = 
+            Point['pointObjectReferences'].FilterName
+
         return true
 
     def Default():
