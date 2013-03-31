@@ -49,16 +49,18 @@ Output = "DXF Output"
 
 [Default Output]
 Type = DefaultOutput
-OutputFile = "../DXF Examples/Example 4.dxf"
-ScenarioType = Preset
-ScenarioName = DXF
+OutputFile = "../DXF Examples/Example 4 results.dxf"
+OutputType = Preset
+Name = DXF
 
 [DXF Output]
 Type = Output
-ScenarioType = Preset
-ScenarioName = DXF
+OutputFile = "../DXF Examples/Example 4 results.dxf"
+OutputType = Preset
+Name = DXF
 
-#[Lira Output]
-#Type = Output
-#ScenarioType = Preset
-#ScenarioName = Lira1
+[Lira Output]
+Type = Output
+OutputFile = "../DXF Examples/Example 4 results.txt"
+OutputType = Preset
+Name = Lira-Custom

@@ -6,6 +6,7 @@ __author__ = "Alex Bausk <bauskas@gmail.com>"
 from dxfgrabber.classifiedtags import ClassifiedTags
 from dxfgrabber.entities import entity_factory
 import dxfgrabber
+import collections
 from sys import argv
 from configobj import ConfigObj
 from validate import Validator
@@ -13,6 +14,7 @@ from dxfgrabber.drawing import Drawing
 from io import StringIO
 import CoordinateTransform
 import ProcessObjects
+import REDOutput
 import sdxf
 
 
@@ -55,6 +57,15 @@ def FilterEntities(Entities, FilterName, Settings):
             FilteredEntities.append(entity)
     return FilteredEntities
 
+def UpdateSetting(d, u):
+    for k, v in u.iteritems():
+        if isinstance(v, collections.Mapping):
+            r = UpdateSetting(d.get(k, {}), v)
+            d[k] = r
+        else:
+            d[k] = u[k]
+    return d
+
 def main():
     script, filename = argv
     Settings = readSettings()
@@ -67,9 +78,12 @@ def main():
     ObjectList = {}
     Points = {}
     NodeNumber = 0
-    Nodes = []
-    Elements = []
+    ElementNumber = 0
+    Nodes = [False]
+    PointsNumbered = [False]
+    Elements = [False]
     for FilterName in Filters:
+        print "Input for filter %s\n" % FilterName
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
         #and map finite elements according to filter rules
@@ -84,8 +98,9 @@ def main():
         Preprocess = readSettingsKey(FilterName, "Preprocess", Settings) or readSettingsKey("DefaultFilter", "Preprocess", Settings) or False
         PrepFunctionName = readSettingsKey(FilterName, "PreprocessFunction", Settings) or readSettingsKey("DefaultFilter", "PreprocessFunction", Settings) or False
         PrepParameters = readSettingsKey(FilterName, "PreprocessParameter", Settings) or readSettingsKey("DefaultFilter", "PreprocessParameter", Settings) or False
+        PrepPrecision = readSettingsKey(FilterName, "Precision", Settings) or readSettingsKey("DefaultFilter", "Precision", Settings) or 6
         PrepFunction = ProcessObjects.getFunction(Preprocess, PrepFunctionName)
-        ObjectList[FilterName] = ProcessObjects.prep(FilteredEntities[FilterName], PrepFunction, PrepParameters)
+        ObjectList[FilterName] = ProcessObjects.prep(FilteredEntities[FilterName], PrepFunction, PrepPrecision, PrepParameters)
         
         #3. Mapping    
         Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
@@ -95,76 +110,53 @@ def main():
         FormulaZ = CoordinateTransform.GetFormula(*Target['Z'], Parameters = Mapping)
         #X = FormulaX( {'X' : 10, 'Y' : 3, 'Z' : 1} )
         for object in ObjectList[FilterName]:
+            #print "Input for object %s\n" % object
             for i, Point in enumerate(object['points']):
                 Coords = (
                         FormulaX( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
                         FormulaY( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
                         FormulaZ( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]})
                         )
-                object['points'][i] = Coords
+                object['points'][i] = tuple([round(x, PrepPrecision) for x in Coords])
 
         #4. Postprocessor
         #For the time being, we'll just compile the list of nodes
         #Placed in a separate loop for readability and structure
         for objnum, object in enumerate(ObjectList[FilterName]):
-            ElementPoints = ()
-            for i, Point in enumerate(object['points']):
-                if not Point in Points:
-                    NodeNumber += 1
-                    Points[Point] = { 'number': NodeNumber, 'pointrefs': [] }
-                    #Nodes[NodeNumber] = { 'point': Point, 'elements': [] }
-                Points[Point]['pointrefs'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=i))
-                ElementPoints = ElementPoints + (Point, )
-            #for i, Element in enumerate(object['elements']):
-                ##Nodes[NodeNumber]['elements'].append(Element)
-            Element = { 'points' : ElementPoints,
-                       'object' : ObjectList[FilterName][objnum],
-                       'elementnum': objnum
-                       }
-            Elements.append(Element)    
-        
-    #Points is a dict of dicts 
-    #Ridiculous.
-    #Points[tuple(3)]['number'] = int Node number, used to reference Nodes[]
-    #Points[tuple(3)]['pointrefs'] = REMapperPointRef('FilterName', 'ObjectNumber', 'PointNumber'), extracted from ObjectList
-    #Nodes[int] = tuple(3)
-    #ObjectList is formed in prep Functions, which is the ABSOLUTELY WRONG WAY TO DO THINGS
-    #ObjectList[str(filter)]['points'][A] = tuple(3), links to Points
-    #ObjectList[str(filter)]'[pointlist'][tuple(2..8)] = links to A^
-    #ObjectList[str(filter)]['nodelist'][tuple(2..8)] = links to A^
-    #ObjectList[str(filter)]['elements'] = "LINE_2NODES" etc. Shares index with 'nodes'
+            for i, ElementName in enumerate(object['elements']):
+                ElementNumber += 1
+                Elements.append(None)
+                ElementPoints = ()
+                ElementPointList = object['pointlist'][i]
+                for pointref in ElementPointList:
+                    Point = object['points'][pointref]
+                    ElementPoints = ElementPoints + (Point, )
+                    if not Point in Points:
+                        NodeNumber += 1
+                        Points[Point] = { 'number': NodeNumber, 'elements': [], 'pointrefs': [] }
+                        PointsNumbered.append(None)
+                        PointsNumbered[NodeNumber] = Point
+                    #This one is used to reference ObjectList, possibly not needed
+                    if len(Points[Point]['pointrefs']) > 1:
+                        if Points[Point]['pointrefs'][-1][0] != FilterName:
+                            print Point, NodeNumber
+                    Points[Point]['pointrefs'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=NodeNumber))
+
+                    Points[Point]['elements'].append(ElementNumber)
+                Element = { 'points' : ElementPoints,
+                           'elementclass' : ElementName,
+                           'elementnum': ElementNumber
+                           }
+                Elements[ElementNumber] = Element
+
     #5. Export
     #We treat each export entry as a different one, but that has to change later
     Outputs = GetSections("Output", Settings)
+    DefaultOutput = GetSections("DefaultOutput", Settings)['Default Output']
     for OutputName in Outputs:
-
-        OutputFileName = readSettingsKey(FilterName, "OutputFile", Settings) or readSettingsKey("DefaultOutput", "OutputFile", Settings) or "Output.dxf"
-        OutputFile = sdxf.Drawing()
-        for FilterName in Filters:
-            for compoundObject in ObjectList[FilterName]:
-                for objectNum, objectType in enumerate(compoundObject['elements']):
-                    if objectType == 'LINE_2NODES':
-                        Point1 = compoundObject['points'][compoundObject['nodes'][objectNum][0]]
-                        Point2 = compoundObject['points'][compoundObject['nodes'][objectNum][1]]
-                        OutputFile.append(sdxf.Line(points=[Point1, Point2], layer="Lines"))
-                    if objectType == 'SOLID_8NODES':
-                        Point1 = compoundObject['points'][compoundObject['nodes'][objectNum][0]]
-                        Point2 = compoundObject['points'][compoundObject['nodes'][objectNum][1]]
-                        Point3 = compoundObject['points'][compoundObject['nodes'][objectNum][2]]
-                        Point4 = compoundObject['points'][compoundObject['nodes'][objectNum][3]]
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
-                        Point1 = compoundObject['points'][compoundObject['nodes'][objectNum][4]]
-                        Point2 = compoundObject['points'][compoundObject['nodes'][objectNum][5]]
-                        Point3 = compoundObject['points'][compoundObject['nodes'][objectNum][6]]
-                        Point4 = compoundObject['points'][compoundObject['nodes'][objectNum][7]]
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
-
-
-        #A variant
-        #for Point in Points:
-            #OutputFile.append(sdxf.Point(Point, layer="0"))
-            #OutputFile.append(sdxf.Line(points=[(0,0,0), Point], layer="0"))
-        OutputFile.saveas(OutputFileName)
+        FinalizedSettings = UpdateSetting(DefaultOutput, Outputs[OutputName])
+        OutputWriter = REDOutput.getFormatWriter(FinalizedSettings)
+        OutputWriter(ObjectList, Filters, Points, Nodes, Elements)
     
 
         #Check the list of filters against

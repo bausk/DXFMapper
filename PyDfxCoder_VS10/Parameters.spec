@@ -3,6 +3,7 @@ a = float
 Type = string
 InputFileList = string
 OutputFileList = string
+Precision = integer
 OriginX = float
 OriginY = float
 OriginZ = float

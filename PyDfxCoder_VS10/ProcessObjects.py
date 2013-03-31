@@ -5,18 +5,18 @@ from PyDxfTools import GetPoints
 PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
 REMapperPointRef = collections.namedtuple('REMapperPointRef', ['FilterName', 'ObjectNumber', 'PointNumber'])
 
-def prep(FilteredEntities, Function, Parameters):
+def prep(FilteredEntities, Function, Precision, Parameters):
     Result = []
     for FilteredEntity in FilteredEntities:
-        Object = Function(FilteredEntity, Parameters)
+        Object = Function(FilteredEntity, Precision, Parameters)
         Result.append(Object)
     return Result
 
 def getFunction(Preprocess, PrepFunctionName):
 
-    def ExtrudeZ(Entity, Parameters):
+    def ExtrudeZ(Entity, Precision, Parameters):
         Parameters = [float(param) for param in Parameters]
-        Points = GetPoints(Entity)
+        Points = GetPoints(Entity, Precision)
         prepObject = {
                       'points' : [],
                       'pointlist' : [],
@@ -33,7 +33,7 @@ def getFunction(Preprocess, PrepFunctionName):
                 prepObject['points'].append(point)
                 ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
             Points = NextLevel
-            prepObject['nodes'].append(ObjectTuple)
+            prepObject['pointlist'].append(ObjectTuple)
 
             if len(Points) == 3:
                 prepObject['elements'].append('SOLID_6NODES')
@@ -41,11 +41,11 @@ def getFunction(Preprocess, PrepFunctionName):
                 prepObject['elements'].append('SOLID_8NODES')
         return prepObject
 
-    def Default(Entity, Parameters):
-        Points = GetPoints(Entity)
+    def Default(Entity, Precision, Parameters):
+        Points = GetPoints(Entity, Precision)
         prepObject = {
                       'points' : [],
-                      'nodes' : [],
+                      'pointlist' : [],
                       'elements' : [],
                      }
         ObjectTuple = ()
@@ -53,7 +53,7 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['points'].append(point)
             ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
         #prepObject = [tuple(Points)]
-        prepObject['nodes'].append(ObjectTuple)
+        prepObject['pointlist'].append(ObjectTuple)
         if len(Points) == 2:
             prepObject['elements'].append('LINE_2NODES')
         return prepObject

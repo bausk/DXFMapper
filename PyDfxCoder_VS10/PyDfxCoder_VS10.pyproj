@@ -29,7 +29,6 @@
     <Compile Include="REDOutput.py" />
     <Compile Include="PyDxfTools.py" />
     <Compile Include="ProcessObjects.py" />
-    <Compile Include="PyDfxCoder_VS10.py" />
     <Compile Include="CoordinateTransform.py" />
     <Compile Include="PyDxfReadFile.py" />
     <Compile Include="sdxf.py" />
