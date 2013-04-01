@@ -1,6 +1,6 @@
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../DXF Examples/Example 4.dxf"
+InputFileList = "../DXF Examples/Example 8.dxf"
 Precision = 3
 
 	[[Origin]]
@@ -48,13 +48,13 @@ Output = "DXF Output"
 #Output model and semantics
 [Default Output]
 Type = DefaultOutput
-OutputFile = "../DXF Examples/Example 4 results.dxf"
+OutputFile = "../DXF Examples/results.dxf"
 OutputType = Preset
 Name = DXF
 
 [DXF Output]
 Type = Output
-OutputFile = "../DXF Examples/Example 4 results.dxf"
+OutputFile = "../DXF Examples/results.dxf"
 OutputType = Preset
 Name = DXF
 	[[Element Actions]]
@@ -64,13 +64,13 @@ Name = DXF
 
 [Lira Output]
 Type = Output
-OutputFile = "../DXF Examples/Example 4 results.txt"
+OutputFile = "../DXF Examples/results.txt"
 OutputType = Preset
 Name = Lira-Custom
 	[[Point Actions]]
 		[[[Compatible Nodes]]]
-		Action = Volumes, Tendons
+		Filters = Volumes, Tendons
 
-		[[[Rotate nodes]]]
+		[[[Rotate Nodes]]]
 		Action = VectorSum(Tendons)
 

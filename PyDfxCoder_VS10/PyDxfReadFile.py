@@ -94,6 +94,7 @@ def main():
         Entities = InputDxf.entities
         FilteredEntities[FilterName] = FilterEntities(Entities, FilterName, Settings)
 
+        print "Prep for filter %s\n" % FilterName
         #2. Preprocessor
         Preprocess = readSettingsKey(FilterName, "Preprocess", Settings) or readSettingsKey("DefaultFilter", "Preprocess", Settings) or False
         PrepFunctionName = readSettingsKey(FilterName, "PreprocessFunction", Settings) or readSettingsKey("DefaultFilter", "PreprocessFunction", Settings) or False
@@ -103,6 +104,7 @@ def main():
         ObjectList[FilterName] = ProcessObjects.prep(FilteredEntities[FilterName], PrepFunction, PrepPrecision, PrepParameters)
         
         #3. Mapping    
+        print "Mapping for filter %s\n" % FilterName
         Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
         Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
         FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
@@ -122,6 +124,7 @@ def main():
         #4. Postprocessor
         #For the time being, we'll just compile the list of nodes
         #Placed in a separate loop for readability and structure
+        print "Postp for filter %s\n" % FilterName
         for objnum, object in enumerate(ObjectList[FilterName]):
             for i, ElementName in enumerate(object['elements']):
                 ElementNumber += 1
@@ -129,19 +132,21 @@ def main():
                 ElementPoints = ()
                 ElementPointList = object['pointlist'][i]
                 for pointref in ElementPointList:
-                    Point = object['points'][pointref]
-                    ElementPoints = ElementPoints + (Point, )
+                    Point = object['points'][pointref] #Point referenced by the Element
                     if not Point in Points:
                         NodeNumber += 1
-                        Points[Point] = { 'number': NodeNumber, 'elementnumbers': [], 'pointObjectReferences': [] }
+                        Points[Point] = { 'number': NodeNumber, 'elementnumbers': [], 'pointObjectReferences': [], 'additionalPoints': [] }
                         PointsNumbered.append(None)
-                        PointsNumbered[NodeNumber] = Point
+                        PointsNumbered[NodeNumber] = {'point': Point, 'elementnumbers': []}
+                    CurrentPointNumber = Points[Point]['number']
+                    ElementPoints = ElementPoints + (CurrentPointNumber, )
                     #This one is used to reference ObjectList, possibly not needed
                     Points[Point]['pointObjectReferences'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=pointref))
                     Points[Point]['elementnumbers'].append(ElementNumber)
+                    PointsNumbered[CurrentPointNumber]['elementnumbers'].append(ElementNumber)
                 Element = { 'points' : ElementPoints,
                            'elementclass' : ElementName,
-                           'elementnum': ElementNumber
+                           'elementnum': ElementNumber #???
                            }
                 Elements[ElementNumber] = Element
 
@@ -152,7 +157,7 @@ def main():
     for OutputName in Outputs:
         FinalizedSettings = UpdateSetting(DefaultOutput, Outputs[OutputName])
         OutputWriter = REDOutput.getFormatWriter(FinalizedSettings)
-        OutputWriter(ObjectList, Filters, Points, Nodes, Elements)
+        OutputWriter(ObjectList, Filters, Points, PointsNumbered, Elements)
     
 
         #Check the list of filters against

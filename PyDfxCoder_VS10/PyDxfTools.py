@@ -35,4 +35,3 @@ def GetPoints(Entity, Precision):
             else:
                 Points.append(point)
         return Points
-    
