@@ -26,6 +26,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ShadowbinderFormats.py" />
     <Compile Include="Boilerplate.py" />
     <Compile Include="ShadowbinderDataTools.py" />
     <Compile Include="REDOutput.py" />

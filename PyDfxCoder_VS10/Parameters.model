@@ -67,6 +67,7 @@ Type = Output
 OutputFile = "../DXF Examples/results.txt"
 OutputType = Preset
 Name = Lira-Custom
+Format = Lira
 	[[Point Actions]]
 		[[[Compatible Nodes]]]
 		Filters = Volumes, Tendons
