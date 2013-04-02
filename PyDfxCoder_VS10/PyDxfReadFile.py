@@ -80,7 +80,7 @@ def main():
     NodeNumber = 0
     ElementNumber = 0
     Nodes = [False]
-    PointsNumbered = {}
+    PointsNumbered = {'points' : {}, 'maximumNode' : None}
     Elements = [False]
     for FilterName in Filters:
         print "Input for filter %s\n" % FilterName
@@ -137,14 +137,14 @@ def main():
                         NodeNumber += 1
                         Points[Point] = { 'number': NodeNumber, 'elementnumbers': [], 'pointObjectReferences': [], 'additionalPoints': [] }
                         #PointsNumbered.append(None)
-                        PointsNumbered[NodeNumber] = {'point': Point, 'elementnumbers': []}
+                        PointsNumbered['points'][NodeNumber] = {'point': Point, 'elementnumbers': []}
                         PointsNumbered['maximumNode'] = NodeNumber
                     CurrentPointNumber = Points[Point]['number']
                     ElementPoints.append(CurrentPointNumber)
                     #This one is used to reference ObjectList, possibly not needed
                     Points[Point]['pointObjectReferences'].append(ProcessObjects.REMapperPointRef(FilterName=FilterName, ObjectNumber=objnum, PointNumber=pointref))
                     Points[Point]['elementnumbers'].append(ElementNumber)
-                    PointsNumbered[CurrentPointNumber]['elementnumbers'].append(ElementNumber)
+                    PointsNumbered['points'][CurrentPointNumber]['elementnumbers'].append(ElementNumber)
                 Element = { 'points' : ElementPoints,
                            'elementclass' : ElementName,
                            'elementnum': ElementNumber #???

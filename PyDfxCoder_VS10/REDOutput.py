@@ -48,13 +48,13 @@ def getPointActionFunction(PointAction):
                     ElementNumber, ElementPointIndex = ShadowbinderDataTools.getElementFromPoint(Point, index)
                     #Now we can add reference to element and remove it from old NumberedPoint
                     NewNumberedPoints[NewPointIndex][u'elementnumbers'].append(ElementNumber)
-                    NumberedPoints[OldPointIndex][u'elementnumbers'].remove(ElementNumber)
+                    NumberedPoints['points'][OldPointIndex][u'elementnumbers'].remove(ElementNumber)
                     Element = Elements[ElementNumber]
                     Element['points'][ElementPointIndex] = NewPointIndex
 
         if not NewNumberedPoints: return False, [] #Not a single filter matches
-        NewNumberedPoints['maximumNode'] = NewPointIndex
-        NumberedPoints.update(NewNumberedPoints)
+        NumberedPoints['maximumNode'] = NewPointIndex
+        NumberedPoints['points'].update(NewNumberedPoints)
         return NewNumberedPoints, Output
 
     def RotateNodes(Parameters, Point, PointTuple, NumberedPoints, Elements):
@@ -134,11 +134,11 @@ def getFormatWriter(SettingsDict):
                 NewPoints, Output = PointActionFunction(PointActions[PointAction], Points[Point], Point, NumberedPoints, Elements)
                 #Points[Point], NumberedPoints and Elements get updated
                 if Output: Format(FormatDict, "Compatible Nodes", Output)
-
-                Format(FormatDict, "Nodes", NumberedPoints)
                 #if NewPoints: NumberedPoints.update(NewPoints) #Already done in PointActionFunction
-                
+            
             #FilterName = Point['pointObjectReferences'].FilterName
+        Format(FormatDict, "Nodes", NumberedPoints['points'])    #Forming Nodes document
+        Format(FormatDict, "Elements", Elements)                                                        #Forming Elements document
         WriteFormat = writeFormat(SettingsDict['Format'])
         WriteFormat(FormatDict, SettingsDict['OutputFile'])
         return True
