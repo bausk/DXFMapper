@@ -57,7 +57,8 @@ def FilterEntities(Entities, FilterName, Settings):
             FilteredEntities.append(entity)
     return FilteredEntities
 
-def UpdateSetting(d, u):
+def UpdateSetting(origin, u):
+    d = origin.copy()
     for k, v in u.iteritems():
         if isinstance(v, collections.Mapping):
             r = UpdateSetting(d.get(k, {}), v)
@@ -81,7 +82,13 @@ def main():
     ElementNumber = 0
     Nodes = [False]
     PointsNumbered = {'points' : {}, 'maximumNode' : None}
+    DefaultFilter = GetSections("DefaultFilter", Settings)['DefaultFilter']
     Elements = [False]
+
+    InputFile = readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
+    InputDxf = getDrawing(InputFile, False)
+    Entities = InputDxf.entities
+
     for FilterName in Filters:
         print "Input for filter %s\n" % FilterName
         #We iterate through filters, accept either filter values or general values or defaults
@@ -89,10 +96,8 @@ def main():
         #and map finite elements according to filter rules
 
         #1. Filter
-        InputFile = readSettingsKey(FilterName, "InputFileList", Settings) or readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
-        InputDxf = getDrawing(InputFile, False)
-        Entities = InputDxf.entities
-        FilteredEntities[FilterName] = FilterEntities(Entities, FilterName, Settings)
+        FinalizedSettings = UpdateSetting(DefaultFilter, Filters[FilterName])
+        FilteredEntities[FilterName] = FilterEntities(Entities, FilterName, FinalizedSettings)
 
         print "Prep for filter %s\n" % FilterName
         #2. Preprocessor
@@ -128,6 +133,8 @@ def main():
         for objnum, object in enumerate(ObjectList[FilterName]):
             for i, ElementName in enumerate(object['elements']):
                 ElementNumber += 1
+                if ElementNumber == 2866:
+                    print
                 Elements.append(None)
                 ElementPoints = []
                 ElementPointList = object['pointlist'][i]

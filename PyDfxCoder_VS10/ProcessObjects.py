@@ -27,6 +27,8 @@ def getFunction(Preprocess, PrepFunctionName):
             NextLevel = zip([point[0] for point in Points], [point[1] for point in Points], [round(point[2] + Parameter, 6) for point in Points])
             ObjectTuple = ()
             for j, point in enumerate(Points):
+                if prepObject['points'] and prepObject['points'][-1] == point:
+                    print
                 prepObject['points'].append(point)
                 ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
             for j, point in enumerate(NextLevel):
