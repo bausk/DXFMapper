@@ -16,6 +16,7 @@ import CoordinateTransform
 import ProcessObjects
 import REDOutput
 import sdxf
+import PyDxfTools
 
 
 def readSettings():
@@ -46,14 +47,38 @@ def GetSections(Type, settings):
             SectionsSet[Section] = settings[Section]
     return SectionsSet
 
-def FilterEntities(Entities, FilterName, Settings):
+def FilterEntities(Entities, FilterName, SettingsDict):
     FilteredEntities = []
-    Layer = readSettingsKey(FilterName, "Layer", Settings) or readSettingsKey("DefaultFilter", "Layer", Settings) or False
+
+    Layer = False
+    if 'Layer' in SettingsDict: Layer = SettingsDict['Layer']
     if Layer and not (type(Layer) is list): Layer = [Layer] #prevents from searching for substrings when doing in Layer
-    Color = readSettingsKey(FilterName, "Color", Settings) or readSettingsKey("DefaultFilter", "Color", Settings) or False
+    Color = False
+    if 'Color' in SettingsDict: Color = SettingsDict['Color']
     if Color and not (type(Color) is list): Color = [Color]
+    FilterEntities = False
+    if 'Entities' in SettingsDict: FilterEntities = SettingsDict['Entities']
+    if FilterEntities and not (type(FilterEntities) is list): FilterEntities = [FilterEntities]
+    FilterPoints = False
+    if 'Points' in SettingsDict: FilterPoints = [int(x) for x in SettingsDict['Points']]
+    if FilterPoints and not (type(FilterPoints) is list): FilterPoints = [FilterPoints]
+    FilterClosed = False
+    if 'Closed' in SettingsDict: FilterClosed = SettingsDict['Closed']
+
     for entity in Entities:
-        if not Layer or entity.layer in Layer:
+#        if entity.dxftype == 'LWPOLYLINE':
+#            print
+        try:
+            if entity.is_closed == True: EntityClosed = 'yes'
+            else: EntityClosed = 'no'
+        except AttributeError:
+            FilterClosed = False
+        Condition = (not Layer or entity.layer in Layer) and \
+                    (not Color or entity.color in Color) and \
+                    (not FilterEntities or entity.dxftype in FilterEntities) and \
+                    (not FilterPoints or len(entity.points) in FilterPoints) and \
+                    (not FilterClosed or FilterClosed.lower() == EntityClosed)
+        if Condition:
             FilteredEntities.append(entity)
     return FilteredEntities
 
@@ -88,6 +113,7 @@ def main():
     InputFile = readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
     InputDxf = getDrawing(InputFile, False)
     Entities = InputDxf.entities
+    Entities = PyDxfTools.Overkill(Entities, DefaultFilter['Precision'])
 
     for FilterName in Filters:
         print "Input for filter %s\n" % FilterName
@@ -133,8 +159,6 @@ def main():
         for objnum, object in enumerate(ObjectList[FilterName]):
             for i, ElementName in enumerate(object['elements']):
                 ElementNumber += 1
-                if ElementNumber == 2866:
-                    print
                 Elements.append(None)
                 ElementPoints = []
                 ElementPointList = object['pointlist'][i]

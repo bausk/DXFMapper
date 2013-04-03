@@ -16,6 +16,7 @@ OriginAxisZ = string
 Transformation = string
 Layer = string
 Color = integer
+Points = integer
 AxisXMapping = string
 PreprocessParameter = float
 

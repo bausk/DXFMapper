@@ -35,3 +35,16 @@ def GetPoints(Entity, Precision):
             else:
                 Points.append(point)
         return Points
+
+def Overkill(Entities, Precision):
+    PurgedEntities = dict(enumerate(Entities))
+    print "Overkilling the DXF dataset (alpha version feature)"
+    ReferencePointArray = {}
+    for index, Entity in enumerate(Entities) :
+        EntityPoints = tuple(sorted((tuple(y for y in x) for x in GetPoints(Entity, Precision))))
+        if not EntityPoints in ReferencePointArray :
+            ReferencePointArray[EntityPoints] = index
+        else :
+            del PurgedEntities[index]
+
+    return PurgedEntities.values()

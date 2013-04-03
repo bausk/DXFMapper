@@ -16,8 +16,8 @@ def getFormat(Name):
                 FormatDict[4].append("{} {} {}/".format(Point['point'][0], Point['point'][1], Point['point'][2]))
         if Semantic == 'Elements':
             for Element in Data :
-                if Element and Element['points'][0] == Element['points'][1]:
-                    print
+                #if Element and Element['points'][0] == Element['points'][1]:
+                #    print
                 if Element and Element['elementclass'] == "LINE_2NODES" :
                     FormatDict[1].append("10 3 {} {}/".format(Element['points'][0], Element['points'][1]))
                 if Element and Element['elementclass'] == "SOLID_8NODES" :

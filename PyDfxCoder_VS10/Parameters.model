@@ -2,6 +2,7 @@
 Type = DefaultFilter
 InputFileList = "../DXF Examples/Example 10.dxf"
 Precision = 3
+Normalize = Yes
 Entities = NONE
 
 	[[Origin]]
@@ -47,6 +48,7 @@ PreprocessParameter = 0.4, 0.25, 0.25, 0.3
 Layer = "Основания"
 Entities = LWPOLYLINE
 Points = 3, 4
+Closed = Yes
 Output = "DXF Output"
 
 
