@@ -97,8 +97,19 @@ def getFormatWriter(SettingsDict):
                         Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][6]]
                         Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][7]]
                         OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
-
-
+                    if objectType == 'FACE_3NODES':
+                        Point1 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][0]])[0:2])
+                        Point2 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][1]])[0:2])
+                        Point3 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][2]])[0:2])
+                        OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3], flag=1, layer="Polylines"))
+                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
+                    if objectType == 'FACE_4NODES':
+                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][0]]
+                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][1]]
+                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][2]]
+                        Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][3]]
+                        OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer="Polylines"))
+                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
         #A variant
         #for Point in Points:
             #OutputFile.append(sdxf.Point(Point, layer="0"))

@@ -58,6 +58,10 @@ def getFunction(Preprocess, PrepFunctionName):
         prepObject['pointlist'].append(ObjectTuple)
         if len(Points) == 2:
             prepObject['elements'].append('LINE_2NODES')
+        elif len(Points) == 3:
+            prepObject['elements'].append('FACE_3NODES')
+        elif len(Points) == 4:
+            prepObject['elements'].append('FACE_4NODES')
         return prepObject
 
     functions = {

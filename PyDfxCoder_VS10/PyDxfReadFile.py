@@ -136,20 +136,25 @@ def main():
         
         #3. Mapping    
         print "Mapping for filter %s\n" % FilterName
-        Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings)
-        Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings)
-        FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
-        FormulaY = CoordinateTransform.GetFormula(*Target['Y'], Parameters = Mapping)
-        FormulaZ = CoordinateTransform.GetFormula(*Target['Z'], Parameters = Mapping)
-        #X = FormulaX( {'X' : 10, 'Y' : 3, 'Z' : 1} )
+        Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings) or False
+        Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings) or False
+        if Mapping:
+            FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
+            FormulaY = CoordinateTransform.GetFormula(*Target['Y'], Parameters = Mapping)
+            FormulaZ = CoordinateTransform.GetFormula(*Target['Z'], Parameters = Mapping)
+            #X = FormulaX( {'X' : 10, 'Y' : 3, 'Z' : 1} )
+
         for object in ObjectList[FilterName]:
             #print "Input for object %s\n" % object
             for i, Point in enumerate(object['points']):
-                Coords = (
-                        FormulaX( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
-                        FormulaY( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
-                        FormulaZ( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]})
-                        )
+                if Mapping:
+                    Coords = (
+                            FormulaX( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
+                            FormulaY( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
+                            FormulaZ( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]})
+                            )
+                else:
+                    Coords = (Point[0], Point[1], Point[2])
                 object['points'][i] = tuple([round(x, PrepPrecision) for x in Coords])
 
         #4. Postprocessor

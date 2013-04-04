@@ -37,6 +37,7 @@
     <Compile Include="sdxf.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Parameters - Planar generator.model" />
     <Content Include="Parameters.model" />
     <Content Include="Parameters.spec" />
   </ItemGroup>
