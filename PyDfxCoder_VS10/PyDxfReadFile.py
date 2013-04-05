@@ -19,10 +19,10 @@ import sdxf
 import PyDxfTools
 
 
-def readSettings():
+def readSettings(filename):
     v = Validator()
     spec = ConfigObj("Parameters.spec", encoding = "UTF8", list_values=False)
-    config = ConfigObj("Parameters.model", configspec = spec, encoding = "UTF8")
+    config = ConfigObj(filename, configspec = spec, encoding = "UTF8")
     config.validate(v)
     return config
 
@@ -94,7 +94,7 @@ def UpdateSetting(origin, u):
 
 def main():
     script, filename = argv
-    Settings = readSettings()
+    Settings = readSettings(filename)
 
     Filters = GetSections("Filter", Settings)
     EntitiesRefs = {} #Map to export entities
@@ -183,7 +183,8 @@ def main():
                     PointsNumbered['points'][CurrentPointNumber]['elementnumbers'].append(ElementNumber)
                 Element = { 'points' : ElementPoints,
                            'elementclass' : ElementName,
-                           'elementnum': ElementNumber #???
+                           'elementnum': ElementNumber, #???
+                           'filter': FilterName
                            }
                 Elements[ElementNumber] = Element
 

@@ -69,7 +69,7 @@ def GetRawPoints(Entity, Precision):
 
 def Overkill(Entities, Precision):
     PurgedEntities = dict(enumerate(Entities))
-    print "Overkilling the DXF dataset (alpha version feature)"
+    print "Overkilling the DXF dataset (alpha version feature)\n"
     ReferencePointArray = {}
     for index, Entity in enumerate(Entities) :
         #1. Delete duplicate points in polys

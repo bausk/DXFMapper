@@ -6,15 +6,15 @@ def getFormat(Name):
             FormatDict[5].append("{} 1/".format(Data[0]))
             for i in Data[1:] :
                 FormatDict[5].append("{}/".format(i))
-        if Semantic == 'Rotated Nodes':
+        elif Semantic == 'Rotate Nodes':
             #Rotated nodes
-            FormatDict[12].append("{} 1/".format(Data[0]))
-            for i in Data[1:] :
-                FormatDict[5].append("{}/".format(i))
-        if Semantic == 'Nodes':
+            #FormatDict[12].append("{} 1/".format(Data[0]))
+            for key in Data :
+                FormatDict[12].append("{} {} {} {} 0.0/".format(key, *Data[key]))
+        elif Semantic == 'Nodes':
             for Key, Point in Data.iteritems() :
                 FormatDict[4].append("{} {} {}/".format(Point['point'][0], Point['point'][1], Point['point'][2]))
-        if Semantic == 'Elements':
+        elif Semantic == 'Elements':
             for Element in Data :
                 #if Element and Element['points'][0] == Element['points'][1]:
                 #    print
@@ -31,11 +31,11 @@ def getFormat(Name):
                                                                                       Element['points'][7], 
                                                                                       Element['points'][6]
                                                                                       ))
-        if Semantic == 'Properties':
+        elif Semantic == 'Properties':
             return False
             #for Key, Elements in Data.iteritems() :
                 #FormatDict[4].append("{} {} {}/".format(Elements['point'][0], Elements['point'][1], Elements['point'][2]))
-        if Semantic == 'Loads':
+        elif Semantic == 'Loads':
             return False
             #for Key, Elements in Data.iteritems() :
                 #FormatDict[4].append("{} {} {}/".format(Elements['point'][0], Elements['point'][1], Elements['point'][2]))

@@ -1,7 +1,7 @@
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../DXF Examples/Upper ring - newer.dxf"
-Precision = 3
+InputFileList = "../DXF Examples/Upper ring (working).dxf"
+Precision = 2
 Normalize = Yes
 Entities = NONE
 
@@ -18,13 +18,13 @@ Entities = NONE
 	[[Transformation mapping]]
 		[[[Theta]]]
 		Mapping = X
-		Scale = 22.495
+		Scale = 22.4758
 		Origin = 0
 
 		[[[R]]]
 		Mapping = Z
 		Scale = 1
-		Origin = -22.495
+		Origin = -22.4758
 
 		[[[Z]]]
 		Mapping = Y
@@ -35,7 +35,7 @@ Entities = NONE
 
 [Tendons]
 Type = Filter
-Layer = "Tendons 1", "Tendons 2", "Tendons 3"
+Layer = "Tendons 1 internal", "Tendons 2 external", "Tendons 3 middle"
 Output = "DXF Output"
 Entities = LINE
 
@@ -45,7 +45,7 @@ Type = Filter
 Preprocess = Preset #Specifies tranformations before mapping.
 PreprocessFunction = "ExtrudeZ"
 PreprocessParameter = 0.4, 0.25, 0.25, 0.3
-Layer = "Основания"
+Layer = "Concrete bases", "Concrete bases new"
 Entities = LWPOLYLINE
 Points = 3, 4
 Closed = Yes
@@ -75,8 +75,11 @@ OutputFile = "../DXF Examples/results.txt"
 OutputType = Preset
 Name = Lira-Custom
 Format = Lira
+PointActionOrder = "Compatible Nodes", "Rotate Nodes"
 	[[Point Actions]]
 		[[[Compatible Nodes]]]
 		Filters = Volumes, Tendons
 		[[[Rotate Nodes]]]
-		Action = VectorSum(Tendons)
+		Filters = Tendons
+		Action = VectorSum
+		Direction = "Z+"

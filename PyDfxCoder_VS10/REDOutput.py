@@ -58,7 +58,46 @@ def getPointActionFunction(PointAction):
         return NewNumberedPoints, Output
 
     def RotateNodes(Parameters, Point, PointTuple, NumberedPoints, Elements):
-        return False, False
+        Output = {}
+        if 'Action' in Parameters:
+            Rule = Parameters['Action'] #Only VectorSum is implemented
+        else: Rule = 'VectorSum'
+        if 'Direction' in Parameters:
+            Direction = Parameters['Direction']
+            if Direction[1] == '-': DirectionPositive = False
+            else: DirectionPositive = True
+            if Direction[0] == 'X': DirectionIndex = 0
+            elif Direction[0] == 'Y': DirectionIndex = 1
+            else: DirectionIndex = 2
+
+        else: Direction = 'Z+'
+        if 'Filters' in Parameters:
+            FiltersInParameters = Parameters['Filters']
+        PointNumbers = [Point['number']] + [x for x in Point['additionalPoints']] #Point number plus whatever additional points there are, if any
+        ResultingVector = [0, 0, 0]
+        for pointNumber in PointNumbers:
+            ElementList = NumberedPoints['points'][pointNumber]['elementnumbers']
+            SelectedElements = [Elements[x] for x in ElementList if Elements[x]['filter'] in FiltersInParameters]
+            if not SelectedElements: continue
+            for SelectedElement in SelectedElements:
+                Point1index = SelectedElement['points'][0]
+                Point2index = SelectedElement['points'][1]
+                Coords1 = NumberedPoints['points'][Point1index]['point']
+                Coords2 = NumberedPoints['points'][Point2index]['point']
+                ElementVector = [(item2 - item1) for item1, item2 in zip(Coords1, Coords2)]
+                if (ElementVector[DirectionIndex] >= 0) != DirectionPositive:
+                    ElementVector = [-item for item in ElementVector]
+                ResultingVector = [(item1 + item2) for item1, item2 in zip(ResultingVector, ElementVector)]
+            Output[pointNumber] = [round(x + y, 4) for x,y in zip(ResultingVector, PointTuple)]
+
+        #For any given point Point, including its ['additionalPoints'], if any
+        #1. Find all elements that connect to Point and whose filters are in Parameters['Filters']
+        #2. Find all elements that are LINE_2NODE
+        #3. Parameters['Direction'] gives the rule to identify fisrt and last vector points from LINE_2NODE
+        #4. Compute vector sum of the obtained vectors.
+        #5. Write node number and vector sum into Output
+        if not Output: return False, False
+        return False, Output
 
     def Default():
         return False, False
@@ -110,10 +149,6 @@ def getFormatWriter(SettingsDict):
                         Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][3]]
                         OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer="Polylines"))
                         OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
-        #A variant
-        #for Point in Points:
-            #OutputFile.append(sdxf.Point(Point, layer="0"))
-            #OutputFile.append(sdxf.Line(points=[(0,0,0), Point], layer="0"))
         OutputFile.saveas(SettingsDict['OutputFile'])
         return True
 
@@ -131,7 +166,9 @@ def getFormatWriter(SettingsDict):
         #               ['pointObjectReferences'] = ((FilterName, ObjectNumber, PointNumber), ...)
         #PointsNumbered[PointNumber]['point']   = pointTuple
         #Okay let's go.
-        
+        def PointActionFunction():
+            return True
+
         Format = getFormat(SettingsDict['Format'])
         FormatDictInitializer = initFormat(SettingsDict['Format'], __name__)
         FormatDict = FormatDictInitializer(False)
@@ -139,12 +176,27 @@ def getFormatWriter(SettingsDict):
         for Point in Points:
             #Check if there are points with filters belonging to actions
             #
-            PointActions = SettingsDict['Point Actions']
+            PointActions = SettingsDict['Point Actions'].copy() #Copying because we will be pop()ping already processed Actions
+            PointActionOrder = SettingsDict['PointActionOrder']
+            ActionName = None
+            #aaa = dict((ActionName, PointActions[ActionName]) for ActionIndex, ActionName in enumerate(PointActionOrder))
+            #bbb = {}
+            #for ccc in aaa:
+            #    print
+
+            #The first loop goes through ordered Point Actions, the 
+            for i, ListElement in enumerate(PointActionOrder):
+                ActionName = PointActionOrder[i]
+                PointAction = PointActions.pop(ActionName)
+                PointActionFunction = getPointActionFunction(ActionName)
+                NewPoints, Output = PointActionFunction(PointAction, Points[Point], Point, NumberedPoints, Elements)
+                if Output: Format(FormatDict, ActionName, Output)
+
             for PointAction in PointActions:
                 PointActionFunction = getPointActionFunction(PointAction)
                 NewPoints, Output = PointActionFunction(PointActions[PointAction], Points[Point], Point, NumberedPoints, Elements)
                 #Points[Point], NumberedPoints and Elements get updated
-                if Output: Format(FormatDict, "Compatible Nodes", Output)
+                if Output: Format(FormatDict, PointAction, Output)
                 #if NewPoints: NumberedPoints.update(NewPoints) #Already done in PointActionFunction
             
             #FilterName = Point['pointObjectReferences'].FilterName

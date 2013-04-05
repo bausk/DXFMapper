@@ -13,7 +13,7 @@
     <Name>PyDfxCoder_VS10</Name>
     <RootNamespace>PyDfxCoder_VS10</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"example 3"</CommandLineArguments>
+    <CommandLineArguments>"Parameters.model"</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments />
   </PropertyGroup>
