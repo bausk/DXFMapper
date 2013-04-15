@@ -21,7 +21,11 @@ from ShadowbinderFormats import *
 def getPointActionFunction(PointAction):
 
     def CompatibleNodes(Parameters, Point, PointTuple, NumberedPoints, Elements):
+
         Output = []
+        if 'CutoffZ' in Parameters:
+            Position = PointTuple[2]
+            if Position < float(Parameters['CutoffZ'][0]) or Position > float(Parameters['CutoffZ'][1]): return False, []
         NewPointIndex = NumberedPoints['maximumNode']
         NewNumberedPoints = {}
         FirstFilter = Parameters['Filters'][0] #First filter: its elements will stay with the Point
@@ -136,6 +140,15 @@ def getFormatWriter(SettingsDict):
                         Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][6]]
                         Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][7]]
                         OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                    if objectType == 'SOLID_6NODES':
+                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][0]]
+                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][1]]
+                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][2]]
+                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
+                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][3]]
+                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][4]]
+                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][5]]
+                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
                     if objectType == 'FACE_3NODES':
                         Point1 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][0]])[0:2])
                         Point2 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][1]])[0:2])

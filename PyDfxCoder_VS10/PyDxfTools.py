@@ -54,7 +54,7 @@ def GetRawPoints(Entity, Precision):
             point = tuple([round(x, Precision) for x in point])
             Points.append(point)
         return Points
-    elif Entity.dxftype in ("SOLID", "FACE"):
+    elif Entity.dxftype in ("SOLID", "3DFACE"):
         Points = []
         for point in list(Entity.points):
             point = tuple([round(x, Precision) for x in point])
@@ -73,7 +73,8 @@ def Overkill(Entities, Precision):
     ReferencePointArray = {}
     for index, Entity in enumerate(Entities) :
         #1. Delete duplicate points in polys
-        EntityPoints = [tuple(y for y in x) for x in GetRawPoints(Entity, Precision)]
+        try: EntityPoints = [tuple(y for y in x) for x in GetRawPoints(Entity, Precision)]
+        finally: pass
         if Entity.dxftype in ("LWPOLYLINE", "POLYLINE"):
             NewPoints = []
             for pointindex, EntityPoint in enumerate(EntityPoints):

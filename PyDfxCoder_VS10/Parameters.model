@@ -1,6 +1,6 @@
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../DXF Examples/Upper ring (working).dxf"
+InputFileList = "../DXF Examples/cylindrical crown - test for whole model on subset (continuity, radius).dxf"
 Precision = 2
 Normalize = Yes
 Entities = NONE
@@ -79,6 +79,7 @@ PointActionOrder = "Compatible Nodes", "Rotate Nodes"
 	[[Point Actions]]
 		[[[Compatible Nodes]]]
 		Filters = Volumes, Tendons
+		CutoffZ = 53.6, 58.9
 		[[[Rotate Nodes]]]
 		Filters = Tendons
 		Action = VectorSum
