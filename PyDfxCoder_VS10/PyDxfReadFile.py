@@ -127,10 +127,10 @@ def main():
 
         print "Prep for filter %s\n" % FilterName
         #2. Preprocessor
-        Preprocess = readSettingsKey(FilterName, "Preprocess", Settings) or readSettingsKey("DefaultFilter", "Preprocess", Settings) or False
-        PrepFunctionName = readSettingsKey(FilterName, "PreprocessFunction", Settings) or readSettingsKey("DefaultFilter", "PreprocessFunction", Settings) or False
-        PrepParameters = readSettingsKey(FilterName, "PreprocessParameter", Settings) or readSettingsKey("DefaultFilter", "PreprocessParameter", Settings) or False
-        PrepPrecision = readSettingsKey(FilterName, "Precision", Settings) or readSettingsKey("DefaultFilter", "Precision", Settings) or 6
+        Preprocess = FinalizedSettings["PreprocessType"] if "PreprocessType" in FinalizedSettings else False
+        PrepParameters = FinalizedSettings["Preprocess"] if "Preprocess" in FinalizedSettings else False
+        PrepFunctionName = PrepParameters["Function"] if "Function" in PrepParameters else False
+        PrepPrecision = FinalizedSettings["Precision"] if "Precision" in FinalizedSettings else 6
         PrepFunction = ProcessObjects.getFunction(Preprocess, PrepFunctionName)
         ObjectList[FilterName] = ProcessObjects.prep(FilteredEntities[FilterName], PrepFunction, PrepPrecision, PrepParameters)
         
@@ -167,6 +167,7 @@ def main():
                 Elements.append(None)
                 ElementPoints = []
                 ElementPointList = object['pointlist'][i]
+                ElementData = object['data'][i] if 'data' in object else None
                 for pointref in ElementPointList:
                     Point = object['points'][pointref] #Point referenced by the Element
                     if not Point in Points:
@@ -184,7 +185,8 @@ def main():
                 Element = { 'points' : ElementPoints,
                            'elementclass' : ElementName,
                            'elementnum': ElementNumber, #???
-                           'filter': FilterName
+                           'filter': FilterName,
+                           'data': ElementData,
                            }
                 Elements[ElementNumber] = Element
 

@@ -1,6 +1,7 @@
 from math import *
 import collections
 from PyDxfTools import GetPoints
+import simplejson as json
 
 PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
 REMapperPointRef = collections.namedtuple('REMapperPointRef', ['FilterName', 'ObjectNumber', 'PointNumber'])
@@ -14,21 +15,24 @@ def prep(FilteredEntities, Function, Precision, Parameters):
 
 def getFunction(Preprocess, PrepFunctionName):
 
-    def ExtrudeZ(Entity, Precision, Parameters):
-        Parameters = [float(param) for param in Parameters]
+    def ExtrudeZ(Entity, Precision, ParametersDict):
+        Parameters = [float(param) for param in ParametersDict['Parameter']]
+        
         Points = GetPoints(Entity, Precision)
         prepObject = {
                       'points' : [],
                       'pointlist' : [],
                       'elements': [],
+                      'data': [],
                      }
-        for Parameter in Parameters:
+        for index, Parameter in enumerate(Parameters):
             #prepObject['objects'].append([])
+            Data = json.loads(ParametersDict['Data'][index])
             NextLevel = zip([point[0] for point in Points], [point[1] for point in Points], [round(point[2] + Parameter, 6) for point in Points])
             ObjectTuple = ()
             for j, point in enumerate(Points):
-                if prepObject['points'] and prepObject['points'][-1] == point:
-                    print
+                #if prepObject['points'] and prepObject['points'][-1] == point:
+                #    print
                 prepObject['points'].append(point)
                 ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
             for j, point in enumerate(NextLevel):
@@ -36,7 +40,7 @@ def getFunction(Preprocess, PrepFunctionName):
                 ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
             Points = NextLevel
             prepObject['pointlist'].append(ObjectTuple)
-
+            if Data: prepObject['data'].append(Data)
             if len(Points) == 3:
                 prepObject['elements'].append('SOLID_6NODES')
             elif len(Points) == 4:
@@ -49,6 +53,7 @@ def getFunction(Preprocess, PrepFunctionName):
                       'points' : [],
                       'pointlist' : [],
                       'elements' : [],
+                      #'data': [],
                      }
         ObjectTuple = ()
         for point in Points:

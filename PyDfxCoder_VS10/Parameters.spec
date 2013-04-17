@@ -20,6 +20,9 @@ Points = integer
 AxisXMapping = string
 PreprocessParameter = float
 
+	[[Preprocess]]
+	Parameter = float
+
 	[[Origin]]
 	___many___ = float
 

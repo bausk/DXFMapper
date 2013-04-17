@@ -1,0 +1,113 @@
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/Test1.dxf"
+Precision = 3
+Normalize = Yes
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 22.4758
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -22.4758
+
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
+
+#Filters for entities to be included in the model
+
+[Tendons]
+Type = Filter
+Layer = "Tendons 1 internal", "Tendons 2 external", "Tendons 3 middle"
+Output = "DXF Output"
+Entities = LINE
+
+
+[Volumes]
+Type = Filter
+PreprocessType = Preset #Specifies tranformations before mapping.
+Layer = "Concrete bases", "Concrete bases new"
+Entities = LWPOLYLINE
+Points = 3, 4
+Closed = Yes
+Output = "DXF Output"
+	[[Preprocess]]
+	Function = "ExtrudeZ"
+	Parameter = 0.4, 0.25, 0.25, 0.3
+	Data = '{"StiffnessMarker":"Conc1"}', '{"StiffnessMarker":"Conc2"}', '{"StiffnessMarker":"Conc3"}', '{"StiffnessMarker":"Conc4"}'
+
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test1.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test1.dxf"
+OutputType = Preset
+Name = DXF
+	[[Element Actions]]
+		[[[Assign Layer]]]
+		Tendons = Tendons
+		Volumes = Volumes
+
+[Lira Output]
+Type = Output
+OutputFile = "../Tests - Results/Test1.txt"
+OutputType = Preset
+Name = Lira-Custom
+Format = Lira
+PointActionOrder = "Compatible Nodes", "Rotate Nodes"
+ElementActionOrder = "Pretensioning", "Properties"
+
+	[[Point Actions]]
+		[[[Compatible Nodes]]]
+		Type = Compatibility
+		Filters = Volumes, Tendons
+		CutoffZ = 53.6, 58.9
+
+		[[[Rotate Nodes]]]
+		Type = NodalAxisRotation
+		Filters = Tendons
+		Action = VectorSum
+		Direction = "Z+"
+
+		[[[Supports]]]
+		Type = Supports
+		CutoffZ = 0, 53.2
+		Filters = Volumes
+		Value = UX, UY, UZ, RX, RY, RZ
+
+
+	[[Element Actions]]
+		[[[Pretensioning]]]
+		Type = ElementForce
+		Filters = Tendons
+		Marker = "Color:10"
+		Value = 100
+
+		[[[Properties]]]
+		Conc1 = "140"
+		Conc2 = "110"
+		Conc3 = "110"
+		Conc4 = "150"
