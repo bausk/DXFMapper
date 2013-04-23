@@ -162,16 +162,20 @@ def main():
         #Placed in a separate loop for readability and structure
         print "Postp for filter %s\n" % FilterName
         for objnum, object in enumerate(ObjectList[FilterName]):
+            EntityModelData = object['entity_model_data'] if 'entity_model_data' in object else None
             for i, ElementName in enumerate(object['elements']):
                 ElementNumber += 1
                 Elements.append(None)
                 ElementPoints = []
                 ElementPointList = object['pointlist'][i]
-                ElementData = object['data'][i] if 'data' in object else None
+                ExtendedModelData = object['extended_model_data'][i] if 'extended_model_data' in object else None
+                GenerationOrder = object['generation_order'][i] if 'generation_order' in object else None
                 for pointref in ElementPointList:
                     Point = object['points'][pointref] #Point referenced by the Element
                     if not Point in Points:
                         NodeNumber += 1
+                        if NodeNumber in [469, 474, 26, 35]:
+                            pass
                         Points[Point] = { 'number': NodeNumber, 'elementnumbers': [], 'pointObjectReferences': [], 'additionalPoints': [] }
                         #PointsNumbered.append(None)
                         PointsNumbered['points'][NodeNumber] = {'point': Point, 'elementnumbers': []}
@@ -186,7 +190,9 @@ def main():
                            'elementclass' : ElementName,
                            'elementnum': ElementNumber, #???
                            'filter': FilterName,
-                           'data': ElementData,
+                           'entity_model_data': EntityModelData,
+                           'extended_model_data': ExtendedModelData,
+                           'generation_order': GenerationOrder,
                            }
                 Elements[ElementNumber] = Element
 

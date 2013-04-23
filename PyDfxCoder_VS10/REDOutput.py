@@ -93,7 +93,7 @@ def getPointActionFunction(PointAction):
                     ElementVector = [-item for item in ElementVector]
                 ResultingVector = [(item1 + item2) for item1, item2 in zip(ResultingVector, ElementVector)]
             Output[pointNumber] = [round(x + y, 4) for x,y in zip(ResultingVector, PointTuple)]
-
+            Output[Point['number']] = [round(x + y, 4) for x,y in zip(ResultingVector, PointTuple)]
         #For any given point Point, including its ['additionalPoints'], if any
         #1. Find all elements that connect to Point and whose filters are in Parameters['Filters']
         #2. Find all elements that are LINE_2NODE
@@ -103,12 +103,47 @@ def getPointActionFunction(PointAction):
         if not Output: return False, False
         return False, Output
 
+    def Supports(Parameters, Point, PointTuple, NumberedPoints, Elements):
+        Output = {}
+        if 'CutoffZ' in Parameters:
+            Position = PointTuple[2]
+            if Position < float(Parameters['CutoffZ'][0]) or Position > float(Parameters['CutoffZ'][1]): return False, []
+        if 'Value' in Parameters:
+            SupportDirections = Parameters['Value']
+        else: SupportDirections = ['UX', 'UY', 'UZ', 'RX', 'RY', 'RZ']
+        pointNumber = Point['number']
+
+        Output[pointNumber] = SupportDirections
+
+        #PointNumbers = [Point['number']] + [x for x in Point['additionalPoints']] #Point number plus whatever additional points there are, if any
+        #ResultingVector = [0, 0, 0]
+        #for pointNumber in PointNumbers:
+        #    ElementList = NumberedPoints['points'][pointNumber]['elementnumbers']
+        #    SelectedElements = [Elements[x] for x in ElementList if Elements[x]['filter'] in FiltersInParameters]
+        #    if not SelectedElements: 
+
+        #    for SelectedElement in SelectedElements:
+        #        Point1index = SelectedElement['points'][0]
+        #        Point2index = SelectedElement['points'][1]
+        #        Coords1 = NumberedPoints['points'][Point1index]['point']
+        #        Coords2 = NumberedPoints['points'][Point2index]['point']
+        #        ElementVector = [(item2 - item1) for item1, item2 in zip(Coords1, Coords2)]
+        #        if (ElementVector[DirectionIndex] >= 0) != DirectionPositive:
+        #            ElementVector = [-item for item in ElementVector]
+        #        ResultingVector = [(item1 + item2) for item1, item2 in zip(ResultingVector, ElementVector)]
+        #    Output[pointNumber] = [round(x + y, 4) for x,y in zip(ResultingVector, PointTuple)]
+
+
+        if not Output: return False, False
+        return False, Output
+
     def Default():
         return False, False
 
     functions = {
-        'Compatible Nodes' : CompatibleNodes,
-        'Rotate Nodes' : RotateNodes,
+        'Compatibility' : CompatibleNodes,
+        'NodalAxisRotation' : RotateNodes,
+        'Supports' : Supports,
         'Default' : Default,
         }
 
@@ -116,6 +151,64 @@ def getPointActionFunction(PointAction):
         return functions[PointAction]
     else:
         return functions['Default']
+
+
+def getElementActionFunction(ElementAction):
+
+    def ElementForce(Parameters, Element, NumberedPoints, Elements):
+        #Okay
+        Output = {}
+        if not Element: return False, False
+        #First, define if element needs the ElementAction
+        if 'Filters' in Parameters:
+            FiltersInParameters = Parameters['Filters']
+            ElementFilter = Element['filter']
+            if not ElementFilter in FiltersInParameters: return False, False
+        if 'Markers' in Parameters:
+            if not isinstance(Parameters['Markers'], list): Parameters['Markers'] = [Parameters['Markers']]
+            Markers = dict(Marker.split(':') for Marker in Parameters['Markers'])
+            #Markers are checked against Element's entity_model_data
+            #Element should satisfy all markers
+            for marker, value in Markers.iteritems():
+                ElementValue = str(Element['entity_model_data'][marker]) if marker in Element['entity_model_data'] else None
+                if value != ElementValue : return False, False
+        if Parameters['ActionType'] == "Dilatation":
+            LoadID = 8
+            ElementNumber = Element['elementnum']
+            Output['load_id'] = LoadID
+            Output['direction'] = 1
+            Output['element'] = ElementNumber
+            Output['loadcase'] = 1
+            Output['value'] = Parameters['Value']
+            Output['string'] = "{} 0.05 0 0".format(Output['value'])
+        return False, Output
+
+    def ElementProperty(Parameters, Element, NumberedPoints, Elements):
+        Output = {}
+        return False, Output
+
+    functions = {
+        'ElementForce' : ElementForce,
+        'ElementProperty' : ElementProperty,
+        }
+
+    if ElementAction in functions:
+        return functions[ElementAction]
+    else:
+        return functions['Default']
+
+
+def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
+    ExtendedData = {'ElementPropertyIndex' : {}}
+    if ActionType == 'ElementProperties':
+        Output = {}
+        for index, key in enumerate(GlobalAction):
+            index += 1
+            ExtendedData['ElementPropertyIndex'][key] = index #In this same notation we can get the index when writing elements
+            Output[index] = GlobalAction[key]
+        return ExtendedData, Output #Here we have Output ready to be printed and ExtendedData, a mapper to Output
+    return False
+
 
 def getFormatWriter(SettingsDict):
 
@@ -168,7 +261,7 @@ def getFormatWriter(SettingsDict):
     def LiraCustom(Objects, Filters, Points, NumberedPoints, Elements):
         #Objects is formed in prep Functions, which is the ABSOLUTELY WRONG WAY TO DO THINGS
         #Objects[str(filter)]['points'][A] = tuple(3), links to Points
-        #Objects[str(filter)]'[pointlist'][tuple(2..8)] = links to A^
+        #Objects[str(filter)]['pointlist'][tuple(2..8)] = links to A^
         #Objects[str(filter)]['nodelist'][tuple(2..8)] = links to A^
         #Objects[str(filter)]['elements'] = "LINE_2NODES" etc. Shares index with 'nodes'
         #Elements[ElementNumber]['points']        = ((Point), ...)
@@ -179,13 +272,22 @@ def getFormatWriter(SettingsDict):
         #               ['pointObjectReferences'] = ((FilterName, ObjectNumber, PointNumber), ...)
         #PointsNumbered[PointNumber]['point']   = pointTuple
         #Okay let's go.
-        def PointActionFunction():
-            return True
 
         Format = getFormat(SettingsDict['Format'])
         FormatDictInitializer = initFormat(SettingsDict['Format'], __name__)
-        FormatDict = FormatDictInitializer(False)
+        OutputSemantic = SettingsDict['Semantic'] if 'Semantic' in SettingsDict else False
+        FormatDict = {}
+        FormatDict = FormatDictInitializer(OutputSemantic)
+        ExtendedData = {}
         #First: routine to check point actions
+        GlobalActions = SettingsDict['Actions'].copy()
+        GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
+        for GlobalAction in GlobalActions:
+            ActionType = GlobalActions[GlobalAction].pop('Type')
+            NewExtendedData, Output = ProcessGlobalAction(ActionType, GlobalActions[GlobalAction], NumberedPoints, Elements)
+            ExtendedData.update(NewExtendedData)
+            if Output: Format(FormatDict, ActionType, Output, ExtendedData)
+
         for Point in Points:
             #Check if there are points with filters belonging to actions
             #
@@ -196,25 +298,56 @@ def getFormatWriter(SettingsDict):
             #bbb = {}
             #for ccc in aaa:
             #    print
-
+            if Points[Point]['number'] in [469, 474, 26, 35]:
+                pass
             #The first loop goes through ordered Point Actions, the 
+            if not isinstance(PointActionOrder, list):
+                PointActionOrder = [PointActionOrder]
             for i, ListElement in enumerate(PointActionOrder):
                 ActionName = PointActionOrder[i]
                 PointAction = PointActions.pop(ActionName)
-                PointActionFunction = getPointActionFunction(ActionName)
+                ActionType = PointAction['Type']
+                PointActionFunction = getPointActionFunction(ActionType)
                 NewPoints, Output = PointActionFunction(PointAction, Points[Point], Point, NumberedPoints, Elements)
-                if Output: Format(FormatDict, ActionName, Output)
+                if Output: Format(FormatDict, ActionType, Output, ExtendedData)
 
             for PointAction in PointActions:
-                PointActionFunction = getPointActionFunction(PointAction)
+                ActionType = PointActions[PointAction]['Type']
+                PointActionFunction = getPointActionFunction(ActionType)
                 NewPoints, Output = PointActionFunction(PointActions[PointAction], Points[Point], Point, NumberedPoints, Elements)
                 #Points[Point], NumberedPoints and Elements get updated
-                if Output: Format(FormatDict, PointAction, Output)
+                if Output: Format(FormatDict, ActionType, Output, ExtendedData)
                 #if NewPoints: NumberedPoints.update(NewPoints) #Already done in PointActionFunction
+
+        for Element in Elements:
             
-            #FilterName = Point['pointObjectReferences'].FilterName
-        Format(FormatDict, "Nodes", NumberedPoints['points'])    #Forming Nodes document
-        Format(FormatDict, "Elements", Elements)                                                        #Forming Elements document
+            ElementActions = SettingsDict['Element Actions'].copy() #Copying because we will be pop()ping already processed Actions
+            ElementActionOrder = SettingsDict['ElementActionOrder']
+            ActionName = None
+            if not isinstance(ElementActionOrder, list):
+                ElementActionOrder = [ElementActionOrder]
+            for i, ListElement in enumerate(ElementActionOrder):
+                ActionName = ListElement
+                ElementAction = ElementActions.pop(ActionName)
+                ActionType = ElementAction['Action']
+                ElementActionFunction = getElementActionFunction(ActionType)
+                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
+                #2013-04-20 Working here
+                if Output: Format(FormatDict, ActionType, Output, ExtendedData)
+
+            for ElementAction in ElementActions:
+                ActionType = ElementAction['Action']
+                ElementsActionFunction = getElementActionFunction(ActionType)
+                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
+                #Points[Point], NumberedPoints and Elements get updated
+                if Output: Format(FormatDict, ActionType, Output, ExtendedData)
+
+
+        Format(FormatDict, "Nodes", NumberedPoints['points'], ExtendedData)    #Forming Nodes document
+        Format(FormatDict, "Elements", Elements, ExtendedData)                                                      #Forming Elements document
+
+        #We have to merge ExtendedData information with the existing FormatDict
+        FormatDict.update(dict((key, FormatDict[key] + value) for key, value in ExtendedData.iteritems() if key in range(1, 13))) #FREAKING SORCERY to merge lists under keys of two dicts
         WriteFormat = writeFormat(SettingsDict['Format'])
         WriteFormat(FormatDict, SettingsDict['OutputFile'])
         return True

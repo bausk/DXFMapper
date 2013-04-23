@@ -67,6 +67,15 @@ def GetRawPoints(Entity, Precision):
             Points.append(point)
         return Points
 
+def GetEntityData(Entity):
+    Data = {}
+    if Entity.dxftype in ["LINE", "CIRCLE", "ARC", "LWPOLYLINE", "POLYLINE"]:
+        Data['color'] = Entity.color
+        Data['layer'] = Entity.layer
+        Data['linetype'] = Entity.linetype
+        return Data
+    else: return False
+
 def Overkill(Entities, Precision):
     PurgedEntities = dict(enumerate(Entities))
     print "Overkilling the DXF dataset (alpha version feature)\n"

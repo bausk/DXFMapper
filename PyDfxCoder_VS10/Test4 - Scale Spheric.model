@@ -1,0 +1,64 @@
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/Test4.dxf"
+Precision = 2
+Normalize = Yes
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, Orthospheric, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, Orthospheric, Y
+	Z = Preset, Orthospheric, Z
+
+	[[Transformation mapping]]
+		[[[X]]]
+		Mapping = X
+		#Scale = 22.4758
+		Origin = 0
+
+		[[[Y]]]
+		Mapping = Y
+		#Scale = 1
+		Origin = -22.4758
+
+		[[[Z]]]
+		Mapping = Z
+		#Scale = 1
+		Origin = 0
+
+		[[[D]]]
+		Scale = 1.2
+
+		[[[G]]]
+		Scale = 1.0
+
+		[[[R]]]
+		Scale = 1.0
+
+
+#Filters for entities to be included in the model
+
+[Test]
+Type = Filter
+Layer = "Test"
+Output = "DXF Output"
+Entities = LINE
+
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test4.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test4.dxf"
+OutputType = Preset
+Name = DXF

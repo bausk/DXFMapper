@@ -1,7 +1,7 @@
 [DefaultFilter]
 Type = DefaultFilter
 InputFileList = "../Tests/Test1.dxf"
-Precision = 3
+Precision = 2
 Normalize = Yes
 Entities = NONE
 
@@ -38,6 +38,8 @@ Type = Filter
 Layer = "Tendons 1 internal", "Tendons 2 external", "Tendons 3 middle"
 Output = "DXF Output"
 Entities = LINE
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"Tendon1"}'
 
 
 [Volumes]
@@ -51,7 +53,7 @@ Output = "DXF Output"
 	[[Preprocess]]
 	Function = "ExtrudeZ"
 	Parameter = 0.4, 0.25, 0.25, 0.3
-	Data = '{"StiffnessMarker":"Conc1"}', '{"StiffnessMarker":"Conc2"}', '{"StiffnessMarker":"Conc3"}', '{"StiffnessMarker":"Conc4"}'
+	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}', '{"StiffnessMarker":"Conc4Vol"}'
 
 
 #Output model and semantics
@@ -63,7 +65,7 @@ Name = DXF
 
 [DXF Output]
 Type = Output
-OutputFile = "../Tests - Results/Test1.dxf"
+OutputFile = "../Tests - Results/Test1full.dxf"
 OutputType = Preset
 Name = DXF
 	[[Element Actions]]
@@ -73,12 +75,25 @@ Name = DXF
 
 [Lira Output]
 Type = Output
-OutputFile = "../Tests - Results/Test1.txt"
+OutputFile = "../Tests - Results/Test1full.txt"
 OutputType = Preset
 Name = Lira-Custom
 Format = Lira
+Semantic = "Advanced Test"
 PointActionOrder = "Compatible Nodes", "Rotate Nodes"
-ElementActionOrder = "Pretensioning", "Properties"
+ElementActionOrder =  "Pretensioning"
+	[[Actions]]
+		[[[Properties]]]
+		Type = ElementProperties
+		Tendon1 = "S6 1.000E+005 15 0"
+		Conc1Plate = "GEI 8.6E+005 0.3 0.4 RO 2.65"
+		Conc2Plate = "GEI 4.6E+005 0.3 0.25 RO 2.65"
+		Conc3Plate = "GEI 4.6E+005 0.3 0.25 RO 2.65"
+		Conc4Plate = "GEI 8.6E+005 0.3 0.25 RO 2.65"
+		Conc1Vol = "OBI 8.000E+005 0.3 RO 2.65"
+		Conc2Vol = "OBI 4.000E+005 0.3 RO 2.65"
+		Conc3Vol = "OBI 5.000E+005 0.3 RO 2.65"
+		Conc4Vol = "OBI 7.000E+005 0.3 RO 2.65"
 
 	[[Point Actions]]
 		[[[Compatible Nodes]]]
@@ -101,13 +116,9 @@ ElementActionOrder = "Pretensioning", "Properties"
 
 	[[Element Actions]]
 		[[[Pretensioning]]]
-		Type = ElementForce
+		Action = ElementForce
+		ActionType = Dilatation
 		Filters = Tendons
-		Marker = "Color:10"
-		Value = 100
+		Markers = "color:1"
+		Value = -10
 
-		[[[Properties]]]
-		Conc1 = "140"
-		Conc2 = "110"
-		Conc3 = "110"
-		Conc4 = "150"

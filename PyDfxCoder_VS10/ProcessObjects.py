@@ -1,6 +1,6 @@
 from math import *
 import collections
-from PyDxfTools import GetPoints
+from PyDxfTools import GetPoints, GetEntityData
 import simplejson as json
 
 PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
@@ -19,15 +19,18 @@ def getFunction(Preprocess, PrepFunctionName):
         Parameters = [float(param) for param in ParametersDict['Parameter']]
         
         Points = GetPoints(Entity, Precision)
+        EntityModelData = GetEntityData(Entity)
         prepObject = {
                       'points' : [],
                       'pointlist' : [],
                       'elements': [],
-                      'data': [],
+                      'entity_model_data': EntityModelData,
+                      'extended_model_data': [],
+                      'generation_order': [],
                      }
         for index, Parameter in enumerate(Parameters):
             #prepObject['objects'].append([])
-            Data = json.loads(ParametersDict['Data'][index])
+            ExtendedModelData = json.loads(ParametersDict['Data'][index])
             NextLevel = zip([point[0] for point in Points], [point[1] for point in Points], [round(point[2] + Parameter, 6) for point in Points])
             ObjectTuple = ()
             for j, point in enumerate(Points):
@@ -40,22 +43,29 @@ def getFunction(Preprocess, PrepFunctionName):
                 ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
             Points = NextLevel
             prepObject['pointlist'].append(ObjectTuple)
-            if Data: prepObject['data'].append(Data)
+
+            if ExtendedModelData: prepObject['extended_model_data'].append(ExtendedModelData)
+            prepObject['generation_order'].append(index)
+            
             if len(Points) == 3:
                 prepObject['elements'].append('SOLID_6NODES')
             elif len(Points) == 4:
                 prepObject['elements'].append('SOLID_8NODES')
         return prepObject
 
-    def Default(Entity, Precision, Parameters):
+    def Default(Entity, Precision, ParametersDict):
         Points = GetPoints(Entity, Precision)
+        EntityModelData = GetEntityData(Entity)
         prepObject = {
                       'points' : [],
                       'pointlist' : [],
                       'elements' : [],
-                      #'data': [],
+                      'entity_model_data': EntityModelData,
+                      'extended_model_data': [],
                      }
         ObjectTuple = ()
+        ExtendedModelData = json.loads(ParametersDict['Data']) if 'Data' in ParametersDict and ParametersDict['Data'] else None
+        if ExtendedModelData: prepObject['extended_model_data'].append(ExtendedModelData)
         for point in Points:
             prepObject['points'].append(point)
             ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
