@@ -18,13 +18,11 @@ Entities = NONE
 	[[Transformation mapping]]
 		[[[X]]]
 		Mapping = X
-		#Scale = 22.4758
 		Origin = 0
 
 		[[[Y]]]
 		Mapping = Y
-		#Scale = 1
-		Origin = -22.4758
+		Origin = 0
 
 		[[[Z]]]
 		Mapping = Z
@@ -32,10 +30,10 @@ Entities = NONE
 		Origin = 0
 
 		[[[D]]]
-		Scale = 1.2
+		Scale = 3
 
 		[[[G]]]
-		Scale = 1.0
+		Scale = 2
 
 		[[[R]]]
 		Scale = 1.0
@@ -47,7 +45,7 @@ Entities = NONE
 Type = Filter
 Layer = "Test"
 Output = "DXF Output"
-Entities = LINE
+Entities = LINE, 3DFACE
 
 
 #Output model and semantics

@@ -21,7 +21,7 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
         y = getVar('Y', Vars) - Parameters['Y']['Origin']
         z = getVar('Z', Vars) - Parameters['Z']['Origin']
         d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale']
-        g = asin(x/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
+        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
         r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale']
         z1 = cos(d) * r / sqrt((cos(d)*tan(g))**2 + 1)
         x1 = z1 * tan(d)
@@ -32,7 +32,7 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
         y = getVar('Y', Vars) - Parameters['Y']['Origin']
         z = getVar('Z', Vars) - Parameters['Z']['Origin']
         d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale']
-        g = asin(x/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
+        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
         r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale']
         z1 = cos(d) * r / sqrt((cos(d)*tan(g))**2 + 1)
         y1 = z1 * tan(g)
@@ -43,7 +43,7 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
         y = getVar('Y', Vars) - Parameters['Y']['Origin']
         z = getVar('Z', Vars) - Parameters['Z']['Origin']
         d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale']
-        g = asin(x/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
+        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
         r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale']
         z1 = cos(d) * r / sqrt((cos(d)*tan(g))**2 + 1)
         return z1

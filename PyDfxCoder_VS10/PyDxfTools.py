@@ -17,7 +17,7 @@ def GetPoints(Entity, Precision):
             point = tuple([round(x, Precision) for x in point])
             Points.append(point + (0.0,))
         return Points
-    elif Entity.dxftype in ("SOLID", "FACE"):
+    elif Entity.dxftype in ("SOLID", "3DFACE"):
         Points = []
         for point in list(Entity.points):
             point = tuple([round(x, Precision) for x in point])

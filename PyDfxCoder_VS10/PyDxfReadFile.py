@@ -168,7 +168,7 @@ def main():
                 Elements.append(None)
                 ElementPoints = []
                 ElementPointList = object['pointlist'][i]
-                ExtendedModelData = object['extended_model_data'][i] if 'extended_model_data' in object else None
+                ExtendedModelData = object['extended_model_data'][i] if 'extended_model_data' in object and len(object['extended_model_data']) else None
                 GenerationOrder = object['generation_order'][i] if 'generation_order' in object else None
                 for pointref in ElementPointList:
                     Point = object['points'][pointref] #Point referenced by the Element
