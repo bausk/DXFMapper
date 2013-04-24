@@ -13,7 +13,7 @@
     <Name>PyDfxCoder_VS10</Name>
     <RootNamespace>PyDfxCoder_VS10</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"Test4 - Scale Spheric.model"</CommandLineArguments>
+    <CommandLineArguments>"Test5 - initial dome.model"</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments />
   </PropertyGroup>
@@ -37,6 +37,7 @@
     <Compile Include="sdxf.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Test5 - initial dome.model" />
     <Content Include="Test4 - Scale Spheric.model" />
     <Content Include="Test3 - cyl.model" />
     <Content Include="Test1.model" />

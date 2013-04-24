@@ -28,8 +28,8 @@ def GetPoints(Entity, Precision):
         return Points
     elif Entity.dxftype in ("POLYLINE",):
         Points = []
-        for point in list(Entity.points):
-            point = tuple([round(x, Precision) for x in point])
+        for point in Entity.vertices:
+            point = tuple([round(x, Precision) for x in point.location])
             if len(point) == 2:
                 Points.append(point + (0.0,))
             else:
@@ -62,8 +62,8 @@ def GetRawPoints(Entity, Precision):
         return Points
     elif Entity.dxftype in ("POLYLINE",):
         Points = []
-        for point in list(Entity.points):
-            point = tuple([round(x, Precision) for x in point])
+        for point in Entity.vertices:
+            point = tuple([round(x, Precision) for x in point.location])
             Points.append(point)
         return Points
 
@@ -81,6 +81,8 @@ def Overkill(Entities, Precision):
     print "Overkilling the DXF dataset (alpha version feature)\n"
     ReferencePointArray = {}
     for index, Entity in enumerate(Entities) :
+        if index == 24:
+            pass
         #1. Delete duplicate points in polys
         try: EntityPoints = [tuple(y for y in x) for x in GetRawPoints(Entity, Precision)]
         finally: pass

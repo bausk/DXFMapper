@@ -1,0 +1,68 @@
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/Test5.dxf"
+Precision = 2
+Normalize = Yes
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, Orthospheric, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, Orthospheric, Y
+	Z = Preset, Orthospheric, Z
+
+	[[Transformation mapping]]
+		[[[X]]]
+		Mapping = X
+		Origin = 0
+
+		[[[Y]]]
+		Mapping = Y
+		Origin = 0
+
+		[[[Z]]]
+		Mapping = Z
+		#Scale = 1
+		Origin = 0
+
+		[[[D]]]
+		Scale = 1.1
+
+		[[[G]]]
+		Scale = 1.1
+
+		[[[R]]]
+		Scale = 1.0
+
+
+#Filters for entities to be included in the model
+
+[TestTendons]
+Type = Filter
+Layer = "working - concrete bases"
+Output = "DXF Output"
+Entities = 3DFACE
+
+[TestBases]
+Type = Filter
+Layer = "working - tendons lower level", "working - tendons upper level"
+Output = "DXF Output"
+Entities = 3DPOLYLINE, 3DFACE
+
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test5 - scaling dome.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test5 - scaling dome.dxf"
+OutputType = Preset
+Name = DXF
