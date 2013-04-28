@@ -1,3 +1,4 @@
+#OUTDATED FORMAT, DON'T USE
 [DefaultFilter]
 Type = DefaultFilter
 InputFileList = "../DXF Examples/cylindrical crown - test for whole model on subset (continuity, radius).dxf"

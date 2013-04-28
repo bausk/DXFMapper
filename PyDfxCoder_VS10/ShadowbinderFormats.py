@@ -56,6 +56,18 @@ def getFormat(Name):
                                                                                       Element['points'][4], 
                                                                                       Element['points'][5]
                                                                                       ))
+                elif Element and Element['elementclass'] == "SOLID_10NODES" :
+                    FormatDict[1].append("36 {} {} {} {} {}/\n0 0 {} {} {} {}/".format(
+                                                                                       ExtendedData['ElementPropertyIndex'][ElementStiffness],
+                                                                                       Element['points'][0],
+                                                                                       Element['points'][1], 
+                                                                                       Element['points'][3], 
+                                                                                       Element['points'][2], 
+                                                                                       Element['points'][5], 
+                                                                                       Element['points'][6], 
+                                                                                       Element['points'][8], 
+                                                                                       Element['points'][7]
+                                                                                       ))
         elif Semantic == 'ElementProperties':
             for Key, DataString in Data.iteritems() :
                 FormatDict[3].append("{} {}/".format(Key, DataString))

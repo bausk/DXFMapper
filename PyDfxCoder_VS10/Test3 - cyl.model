@@ -85,15 +85,15 @@ ElementActionOrder =  "Pretensioning"
 	[[Actions]]
 		[[[Properties]]]
 		Type = ElementProperties
-		Tendon1 = "S6 2.000E+006 15 0"
-		Conc1Plate = "GEI 2.65E+006 0.3 0.4 RO 2.65"
-		Conc2Plate = "GEI 2.65E+006 0.3 0.25 RO 2.65"
-		Conc3Plate = "GEI 2.65E+006 0.3 0.25 RO 2.65"
-		Conc4Plate = "GEI 2.65E+006 0.3 0.25 RO 2.65"
-		Conc1Vol = "OBI 2.65E+006 0.3 RO 2.65"
-		Conc2Vol = "OBI 2.65E+006 0.3 RO 2.65"
-		Conc3Vol = "OBI 2.65E+006 0.3 RO 2.65"
-		Conc4Vol = "OBI 2.65E+006 0.3 RO 2.65"
+		Tendon1 = "S6 19.500E+006 15 0"
+		Conc1Plate = "GEI 3.25E+006 0.3 0.4 RO 2.65"
+		Conc2Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc3Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc4Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc1Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc2Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc3Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc4Vol = "OBI 3.25E+006 0.3 RO 2.65"
 
 	[[Point Actions]]
 		[[[Compatible Nodes]]]
@@ -120,5 +120,5 @@ ElementActionOrder =  "Pretensioning"
 		ActionType = Dilatation
 		Filters = Tendons
 		Markers = "color:1"
-		Value = -10
+		Value = -2.2
 

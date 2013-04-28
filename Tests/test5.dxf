@@ -493,11 +493,11 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2456407.771809757
+2456408.484909202
   9
 $TDUUPDATE
  40
-2456407.646809757
+2456408.359909202
   9
 $TDINDWG
  40
@@ -545,7 +545,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-C0F5
+C4BA
   9
 $SURFTAB1
  70
@@ -577,11 +577,11 @@ $UCSNAME
   9
 $UCSORG
  10
-62133.25612820144
+0.0
  20
-51732.09174737088
+0.0
  30
-61249.27470624413
+0.0
   9
 $UCSXDIR
  10
@@ -1477,19 +1477,19 @@ AcDbViewportTableRecord
  25
 10.0
  16
--101.603740990191
+138.6527622001595
  26
--120.6428204390395
+-2.911019808560013
  36
-97.4520218035068
+123.0522017613839
  17
-99286.173703
+-77256.064848
  27
-95857.234956
+1631.943073
  37
-25629.145694
+-68551.009605
  40
-74.921131
+53.48218
  41
 1.816575
  42
@@ -1501,7 +1501,7 @@ AcDbViewportTableRecord
  50
 0.0
  51
-0.0
+3.721513
  71
     16
  72
@@ -1523,11 +1523,11 @@ AcDbViewportTableRecord
  65
      1
 110
-62133.25612820144
+0.0
 120
-51732.09174737088
+0.0
 130
-61249.27470624413
+0.0
 111
 1.0
 121
@@ -1703,7 +1703,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-     7
+     8
   0
 LAYER
   5
@@ -1998,6 +1998,30 @@ AcAecLayerStandard
 AcCmTransparency
 1071
         0
+  0
+LAYER
+  5
+C18F
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+Polylines
+ 70
+     0
+ 62
+     7
+  6
+Continuous
+370
+    -3
+390
+F
+347
+A6D3
   0
 ENDTAB
   0
@@ -2669,4886 +2693,6 @@ ENTITIES
   0
 POLYLINE
   5
-436F
-330
-1F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDb3dPolyline
- 66
-     1
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 70
-     8
-  0
-VERTEX
-  5
-4370
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.216578
- 20
-51718.131297
- 30
-61278.174735
- 70
-    32
-  0
-VERTEX
-  5
-4371
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.358094
- 20
-51718.904475
- 30
-61278.467692
- 70
-    32
-  0
-VERTEX
-  5
-4372
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.491022
- 20
-51719.682275
- 30
-61278.742872
- 70
-    32
-  0
-VERTEX
-  5
-4373
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.615404
- 20
-51720.464331
- 30
-61279.000358
- 70
-    32
-  0
-VERTEX
-  5
-4374
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.731278
- 20
-51721.250293
- 30
-61279.240234
- 70
-    32
-  0
-VERTEX
-  5
-4375
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.838686
- 20
-51722.039824
- 30
-61279.462582
- 70
-    32
-  0
-VERTEX
-  5
-4376
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.937664
- 20
-51722.832603
- 30
-61279.667481
- 70
-    32
-  0
-VERTEX
-  5
-4377
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.028251
- 20
-51723.62832
- 30
-61279.855007
- 70
-    32
-  0
-VERTEX
-  5
-4378
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.11048
- 20
-51724.42668
- 30
-61280.025234
- 70
-    32
-  0
-VERTEX
-  5
-4379
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.184387
- 20
-51725.227396
- 30
-61280.17823
- 70
-    32
-  0
-VERTEX
-  5
-437A
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.25
- 20
-51726.030193
- 30
-61280.314058
- 70
-    32
-  0
-VERTEX
-  5
-437B
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.307348
- 20
-51726.834805
- 30
-61280.432777
- 70
-    32
-  0
-VERTEX
-  5
-437C
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.356456
- 20
-51727.640973
- 30
-61280.534436
- 70
-    32
-  0
-VERTEX
-  5
-437D
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.397345
- 20
-51728.448447
- 30
-61280.619082
- 70
-    32
-  0
-VERTEX
-  5
-437E
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.430034
- 20
-51729.25698
- 30
-61280.686753
- 70
-    32
-  0
-VERTEX
-  5
-437F
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.454537
- 20
-51730.066331
- 30
-61280.737479
- 70
-    32
-  0
-VERTEX
-  5
-4380
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.470867
- 20
-51730.876266
- 30
-61280.771283
- 70
-    32
-  0
-VERTEX
-  5
-4381
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.47903
- 20
-51731.686548
- 30
-61280.788181
- 70
-    32
-  0
-VERTEX
-  5
-4382
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.47903
- 20
-51732.496947
- 30
-61280.788181
- 70
-    32
-  0
-VERTEX
-  5
-4383
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.470867
- 20
-51733.307229
- 30
-61280.771283
- 70
-    32
-  0
-VERTEX
-  5
-4384
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.454537
- 20
-51734.117163
- 30
-61280.737479
- 70
-    32
-  0
-VERTEX
-  5
-4385
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.430034
- 20
-51734.926515
- 30
-61280.686753
- 70
-    32
-  0
-VERTEX
-  5
-4386
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.397345
- 20
-51735.735048
- 30
-61280.619082
- 70
-    32
-  0
-VERTEX
-  5
-4387
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.356456
- 20
-51736.542521
- 30
-61280.534436
- 70
-    32
-  0
-VERTEX
-  5
-4388
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.307348
- 20
-51737.348689
- 30
-61280.432777
- 70
-    32
-  0
-VERTEX
-  5
-4389
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.25
- 20
-51738.153301
- 30
-61280.314058
- 70
-    32
-  0
-VERTEX
-  5
-438A
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.184387
- 20
-51738.956099
- 30
-61280.17823
- 70
-    32
-  0
-VERTEX
-  5
-438B
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.11048
- 20
-51739.756815
- 30
-61280.025234
- 70
-    32
-  0
-VERTEX
-  5
-438C
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62148.028251
- 20
-51740.555175
- 30
-61279.855007
- 70
-    32
-  0
-VERTEX
-  5
-438D
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.937664
- 20
-51741.350892
- 30
-61279.667481
- 70
-    32
-  0
-VERTEX
-  5
-438E
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.838686
- 20
-51742.143671
- 30
-61279.462582
- 70
-    32
-  0
-VERTEX
-  5
-438F
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.731278
- 20
-51742.933202
- 30
-61279.240234
- 70
-    32
-  0
-VERTEX
-  5
-4390
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.615404
- 20
-51743.719164
- 30
-61279.000358
- 70
-    32
-  0
-VERTEX
-  5
-4391
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.491022
- 20
-51744.50122
- 30
-61278.742872
- 70
-    32
-  0
-VERTEX
-  5
-4392
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.358094
- 20
-51745.27902
- 30
-61278.467692
- 70
-    32
-  0
-VERTEX
-  5
-4393
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.216578
- 20
-51746.052197
- 30
-61278.174735
- 70
-    32
-  0
-SEQEND
-  5
-4394
-330
-436F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-  0
-POLYLINE
-  5
-4395
-330
-1F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDb3dPolyline
- 66
-     1
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 70
-     8
-  0
-VERTEX
-  5
-4396
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.443401
- 20
-51746.193713
- 30
-61278.467692
- 70
-    32
-  0
-VERTEX
-  5
-4397
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.579845
- 20
-51745.415464
- 30
-61278.769742
- 70
-    32
-  0
-VERTEX
-  5
-4398
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.708088
- 20
-51744.632087
- 30
-61279.053636
- 70
-    32
-  0
-VERTEX
-  5
-4399
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.828154
- 20
-51743.843971
- 30
-61279.319429
- 70
-    32
-  0
-VERTEX
-  5
-439A
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.940069
- 20
-51743.051489
- 30
-61279.567178
- 70
-    32
-  0
-VERTEX
-  5
-439B
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.043858
- 20
-51742.255005
- 30
-61279.796939
- 70
-    32
-  0
-VERTEX
-  5
-439C
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.139548
- 20
-51741.454866
- 30
-61280.00877
- 70
-    32
-  0
-VERTEX
-  5
-439D
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.227163
- 20
-51740.651409
- 30
-61280.202725
- 70
-    32
-  0
-VERTEX
-  5
-439E
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.306728
- 20
-51739.844962
- 30
-61280.378859
- 70
-    32
-  0
-VERTEX
-  5
-439F
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.378264
- 20
-51739.035839
- 30
-61280.537222
- 70
-    32
-  0
-VERTEX
-  5
-43A0
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.441795
- 20
-51738.224347
- 30
-61280.67786
- 70
-    32
-  0
-VERTEX
-  5
-43A1
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.497338
- 20
-51737.410785
- 30
-61280.800819
- 70
-    32
-  0
-VERTEX
-  5
-43A2
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.544913
- 20
-51736.595444
- 30
-61280.906136
- 70
-    32
-  0
-VERTEX
-  5
-43A3
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.584534
- 20
-51735.778609
- 30
-61280.993846
- 70
-    32
-  0
-VERTEX
-  5
-43A4
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.616215
- 20
-51734.960558
- 30
-61281.063979
- 70
-    32
-  0
-VERTEX
-  5
-43A5
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.639966
- 20
-51734.141567
- 30
-61281.116557
- 70
-    32
-  0
-VERTEX
-  5
-43A6
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.655795
- 20
-51733.321906
- 30
-61281.151599
- 70
-    32
-  0
-VERTEX
-  5
-43A7
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.663709
- 20
-51732.501845
- 30
-61281.169117
- 70
-    32
-  0
-VERTEX
-  5
-43A8
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.663709
- 20
-51731.68165
- 30
-61281.169117
- 70
-    32
-  0
-VERTEX
-  5
-43A9
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.655795
- 20
-51730.861589
- 30
-61281.151599
- 70
-    32
-  0
-VERTEX
-  5
-43AA
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.639966
- 20
-51730.041928
- 30
-61281.116557
- 70
-    32
-  0
-VERTEX
-  5
-43AB
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.616215
- 20
-51729.222937
- 30
-61281.063979
- 70
-    32
-  0
-VERTEX
-  5
-43AC
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.584534
- 20
-51728.404886
- 30
-61280.993846
- 70
-    32
-  0
-VERTEX
-  5
-43AD
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.544913
- 20
-51727.588051
- 30
-61280.906136
- 70
-    32
-  0
-VERTEX
-  5
-43AE
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.497338
- 20
-51726.77271
- 30
-61280.800819
- 70
-    32
-  0
-VERTEX
-  5
-43AF
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.441795
- 20
-51725.959148
- 30
-61280.67786
- 70
-    32
-  0
-VERTEX
-  5
-43B0
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.378264
- 20
-51725.147656
- 30
-61280.537222
- 70
-    32
-  0
-VERTEX
-  5
-43B1
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.306728
- 20
-51724.338533
- 30
-61280.378859
- 70
-    32
-  0
-VERTEX
-  5
-43B2
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.227163
- 20
-51723.532085
- 30
-61280.202725
- 70
-    32
-  0
-VERTEX
-  5
-43B3
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.139548
- 20
-51722.728629
- 30
-61280.00877
- 70
-    32
-  0
-VERTEX
-  5
-43B4
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.043858
- 20
-51721.92849
- 30
-61279.796939
- 70
-    32
-  0
-VERTEX
-  5
-43B5
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.940069
- 20
-51721.132005
- 30
-61279.567178
- 70
-    32
-  0
-VERTEX
-  5
-43B6
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.828154
- 20
-51720.339524
- 30
-61279.319429
- 70
-    32
-  0
-VERTEX
-  5
-43B7
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.708088
- 20
-51719.551407
- 30
-61279.053636
- 70
-    32
-  0
-VERTEX
-  5
-43B8
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.579845
- 20
-51718.76803
- 30
-61278.769742
- 70
-    32
-  0
-VERTEX
-  5
-43B9
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.443401
- 20
-51717.989782
- 30
-61278.467692
- 70
-    32
-  0
-SEQEND
-  5
-43BA
-330
-4395
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-  0
-POLYLINE
-  5
-43BB
-330
-1F
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDb3dPolyline
- 66
-     1
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 70
-     8
-  0
-VERTEX
-  5
-43BC
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.665601
- 20
-51746.326641
- 30
-61278.742872
- 70
-    32
-  0
-VERTEX
-  5
-43BD
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.796468
- 20
-51745.543707
- 30
-61279.053636
- 70
-    32
-  0
-VERTEX
-  5
-43BE
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.91954
- 20
-51744.755159
- 30
-61279.345888
- 70
-    32
-  0
-VERTEX
-  5
-43BF
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.034828
- 20
-51743.961407
- 30
-61279.619657
- 70
-    32
-  0
-VERTEX
-  5
-43C0
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.142344
- 20
-51743.162848
- 30
-61279.87497
- 70
-    32
-  0
-VERTEX
-  5
-43C1
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.242103
- 20
-51742.359868
- 30
-61280.111862
- 70
-    32
-  0
-VERTEX
-  5
-43C2
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.334117
- 20
-51741.55284
- 30
-61280.330365
- 70
-    32
-  0
-VERTEX
-  5
-43C3
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.418403
- 20
-51740.742128
- 30
-61280.530513
- 70
-    32
-  0
-VERTEX
-  5
-43C4
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.494972
- 20
-51739.928087
- 30
-61280.712339
- 70
-    32
-  0
-VERTEX
-  5
-43C5
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.563841
- 20
-51739.111061
- 30
-61280.875877
- 70
-    32
-  0
-VERTEX
-  5
-43C6
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.62502
- 20
-51738.291388
- 30
-61281.021158
- 70
-    32
-  0
-VERTEX
-  5
-43C7
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.678524
- 20
-51737.469396
- 30
-61281.148209
- 70
-    32
-  0
-VERTEX
-  5
-43C8
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.724362
- 20
-51736.645409
- 30
-61281.257059
- 70
-    32
-  0
-VERTEX
-  5
-43C9
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.762544
- 20
-51735.819742
- 30
-61281.347729
- 70
-    32
-  0
-VERTEX
-  5
-43CA
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.79308
- 20
-51734.992709
- 30
-61281.42024
- 70
-    32
-  0
-VERTEX
-  5
-43CB
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.815975
- 20
-51734.164616
- 30
-61281.474609
- 70
-    32
-  0
-VERTEX
-  5
-43CC
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.831236
- 20
-51733.33577
- 30
-61281.510848
- 70
-    32
-  0
-VERTEX
-  5
-43CD
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.838866
- 20
-51732.506472
- 30
-61281.528966
- 70
-    32
-  0
-VERTEX
-  5
-43CE
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.838866
- 20
-51731.677023
- 30
-61281.528966
- 70
-    32
-  0
-VERTEX
-  5
-43CF
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.831236
- 20
-51730.847725
- 30
-61281.510848
- 70
-    32
-  0
-VERTEX
-  5
-43D0
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.815975
- 20
-51730.018879
- 30
-61281.474609
- 70
-    32
-  0
-VERTEX
-  5
-43D1
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.79308
- 20
-51729.190786
- 30
-61281.42024
- 70
-    32
-  0
-VERTEX
-  5
-43D2
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.762544
- 20
-51728.363753
- 30
-61281.347729
- 70
-    32
-  0
-VERTEX
-  5
-43D3
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.724362
- 20
-51727.538086
- 30
-61281.257059
- 70
-    32
-  0
-VERTEX
-  5
-43D4
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.678524
- 20
-51726.714099
- 30
-61281.148209
- 70
-    32
-  0
-VERTEX
-  5
-43D5
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.62502
- 20
-51725.892107
- 30
-61281.021158
- 70
-    32
-  0
-VERTEX
-  5
-43D6
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.563841
- 20
-51725.072433
- 30
-61280.875877
- 70
-    32
-  0
-VERTEX
-  5
-43D7
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.494972
- 20
-51724.255408
- 30
-61280.712339
- 70
-    32
-  0
-VERTEX
-  5
-43D8
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.418403
- 20
-51723.441367
- 30
-61280.530513
- 70
-    32
-  0
-VERTEX
-  5
-43D9
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.334117
- 20
-51722.630655
- 30
-61280.330365
- 70
-    32
-  0
-VERTEX
-  5
-43DA
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.242103
- 20
-51721.823627
- 30
-61280.111862
- 70
-    32
-  0
-VERTEX
-  5
-43DB
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.142344
- 20
-51721.020647
- 30
-61279.87497
- 70
-    32
-  0
-VERTEX
-  5
-43DC
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.034828
- 20
-51720.222088
- 30
-61279.619657
- 70
-    32
-  0
-VERTEX
-  5
-43DD
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.91954
- 20
-51719.428336
- 30
-61279.345888
- 70
-    32
-  0
-VERTEX
-  5
-43DE
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.796468
- 20
-51718.639788
- 30
-61279.053636
- 70
-    32
-  0
-VERTEX
-  5
-43DF
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.665601
- 20
-51717.856853
- 30
-61278.742872
- 70
-    32
-  0
-SEQEND
-  5
-43E0
-330
-43BB
-100
-AcDbEntity
-  8
-working - tendons lower level
-  6
-Continuous
- 48
-250.0
-  0
-POLYLINE
-  5
-48A3
-330
-1F
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDb3dPolyline
- 66
-     1
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 70
-     8
-  0
-VERTEX
-  5
-48A4
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62119.295678
- 20
-51718.131297
- 30
-61278.174735
- 70
-    32
-  0
-VERTEX
-  5
-48A5
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62120.068855
- 20
-51717.989782
- 30
-61278.467692
- 70
-    32
-  0
-VERTEX
-  5
-48A6
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62120.846655
- 20
-51717.856853
- 30
-61278.742872
- 70
-    32
-  0
-VERTEX
-  5
-48A7
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62121.628712
- 20
-51717.732472
- 30
-61279.000358
- 70
-    32
-  0
-VERTEX
-  5
-48A8
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62122.414673
- 20
-51717.616597
- 30
-61279.240234
- 70
-    32
-  0
-VERTEX
-  5
-48A9
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62123.204205
- 20
-51717.50919
- 30
-61279.462582
- 70
-    32
-  0
-VERTEX
-  5
-48AA
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62123.996983
- 20
-51717.410212
- 30
-61279.667481
- 70
-    32
-  0
-VERTEX
-  5
-48AB
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62124.792701
- 20
-51717.319625
- 30
-61279.855007
- 70
-    32
-  0
-VERTEX
-  5
-48AC
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62125.591061
- 20
-51717.237395
- 30
-61280.025234
- 70
-    32
-  0
-VERTEX
-  5
-48AD
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62126.391777
- 20
-51717.163489
- 30
-61280.17823
- 70
-    32
-  0
-VERTEX
-  5
-48AE
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62127.194574
- 20
-51717.097876
- 30
-61280.314058
- 70
-    32
-  0
-VERTEX
-  5
-48AF
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62127.999186
- 20
-51717.040528
- 30
-61280.432777
- 70
-    32
-  0
-VERTEX
-  5
-48B0
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62128.805354
- 20
-51716.99142
- 30
-61280.534436
- 70
-    32
-  0
-VERTEX
-  5
-48B1
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62129.612828
- 20
-51716.950531
- 30
-61280.619082
- 70
-    32
-  0
-VERTEX
-  5
-48B2
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62130.42136
- 20
-51716.917842
- 30
-61280.686753
- 70
-    32
-  0
-VERTEX
-  5
-48B3
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62131.230712
- 20
-51716.893338
- 30
-61280.737479
- 70
-    32
-  0
-VERTEX
-  5
-48B4
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62132.040646
- 20
-51716.877009
- 30
-61280.771283
- 70
-    32
-  0
-VERTEX
-  5
-48B5
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62132.850929
- 20
-51716.868846
- 30
-61280.788181
- 70
-    32
-  0
-VERTEX
-  5
-48B6
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62133.661327
- 20
-51716.868846
- 30
-61280.788181
- 70
-    32
-  0
-VERTEX
-  5
-48B7
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62134.47161
- 20
-51716.877009
- 30
-61280.771283
- 70
-    32
-  0
-VERTEX
-  5
-48B8
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62135.281544
- 20
-51716.893338
- 30
-61280.737479
- 70
-    32
-  0
-VERTEX
-  5
-48B9
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62136.090896
- 20
-51716.917842
- 30
-61280.686753
- 70
-    32
-  0
-VERTEX
-  5
-48BA
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62136.899429
- 20
-51716.950531
- 30
-61280.619082
- 70
-    32
-  0
-VERTEX
-  5
-48BB
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62137.706902
- 20
-51716.99142
- 30
-61280.534436
- 70
-    32
-  0
-VERTEX
-  5
-48BC
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62138.51307
- 20
-51717.040528
- 30
-61280.432777
- 70
-    32
-  0
-VERTEX
-  5
-48BD
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62139.317682
- 20
-51717.097876
- 30
-61280.314058
- 70
-    32
-  0
-VERTEX
-  5
-48BE
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62140.120479
- 20
-51717.163489
- 30
-61280.17823
- 70
-    32
-  0
-VERTEX
-  5
-48BF
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62140.921196
- 20
-51717.237395
- 30
-61280.025234
- 70
-    32
-  0
-VERTEX
-  5
-48C0
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62141.719555
- 20
-51717.319625
- 30
-61279.855007
- 70
-    32
-  0
-VERTEX
-  5
-48C1
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62142.515273
- 20
-51717.410212
- 30
-61279.667481
- 70
-    32
-  0
-VERTEX
-  5
-48C2
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62143.308052
- 20
-51717.50919
- 30
-61279.462582
- 70
-    32
-  0
-VERTEX
-  5
-48C3
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62144.097583
- 20
-51717.616597
- 30
-61279.240234
- 70
-    32
-  0
-VERTEX
-  5
-48C4
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62144.883545
- 20
-51717.732472
- 30
-61279.000358
- 70
-    32
-  0
-VERTEX
-  5
-48C5
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.665601
- 20
-51717.856853
- 30
-61278.742872
- 70
-    32
-  0
-VERTEX
-  5
-48C6
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.443401
- 20
-51717.989782
- 30
-61278.467692
- 70
-    32
-  0
-VERTEX
-  5
-48C7
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.216578
- 20
-51718.131297
- 30
-61278.174735
- 70
-    32
-  0
-SEQEND
-  5
-48C8
-330
-48A3
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-  0
-POLYLINE
-  5
-48C9
-330
-1F
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDb3dPolyline
- 66
-     1
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 70
-     8
-  0
-VERTEX
-  5
-48CA
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62147.358094
- 20
-51718.904475
- 30
-61278.467692
- 70
-    32
-  0
-VERTEX
-  5
-48CB
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62146.579845
- 20
-51718.76803
- 30
-61278.769742
- 70
-    32
-  0
-VERTEX
-  5
-48CC
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.796468
- 20
-51718.639788
- 30
-61279.053636
- 70
-    32
-  0
-VERTEX
-  5
-48CD
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62145.008352
- 20
-51718.519722
- 30
-61279.319429
- 70
-    32
-  0
-VERTEX
-  5
-48CE
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62144.21587
- 20
-51718.407807
- 30
-61279.567178
- 70
-    32
-  0
-VERTEX
-  5
-48CF
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62143.419386
- 20
-51718.304017
- 30
-61279.796939
- 70
-    32
-  0
-VERTEX
-  5
-48D0
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62142.619247
- 20
-51718.208327
- 30
-61280.00877
- 70
-    32
-  0
-VERTEX
-  5
-48D1
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62141.81579
- 20
-51718.120712
- 30
-61280.202725
- 70
-    32
-  0
-VERTEX
-  5
-48D2
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62141.009342
- 20
-51718.041148
- 30
-61280.378859
- 70
-    32
-  0
-VERTEX
-  5
-48D3
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62140.200219
- 20
-51717.969611
- 30
-61280.537222
- 70
-    32
-  0
-VERTEX
-  5
-48D4
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62139.388728
- 20
-51717.906081
- 30
-61280.67786
- 70
-    32
-  0
-VERTEX
-  5
-48D5
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62138.575166
- 20
-51717.850537
- 30
-61280.800819
- 70
-    32
-  0
-VERTEX
-  5
-48D6
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62137.759825
- 20
-51717.802962
- 30
-61280.906136
- 70
-    32
-  0
-VERTEX
-  5
-48D7
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62136.942989
- 20
-51717.763341
- 30
-61280.993846
- 70
-    32
-  0
-VERTEX
-  5
-48D8
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62136.124939
- 20
-51717.731661
- 30
-61281.063979
- 70
-    32
-  0
-VERTEX
-  5
-48D9
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62135.305947
- 20
-51717.70791
- 30
-61281.116557
- 70
-    32
-  0
-VERTEX
-  5
-48DA
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62134.486287
- 20
-51717.69208
- 30
-61281.151599
- 70
-    32
-  0
-VERTEX
-  5
-48DB
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62133.666225
- 20
-51717.684167
- 30
-61281.169117
- 70
-    32
-  0
-VERTEX
-  5
-48DC
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62132.846031
- 20
-51717.684167
- 30
-61281.169117
- 70
-    32
-  0
-VERTEX
-  5
-48DD
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62132.02597
- 20
-51717.69208
- 30
-61281.151599
- 70
-    32
-  0
-VERTEX
-  5
-48DE
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62131.206309
- 20
-51717.70791
- 30
-61281.116557
- 70
-    32
-  0
-VERTEX
-  5
-48DF
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62130.387318
- 20
-51717.731661
- 30
-61281.063979
- 70
-    32
-  0
-VERTEX
-  5
-48E0
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62129.569267
- 20
-51717.763341
- 30
-61280.993846
- 70
-    32
-  0
-VERTEX
-  5
-48E1
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62128.752432
- 20
-51717.802962
- 30
-61280.906136
- 70
-    32
-  0
-VERTEX
-  5
-48E2
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62127.937091
- 20
-51717.850537
- 30
-61280.800819
- 70
-    32
-  0
-VERTEX
-  5
-48E3
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62127.123529
- 20
-51717.906081
- 30
-61280.67786
- 70
-    32
-  0
-VERTEX
-  5
-48E4
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62126.312037
- 20
-51717.969611
- 30
-61280.537222
- 70
-    32
-  0
-VERTEX
-  5
-48E5
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62125.502914
- 20
-51718.041148
- 30
-61280.378859
- 70
-    32
-  0
-VERTEX
-  5
-48E6
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62124.696466
- 20
-51718.120712
- 30
-61280.202725
- 70
-    32
-  0
-VERTEX
-  5
-48E7
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62123.89301
- 20
-51718.208327
- 30
-61280.00877
- 70
-    32
-  0
-VERTEX
-  5
-48E8
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62123.092871
- 20
-51718.304017
- 30
-61279.796939
- 70
-    32
-  0
-VERTEX
-  5
-48E9
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62122.296386
- 20
-51718.407807
- 30
-61279.567178
- 70
-    32
-  0
-VERTEX
-  5
-48EA
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62121.503905
- 20
-51718.519722
- 30
-61279.319429
- 70
-    32
-  0
-VERTEX
-  5
-48EB
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62120.715788
- 20
-51718.639788
- 30
-61279.053636
- 70
-    32
-  0
-VERTEX
-  5
-48EC
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62119.932411
- 20
-51718.76803
- 30
-61278.769742
- 70
-    32
-  0
-VERTEX
-  5
-48ED
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-62119.154163
- 20
-51718.904475
- 30
-61278.467692
- 70
-    32
-  0
-SEQEND
-  5
-48EE
-330
-48C9
-100
-AcDbEntity
-  8
-working - tendons upper level
-  6
-Continuous
- 48
-250.0
-  0
-POLYLINE
-  5
 56D8
 330
 1F
@@ -7591,11 +2735,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.216578
+13.96045
  20
-51718.131297
+-13.96045
  30
-61278.174735
+28.900029
  70
     32
   0
@@ -7617,11 +2761,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.358094
+14.101966
  20
-51718.904475
+-13.187272
  30
-61278.467692
+29.192986
  70
     32
   0
@@ -7643,11 +2787,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.579845
+13.323717
  20
-51718.76803
+-13.323717
  30
-61278.769742
+29.495036
  70
     32
   0
@@ -7669,11 +2813,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.443401
+13.187273
  20
-51717.989782
+-14.101965
  30
-61278.467692
+29.192986
  70
     32
   0
@@ -7695,11 +2839,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.216578
+13.96045
  20
-51718.131297
+-13.96045
  30
-61278.174735
+28.900029
  70
     32
   0
@@ -7761,11 +2905,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.443401
+13.187273
  20
-51717.989782
+-14.101965
  30
-61278.467692
+29.192986
  70
     32
   0
@@ -7787,11 +2931,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.579845
+13.323717
  20
-51718.76803
+-13.323717
  30
-61278.769742
+29.495036
  70
     32
   0
@@ -7813,11 +2957,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.796468
+12.54034
  20
-51718.639788
+-13.451959
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -7839,11 +2983,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.665601
+12.409473
  20
-51717.856853
+-14.234894
  30
-61278.742872
+29.468166
  70
     32
   0
@@ -7865,11 +3009,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.443401
+13.187273
  20
-51717.989782
+-14.101965
  30
-61278.467692
+29.192986
  70
     32
   0
@@ -7931,11 +3075,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.665601
+12.409473
  20
-51717.856853
+-14.234894
  30
-61278.742872
+29.468166
  70
     32
   0
@@ -7957,11 +3101,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.796468
+12.54034
  20
-51718.639788
+-13.451959
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -7983,11 +3127,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.008352
+11.752224
  20
-51718.519722
+-13.572025
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -8009,11 +3153,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.883545
+11.627417
  20
-51717.732472
+-14.359275
  30
-61279.000358
+29.725652
  70
     32
   0
@@ -8035,11 +3179,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.665601
+12.409473
  20
-51717.856853
+-14.234894
  30
-61278.742872
+29.468166
  70
     32
   0
@@ -8101,11 +3245,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.883545
+11.627417
  20
-51717.732472
+-14.359275
  30
-61279.000358
+29.725652
  70
     32
   0
@@ -8127,11 +3271,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.097583
+10.841455
  20
-51717.616597
+-14.47515
  30
-61279.240234
+29.965528
  70
     32
   0
@@ -8153,11 +3297,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.21587
+10.959742
  20
-51718.407807
+-13.68394
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -8179,11 +3323,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.008352
+11.752224
  20
-51718.519722
+-13.572025
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -8205,11 +3349,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.883545
+11.627417
  20
-51717.732472
+-14.359275
  30
-61279.000358
+29.725652
  70
     32
   0
@@ -8271,11 +3415,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.21587
+10.959742
  20
-51718.407807
+-13.68394
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -8297,11 +3441,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.097583
+10.841455
  20
-51717.616597
+-14.47515
  30
-61279.240234
+29.965528
  70
     32
   0
@@ -8323,11 +3467,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62143.308052
+10.051924
  20
-51717.50919
+-14.582557
  30
-61279.462582
+30.187876
  70
     32
   0
@@ -8349,11 +3493,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62143.419386
+10.163258
  20
-51718.304017
+-13.78773
  30
-61279.796939
+30.522233
  70
     32
   0
@@ -8375,11 +3519,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.21587
+10.959742
  20
-51718.407807
+-13.68394
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -8441,11 +3585,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62143.419386
+10.163258
  20
-51718.304017
+-13.78773
  30
-61279.796939
+30.522233
  70
     32
   0
@@ -8467,11 +3611,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62143.308052
+10.051924
  20
-51717.50919
+-14.582557
  30
-61279.462582
+30.187876
  70
     32
   0
@@ -8493,11 +3637,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62142.515273
+9.259145
  20
-51717.410212
+-14.681535
  30
-61279.667481
+30.392775
  70
     32
   0
@@ -8519,11 +3663,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62142.619247
+9.363119
  20
-51718.208327
+-13.88342
  30
-61280.00877
+30.734064
  70
     32
   0
@@ -8545,11 +3689,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62143.419386
+10.163258
  20
-51718.304017
+-13.78773
  30
-61279.796939
+30.522233
  70
     32
   0
@@ -8611,11 +3755,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.327229
+11.071101
  20
-51719.205531
+-12.886216
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -8637,11 +3781,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.21587
+10.959742
  20
-51718.407807
+-13.68394
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -8663,11 +3807,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62143.419386
+10.163258
  20
-51718.304017
+-13.78773
  30
-61279.796939
+30.522233
  70
     32
   0
@@ -8689,11 +3833,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62143.524248
+10.26812
  20
-51719.105773
+-12.985974
  30
-61280.111862
+30.837156
  70
     32
   0
@@ -8715,11 +3859,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.327229
+11.071101
  20
-51719.205531
+-12.886216
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -8781,11 +3925,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.125788
+11.86966
  20
-51719.313048
+-12.778699
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -8807,11 +3951,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.008352
+11.752224
  20
-51718.519722
+-13.572025
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -8833,11 +3977,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.21587
+10.959742
  20
-51718.407807
+-13.68394
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -8859,11 +4003,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.327229
+11.071101
  20
-51719.205531
+-12.886216
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -8885,11 +4029,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.125788
+11.86966
  20
-51719.313048
+-12.778699
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -8951,11 +4095,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.91954
+12.663412
  20
-51719.428336
+-12.663411
  30
-61279.345888
+30.071182
  70
     32
   0
@@ -8977,11 +4121,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.796468
+12.54034
  20
-51718.639788
+-13.451959
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -9003,11 +4147,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.008352
+11.752224
  20
-51718.519722
+-13.572025
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -9029,11 +4173,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.125788
+11.86966
  20
-51719.313048
+-12.778699
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -9055,11 +4199,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.91954
+12.663412
  20
-51719.428336
+-12.663411
  30
-61279.345888
+30.071182
  70
     32
   0
@@ -9121,11 +4265,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.708088
+13.45196
  20
-51719.551407
+-12.54034
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -9147,11 +4291,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.579845
+13.323717
  20
-51718.76803
+-13.323717
  30
-61278.769742
+29.495036
  70
     32
   0
@@ -9173,11 +4317,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.796468
+12.54034
  20
-51718.639788
+-13.451959
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -9199,11 +4343,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.91954
+12.663412
  20
-51719.428336
+-12.663411
  30
-61279.345888
+30.071182
  70
     32
   0
@@ -9225,11 +4369,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.708088
+13.45196
  20
-51719.551407
+-12.54034
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -9291,11 +4435,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.491022
+14.234894
  20
-51719.682275
+-12.409472
  30
-61278.742872
+29.468166
  70
     32
   0
@@ -9317,11 +4461,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.358094
+14.101966
  20
-51718.904475
+-13.187272
  30
-61278.467692
+29.192986
  70
     32
   0
@@ -9343,11 +4487,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.579845
+13.323717
  20
-51718.76803
+-13.323717
  30
-61278.769742
+29.495036
  70
     32
   0
@@ -9369,11 +4513,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.708088
+13.45196
  20
-51719.551407
+-12.54034
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -9395,11 +4539,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.491022
+14.234894
  20
-51719.682275
+-12.409472
  30
-61278.742872
+29.468166
  70
     32
   0
@@ -9461,11 +4605,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.615404
+14.359276
  20
-51720.464331
+-11.627416
  30
-61279.000358
+29.725652
  70
     32
   0
@@ -9487,11 +4631,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.491022
+14.234894
  20
-51719.682275
+-12.409472
  30
-61278.742872
+29.468166
  70
     32
   0
@@ -9513,11 +4657,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.708088
+13.45196
  20
-51719.551407
+-12.54034
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -9539,11 +4683,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.828154
+13.572026
  20
-51720.339524
+-11.752223
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -9565,11 +4709,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.615404
+14.359276
  20
-51720.464331
+-11.627416
  30
-61279.000358
+29.725652
  70
     32
   0
@@ -9631,11 +4775,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.828154
+13.572026
  20
-51720.339524
+-11.752223
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -9657,11 +4801,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.708088
+13.45196
  20
-51719.551407
+-12.54034
  30
-61279.053636
+29.77893
  70
     32
   0
@@ -9683,11 +4827,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.91954
+12.663412
  20
-51719.428336
+-12.663411
  30
-61279.345888
+30.071182
  70
     32
   0
@@ -9709,11 +4853,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.034828
+12.7787
  20
-51720.222088
+-11.869659
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -9735,11 +4879,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.828154
+13.572026
  20
-51720.339524
+-11.752223
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -9801,11 +4945,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.034828
+12.7787
  20
-51720.222088
+-11.869659
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -9827,11 +4971,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.91954
+12.663412
  20
-51719.428336
+-12.663411
  30
-61279.345888
+30.071182
  70
     32
   0
@@ -9853,11 +4997,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.125788
+11.86966
  20
-51719.313048
+-12.778699
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -9879,11 +5023,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.235854
+11.979726
  20
-51720.112022
+-11.979725
  30
-61279.901041
+30.626335
  70
     32
   0
@@ -9905,11 +5049,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.034828
+12.7787
  20
-51720.222088
+-11.869659
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -9971,11 +5115,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.431649
+11.175521
  20
-51720.009326
+-12.082421
  30
-61280.163585
+30.888879
  70
     32
   0
@@ -9997,11 +5141,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.235854
+11.979726
  20
-51720.112022
+-11.979725
  30
-61279.901041
+30.626335
  70
     32
   0
@@ -10023,11 +5167,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.125788
+11.86966
  20
-51719.313048
+-12.778699
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -10049,11 +5193,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.327229
+11.071101
  20
-51719.205531
+-12.886216
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -10075,11 +5219,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62144.431649
+11.175521
  20
-51720.009326
+-12.082421
  30
-61280.163585
+30.888879
  70
     32
   0
@@ -10141,11 +5285,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.142344
+12.886216
  20
-51721.020647
+-11.0711
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -10167,11 +5311,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.034828
+12.7787
  20
-51720.222088
+-11.869659
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -10193,11 +5337,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.235854
+11.979726
  20
-51720.112022
+-11.979725
  30
-61279.901041
+30.626335
  70
     32
   0
@@ -10219,11 +5363,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62145.33855
+12.082422
  20
-51720.916227
+-11.17552
  30
-61280.163585
+30.888879
  70
     32
   0
@@ -10245,11 +5389,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.142344
+12.886216
  20
-51721.020647
+-11.0711
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -10311,11 +5455,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.940069
+13.683941
  20
-51721.132005
+-10.959742
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -10337,11 +5481,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.828154
+13.572026
  20
-51720.339524
+-11.752223
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -10363,11 +5507,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.034828
+12.7787
  20
-51720.222088
+-11.869659
  30
-61279.619657
+30.344951
  70
     32
   0
@@ -10389,11 +5533,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.142344
+12.886216
  20
-51721.020647
+-11.0711
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -10415,11 +5559,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.940069
+13.683941
  20
-51721.132005
+-10.959742
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -10481,11 +5625,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.731278
+14.47515
  20
-51721.250293
+-10.841454
  30
-61279.240234
+29.965528
  70
     32
   0
@@ -10507,11 +5651,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.615404
+14.359276
  20
-51720.464331
+-11.627416
  30
-61279.000358
+29.725652
  70
     32
   0
@@ -10533,11 +5677,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.828154
+13.572026
  20
-51720.339524
+-11.752223
  30
-61279.319429
+30.044723
  70
     32
   0
@@ -10559,11 +5703,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.940069
+13.683941
  20
-51721.132005
+-10.959742
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -10585,11 +5729,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.731278
+14.47515
  20
-51721.250293
+-10.841454
  30
-61279.240234
+29.965528
  70
     32
   0
@@ -10651,11 +5795,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.838686
+14.582558
  20
-51722.039824
+-10.051923
  30
-61279.462582
+30.187876
  70
     32
   0
@@ -10677,11 +5821,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.731278
+14.47515
  20
-51721.250293
+-10.841454
  30
-61279.240234
+29.965528
  70
     32
   0
@@ -10703,11 +5847,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.940069
+13.683941
  20
-51721.132005
+-10.959742
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -10729,11 +5873,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.043858
+13.78773
  20
-51721.92849
+-10.163257
  30
-61279.796939
+30.522233
  70
     32
   0
@@ -10755,11 +5899,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.838686
+14.582558
  20
-51722.039824
+-10.051923
  30
-61279.462582
+30.187876
  70
     32
   0
@@ -10821,11 +5965,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.242103
+12.985975
  20
-51721.823627
+-10.26812
  30
-61280.111862
+30.837156
  70
     32
   0
@@ -10847,11 +5991,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.043858
+13.78773
  20
-51721.92849
+-10.163257
  30
-61279.796939
+30.522233
  70
     32
   0
@@ -10873,11 +6017,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.940069
+13.683941
  20
-51721.132005
+-10.959742
  30
-61279.567178
+30.292472
  70
     32
   0
@@ -10899,11 +6043,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.142344
+12.886216
  20
-51721.020647
+-11.0711
  30
-61279.87497
+30.600264
  70
     32
   0
@@ -10925,11 +6069,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62146.242103
+12.985975
  20
-51721.823627
+-10.26812
  30
-61280.111862
+30.837156
  70
     32
   0
@@ -10991,11 +6135,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.937664
+14.681536
  20
-51722.832603
+-9.259144
  30
-61279.667481
+30.392775
  70
     32
   0
@@ -11017,11 +6161,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.838686
+14.582558
  20
-51722.039824
+-10.051923
  30
-61279.462582
+30.187876
  70
     32
   0
@@ -11043,11 +6187,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.043858
+13.78773
  20
-51721.92849
+-10.163257
  30
-61279.796939
+30.522233
  70
     32
   0
@@ -11069,11 +6213,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.139548
+13.88342
  20
-51722.728629
+-9.363118
  30
-61280.00877
+30.734064
  70
     32
   0
@@ -11095,11 +6239,11 @@ AcDbVertex
 100
 AcDb3dPolylineVertex
  10
-62147.937664
+14.681536
  20
-51722.832603
+-9.259144
  30
-61279.667481
+30.392775
  70
     32
   0
@@ -11117,37 +6261,11251 @@ Continuous
  48
 250.0
   0
-TEXT
+LINE
   5
-6F7C
+C0F5
 330
 1F
 100
 AcDbEntity
   8
-concrete bases
+working - tendons lower level
+ 48
+100.0
+100
+AcDbLine
+ 10
+0.0
+ 20
+0.0
+ 30
+12.294668
+ 11
+0.0
+ 21
+0.0
+ 31
+36.041588
+  0
+LWPOLYLINE
+  5
+C129
+330
+1F
+100
+AcDbEntity
+  8
+0
+ 48
+100.0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.0
+ 10
+0.0
+ 20
+0.0
+ 10
+0.0
+ 20
+0.0
+  0
+LINE
+  5
+C18E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.83
+ 20
+12.82
+ 30
+29.48
+ 11
+13.97
+ 21
+11.96
+ 31
+29.78
+  0
+LINE
+  5
+C192
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.67
+ 20
+13.67
+ 30
+29.17
+ 11
+13.83
+ 21
+12.82
+ 31
+29.48
+  0
+LINE
+  5
+C193
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.52
+ 20
+14.52
+ 30
+28.83
+ 11
+13.67
+ 21
+13.67
+ 31
+29.17
+  0
+LINE
+  5
+C194
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.35
+ 20
+15.36
+ 30
+28.47
+ 11
+13.52
+ 21
+14.52
+ 31
+28.83
+  0
+LINE
+  5
+C195
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.68
+ 20
+12.67
+ 30
+29.13
+ 11
+14.82
+ 21
+11.82
+ 31
+29.42
+  0
+LINE
+  5
+C196
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.52
+ 20
+13.52
+ 30
+28.83
+ 11
+14.68
+ 21
+12.67
+ 31
+29.13
+  0
+LINE
+  5
+C197
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.36
+ 20
+14.36
+ 30
+28.51
+ 11
+14.52
+ 21
+13.52
+ 31
+28.83
+  0
+LINE
+  5
+C198
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.19
+ 20
+15.2
+ 30
+28.15
+ 11
+14.36
+ 21
+14.36
+ 31
+28.51
+  0
+LINE
+  5
+C199
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.2
+ 20
+14.19
+ 30
+28.15
+ 11
+15.02
+ 21
+15.02
+ 31
+27.82
+  0
+LINE
+  5
+C19A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.36
+ 20
+13.35
+ 30
+28.47
+ 11
+15.2
+ 21
+14.19
+ 31
+28.15
+  0
+LINE
+  5
+C19B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.53
+ 20
+12.51
+ 30
+28.77
+ 11
+15.36
+ 21
+13.35
+ 31
+28.47
+  0
+LINE
+  5
+C19C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.68
+ 20
+11.66
+ 30
+29.04
+ 11
+15.53
+ 21
+12.51
+ 31
+28.77
+  0
+LINE
+  5
+C19D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.42
+ 20
+8.47
+ 30
+30.75
+ 11
+14.51
+ 21
+7.59
+ 31
+30.94
+  0
+LINE
+  5
+C19E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.32
+ 20
+9.35
+ 30
+30.54
+ 11
+14.42
+ 21
+8.47
+ 31
+30.75
+  0
+LINE
+  5
+C19F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.21
+ 20
+10.22
+ 30
+30.31
+ 11
+14.32
+ 21
+9.35
+ 31
+30.54
+  0
+LINE
+  5
+C1A0
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.1
+ 20
+11.1
+ 30
+30.06
+ 11
+14.21
+ 21
+10.22
+ 31
+30.31
+  0
+LINE
+  5
+C1A1
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.29
+ 20
+8.35
+ 30
+30.35
+ 11
+15.38
+ 21
+7.48
+ 31
+30.53
+  0
+LINE
+  5
+C1A2
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.19
+ 20
+9.23
+ 30
+30.15
+ 11
+15.29
+ 21
+8.35
+ 31
+30.35
+  0
+LINE
+  5
+C1A3
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.08
+ 20
+10.09
+ 30
+29.92
+ 11
+15.19
+ 21
+9.23
+ 31
+30.15
+  0
+LINE
+  5
+C1A4
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.96
+ 20
+10.95
+ 30
+29.68
+ 11
+15.08
+ 21
+10.09
+ 31
+29.92
+  0
+LINE
+  5
+C1A5
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.94
+ 20
+9.96
+ 30
+29.52
+ 11
+15.81
+ 21
+10.81
+ 31
+29.3
+  0
+LINE
+  5
+C1A6
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.05
+ 20
+9.1
+ 30
+29.74
+ 11
+15.94
+ 21
+9.96
+ 31
+29.52
+  0
+LINE
+  5
+C1A7
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.15
+ 20
+8.25
+ 30
+29.93
+ 11
+16.05
+ 21
+9.1
+ 31
+29.74
+  0
+LINE
+  5
+C1A8
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.25
+ 20
+7.38
+ 30
+30.1
+ 11
+16.15
+ 21
+8.25
+ 31
+29.93
+  0
+LINE
+  5
+C1A9
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.97
+ 20
+11.96
+ 30
+29.78
+ 11
+14.1
+ 21
+11.1
+ 31
+30.06
+  0
+LINE
+  5
+C1AA
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.82
+ 20
+11.82
+ 30
+29.42
+ 11
+14.96
+ 21
+10.95
+ 31
+29.68
+  0
+LINE
+  5
+C1AB
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.81
+ 20
+10.81
+ 30
+29.3
+ 11
+15.68
+ 21
+11.66
+ 31
+29.04
+  0
+LINE
+  5
+C1AC
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.71
+ 20
+4.92
+ 30
+31.37
+ 11
+14.76
+ 21
+4.03
+ 31
+31.48
+  0
+LINE
+  5
+C1AD
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.65
+ 20
+5.81
+ 30
+31.25
+ 11
+14.71
+ 21
+4.92
+ 31
+31.37
+  0
+LINE
+  5
+C1AE
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.58
+ 20
+6.7
+ 30
+31.11
+ 11
+14.65
+ 21
+5.81
+ 31
+31.25
+  0
+LINE
+  5
+C1AF
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.6
+ 20
+4.85
+ 30
+30.95
+ 11
+15.65
+ 21
+3.98
+ 31
+31.06
+  0
+LINE
+  5
+C1B0
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.53
+ 20
+5.74
+ 30
+30.84
+ 11
+15.6
+ 21
+4.85
+ 31
+30.95
+  0
+LINE
+  5
+C1B1
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.47
+ 20
+6.61
+ 30
+30.69
+ 11
+15.53
+ 21
+5.74
+ 31
+30.84
+  0
+LINE
+  5
+C1B2
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.41
+ 20
+5.66
+ 30
+30.4
+ 11
+16.33
+ 21
+6.52
+ 31
+30.26
+  0
+LINE
+  5
+C1B3
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.47
+ 20
+4.78
+ 30
+30.51
+ 11
+16.41
+ 21
+5.66
+ 31
+30.4
+  0
+LINE
+  5
+C1B4
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.52
+ 20
+3.91
+ 30
+30.6
+ 11
+16.47
+ 21
+4.78
+ 31
+30.51
+  0
+LINE
+  5
+C1B5
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.85
+ 20
+0.44
+ 30
+31.68
+ 11
+14.85
+ 21
+-0.44
+ 31
+31.68
+  0
+LINE
+  5
+C1B6
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.85
+ 20
+1.34
+ 30
+31.67
+ 11
+14.85
+ 21
+0.44
+ 31
+31.68
+  0
+LINE
+  5
+C1B7
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.83
+ 20
+2.24
+ 30
+31.62
+ 11
+14.85
+ 21
+1.34
+ 31
+31.67
+  0
+LINE
+  5
+C1B8
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.8
+ 20
+3.13
+ 30
+31.57
+ 11
+14.83
+ 21
+2.24
+ 31
+31.62
+  0
+LINE
+  5
+C1B9
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.75
+ 20
+0.44
+ 30
+31.25
+ 11
+15.75
+ 21
+-0.44
+ 31
+31.25
+  0
+LINE
+  5
+C1BA
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.74
+ 20
+1.33
+ 30
+31.24
+ 11
+15.75
+ 21
+0.44
+ 31
+31.25
+  0
+LINE
+  5
+C1BB
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.71
+ 20
+2.21
+ 30
+31.19
+ 11
+15.74
+ 21
+1.33
+ 31
+31.24
+  0
+LINE
+  5
+C1BC
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.69
+ 20
+3.09
+ 30
+31.14
+ 11
+15.71
+ 21
+2.21
+ 31
+31.19
+  0
+LINE
+  5
+C1BD
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.6
+ 20
+2.18
+ 30
+30.74
+ 11
+16.56
+ 21
+3.04
+ 31
+30.68
+  0
+LINE
+  5
+C1BE
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.61
+ 20
+1.31
+ 30
+30.78
+ 11
+16.6
+ 21
+2.18
+ 31
+30.74
+  0
+LINE
+  5
+C1BF
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.62
+ 20
+0.44
+ 30
+30.79
+ 11
+16.61
+ 21
+1.31
+ 31
+30.78
+  0
+LINE
+  5
+C1C0
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.62
+ 20
+-0.44
+ 30
+30.79
+ 11
+16.62
+ 21
+0.44
+ 31
+30.79
+  0
+LINE
+  5
+C1C1
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.76
+ 20
+4.03
+ 30
+31.48
+ 11
+14.8
+ 21
+3.13
+ 31
+31.57
+  0
+LINE
+  5
+C1C2
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.65
+ 20
+3.98
+ 30
+31.06
+ 11
+15.69
+ 21
+3.09
+ 31
+31.14
+  0
+LINE
+  5
+C1C3
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.56
+ 20
+3.04
+ 30
+30.68
+ 11
+16.52
+ 21
+3.91
+ 31
+30.6
+  0
+LINE
+  5
+C1C4
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.51
+ 20
+7.59
+ 30
+30.94
+ 11
+14.58
+ 21
+6.7
+ 31
+31.11
+  0
+LINE
+  5
+C1C5
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.38
+ 20
+7.48
+ 30
+30.53
+ 11
+15.47
+ 21
+6.61
+ 31
+30.69
+  0
+LINE
+  5
+C1C6
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.33
+ 20
+6.52
+ 30
+30.26
+ 11
+16.25
+ 21
+7.38
+ 31
+30.1
+  0
+LINE
+  5
+C1C7
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.8
+ 20
+-3.13
+ 30
+31.57
+ 11
+14.76
+ 21
+-4.03
+ 31
+31.48
+  0
+LINE
+  5
+C1C8
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.83
+ 20
+-2.24
+ 30
+31.62
+ 11
+14.8
+ 21
+-3.13
+ 31
+31.57
+  0
+LINE
+  5
+C1C9
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.85
+ 20
+-1.34
+ 30
+31.67
+ 11
+14.83
+ 21
+-2.24
+ 31
+31.62
+  0
+LINE
+  5
+C1CA
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.69
+ 20
+-3.09
+ 30
+31.14
+ 11
+15.65
+ 21
+-3.98
+ 31
+31.06
+  0
+LINE
+  5
+C1CB
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.71
+ 20
+-2.21
+ 30
+31.19
+ 11
+15.69
+ 21
+-3.09
+ 31
+31.14
+  0
+LINE
+  5
+C1CC
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.74
+ 20
+-1.33
+ 30
+31.24
+ 11
+15.71
+ 21
+-2.21
+ 31
+31.19
+  0
+LINE
+  5
+C1CD
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.6
+ 20
+-2.18
+ 30
+30.74
+ 11
+16.61
+ 21
+-1.31
+ 31
+30.78
+  0
+LINE
+  5
+C1CE
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.56
+ 20
+-3.04
+ 30
+30.68
+ 11
+16.6
+ 21
+-2.18
+ 31
+30.74
+  0
+LINE
+  5
+C1CF
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.52
+ 20
+-3.91
+ 30
+30.6
+ 11
+16.56
+ 21
+-3.04
+ 31
+30.68
+  0
+LINE
+  5
+C1D0
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.51
+ 20
+-7.59
+ 30
+30.94
+ 11
+14.42
+ 21
+-8.47
+ 31
+30.75
+  0
+LINE
+  5
+C1D1
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.58
+ 20
+-6.7
+ 30
+31.11
+ 11
+14.51
+ 21
+-7.59
+ 31
+30.94
+  0
+LINE
+  5
+C1D2
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.65
+ 20
+-5.81
+ 30
+31.25
+ 11
+14.58
+ 21
+-6.7
+ 31
+31.11
+  0
+LINE
+  5
+C1D3
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.71
+ 20
+-4.92
+ 30
+31.37
+ 11
+14.65
+ 21
+-5.81
+ 31
+31.25
+  0
+LINE
+  5
+C1D4
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.38
+ 20
+-7.48
+ 30
+30.53
+ 11
+15.29
+ 21
+-8.35
+ 31
+30.35
+  0
+LINE
+  5
+C1D5
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.47
+ 20
+-6.61
+ 30
+30.69
+ 11
+15.38
+ 21
+-7.48
+ 31
+30.53
+  0
+LINE
+  5
+C1D6
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.53
+ 20
+-5.74
+ 30
+30.84
+ 11
+15.47
+ 21
+-6.61
+ 31
+30.69
+  0
+LINE
+  5
+C1D7
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.6
+ 20
+-4.85
+ 30
+30.95
+ 11
+15.53
+ 21
+-5.74
+ 31
+30.84
+  0
+LINE
+  5
+C1D8
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.41
+ 20
+-5.66
+ 30
+30.4
+ 11
+16.47
+ 21
+-4.78
+ 31
+30.51
+  0
+LINE
+  5
+C1D9
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.33
+ 20
+-6.52
+ 30
+30.26
+ 11
+16.41
+ 21
+-5.66
+ 31
+30.4
+  0
+LINE
+  5
+C1DA
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.25
+ 20
+-7.38
+ 30
+30.1
+ 11
+16.33
+ 21
+-6.52
+ 31
+30.26
+  0
+LINE
+  5
+C1DB
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.15
+ 20
+-8.25
+ 30
+29.93
+ 11
+16.25
+ 21
+-7.38
+ 31
+30.1
+  0
+LINE
+  5
+C1DC
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.76
+ 20
+-4.03
+ 30
+31.48
+ 11
+14.71
+ 21
+-4.92
+ 31
+31.37
+  0
+LINE
+  5
+C1DD
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.65
+ 20
+-3.98
+ 30
+31.06
+ 11
+15.6
+ 21
+-4.85
+ 31
+30.95
+  0
+LINE
+  5
+C1DE
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.47
+ 20
+-4.78
+ 30
+30.51
+ 11
+16.52
+ 21
+-3.91
+ 31
+30.6
+  0
+LINE
+  5
+C1DF
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.96
+ 20
+-10.95
+ 30
+29.68
+ 11
+14.82
+ 21
+-11.82
+ 31
+29.42
+  0
+LINE
+  5
+C1E0
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.08
+ 20
+-10.09
+ 30
+29.92
+ 11
+14.96
+ 21
+-10.95
+ 31
+29.68
+  0
+LINE
+  5
+C1E1
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.19
+ 20
+-9.23
+ 30
+30.15
+ 11
+15.08
+ 21
+-10.09
+ 31
+29.92
+  0
+LINE
+  5
+C1E2
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.94
+ 20
+-9.96
+ 30
+29.52
+ 11
+16.05
+ 21
+-9.1
+ 31
+29.74
+  0
+LINE
+  5
+C1E3
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.81
+ 20
+-10.81
+ 30
+29.3
+ 11
+15.94
+ 21
+-9.96
+ 31
+29.52
+  0
+LINE
+  5
+C1E4
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.68
+ 20
+-11.66
+ 30
+29.04
+ 11
+15.81
+ 21
+-10.81
+ 31
+29.3
+  0
+LINE
+  5
+C1E5
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.53
+ 20
+-12.51
+ 30
+28.77
+ 11
+15.68
+ 21
+-11.66
+ 31
+29.04
+  0
+LINE
+  5
+C1E6
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.08
+ 20
+-10.09
+ 30
+29.92
+ 11
+15.94
+ 21
+-9.96
+ 31
+29.52
+  0
+LINE
+  5
+C1E7
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.96
+ 20
+-10.95
+ 30
+29.68
+ 11
+15.08
+ 21
+-10.09
+ 31
+29.92
+  0
+LINE
+  5
+C1E8
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.81
+ 20
+-10.81
+ 30
+29.3
+ 11
+14.96
+ 21
+-10.95
+ 31
+29.68
+  0
+LINE
+  5
+C1E9
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.94
+ 20
+-9.96
+ 30
+29.52
+ 11
+15.81
+ 21
+-10.81
+ 31
+29.3
+  0
+LINE
+  5
+C1EA
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.96
+ 20
+-10.95
+ 30
+29.68
+ 11
+14.82
+ 21
+-11.82
+ 31
+29.42
+  0
+LINE
+  5
+C1EB
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.96
+ 20
+-10.95
+ 30
+29.68
+ 11
+15.81
+ 21
+-10.81
+ 31
+29.3
+  0
+LINE
+  5
+C1EC
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.82
+ 20
+-11.82
+ 30
+29.42
+ 11
+14.96
+ 21
+-10.95
+ 31
+29.68
+  0
+LINE
+  5
+C1ED
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.68
+ 20
+-11.66
+ 30
+29.04
+ 11
+14.82
+ 21
+-11.82
+ 31
+29.42
+  0
+LINE
+  5
+C1EE
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.81
+ 20
+-10.81
+ 30
+29.3
+ 11
+15.68
+ 21
+-11.66
+ 31
+29.04
+  0
+LINE
+  5
+C1EF
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.82
+ 20
+-11.82
+ 30
+29.42
+ 11
+15.68
+ 21
+-11.66
+ 31
+29.04
+  0
+LINE
+  5
+C1F0
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.68
+ 20
+-11.66
+ 30
+29.04
+ 11
+15.53
+ 21
+-12.51
+ 31
+28.77
+  0
+LINE
+  5
+C1F1
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.1
+ 20
+-11.1
+ 30
+30.06
+ 11
+13.97
+ 21
+-11.96
+ 31
+29.78
+  0
+LINE
+  5
+C1F2
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.21
+ 20
+-10.22
+ 30
+30.31
+ 11
+14.1
+ 21
+-11.1
+ 31
+30.06
+  0
+LINE
+  5
+C1F3
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.32
+ 20
+-9.35
+ 30
+30.54
+ 11
+14.21
+ 21
+-10.22
+ 31
+30.31
+  0
+LINE
+  5
+C1F4
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.97
+ 20
+-11.96
+ 30
+29.78
+ 11
+14.1
+ 21
+-11.1
+ 31
+30.06
+  0
+LINE
+  5
+C1F5
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.09
+ 20
+-12.1
+ 30
+30.12
+ 11
+13.97
+ 21
+-11.96
+ 31
+29.78
+  0
+LINE
+  5
+C1F6
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.82
+ 20
+-11.82
+ 30
+29.42
+ 11
+13.97
+ 21
+-11.96
+ 31
+29.78
+  0
+LINE
+  5
+C1F7
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.1
+ 20
+-11.1
+ 30
+30.06
+ 11
+14.96
+ 21
+-10.95
+ 31
+29.68
+  0
+LINE
+  5
+C1F8
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.97
+ 20
+-11.96
+ 30
+29.78
+ 11
+14.82
+ 21
+-11.82
+ 31
+29.42
+  0
+LINE
+  5
+C1F9
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.2
+ 20
+-14.19
+ 30
+28.15
+ 11
+15.36
+ 21
+-13.35
+ 31
+28.47
+  0
+LINE
+  5
+C1FA
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.02
+ 20
+-15.02
+ 30
+27.82
+ 11
+15.2
+ 21
+-14.19
+ 31
+28.15
+  0
+LINE
+  5
+C1FB
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.36
+ 20
+-13.35
+ 30
+28.47
+ 11
+15.2
+ 21
+-14.19
+ 31
+28.15
+  0
+LINE
+  5
+C1FC
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.02
+ 20
+-15.02
+ 30
+27.82
+ 11
+15.2
+ 21
+-14.19
+ 31
+28.15
+  0
+LINE
+  5
+C1FD
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.36
+ 20
+-14.36
+ 30
+28.51
+ 11
+13.52
+ 21
+-14.52
+ 31
+28.83
+  0
+LINE
+  5
+C1FE
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.67
+ 20
+-13.67
+ 30
+29.17
+ 11
+13.52
+ 21
+-14.52
+ 31
+28.83
+  0
+LINE
+  5
+C1FF
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.83
+ 20
+-12.82
+ 30
+29.48
+ 11
+13.67
+ 21
+-13.67
+ 31
+29.17
+  0
+LINE
+  5
+C200
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.52
+ 20
+-13.52
+ 30
+28.83
+ 11
+14.36
+ 21
+-14.36
+ 31
+28.51
+  0
+LINE
+  5
+C201
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.68
+ 20
+-12.67
+ 30
+29.13
+ 11
+14.52
+ 21
+-13.52
+ 31
+28.83
+  0
+LINE
+  5
+C202
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.68
+ 20
+-12.67
+ 30
+29.13
+ 11
+13.83
+ 21
+-12.82
+ 31
+29.48
+  0
+LINE
+  5
+C203
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.67
+ 20
+-13.67
+ 30
+29.17
+ 11
+12.82
+ 21
+-13.83
+ 31
+29.48
+  0
+LINE
+  5
+C204
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.83
+ 20
+-12.82
+ 30
+29.48
+ 11
+13.67
+ 21
+-13.67
+ 31
+29.17
+  0
+LINE
+  5
+C205
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.83
+ 20
+-12.82
+ 30
+29.48
+ 11
+14.68
+ 21
+-12.67
+ 31
+29.13
+  0
+LINE
+  5
+C206
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.67
+ 20
+-13.67
+ 30
+29.17
+ 11
+13.83
+ 21
+-12.82
+ 31
+29.48
+  0
+LINE
+  5
+C207
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.52
+ 20
+-13.52
+ 30
+28.83
+ 11
+13.67
+ 21
+-13.67
+ 31
+29.17
+  0
+LINE
+  5
+C208
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.68
+ 20
+-12.67
+ 30
+29.13
+ 11
+14.52
+ 21
+-13.52
+ 31
+28.83
+  0
+LINE
+  5
+C209
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.52
+ 20
+-13.52
+ 30
+28.83
+ 11
+14.68
+ 21
+-12.67
+ 31
+29.13
+  0
+LINE
+  5
+C20A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.36
+ 20
+-14.36
+ 30
+28.51
+ 11
+14.52
+ 21
+-13.52
+ 31
+28.83
+  0
+LINE
+  5
+C20B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.67
+ 20
+-13.67
+ 30
+29.17
+ 11
+14.52
+ 21
+-13.52
+ 31
+28.83
+  0
+LINE
+  5
+C20C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.52
+ 20
+-14.52
+ 30
+28.83
+ 11
+13.67
+ 21
+-13.67
+ 31
+29.17
+  0
+LINE
+  5
+C20D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.36
+ 20
+-14.36
+ 30
+28.51
+ 11
+13.52
+ 21
+-14.52
+ 31
+28.83
+  0
+LINE
+  5
+C20E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.52
+ 20
+-13.52
+ 30
+28.83
+ 11
+14.36
+ 21
+-14.36
+ 31
+28.51
+  0
+LINE
+  5
+C20F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.82
+ 20
+-13.83
+ 30
+29.48
+ 11
+13.67
+ 21
+-13.67
+ 31
+29.17
+  0
+LINE
+  5
+C210
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.67
+ 20
+-13.67
+ 30
+29.17
+ 11
+13.52
+ 21
+-14.52
+ 31
+28.83
+  0
+LINE
+  5
+C211
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.36
+ 20
+-14.36
+ 30
+28.51
+ 11
+13.52
+ 21
+-14.52
+ 31
+28.83
+  0
+LINE
+  5
+C212
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.83
+ 20
+-12.82
+ 30
+29.48
+ 11
+12.96
+ 21
+-12.96
+ 31
+29.82
+  0
+LINE
+  5
+C213
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.96
+ 20
+-12.96
+ 30
+29.82
+ 11
+12.82
+ 21
+-13.83
+ 31
+29.48
+  0
+LINE
+  5
+C214
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.96
+ 20
+-12.96
+ 30
+29.82
+ 11
+13.83
+ 21
+-12.82
+ 31
+29.48
+  0
+LINE
+  5
+C215
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.82
+ 20
+-13.83
+ 30
+29.48
+ 11
+12.96
+ 21
+-12.96
+ 31
+29.82
+  0
+LINE
+  5
+C216
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.35
+ 20
+-15.36
+ 30
+28.47
+ 11
+14.19
+ 21
+-15.2
+ 31
+28.15
+  0
+LINE
+  5
+C217
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.35
+ 20
+-15.36
+ 30
+28.47
+ 11
+14.19
+ 21
+-15.2
+ 31
+28.15
+  0
+LINE
+  5
+C218
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.52
+ 20
+-14.52
+ 30
+28.83
+ 11
+13.35
+ 21
+-15.36
+ 31
+28.47
+  0
+LINE
+  5
+C219
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.36
+ 20
+-14.36
+ 30
+28.51
+ 11
+14.19
+ 21
+-15.2
+ 31
+28.15
+  0
+LINE
+  5
+C21A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.35
+ 20
+-15.36
+ 30
+28.47
+ 11
+13.52
+ 21
+-14.52
+ 31
+28.83
+  0
+LINE
+  5
+C21B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.52
+ 20
+-14.52
+ 30
+28.83
+ 11
+13.35
+ 21
+-15.36
+ 31
+28.47
+  0
+LINE
+  5
+C21C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.19
+ 20
+-15.2
+ 30
+28.15
+ 11
+14.36
+ 21
+-14.36
+ 31
+28.51
+  0
+LINE
+  5
+C21D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.36
+ 20
+-14.36
+ 30
+28.51
+ 11
+14.19
+ 21
+-15.2
+ 31
+28.15
+  0
+LINE
+  5
+C21E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.2
+ 20
+-14.19
+ 30
+28.15
+ 11
+14.36
+ 21
+-14.36
+ 31
+28.51
+  0
+LINE
+  5
+C21F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.19
+ 20
+-15.2
+ 30
+28.15
+ 11
+15.02
+ 21
+-15.02
+ 31
+27.82
+  0
+LINE
+  5
+C220
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.36
+ 20
+-13.35
+ 30
+28.47
+ 11
+14.52
+ 21
+-13.52
+ 31
+28.83
+  0
+LINE
+  5
+C221
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.52
+ 20
+-13.52
+ 30
+28.83
+ 11
+15.36
+ 21
+-13.35
+ 31
+28.47
+  0
+LINE
+  5
+C222
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.2
+ 20
+-14.19
+ 30
+28.15
+ 11
+14.36
+ 21
+-14.36
+ 31
+28.51
+  0
+LINE
+  5
+C223
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.19
+ 20
+-15.2
+ 30
+28.15
+ 11
+15.02
+ 21
+-15.02
+ 31
+27.82
+  0
+LINE
+  5
+C224
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.2
+ 20
+-14.19
+ 30
+28.15
+ 11
+14.36
+ 21
+-14.36
+ 31
+28.51
+  0
+LINE
+  5
+C225
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.97
+ 20
+-11.96
+ 30
+29.78
+ 11
+13.83
+ 21
+-12.82
+ 31
+29.48
+  0
+LINE
+  5
+C226
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.82
+ 20
+-11.82
+ 30
+29.42
+ 11
+14.68
+ 21
+-12.67
+ 31
+29.13
+  0
+LINE
+  5
+C227
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.36
+ 20
+-13.35
+ 30
+28.47
+ 11
+15.53
+ 21
+-12.51
+ 31
+28.77
+  0
+LINE
+  5
+C228
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.68
+ 20
+-12.67
+ 30
+29.13
+ 11
+14.82
+ 21
+-11.82
+ 31
+29.42
+  0
+LINE
+  5
+C229
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.53
+ 20
+-12.51
+ 30
+28.77
+ 11
+14.68
+ 21
+-12.67
+ 31
+29.13
+  0
+LINE
+  5
+C22A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.83
+ 20
+-12.82
+ 30
+29.48
+ 11
+13.97
+ 21
+-11.96
+ 31
+29.78
+  0
+LINE
+  5
+C22B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.82
+ 20
+-11.82
+ 30
+29.42
+ 11
+14.68
+ 21
+-12.67
+ 31
+29.13
+  0
+LINE
+  5
+C22C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.96
+ 20
+-12.96
+ 30
+29.82
+ 11
+13.09
+ 21
+-12.1
+ 31
+30.12
+  0
+LINE
+  5
+C22D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.97
+ 20
+-11.96
+ 30
+29.78
+ 11
+13.83
+ 21
+-12.82
+ 31
+29.48
+  0
+LINE
+  5
+C22E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.68
+ 20
+-12.67
+ 30
+29.13
+ 11
+15.53
+ 21
+-12.51
+ 31
+28.77
+  0
+LINE
+  5
+C22F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.53
+ 20
+-12.51
+ 30
+28.77
+ 11
+15.36
+ 21
+-13.35
+ 31
+28.47
+  0
+LINE
+  5
+C230
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.96
+ 20
+-13.97
+ 30
+29.78
+ 11
+12.1
+ 21
+-13.09
+ 31
+30.12
+  0
+LINE
+  5
+C231
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.1
+ 20
+-14.1
+ 30
+30.06
+ 11
+11.96
+ 21
+-13.97
+ 31
+29.78
+  0
+LINE
+  5
+C232
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.82
+ 20
+-14.82
+ 30
+29.42
+ 11
+10.95
+ 21
+-14.96
+ 31
+29.68
+  0
+LINE
+  5
+C233
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.67
+ 20
+-14.68
+ 30
+29.13
+ 11
+11.82
+ 21
+-14.82
+ 31
+29.42
+  0
+LINE
+  5
+C234
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.66
+ 20
+-15.68
+ 30
+29.04
+ 11
+12.51
+ 21
+-15.53
+ 31
+28.77
+  0
+LINE
+  5
+C235
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.81
+ 20
+-15.81
+ 30
+29.3
+ 11
+11.66
+ 21
+-15.68
+ 31
+29.04
+  0
+LINE
+  5
+C236
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.67
+ 20
+-14.68
+ 30
+29.13
+ 11
+11.82
+ 21
+-14.82
+ 31
+29.42
+  0
+LINE
+  5
+C237
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.82
+ 20
+-14.82
+ 30
+29.42
+ 11
+10.95
+ 21
+-14.96
+ 31
+29.68
+  0
+LINE
+  5
+C238
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.95
+ 20
+-14.96
+ 30
+29.68
+ 11
+10.81
+ 21
+-15.81
+ 31
+29.3
+  0
+LINE
+  5
+C239
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.95
+ 20
+-14.96
+ 30
+29.68
+ 11
+11.82
+ 21
+-14.82
+ 31
+29.42
+  0
+LINE
+  5
+C23A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.81
+ 20
+-15.81
+ 30
+29.3
+ 11
+10.95
+ 21
+-14.96
+ 31
+29.68
+  0
+LINE
+  5
+C23B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.66
+ 20
+-15.68
+ 30
+29.04
+ 11
+10.81
+ 21
+-15.81
+ 31
+29.3
+  0
+LINE
+  5
+C23C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.82
+ 20
+-14.82
+ 30
+29.42
+ 11
+11.66
+ 21
+-15.68
+ 31
+29.04
+  0
+LINE
+  5
+C23D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.67
+ 20
+-14.68
+ 30
+29.13
+ 11
+12.51
+ 21
+-15.53
+ 31
+28.77
+  0
+LINE
+  5
+C23E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.82
+ 20
+-14.82
+ 30
+29.42
+ 11
+12.67
+ 21
+-14.68
+ 31
+29.13
+  0
+LINE
+  5
+C23F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.66
+ 20
+-15.68
+ 30
+29.04
+ 11
+11.82
+ 21
+-14.82
+ 31
+29.42
+  0
+LINE
+  5
+C240
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.51
+ 20
+-15.53
+ 30
+28.77
+ 11
+11.66
+ 21
+-15.68
+ 31
+29.04
+  0
+LINE
+  5
+C241
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.67
+ 20
+-14.68
+ 30
+29.13
+ 11
+12.51
+ 21
+-15.53
+ 31
+28.77
+  0
+LINE
+  5
+C242
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.82
+ 20
+-14.82
+ 30
+29.42
+ 11
+11.96
+ 21
+-13.97
+ 31
+29.78
+  0
+LINE
+  5
+C243
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.95
+ 20
+-14.96
+ 30
+29.68
+ 11
+11.1
+ 21
+-14.1
+ 31
+30.06
+  0
+LINE
+  5
+C244
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.96
+ 20
+-13.97
+ 30
+29.78
+ 11
+11.82
+ 21
+-14.82
+ 31
+29.42
+  0
+LINE
+  5
+C245
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.09
+ 20
+-15.08
+ 30
+29.92
+ 11
+9.23
+ 21
+-15.19
+ 31
+30.15
+  0
+LINE
+  5
+C246
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+9.1
+ 20
+-16.05
+ 30
+29.74
+ 11
+9.96
+ 21
+-15.94
+ 31
+29.52
+  0
+LINE
+  5
+C247
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+9.96
+ 20
+-15.94
+ 30
+29.52
+ 11
+10.09
+ 21
+-15.08
+ 31
+29.92
+  0
+LINE
+  5
+C248
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.95
+ 20
+-14.96
+ 30
+29.68
+ 11
+10.09
+ 21
+-15.08
+ 31
+29.92
+  0
+LINE
+  5
+C249
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+9.96
+ 20
+-15.94
+ 30
+29.52
+ 11
+10.81
+ 21
+-15.81
+ 31
+29.3
+  0
+LINE
+  5
+C24A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.09
+ 20
+-15.08
+ 30
+29.92
+ 11
+10.95
+ 21
+-14.96
+ 31
+29.68
+  0
+LINE
+  5
+C24B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+10.81
+ 20
+-15.81
+ 30
+29.3
+ 11
+9.96
+ 21
+-15.94
+ 31
+29.52
+  0
+LINE
+  5
+C24C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.52
+ 20
+-14.52
+ 30
+28.83
+ 11
+12.67
+ 21
+-14.68
+ 31
+29.13
+  0
+LINE
+  5
+C24D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.51
+ 20
+-15.53
+ 30
+28.77
+ 11
+13.35
+ 21
+-15.36
+ 31
+28.47
+  0
+LINE
+  5
+C24E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.82
+ 20
+-13.83
+ 30
+29.48
+ 11
+11.96
+ 21
+-13.97
+ 31
+29.78
+  0
+LINE
+  5
+C24F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.1
+ 20
+-13.09
+ 30
+30.12
+ 11
+12.96
+ 21
+-12.96
+ 31
+29.82
+  0
+LINE
+  5
+C250
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.67
+ 20
+-14.68
+ 30
+29.13
+ 11
+12.82
+ 21
+-13.83
+ 31
+29.48
+  0
+LINE
+  5
+C251
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.52
+ 20
+-14.52
+ 30
+28.83
+ 11
+12.67
+ 21
+-14.68
+ 31
+29.13
+  0
+LINE
+  5
+C252
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+11.96
+ 20
+-13.97
+ 30
+29.78
+ 11
+12.82
+ 21
+-13.83
+ 31
+29.48
+  0
+LINE
+  5
+C253
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.82
+ 20
+-13.83
+ 30
+29.48
+ 11
+12.67
+ 21
+-14.68
+ 31
+29.13
+  0
+LINE
+  5
+C254
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+12.51
+ 20
+-15.53
+ 30
+28.77
+ 11
+13.35
+ 21
+-15.36
+ 31
+28.47
+  0
+LINE
+  5
+C255
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+13.52
+ 20
+-14.52
+ 30
+28.83
+ 11
+12.67
+ 21
+-14.68
+ 31
+29.13
+  0
+LINE
+  5
+C256
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.42
+ 20
+-8.47
+ 30
+30.75
+ 11
+14.32
+ 21
+-9.35
+ 31
+30.54
+  0
+LINE
+  5
+C257
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.29
+ 20
+-8.35
+ 30
+30.35
+ 11
+15.19
+ 21
+-9.23
+ 31
+30.15
+  0
+LINE
+  5
+C258
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.05
+ 20
+-9.1
+ 30
+29.74
+ 11
+16.15
+ 21
+-8.25
+ 31
+29.93
+  0
+LINE
+  5
+C259
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+2.21
+ 20
+-15.71
+ 30
+31.19
+ 11
+1.33
+ 21
+-15.74
+ 31
+31.24
+  0
+LINE
+  5
+C25A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+3.09
+ 20
+-15.69
+ 30
+31.14
+ 11
+2.21
+ 21
+-15.71
+ 31
+31.19
+  0
+LINE
+  5
+C25B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+3.98
+ 20
+-15.65
+ 30
+31.06
+ 11
+3.09
+ 21
+-15.69
+ 31
+31.14
+  0
+LINE
+  5
+C25C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+4.85
+ 20
+-15.6
+ 30
+30.95
+ 11
+3.98
+ 21
+-15.65
+ 31
+31.06
+  0
+LINE
+  5
+C25D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+5.74
+ 20
+-15.53
+ 30
+30.84
+ 11
+4.85
+ 21
+-15.6
+ 31
+30.95
+  0
+LINE
+  5
+C25E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+6.61
+ 20
+-15.47
+ 30
+30.69
+ 11
+5.74
+ 21
+-15.53
+ 31
+30.84
+  0
+LINE
+  5
+C25F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+7.48
+ 20
+-15.38
+ 30
+30.53
+ 11
+6.61
+ 21
+-15.47
+ 31
+30.69
+  0
+LINE
+  5
+C260
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+8.35
+ 20
+-15.29
+ 30
+30.35
+ 11
+7.48
+ 21
+-15.38
+ 31
+30.53
+  0
+LINE
+  5
+C261
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+7.38
+ 20
+-16.25
+ 30
+30.1
+ 11
+8.25
+ 21
+-16.15
+ 31
+29.93
+  0
+LINE
+  5
+C262
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+6.52
+ 20
+-16.33
+ 30
+30.26
+ 11
+7.38
+ 21
+-16.25
+ 31
+30.1
+  0
+LINE
+  5
+C263
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+5.66
+ 20
+-16.41
+ 30
+30.4
+ 11
+6.52
+ 21
+-16.33
+ 31
+30.26
+  0
+LINE
+  5
+C264
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+4.78
+ 20
+-16.47
+ 30
+30.51
+ 11
+5.66
+ 21
+-16.41
+ 31
+30.4
+  0
+LINE
+  5
+C265
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+3.91
+ 20
+-16.52
+ 30
+30.6
+ 11
+4.78
+ 21
+-16.47
+ 31
+30.51
+  0
+LINE
+  5
+C266
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+3.04
+ 20
+-16.56
+ 30
+30.68
+ 11
+3.91
+ 21
+-16.52
+ 31
+30.6
+  0
+LINE
+  5
+C267
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+2.18
+ 20
+-16.6
+ 30
+30.74
+ 11
+3.04
+ 21
+-16.56
+ 31
+30.68
+  0
+LINE
+  5
+C268
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+1.31
+ 20
+-16.61
+ 30
+30.78
+ 11
+2.18
+ 21
+-16.6
+ 31
+30.74
+  0
+LINE
+  5
+C269
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+9.23
+ 20
+-15.19
+ 30
+30.15
+ 11
+8.35
+ 21
+-15.29
+ 31
+30.35
+  0
+LINE
+  5
+C26A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+8.25
+ 20
+-16.15
+ 30
+29.93
+ 11
+9.1
+ 21
+-16.05
+ 31
+29.74
+  0
+LINE
+  5
+C26B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+14.85
+ 20
+-0.44
+ 30
+31.68
+ 11
+14.85
+ 21
+-1.34
+ 31
+31.67
+  0
+LINE
+  5
+C26C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+15.75
+ 20
+-0.44
+ 30
+31.25
+ 11
+15.74
+ 21
+-1.33
+ 31
+31.24
+  0
+LINE
+  5
+C26D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+16.61
+ 20
+-1.31
+ 30
+30.78
+ 11
+16.62
+ 21
+-0.44
+ 31
+30.79
+  0
+LINE
+  5
+C26E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-5.74
+ 20
+-15.53
+ 30
+30.84
+ 11
+-6.61
+ 21
+-15.47
+ 31
+30.69
+  0
+LINE
+  5
+C26F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-4.85
+ 20
+-15.6
+ 30
+30.95
+ 11
+-5.74
+ 21
+-15.53
+ 31
+30.84
+  0
+LINE
+  5
+C270
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-3.98
+ 20
+-15.65
+ 30
+31.06
+ 11
+-4.85
+ 21
+-15.6
+ 31
+30.95
+  0
+LINE
+  5
+C271
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-3.09
+ 20
+-15.69
+ 30
+31.14
+ 11
+-3.98
+ 21
+-15.65
+ 31
+31.06
+  0
+LINE
+  5
+C272
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-2.21
+ 20
+-15.71
+ 30
+31.19
+ 11
+-3.09
+ 21
+-15.69
+ 31
+31.14
+  0
+LINE
+  5
+C273
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-1.33
+ 20
+-15.74
+ 30
+31.24
+ 11
+-2.21
+ 21
+-15.71
+ 31
+31.19
+  0
+LINE
+  5
+C274
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-0.44
+ 20
+-15.75
+ 30
+31.25
+ 11
+-1.33
+ 21
+-15.74
+ 31
+31.24
+  0
+LINE
+  5
+C275
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+0.44
+ 20
+-15.75
+ 30
+31.25
+ 11
+-0.44
+ 21
+-15.75
+ 31
+31.25
+  0
+LINE
+  5
+C276
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-0.44
+ 20
+-16.62
+ 30
+30.79
+ 11
+0.44
+ 21
+-16.62
+ 31
+30.79
+  0
+LINE
+  5
+C277
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-1.31
+ 20
+-16.61
+ 30
+30.78
+ 11
+-0.44
+ 21
+-16.62
+ 31
+30.79
+  0
+LINE
+  5
+C278
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-2.18
+ 20
+-16.6
+ 30
+30.74
+ 11
+-1.31
+ 21
+-16.61
+ 31
+30.78
+  0
+LINE
+  5
+C279
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-3.04
+ 20
+-16.56
+ 30
+30.68
+ 11
+-2.18
+ 21
+-16.6
+ 31
+30.74
+  0
+LINE
+  5
+C27A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-3.91
+ 20
+-16.52
+ 30
+30.6
+ 11
+-3.04
+ 21
+-16.56
+ 31
+30.68
+  0
+LINE
+  5
+C27B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-4.78
+ 20
+-16.47
+ 30
+30.51
+ 11
+-3.91
+ 21
+-16.52
+ 31
+30.6
+  0
+LINE
+  5
+C27C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-5.66
+ 20
+-16.41
+ 30
+30.4
+ 11
+-4.78
+ 21
+-16.47
+ 31
+30.51
+  0
+LINE
+  5
+C27D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-6.52
+ 20
+-16.33
+ 30
+30.26
+ 11
+-5.66
+ 21
+-16.41
+ 31
+30.4
+  0
+LINE
+  5
+C27E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-14.36
+ 20
+-14.36
+ 30
+28.51
+ 11
+-15.2
+ 21
+-14.19
+ 31
+28.15
+  0
+LINE
+  5
+C27F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-13.52
+ 20
+-14.52
+ 30
+28.83
+ 11
+-14.36
+ 21
+-14.36
+ 31
+28.51
+  0
+LINE
+  5
+C280
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-12.67
+ 20
+-14.68
+ 30
+29.13
+ 11
+-13.52
+ 21
+-14.52
+ 31
+28.83
+  0
+LINE
+  5
+C281
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-11.82
+ 20
+-14.82
+ 30
+29.42
+ 11
+-12.67
+ 21
+-14.68
+ 31
+29.13
+  0
+LINE
+  5
+C282
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-10.95
+ 20
+-14.96
+ 30
+29.68
+ 11
+-11.82
+ 21
+-14.82
+ 31
+29.42
+  0
+LINE
+  5
+C283
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-10.09
+ 20
+-15.08
+ 30
+29.92
+ 11
+-10.95
+ 21
+-14.96
+ 31
+29.68
+  0
+LINE
+  5
+C284
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-9.23
+ 20
+-15.19
+ 30
+30.15
+ 11
+-10.09
+ 21
+-15.08
+ 31
+29.92
+  0
+LINE
+  5
+C285
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-8.35
+ 20
+-15.29
+ 30
+30.35
+ 11
+-9.23
+ 21
+-15.19
+ 31
+30.15
+  0
+LINE
+  5
+C286
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-7.48
+ 20
+-15.38
+ 30
+30.53
+ 11
+-8.35
+ 21
+-15.29
+ 31
+30.35
+  0
+LINE
+  5
+C287
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-8.25
+ 20
+-16.15
+ 30
+29.93
+ 11
+-7.38
+ 21
+-16.25
+ 31
+30.1
+  0
+LINE
+  5
+C288
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-9.1
+ 20
+-16.05
+ 30
+29.74
+ 11
+-8.25
+ 21
+-16.15
+ 31
+29.93
+  0
+LINE
+  5
+C289
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-9.96
+ 20
+-15.94
+ 30
+29.52
+ 11
+-9.1
+ 21
+-16.05
+ 31
+29.74
+  0
+LINE
+  5
+C28A
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-10.81
+ 20
+-15.81
+ 30
+29.3
+ 11
+-9.96
+ 21
+-15.94
+ 31
+29.52
+  0
+LINE
+  5
+C28B
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-11.66
+ 20
+-15.68
+ 30
+29.04
+ 11
+-10.81
+ 21
+-15.81
+ 31
+29.3
+  0
+LINE
+  5
+C28C
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-12.51
+ 20
+-15.53
+ 30
+28.77
+ 11
+-11.66
+ 21
+-15.68
+ 31
+29.04
+  0
+LINE
+  5
+C28D
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-13.35
+ 20
+-15.36
+ 30
+28.47
+ 11
+-12.51
+ 21
+-15.53
+ 31
+28.77
+  0
+LINE
+  5
+C28E
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-14.19
+ 20
+-15.2
+ 30
+28.15
+ 11
+-13.35
+ 21
+-15.36
+ 31
+28.47
+  0
+LINE
+  5
+C28F
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-15.02
+ 20
+-15.02
+ 30
+27.82
+ 11
+-14.19
+ 21
+-15.2
+ 31
+28.15
+  0
+LINE
+  5
+C290
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-6.61
+ 20
+-15.47
+ 30
+30.69
+ 11
+-7.48
+ 21
+-15.38
+ 31
+30.53
+  0
+LINE
+  5
+C291
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+-7.38
+ 20
+-16.25
+ 30
+30.1
+ 11
+-6.52
+ 21
+-16.33
+ 31
+30.26
+  0
+LINE
+  5
+C292
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+1.33
+ 20
+-15.74
+ 30
+31.24
+ 11
+0.44
+ 21
+-15.75
+ 31
+31.25
+  0
+LINE
+  5
+C293
+330
+1F
+100
+AcDbEntity
+  8
+Polylines
+100
+AcDbLine
+ 10
+0.44
+ 20
+-16.62
+ 30
+30.79
+ 11
+1.31
+ 21
+-16.61
+ 31
+30.78
+  0
+3DFACE
+  5
+C2DD
+330
+1F
+100
+AcDbEntity
+  8
+working - concrete bases
+ 48
+100.0
+100
+AcDbFace
+ 10
+-0.317927
+ 20
+1.535848
+ 30
+10.0
+ 11
+0.0
+ 21
+0.0
+ 31
+10.0
+ 12
+1.036349
+ 22
+0.892871
+ 32
+10.0
+ 13
+0.386892
+ 23
+2.949099
+ 33
+10.0
+  0
+3DFACE
+  5
+C342
+330
+1F
+100
+AcDbEntity
+  8
+working - concrete bases
+ 48
+100.0
+100
+AcDbFace
+ 10
+1.036349
+ 20
+0.892871
+ 30
+10.0
+ 11
+0.386892
+ 21
+2.949099
+ 31
+10.0
+ 12
+0.90453
+ 22
+2.949099
+ 32
+10.0
+ 13
+1.747324
+ 23
+1.46265
+ 33
+10.0
+  0
+LINE
+  5
+C3D9
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
   6
 Continuous
  48
 250.0
 100
-AcDbText
+AcDbLine
  10
-62109.665611
+13.96045
  20
-51785.700461
+-13.96045
  30
-61236.377156
- 40
-3.307316
-  1
-Основания для КЭ
- 51
-15.0
-  7
-AltoTextC
+28.900029
+ 11
+14.101966
+ 21
+-13.187272
+ 31
+29.192986
+  0
+LINE
+  5
+C3DA
+330
+1F
 100
-AcDbText
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.101966
+ 20
+-13.187272
+ 30
+29.192986
+ 11
+14.234894
+ 21
+-12.409472
+ 31
+29.468166
+  0
+LINE
+  5
+C3DB
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.234894
+ 20
+-12.409472
+ 30
+29.468166
+ 11
+14.359276
+ 21
+-11.627416
+ 31
+29.725652
+  0
+LINE
+  5
+C3DC
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.359276
+ 20
+-11.627416
+ 30
+29.725652
+ 11
+14.47515
+ 21
+-10.841454
+ 31
+29.965528
+  0
+LINE
+  5
+C3DD
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.47515
+ 20
+-10.841454
+ 30
+29.965528
+ 11
+14.582558
+ 21
+-10.051923
+ 31
+30.187876
+  0
+LINE
+  5
+C3DE
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.582558
+ 20
+-10.051923
+ 30
+30.187876
+ 11
+14.681536
+ 21
+-9.259144
+ 31
+30.392775
+  0
+LINE
+  5
+C3DF
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.681536
+ 20
+-9.259144
+ 30
+30.392775
+ 11
+14.772123
+ 21
+-8.463427
+ 31
+30.580301
+  0
+LINE
+  5
+C3E0
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.772123
+ 20
+-8.463427
+ 30
+30.580301
+ 11
+14.854352
+ 21
+-7.665067
+ 31
+30.750528
+  0
+LINE
+  5
+C3E1
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.854352
+ 20
+-7.665067
+ 30
+30.750528
+ 11
+14.928259
+ 21
+-6.864351
+ 31
+30.903524
+  0
+LINE
+  5
+C3E2
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.928259
+ 20
+-6.864351
+ 30
+30.903524
+ 11
+14.993872
+ 21
+-6.061554
+ 31
+31.039352
+  0
+LINE
+  5
+C3E3
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.993872
+ 20
+-6.061554
+ 30
+31.039352
+ 11
+15.05122
+ 21
+-5.256942
+ 31
+31.158071
+  0
+LINE
+  5
+C3E4
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.05122
+ 20
+-5.256942
+ 30
+31.158071
+ 11
+15.100328
+ 21
+-4.450774
+ 31
+31.25973
+  0
+LINE
+  5
+C3E5
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.100328
+ 20
+-4.450774
+ 30
+31.25973
+ 11
+15.141217
+ 21
+-3.6433
+ 31
+31.344376
+  0
+LINE
+  5
+C3E6
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.141217
+ 20
+-3.6433
+ 30
+31.344376
+ 11
+15.173906
+ 21
+-2.834767
+ 31
+31.412047
+  0
+LINE
+  5
+C3E7
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.173906
+ 20
+-2.834767
+ 30
+31.412047
+ 11
+15.198409
+ 21
+-2.025416
+ 31
+31.462773
+  0
+LINE
+  5
+C3E8
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.198409
+ 20
+-2.025416
+ 30
+31.462773
+ 11
+15.214739
+ 21
+-1.215481
+ 31
+31.496577
+  0
+LINE
+  5
+C3E9
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.214739
+ 20
+-1.215481
+ 30
+31.496577
+ 11
+15.222902
+ 21
+-0.405199
+ 31
+31.513475
+  0
+LINE
+  5
+C3EA
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.222902
+ 20
+-0.405199
+ 30
+31.513475
+ 11
+15.222902
+ 21
+0.4052
+ 31
+31.513475
+  0
+LINE
+  5
+C3EB
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.222902
+ 20
+0.4052
+ 30
+31.513475
+ 11
+15.214739
+ 21
+1.215482
+ 31
+31.496577
+  0
+LINE
+  5
+C3EC
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.214739
+ 20
+1.215482
+ 30
+31.496577
+ 11
+15.198409
+ 21
+2.025416
+ 31
+31.462773
+  0
+LINE
+  5
+C3ED
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.198409
+ 20
+2.025416
+ 30
+31.462773
+ 11
+15.173906
+ 21
+2.834768
+ 31
+31.412047
+  0
+LINE
+  5
+C3EE
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.173906
+ 20
+2.834768
+ 30
+31.412047
+ 11
+15.141217
+ 21
+3.643301
+ 31
+31.344376
+  0
+LINE
+  5
+C3EF
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.141217
+ 20
+3.643301
+ 30
+31.344376
+ 11
+15.100328
+ 21
+4.450774
+ 31
+31.25973
+  0
+LINE
+  5
+C3F0
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.100328
+ 20
+4.450774
+ 30
+31.25973
+ 11
+15.05122
+ 21
+5.256942
+ 31
+31.158071
+  0
+LINE
+  5
+C3F1
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+15.05122
+ 20
+5.256942
+ 30
+31.158071
+ 11
+14.993872
+ 21
+6.061554
+ 31
+31.039352
+  0
+LINE
+  5
+C3F2
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.993872
+ 20
+6.061554
+ 30
+31.039352
+ 11
+14.928259
+ 21
+6.864352
+ 31
+30.903524
+  0
+LINE
+  5
+C3F3
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.928259
+ 20
+6.864352
+ 30
+30.903524
+ 11
+14.854352
+ 21
+7.665068
+ 31
+30.750528
+  0
+LINE
+  5
+C3F4
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.854352
+ 20
+7.665068
+ 30
+30.750528
+ 11
+14.772123
+ 21
+8.463428
+ 31
+30.580301
+  0
+LINE
+  5
+C3F5
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.772123
+ 20
+8.463428
+ 30
+30.580301
+ 11
+14.681536
+ 21
+9.259145
+ 31
+30.392775
+  0
+LINE
+  5
+C3F6
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.681536
+ 20
+9.259145
+ 30
+30.392775
+ 11
+14.582558
+ 21
+10.051924
+ 31
+30.187876
+  0
+LINE
+  5
+C3F7
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.582558
+ 20
+10.051924
+ 30
+30.187876
+ 11
+14.47515
+ 21
+10.841455
+ 31
+29.965528
+  0
+LINE
+  5
+C3F8
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.47515
+ 20
+10.841455
+ 30
+29.965528
+ 11
+14.359276
+ 21
+11.627417
+ 31
+29.725652
+  0
+LINE
+  5
+C3F9
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.359276
+ 20
+11.627417
+ 30
+29.725652
+ 11
+14.234894
+ 21
+12.409473
+ 31
+29.468166
+  0
+LINE
+  5
+C3FA
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.234894
+ 20
+12.409473
+ 30
+29.468166
+ 11
+14.101966
+ 21
+13.187273
+ 31
+29.192986
+  0
+LINE
+  5
+C3FB
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.101966
+ 20
+13.187273
+ 30
+29.192986
+ 11
+13.96045
+ 21
+13.96045
+ 31
+28.900029
+  0
+LINE
+  5
+C3FC
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.187273
+ 20
+14.101966
+ 30
+29.192986
+ 11
+13.323717
+ 21
+13.323717
+ 31
+29.495036
+  0
+LINE
+  5
+C3FD
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.323717
+ 20
+13.323717
+ 30
+29.495036
+ 11
+13.45196
+ 21
+12.54034
+ 31
+29.77893
+  0
+LINE
+  5
+C3FE
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.45196
+ 20
+12.54034
+ 30
+29.77893
+ 11
+13.572026
+ 21
+11.752224
+ 31
+30.044723
+  0
+LINE
+  5
+C3FF
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.572026
+ 20
+11.752224
+ 30
+30.044723
+ 11
+13.683941
+ 21
+10.959742
+ 31
+30.292472
+  0
+LINE
+  5
+C400
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.683941
+ 20
+10.959742
+ 30
+30.292472
+ 11
+13.78773
+ 21
+10.163258
+ 31
+30.522233
+  0
+LINE
+  5
+C401
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.78773
+ 20
+10.163258
+ 30
+30.522233
+ 11
+13.88342
+ 21
+9.363119
+ 31
+30.734064
+  0
+LINE
+  5
+C402
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.88342
+ 20
+9.363119
+ 30
+30.734064
+ 11
+13.971035
+ 21
+8.559662
+ 31
+30.928019
+  0
+LINE
+  5
+C403
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.971035
+ 20
+8.559662
+ 30
+30.928019
+ 11
+14.0506
+ 21
+7.753215
+ 31
+31.104153
+  0
+LINE
+  5
+C404
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.0506
+ 20
+7.753215
+ 30
+31.104153
+ 11
+14.122136
+ 21
+6.944092
+ 31
+31.262516
+  0
+LINE
+  5
+C405
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.122136
+ 20
+6.944092
+ 30
+31.262516
+ 11
+14.185667
+ 21
+6.1326
+ 31
+31.403154
+  0
+LINE
+  5
+C406
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.185667
+ 20
+6.1326
+ 30
+31.403154
+ 11
+14.24121
+ 21
+5.319038
+ 31
+31.526113
+  0
+LINE
+  5
+C407
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.24121
+ 20
+5.319038
+ 30
+31.526113
+ 11
+14.288785
+ 21
+4.503697
+ 31
+31.63143
+  0
+LINE
+  5
+C408
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.288785
+ 20
+4.503697
+ 30
+31.63143
+ 11
+14.328406
+ 21
+3.686862
+ 31
+31.71914
+  0
+LINE
+  5
+C409
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.328406
+ 20
+3.686862
+ 30
+31.71914
+ 11
+14.360087
+ 21
+2.868811
+ 31
+31.789273
+  0
+LINE
+  5
+C40A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.360087
+ 20
+2.868811
+ 30
+31.789273
+ 11
+14.383838
+ 21
+2.04982
+ 31
+31.841851
+  0
+LINE
+  5
+C40B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.383838
+ 20
+2.04982
+ 30
+31.841851
+ 11
+14.399667
+ 21
+1.230159
+ 31
+31.876893
+  0
+LINE
+  5
+C40C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.399667
+ 20
+1.230159
+ 30
+31.876893
+ 11
+14.407581
+ 21
+0.410098
+ 31
+31.894411
+  0
+LINE
+  5
+C40D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.407581
+ 20
+0.410098
+ 30
+31.894411
+ 11
+14.407581
+ 21
+-0.410097
+ 31
+31.894411
+  0
+LINE
+  5
+C40E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.407581
+ 20
+-0.410097
+ 30
+31.894411
+ 11
+14.399667
+ 21
+-1.230158
+ 31
+31.876893
+  0
+LINE
+  5
+C40F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.399667
+ 20
+-1.230158
+ 30
+31.876893
+ 11
+14.383838
+ 21
+-2.049819
+ 31
+31.841851
+  0
+LINE
+  5
+C410
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.383838
+ 20
+-2.049819
+ 30
+31.841851
+ 11
+14.360087
+ 21
+-2.86881
+ 31
+31.789273
+  0
+LINE
+  5
+C411
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.360087
+ 20
+-2.86881
+ 30
+31.789273
+ 11
+14.328406
+ 21
+-3.686861
+ 31
+31.71914
+  0
+LINE
+  5
+C412
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.328406
+ 20
+-3.686861
+ 30
+31.71914
+ 11
+14.288785
+ 21
+-4.503696
+ 31
+31.63143
+  0
+LINE
+  5
+C413
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.288785
+ 20
+-4.503696
+ 30
+31.63143
+ 11
+14.24121
+ 21
+-5.319037
+ 31
+31.526113
+  0
+LINE
+  5
+C414
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.24121
+ 20
+-5.319037
+ 30
+31.526113
+ 11
+14.185667
+ 21
+-6.132599
+ 31
+31.403154
+  0
+LINE
+  5
+C415
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.185667
+ 20
+-6.132599
+ 30
+31.403154
+ 11
+14.122136
+ 21
+-6.944091
+ 31
+31.262516
+  0
+LINE
+  5
+C416
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.122136
+ 20
+-6.944091
+ 30
+31.262516
+ 11
+14.0506
+ 21
+-7.753214
+ 31
+31.104153
+  0
+LINE
+  5
+C417
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.0506
+ 20
+-7.753214
+ 30
+31.104153
+ 11
+13.971035
+ 21
+-8.559662
+ 31
+30.928019
+  0
+LINE
+  5
+C418
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.971035
+ 20
+-8.559662
+ 30
+30.928019
+ 11
+13.88342
+ 21
+-9.363118
+ 31
+30.734064
+  0
+LINE
+  5
+C419
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.88342
+ 20
+-9.363118
+ 30
+30.734064
+ 11
+13.78773
+ 21
+-10.163257
+ 31
+30.522233
+  0
+LINE
+  5
+C41A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.78773
+ 20
+-10.163257
+ 30
+30.522233
+ 11
+13.683941
+ 21
+-10.959742
+ 31
+30.292472
+  0
+LINE
+  5
+C41B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.683941
+ 20
+-10.959742
+ 30
+30.292472
+ 11
+13.572026
+ 21
+-11.752223
+ 31
+30.044723
+  0
+LINE
+  5
+C41C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.572026
+ 20
+-11.752223
+ 30
+30.044723
+ 11
+13.45196
+ 21
+-12.54034
+ 31
+29.77893
+  0
+LINE
+  5
+C41D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.45196
+ 20
+-12.54034
+ 30
+29.77893
+ 11
+13.323717
+ 21
+-13.323717
+ 31
+29.495036
+  0
+LINE
+  5
+C41E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.323717
+ 20
+-13.323717
+ 30
+29.495036
+ 11
+13.187273
+ 21
+-14.101965
+ 31
+29.192986
+  0
+LINE
+  5
+C41F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.409473
+ 20
+14.234894
+ 30
+29.468166
+ 11
+12.54034
+ 21
+13.45196
+ 31
+29.77893
+  0
+LINE
+  5
+C420
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.54034
+ 20
+13.45196
+ 30
+29.77893
+ 11
+12.663412
+ 21
+12.663412
+ 31
+30.071182
+  0
+LINE
+  5
+C421
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.663412
+ 20
+12.663412
+ 30
+30.071182
+ 11
+12.7787
+ 21
+11.86966
+ 31
+30.344951
+  0
+LINE
+  5
+C422
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.7787
+ 20
+11.86966
+ 30
+30.344951
+ 11
+12.886216
+ 21
+11.071101
+ 31
+30.600264
+  0
+LINE
+  5
+C423
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.886216
+ 20
+11.071101
+ 30
+30.600264
+ 11
+12.985975
+ 21
+10.268121
+ 31
+30.837156
+  0
+LINE
+  5
+C424
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.985975
+ 20
+10.268121
+ 30
+30.837156
+ 11
+13.077989
+ 21
+9.461093
+ 31
+31.055659
+  0
+LINE
+  5
+C425
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.077989
+ 20
+9.461093
+ 30
+31.055659
+ 11
+13.162275
+ 21
+8.650381
+ 31
+31.255807
+  0
+LINE
+  5
+C426
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.162275
+ 20
+8.650381
+ 30
+31.255807
+ 11
+13.238844
+ 21
+7.83634
+ 31
+31.437633
+  0
+LINE
+  5
+C427
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.238844
+ 20
+7.83634
+ 30
+31.437633
+ 11
+13.307713
+ 21
+7.019314
+ 31
+31.601171
+  0
+LINE
+  5
+C428
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.307713
+ 20
+7.019314
+ 30
+31.601171
+ 11
+13.368892
+ 21
+6.199641
+ 31
+31.746452
+  0
+LINE
+  5
+C429
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.368892
+ 20
+6.199641
+ 30
+31.746452
+ 11
+13.422396
+ 21
+5.377649
+ 31
+31.873503
+  0
+LINE
+  5
+C42A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.422396
+ 20
+5.377649
+ 30
+31.873503
+ 11
+13.468234
+ 21
+4.553662
+ 31
+31.982353
+  0
+LINE
+  5
+C42B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.468234
+ 20
+4.553662
+ 30
+31.982353
+ 11
+13.506416
+ 21
+3.727995
+ 31
+32.073023
+  0
+LINE
+  5
+C42C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.506416
+ 20
+3.727995
+ 30
+32.073023
+ 11
+13.536952
+ 21
+2.900962
+ 31
+32.145534
+  0
+LINE
+  5
+C42D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.536952
+ 20
+2.900962
+ 30
+32.145534
+ 11
+13.559847
+ 21
+2.072869
+ 31
+32.199903
+  0
+LINE
+  5
+C42E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.559847
+ 20
+2.072869
+ 30
+32.199903
+ 11
+13.575108
+ 21
+1.244023
+ 31
+32.236142
+  0
+LINE
+  5
+C42F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.575108
+ 20
+1.244023
+ 30
+32.236142
+ 11
+13.582738
+ 21
+0.414725
+ 31
+32.25426
+  0
+LINE
+  5
+C430
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.582738
+ 20
+0.414725
+ 30
+32.25426
+ 11
+13.582738
+ 21
+-0.414724
+ 31
+32.25426
+  0
+LINE
+  5
+C431
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.582738
+ 20
+-0.414724
+ 30
+32.25426
+ 11
+13.575108
+ 21
+-1.244022
+ 31
+32.236142
+  0
+LINE
+  5
+C432
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.575108
+ 20
+-1.244022
+ 30
+32.236142
+ 11
+13.559847
+ 21
+-2.072868
+ 31
+32.199903
+  0
+LINE
+  5
+C433
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.559847
+ 20
+-2.072868
+ 30
+32.199903
+ 11
+13.536952
+ 21
+-2.900961
+ 31
+32.145534
+  0
+LINE
+  5
+C434
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.536952
+ 20
+-2.900961
+ 30
+32.145534
+ 11
+13.506416
+ 21
+-3.727994
+ 31
+32.073023
+  0
+LINE
+  5
+C435
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.506416
+ 20
+-3.727994
+ 30
+32.073023
+ 11
+13.468234
+ 21
+-4.553661
+ 31
+31.982353
+  0
+LINE
+  5
+C436
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.468234
+ 20
+-4.553661
+ 30
+31.982353
+ 11
+13.422396
+ 21
+-5.377648
+ 31
+31.873503
+  0
+LINE
+  5
+C437
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.422396
+ 20
+-5.377648
+ 30
+31.873503
+ 11
+13.368892
+ 21
+-6.19964
+ 31
+31.746452
+  0
+LINE
+  5
+C438
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.368892
+ 20
+-6.19964
+ 30
+31.746452
+ 11
+13.307713
+ 21
+-7.019314
+ 31
+31.601171
+  0
+LINE
+  5
+C439
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.307713
+ 20
+-7.019314
+ 30
+31.601171
+ 11
+13.238844
+ 21
+-7.836339
+ 31
+31.437633
+  0
+LINE
+  5
+C43A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.238844
+ 20
+-7.836339
+ 30
+31.437633
+ 11
+13.162275
+ 21
+-8.65038
+ 31
+31.255807
+  0
+LINE
+  5
+C43B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.162275
+ 20
+-8.65038
+ 30
+31.255807
+ 11
+13.077989
+ 21
+-9.461092
+ 31
+31.055659
+  0
+LINE
+  5
+C43C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.077989
+ 20
+-9.461092
+ 30
+31.055659
+ 11
+12.985975
+ 21
+-10.26812
+ 31
+30.837156
+  0
+LINE
+  5
+C43D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.985975
+ 20
+-10.26812
+ 30
+30.837156
+ 11
+12.886216
+ 21
+-11.0711
+ 31
+30.600264
+  0
+LINE
+  5
+C43E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.886216
+ 20
+-11.0711
+ 30
+30.600264
+ 11
+12.7787
+ 21
+-11.869659
+ 31
+30.344951
+  0
+LINE
+  5
+C43F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.7787
+ 20
+-11.869659
+ 30
+30.344951
+ 11
+12.663412
+ 21
+-12.663411
+ 31
+30.071182
+  0
+LINE
+  5
+C440
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.663412
+ 20
+-12.663411
+ 30
+30.071182
+ 11
+12.54034
+ 21
+-13.451959
+ 31
+29.77893
+  0
+LINE
+  5
+C441
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons lower level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.54034
+ 20
+-13.451959
+ 30
+29.77893
+ 11
+12.409473
+ 21
+-14.234894
+ 31
+29.468166
+  0
+LINE
+  5
+C442
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-13.96045
+ 20
+-13.96045
+ 30
+28.900029
+ 11
+-13.187273
+ 21
+-14.101965
+ 31
+29.192986
+  0
+LINE
+  5
+C443
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-13.187273
+ 20
+-14.101965
+ 30
+29.192986
+ 11
+-12.409473
+ 21
+-14.234894
+ 31
+29.468166
+  0
+LINE
+  5
+C444
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-12.409473
+ 20
+-14.234894
+ 30
+29.468166
+ 11
+-11.627416
+ 21
+-14.359275
+ 31
+29.725652
+  0
+LINE
+  5
+C445
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-11.627416
+ 20
+-14.359275
+ 30
+29.725652
+ 11
+-10.841455
+ 21
+-14.47515
+ 31
+29.965528
+  0
+LINE
+  5
+C446
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-10.841455
+ 20
+-14.47515
+ 30
+29.965528
+ 11
+-10.051923
+ 21
+-14.582557
+ 31
+30.187876
+  0
+LINE
+  5
+C447
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-10.051923
+ 20
+-14.582557
+ 30
+30.187876
+ 11
+-9.259145
+ 21
+-14.681535
+ 31
+30.392775
+  0
+LINE
+  5
+C448
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-9.259145
+ 20
+-14.681535
+ 30
+30.392775
+ 11
+-8.463427
+ 21
+-14.772122
+ 31
+30.580301
+  0
+LINE
+  5
+C449
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-8.463427
+ 20
+-14.772122
+ 30
+30.580301
+ 11
+-7.665067
+ 21
+-14.854352
+ 31
+30.750528
+  0
+LINE
+  5
+C44A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-7.665067
+ 20
+-14.854352
+ 30
+30.750528
+ 11
+-6.864351
+ 21
+-14.928258
+ 31
+30.903524
+  0
+LINE
+  5
+C44B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-6.864351
+ 20
+-14.928258
+ 30
+30.903524
+ 11
+-6.061554
+ 21
+-14.993871
+ 31
+31.039352
+  0
+LINE
+  5
+C44C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-6.061554
+ 20
+-14.993871
+ 30
+31.039352
+ 11
+-5.256942
+ 21
+-15.051219
+ 31
+31.158071
+  0
+LINE
+  5
+C44D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-5.256942
+ 20
+-15.051219
+ 30
+31.158071
+ 11
+-4.450774
+ 21
+-15.100327
+ 31
+31.25973
+  0
+LINE
+  5
+C44E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-4.450774
+ 20
+-15.100327
+ 30
+31.25973
+ 11
+-3.6433
+ 21
+-15.141216
+ 31
+31.344376
+  0
+LINE
+  5
+C44F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-3.6433
+ 20
+-15.141216
+ 30
+31.344376
+ 11
+-2.834768
+ 21
+-15.173905
+ 31
+31.412047
+  0
+LINE
+  5
+C450
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-2.834768
+ 20
+-15.173905
+ 30
+31.412047
+ 11
+-2.025416
+ 21
+-15.198409
+ 31
+31.462773
+  0
+LINE
+  5
+C451
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-2.025416
+ 20
+-15.198409
+ 30
+31.462773
+ 11
+-1.215482
+ 21
+-15.214738
+ 31
+31.496577
+  0
+LINE
+  5
+C452
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-1.215482
+ 20
+-15.214738
+ 30
+31.496577
+ 11
+-0.405199
+ 21
+-15.222901
+ 31
+31.513475
+  0
+LINE
+  5
+C453
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-0.405199
+ 20
+-15.222901
+ 30
+31.513475
+ 11
+0.405199
+ 21
+-15.222901
+ 31
+31.513475
+  0
+LINE
+  5
+C454
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+0.405199
+ 20
+-15.222901
+ 30
+31.513475
+ 11
+1.215482
+ 21
+-15.214738
+ 31
+31.496577
+  0
+LINE
+  5
+C455
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+1.215482
+ 20
+-15.214738
+ 30
+31.496577
+ 11
+2.025416
+ 21
+-15.198409
+ 31
+31.462773
+  0
+LINE
+  5
+C456
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+2.025416
+ 20
+-15.198409
+ 30
+31.462773
+ 11
+2.834768
+ 21
+-15.173905
+ 31
+31.412047
+  0
+LINE
+  5
+C457
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+2.834768
+ 20
+-15.173905
+ 30
+31.412047
+ 11
+3.643301
+ 21
+-15.141216
+ 31
+31.344376
+  0
+LINE
+  5
+C458
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+3.643301
+ 20
+-15.141216
+ 30
+31.344376
+ 11
+4.450774
+ 21
+-15.100327
+ 31
+31.25973
+  0
+LINE
+  5
+C459
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+4.450774
+ 20
+-15.100327
+ 30
+31.25973
+ 11
+5.256942
+ 21
+-15.051219
+ 31
+31.158071
+  0
+LINE
+  5
+C45A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+5.256942
+ 20
+-15.051219
+ 30
+31.158071
+ 11
+6.061554
+ 21
+-14.993871
+ 31
+31.039352
+  0
+LINE
+  5
+C45B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+6.061554
+ 20
+-14.993871
+ 30
+31.039352
+ 11
+6.864351
+ 21
+-14.928258
+ 31
+30.903524
+  0
+LINE
+  5
+C45C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+6.864351
+ 20
+-14.928258
+ 30
+30.903524
+ 11
+7.665068
+ 21
+-14.854352
+ 31
+30.750528
+  0
+LINE
+  5
+C45D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+7.665068
+ 20
+-14.854352
+ 30
+30.750528
+ 11
+8.463427
+ 21
+-14.772122
+ 31
+30.580301
+  0
+LINE
+  5
+C45E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+8.463427
+ 20
+-14.772122
+ 30
+30.580301
+ 11
+9.259145
+ 21
+-14.681535
+ 31
+30.392775
+  0
+LINE
+  5
+C45F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+9.259145
+ 20
+-14.681535
+ 30
+30.392775
+ 11
+10.051924
+ 21
+-14.582557
+ 31
+30.187876
+  0
+LINE
+  5
+C460
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+10.051924
+ 20
+-14.582557
+ 30
+30.187876
+ 11
+10.841455
+ 21
+-14.47515
+ 31
+29.965528
+  0
+LINE
+  5
+C461
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+10.841455
+ 20
+-14.47515
+ 30
+29.965528
+ 11
+11.627417
+ 21
+-14.359275
+ 31
+29.725652
+  0
+LINE
+  5
+C462
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+11.627417
+ 20
+-14.359275
+ 30
+29.725652
+ 11
+12.409473
+ 21
+-14.234894
+ 31
+29.468166
+  0
+LINE
+  5
+C463
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.409473
+ 20
+-14.234894
+ 30
+29.468166
+ 11
+13.187273
+ 21
+-14.101965
+ 31
+29.192986
+  0
+LINE
+  5
+C464
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.187273
+ 20
+-14.101965
+ 30
+29.192986
+ 11
+13.96045
+ 21
+-13.96045
+ 31
+28.900029
+  0
+LINE
+  5
+C465
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+14.101966
+ 20
+-13.187272
+ 30
+29.192986
+ 11
+13.323717
+ 21
+-13.323717
+ 31
+29.495036
+  0
+LINE
+  5
+C466
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+13.323717
+ 20
+-13.323717
+ 30
+29.495036
+ 11
+12.54034
+ 21
+-13.451959
+ 31
+29.77893
+  0
+LINE
+  5
+C467
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+12.54034
+ 20
+-13.451959
+ 30
+29.77893
+ 11
+11.752224
+ 21
+-13.572025
+ 31
+30.044723
+  0
+LINE
+  5
+C468
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+11.752224
+ 20
+-13.572025
+ 30
+30.044723
+ 11
+10.959742
+ 21
+-13.68394
+ 31
+30.292472
+  0
+LINE
+  5
+C469
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+10.959742
+ 20
+-13.68394
+ 30
+30.292472
+ 11
+10.163258
+ 21
+-13.78773
+ 31
+30.522233
+  0
+LINE
+  5
+C46A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+10.163258
+ 20
+-13.78773
+ 30
+30.522233
+ 11
+9.363119
+ 21
+-13.88342
+ 31
+30.734064
+  0
+LINE
+  5
+C46B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+9.363119
+ 20
+-13.88342
+ 30
+30.734064
+ 11
+8.559662
+ 21
+-13.971035
+ 31
+30.928019
+  0
+LINE
+  5
+C46C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+8.559662
+ 20
+-13.971035
+ 30
+30.928019
+ 11
+7.753214
+ 21
+-14.050599
+ 31
+31.104153
+  0
+LINE
+  5
+C46D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+7.753214
+ 20
+-14.050599
+ 30
+31.104153
+ 11
+6.944091
+ 21
+-14.122136
+ 31
+31.262516
+  0
+LINE
+  5
+C46E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+6.944091
+ 20
+-14.122136
+ 30
+31.262516
+ 11
+6.1326
+ 21
+-14.185666
+ 31
+31.403154
+  0
+LINE
+  5
+C46F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+6.1326
+ 20
+-14.185666
+ 30
+31.403154
+ 11
+5.319038
+ 21
+-14.24121
+ 31
+31.526113
+  0
+LINE
+  5
+C470
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+5.319038
+ 20
+-14.24121
+ 30
+31.526113
+ 11
+4.503697
+ 21
+-14.288785
+ 31
+31.63143
+  0
+LINE
+  5
+C471
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+4.503697
+ 20
+-14.288785
+ 30
+31.63143
+ 11
+3.686861
+ 21
+-14.328406
+ 31
+31.71914
+  0
+LINE
+  5
+C472
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+3.686861
+ 20
+-14.328406
+ 30
+31.71914
+ 11
+2.868811
+ 21
+-14.360086
+ 31
+31.789273
+  0
+LINE
+  5
+C473
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+2.868811
+ 20
+-14.360086
+ 30
+31.789273
+ 11
+2.049819
+ 21
+-14.383837
+ 31
+31.841851
+  0
+LINE
+  5
+C474
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+2.049819
+ 20
+-14.383837
+ 30
+31.841851
+ 11
+1.230159
+ 21
+-14.399667
+ 31
+31.876893
+  0
+LINE
+  5
+C475
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+1.230159
+ 20
+-14.399667
+ 30
+31.876893
+ 11
+0.410097
+ 21
+-14.40758
+ 31
+31.894411
+  0
+LINE
+  5
+C476
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+0.410097
+ 20
+-14.40758
+ 30
+31.894411
+ 11
+-0.410097
+ 21
+-14.40758
+ 31
+31.894411
+  0
+LINE
+  5
+C477
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-0.410097
+ 20
+-14.40758
+ 30
+31.894411
+ 11
+-1.230158
+ 21
+-14.399667
+ 31
+31.876893
+  0
+LINE
+  5
+C478
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-1.230158
+ 20
+-14.399667
+ 30
+31.876893
+ 11
+-2.049819
+ 21
+-14.383837
+ 31
+31.841851
+  0
+LINE
+  5
+C479
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-2.049819
+ 20
+-14.383837
+ 30
+31.841851
+ 11
+-2.86881
+ 21
+-14.360086
+ 31
+31.789273
+  0
+LINE
+  5
+C47A
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-2.86881
+ 20
+-14.360086
+ 30
+31.789273
+ 11
+-3.686861
+ 21
+-14.328406
+ 31
+31.71914
+  0
+LINE
+  5
+C47B
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-3.686861
+ 20
+-14.328406
+ 30
+31.71914
+ 11
+-4.503696
+ 21
+-14.288785
+ 31
+31.63143
+  0
+LINE
+  5
+C47C
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-4.503696
+ 20
+-14.288785
+ 30
+31.63143
+ 11
+-5.319037
+ 21
+-14.24121
+ 31
+31.526113
+  0
+LINE
+  5
+C47D
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-5.319037
+ 20
+-14.24121
+ 30
+31.526113
+ 11
+-6.132599
+ 21
+-14.185666
+ 31
+31.403154
+  0
+LINE
+  5
+C47E
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-6.132599
+ 20
+-14.185666
+ 30
+31.403154
+ 11
+-6.944091
+ 21
+-14.122136
+ 31
+31.262516
+  0
+LINE
+  5
+C47F
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-6.944091
+ 20
+-14.122136
+ 30
+31.262516
+ 11
+-7.753214
+ 21
+-14.050599
+ 31
+31.104153
+  0
+LINE
+  5
+C480
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-7.753214
+ 20
+-14.050599
+ 30
+31.104153
+ 11
+-8.559662
+ 21
+-13.971035
+ 31
+30.928019
+  0
+LINE
+  5
+C481
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-8.559662
+ 20
+-13.971035
+ 30
+30.928019
+ 11
+-9.363118
+ 21
+-13.88342
+ 31
+30.734064
+  0
+LINE
+  5
+C482
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-9.363118
+ 20
+-13.88342
+ 30
+30.734064
+ 11
+-10.163257
+ 21
+-13.78773
+ 31
+30.522233
+  0
+LINE
+  5
+C483
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-10.163257
+ 20
+-13.78773
+ 30
+30.522233
+ 11
+-10.959742
+ 21
+-13.68394
+ 31
+30.292472
+  0
+LINE
+  5
+C484
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-10.959742
+ 20
+-13.68394
+ 30
+30.292472
+ 11
+-11.752223
+ 21
+-13.572025
+ 31
+30.044723
+  0
+LINE
+  5
+C485
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-11.752223
+ 20
+-13.572025
+ 30
+30.044723
+ 11
+-12.54034
+ 21
+-13.451959
+ 31
+29.77893
+  0
+LINE
+  5
+C486
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-12.54034
+ 20
+-13.451959
+ 30
+29.77893
+ 11
+-13.323717
+ 21
+-13.323717
+ 31
+29.495036
+  0
+LINE
+  5
+C487
+330
+1F
+100
+AcDbEntity
+  8
+working - tendons upper level
+  6
+Continuous
+ 48
+250.0
+100
+AcDbLine
+ 10
+-13.323717
+ 20
+-13.323717
+ 30
+29.495036
+ 11
+-14.101965
+ 21
+-13.187272
+ 31
+29.192986
   0
 ENDSEC
   0
@@ -11231,7 +17589,7 @@ A6DB
   3
 ACDB_RECOMPOSE_DATA
 350
-C0C4
+C489
   3
 AcDbVariableDictionary
 350
@@ -11825,7 +18183,7 @@ A6EE
   0
 XRECORD
   5
-C0C4
+C489
 102
 {ACAD_REACTORS
 330
@@ -12097,43 +18455,23 @@ AcDbSortentsTable
 331
 0
   5
-436D
+436F
 331
 0
   5
-436E
-331
-436F
-  5
-436F
-331
-4395
-  5
 4395
 331
-43BB
+0
   5
 43BB
 331
 0
   5
-45F5
+48A3
 331
 0
   5
-48A2
-331
-48A3
-  5
-48A3
-331
 48C9
-  5
-48C9
-331
-0
-  5
-AAD8
 331
 56D8
   5
@@ -12218,10 +18556,6 @@ AAD8
 592B
   5
 5924
-331
-6F7C
-  5
-6F7B
   0
 ACDBDETAILVIEWSTYLE
   5
@@ -14275,7 +20609,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0C5
+C48A
 102
 }
 330
@@ -14365,7 +20699,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0C7
+C48C
 102
 }
 330
@@ -14455,7 +20789,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0C9
+C48E
 102
 }
 330
@@ -14545,7 +20879,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0CB
+C490
 102
 }
 330
@@ -14637,7 +20971,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0CD
+C492
 102
 }
 330
@@ -14727,7 +21061,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0CF
+C494
 102
 }
 330
@@ -14817,7 +21151,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0D1
+C496
 102
 }
 330
@@ -14907,7 +21241,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0D3
+C498
 102
 }
 330
@@ -14997,7 +21331,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0D5
+C49A
 102
 }
 330
@@ -15087,7 +21421,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0D7
+C49C
 102
 }
 330
@@ -15177,7 +21511,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0D9
+C49E
 102
 }
 330
@@ -15267,7 +21601,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0DB
+C4A0
 102
 }
 330
@@ -15357,7 +21691,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0DD
+C4A2
 102
 }
 330
@@ -15447,7 +21781,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0DF
+C4A4
 102
 }
 330
@@ -15537,7 +21871,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0E1
+C4A6
 102
 }
 330
@@ -15627,7 +21961,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0E3
+C4A8
 102
 }
 330
@@ -15717,7 +22051,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0E5
+C4AA
 102
 }
 330
@@ -15807,7 +22141,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0E7
+C4AC
 102
 }
 330
@@ -15899,7 +22233,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0E9
+C4AE
 102
 }
 330
@@ -15989,7 +22323,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0EB
+C4B0
 102
 }
 330
@@ -16079,7 +22413,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0ED
+C4B2
 102
 }
 330
@@ -16169,7 +22503,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0EF
+C4B4
 102
 }
 330
@@ -16259,7 +22593,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0F1
+C4B6
 102
 }
 330
@@ -16349,7 +22683,7 @@ A6DB
 102
 {ACAD_XDICTIONARY
 360
-C0F3
+C4B8
 102
 }
 330
@@ -16879,11 +23213,11 @@ AcDbDictionary
   3
 ACAD_ROUNDTRIP_2008_TABLESTYLE_CELLSTYLEMAP
 360
-C0C3
+C488
   0
 DICTIONARY
   5
-C0C5
+C48A
 330
 A6E1
 100
@@ -16895,11 +23229,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0C6
+C48B
   0
 DICTIONARY
   5
-C0C7
+C48C
 330
 A6E0
 100
@@ -16911,11 +23245,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0C8
+C48D
   0
 DICTIONARY
   5
-C0C9
+C48E
 330
 A6E7
 100
@@ -16927,11 +23261,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0CA
+C48F
   0
 DICTIONARY
   5
-C0CB
+C490
 330
 A6EB
 100
@@ -16943,11 +23277,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0CC
+C491
   0
 DICTIONARY
   5
-C0CD
+C492
 330
 A6E4
 100
@@ -16959,11 +23293,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0CE
+C493
   0
 DICTIONARY
   5
-C0CF
+C494
 330
 A6E6
 100
@@ -16975,11 +23309,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0D0
+C495
   0
 DICTIONARY
   5
-C0D1
+C496
 330
 A6F3
 100
@@ -16991,11 +23325,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0D2
+C497
   0
 DICTIONARY
   5
-C0D3
+C498
 330
 A6EA
 100
@@ -17007,11 +23341,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0D4
+C499
   0
 DICTIONARY
   5
-C0D5
+C49A
 330
 A6DC
 100
@@ -17023,11 +23357,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0D6
+C49B
   0
 DICTIONARY
   5
-C0D7
+C49C
 330
 A6DD
 100
@@ -17039,11 +23373,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0D8
+C49D
   0
 DICTIONARY
   5
-C0D9
+C49E
 330
 A6DE
 100
@@ -17055,11 +23389,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0DA
+C49F
   0
 DICTIONARY
   5
-C0DB
+C4A0
 330
 A6DF
 100
@@ -17071,11 +23405,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0DC
+C4A1
   0
 DICTIONARY
   5
-C0DD
+C4A2
 330
 A6E3
 100
@@ -17087,11 +23421,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0DE
+C4A3
   0
 DICTIONARY
   5
-C0DF
+C4A4
 330
 A6F1
 100
@@ -17103,11 +23437,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0E0
+C4A5
   0
 DICTIONARY
   5
-C0E1
+C4A6
 330
 A6E9
 100
@@ -17119,11 +23453,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0E2
+C4A7
   0
 DICTIONARY
   5
-C0E3
+C4A8
 330
 A6F2
 100
@@ -17135,11 +23469,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0E4
+C4A9
   0
 DICTIONARY
   5
-C0E5
+C4AA
 330
 A6E5
 100
@@ -17151,11 +23485,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0E6
+C4AB
   0
 DICTIONARY
   5
-C0E7
+C4AC
 330
 A6F0
 100
@@ -17167,11 +23501,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0E8
+C4AD
   0
 DICTIONARY
   5
-C0E9
+C4AE
 330
 A6EF
 100
@@ -17183,11 +23517,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0EA
+C4AF
   0
 DICTIONARY
   5
-C0EB
+C4B0
 330
 A6EC
 100
@@ -17199,11 +23533,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0EC
+C4B1
   0
 DICTIONARY
   5
-C0ED
+C4B2
 330
 A6ED
 100
@@ -17215,11 +23549,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0EE
+C4B3
   0
 DICTIONARY
   5
-C0EF
+C4B4
 330
 A6E8
 100
@@ -17231,11 +23565,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0F0
+C4B5
   0
 DICTIONARY
   5
-C0F1
+C4B6
 330
 A6E2
 100
@@ -17247,11 +23581,11 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0F2
+C4B7
   0
 DICTIONARY
   5
-C0F3
+C4B8
 330
 A6EE
 100
@@ -17263,7 +23597,7 @@ AcDbDictionary
   3
 ACAD_XREC_ROUNDTRIP
 360
-C0F4
+C4B9
   0
 XRECORD
   5
@@ -17691,7 +24025,7 @@ E031EA69D3E829DDD4178D0E04DD8FFBF3DBA925743C8F64D7B50D79E9FB5742BBF6D4D2BAEFC691
   0
 CELLSTYLEMAP
   5
-C0C3
+C488
 102
 {ACAD_REACTORS
 330
@@ -18337,15 +24671,15 @@ CELLSTYLE_END
   0
 XRECORD
   5
-C0C6
+C48B
 102
 {ACAD_REACTORS
 330
-C0C5
+C48A
 102
 }
 330
-C0C5
+C48A
 100
 AcDbXrecord
 280
@@ -18485,15 +24819,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0C8
+C48D
 102
 {ACAD_REACTORS
 330
-C0C7
+C48C
 102
 }
 330
-C0C7
+C48C
 100
 AcDbXrecord
 280
@@ -18633,15 +24967,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0CA
+C48F
 102
 {ACAD_REACTORS
 330
-C0C9
+C48E
 102
 }
 330
-C0C9
+C48E
 100
 AcDbXrecord
 280
@@ -18781,15 +25115,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0CC
+C491
 102
 {ACAD_REACTORS
 330
-C0CB
+C490
 102
 }
 330
-C0CB
+C490
 100
 AcDbXrecord
 280
@@ -18929,15 +25263,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0CE
+C493
 102
 {ACAD_REACTORS
 330
-C0CD
+C492
 102
 }
 330
-C0CD
+C492
 100
 AcDbXrecord
 280
@@ -19077,15 +25411,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0D0
+C495
 102
 {ACAD_REACTORS
 330
-C0CF
+C494
 102
 }
 330
-C0CF
+C494
 100
 AcDbXrecord
 280
@@ -19225,15 +25559,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0D2
+C497
 102
 {ACAD_REACTORS
 330
-C0D1
+C496
 102
 }
 330
-C0D1
+C496
 100
 AcDbXrecord
 280
@@ -19373,15 +25707,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0D4
+C499
 102
 {ACAD_REACTORS
 330
-C0D3
+C498
 102
 }
 330
-C0D3
+C498
 100
 AcDbXrecord
 280
@@ -19521,15 +25855,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0D6
+C49B
 102
 {ACAD_REACTORS
 330
-C0D5
+C49A
 102
 }
 330
-C0D5
+C49A
 100
 AcDbXrecord
 280
@@ -19669,15 +26003,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0D8
+C49D
 102
 {ACAD_REACTORS
 330
-C0D7
+C49C
 102
 }
 330
-C0D7
+C49C
 100
 AcDbXrecord
 280
@@ -19817,15 +26151,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0DA
+C49F
 102
 {ACAD_REACTORS
 330
-C0D9
+C49E
 102
 }
 330
-C0D9
+C49E
 100
 AcDbXrecord
 280
@@ -19965,15 +26299,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0DC
+C4A1
 102
 {ACAD_REACTORS
 330
-C0DB
+C4A0
 102
 }
 330
-C0DB
+C4A0
 100
 AcDbXrecord
 280
@@ -20113,15 +26447,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0DE
+C4A3
 102
 {ACAD_REACTORS
 330
-C0DD
+C4A2
 102
 }
 330
-C0DD
+C4A2
 100
 AcDbXrecord
 280
@@ -20261,15 +26595,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0E0
+C4A5
 102
 {ACAD_REACTORS
 330
-C0DF
+C4A4
 102
 }
 330
-C0DF
+C4A4
 100
 AcDbXrecord
 280
@@ -20409,15 +26743,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0E2
+C4A7
 102
 {ACAD_REACTORS
 330
-C0E1
+C4A6
 102
 }
 330
-C0E1
+C4A6
 100
 AcDbXrecord
 280
@@ -20557,15 +26891,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0E4
+C4A9
 102
 {ACAD_REACTORS
 330
-C0E3
+C4A8
 102
 }
 330
-C0E3
+C4A8
 100
 AcDbXrecord
 280
@@ -20705,15 +27039,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0E6
+C4AB
 102
 {ACAD_REACTORS
 330
-C0E5
+C4AA
 102
 }
 330
-C0E5
+C4AA
 100
 AcDbXrecord
 280
@@ -20853,15 +27187,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0E8
+C4AD
 102
 {ACAD_REACTORS
 330
-C0E7
+C4AC
 102
 }
 330
-C0E7
+C4AC
 100
 AcDbXrecord
 280
@@ -21001,15 +27335,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0EA
+C4AF
 102
 {ACAD_REACTORS
 330
-C0E9
+C4AE
 102
 }
 330
-C0E9
+C4AE
 100
 AcDbXrecord
 280
@@ -21149,15 +27483,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0EC
+C4B1
 102
 {ACAD_REACTORS
 330
-C0EB
+C4B0
 102
 }
 330
-C0EB
+C4B0
 100
 AcDbXrecord
 280
@@ -21297,15 +27631,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0EE
+C4B3
 102
 {ACAD_REACTORS
 330
-C0ED
+C4B2
 102
 }
 330
-C0ED
+C4B2
 100
 AcDbXrecord
 280
@@ -21445,15 +27779,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0F0
+C4B5
 102
 {ACAD_REACTORS
 330
-C0EF
+C4B4
 102
 }
 330
-C0EF
+C4B4
 100
 AcDbXrecord
 280
@@ -21593,15 +27927,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0F2
+C4B7
 102
 {ACAD_REACTORS
 330
-C0F1
+C4B6
 102
 }
 330
-C0F1
+C4B6
 100
 AcDbXrecord
 280
@@ -21741,15 +28075,15 @@ RTVSPropertyOp32
   0
 XRECORD
   5
-C0F4
+C4B9
 102
 {ACAD_REACTORS
 330
-C0F3
+C4B8
 102
 }
 330
-C0F3
+C4B8
 100
 AcDbXrecord
 280

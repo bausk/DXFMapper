@@ -34,6 +34,3 @@ PreprocessParameter = float
 		Mapping = str
 		Scale = float
 		Origin = float
-	[[Point Actions]]
-		[[[Compatible Nodes]]]
-		Cutoff = float

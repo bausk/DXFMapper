@@ -1,7 +1,7 @@
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../Tests/Test5.dxf"
-Precision = 2
+InputFileList = "../Tests/Test5full.dxf"
+Precision = 4
 Normalize = Yes
 Entities = NONE
 
@@ -30,10 +30,10 @@ Entities = NONE
 		Origin = 0
 
 		[[[D]]]
-		Scale = 1.1
+		Scale = 1.0381
 
 		[[[G]]]
-		Scale = 1.1
+		Scale = 1.0381
 
 		[[[R]]]
 		Scale = 1.0
@@ -43,26 +43,52 @@ Entities = NONE
 
 [TestTendons]
 Type = Filter
-Layer = "working - concrete bases"
+Layer = "working - tendons lower level", "working - tendons upper level"
 Output = "DXF Output"
-Entities = 3DFACE
+Entities = LINE
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"Tendon1"}'
 
 [TestBases]
 Type = Filter
-Layer = "working - tendons lower level", "working - tendons upper level"
+Layer = "working - concrete bases"
 Output = "DXF Output"
-Entities = 3DPOLYLINE, 3DFACE
-
+Entities = POLYLINE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "ExtrudeZ"
+	Parameter = 0.35, 0.4, 0.35
+	Data = '{"StiffnessMarker":"Conc1Dome"}', '{"StiffnessMarker":"Conc2Dome"}', '{"StiffnessMarker":"Conc3Dome"}'
 
 #Output model and semantics
 [Default Output]
 Type = DefaultOutput
-OutputFile = "../Tests - Results/Test5 - scaling dome.dxf"
+OutputFile = "../Tests - Results/Test5.dxf"
 OutputType = Preset
 Name = DXF
 
 [DXF Output]
 Type = Output
-OutputFile = "../Tests - Results/Test5 - scaling dome.dxf"
+OutputFile = "../Tests - Results/Test5.dxf"
 OutputType = Preset
 Name = DXF
+
+[Lira Output]
+Type = Output
+OutputFile = "../Tests - Results/Test5 spherical model.txt"
+OutputType = Preset
+Name = Lira-Custom
+Format = Lira
+Semantic = "Advanced Test"
+	[[Actions]]
+		[[[Properties]]]
+		Type = ElementProperties
+		Tendon1 = "S6 19.500E+006 15 0"
+		Conc1Plate = "GEI 3.25E+006 0.3 0.4 RO 2.65"
+		Conc2Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc3Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc4Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc1Dome = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc2Dome = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc3Dome = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc4Dome = "OBI 3.25E+006 0.3 RO 2.65"

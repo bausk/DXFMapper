@@ -66,6 +66,11 @@ def GetRawPoints(Entity, Precision):
             point = tuple([round(x, Precision) for x in point.location])
             Points.append(point)
         return Points
+    elif Entity.dxftype in ("TEXT",):
+        return [Entity.insert]
+    else:
+        return [(0,0,0)]
+
 
 def GetEntityData(Entity):
     Data = {}
@@ -81,8 +86,7 @@ def Overkill(Entities, Precision):
     print "Overkilling the DXF dataset (alpha version feature)\n"
     ReferencePointArray = {}
     for index, Entity in enumerate(Entities) :
-        if index == 24:
-            pass
+
         #1. Delete duplicate points in polys
         try: EntityPoints = [tuple(y for y in x) for x in GetRawPoints(Entity, Precision)]
         finally: pass

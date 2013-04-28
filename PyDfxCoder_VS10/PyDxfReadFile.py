@@ -146,6 +146,7 @@ def main():
 
         for object in ObjectList[FilterName]:
             #print "Input for object %s\n" % object
+            #print "Processing object %s in dataset%s\n" % (object, FilterName)
             for i, Point in enumerate(object['points']):
                 if Mapping:
                     Coords = (

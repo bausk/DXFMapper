@@ -1,0 +1,134 @@
+#Test 2
+#Designed to test transformation routines and output routines.
+#1. Face-Polyline overkill (different layers). Positions 1, 3.
+#2. Move prep. Tendons.
+#3. ExtrudeZ prep. Faces, polys.
+#4. Sewing overkill. Overall scheme.
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/Test2.dxf"
+Precision = 2
+Normalize = Yes
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 22.4758
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -22.4758
+
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
+
+#Filters for entities to be included in the model
+
+[Tendons]
+Type = Filter
+PreprocessType = Preset
+Layer = "Tendons 1 internal", "Tendons 2 external", "Tendons 3 middle"
+Output = "DXF Output"
+Entities = LINE
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "Tendons 1 internal":[0,0,0.4], "Tendons 2 external":[0,0,0.9], "Tendons 3 middle":[0,0,0.65]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+
+
+[Volumes]
+Type = Filter
+PreprocessType = Preset #Specifies tranformations before mapping.
+Layer = "Concrete bases", "Concrete bases new"
+Entities = LWPOLYLINE, 3DFACE
+Points = 3, 4
+Closed = Yes
+Output = "DXF Output"
+	[[Preprocess]]
+	Function = "ExtrudeZ"
+	Parameter = 0.4, 0.25, 0.25, 0.3
+	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}', '{"StiffnessMarker":"Conc4Vol"}'
+
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test2.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test2.dxf"
+OutputType = Preset
+Name = DXF
+	[[Element Actions]]
+		[[[Assign Layer]]]
+		Tendons = Tendons
+		Volumes = Volumes
+
+[Lira Output]
+Type = Output
+OutputFile = "../Tests - Results/Test2.txt"
+OutputType = Preset
+Name = Lira-Custom
+Format = Lira
+Semantic = "Advanced Test"
+PointActionOrder = "Compatible Nodes", "Rotate Nodes"
+ElementActionOrder =  "Pretensioning"
+	[[Actions]]
+		[[[Properties]]]
+		Type = ElementProperties
+		Tendon1 = "S6 19.500E+006 15 0"
+		Conc1Plate = "GEI 3.25E+006 0.3 0.4 RO 2.65"
+		Conc2Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc3Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc4Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc1Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc2Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc3Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc4Vol = "OBI 3.25E+006 0.3 RO 2.65"
+
+	[[Point Actions]]
+		[[[Compatible Nodes]]]
+		Type = Compatibility
+		Filters = Volumes, Tendons
+		CutoffZ = 53.6, 58.9
+
+		[[[Rotate Nodes]]]
+		Type = NodalAxisRotation
+		Filters = Tendons
+		Action = VectorSum
+		Direction = "Z+"
+
+		[[[Supports]]]
+		Type = Supports
+		CutoffZ = 0, 53.2
+		Filters = Volumes
+		Value = UX, UY, UZ, RX, RY, RZ
+
+
+	[[Element Actions]]
+		[[[Pretensioning]]]
+		Action = ElementForce
+		ActionType = Dilatation
+		Filters = Tendons
+		Markers = "color:1"
+		Value = -2.3
+
