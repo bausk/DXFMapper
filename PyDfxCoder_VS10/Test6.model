@@ -1,0 +1,91 @@
+#Model file to generate the actual spheric dome mesh.
+#Input: lines modeling tendons, 3dfaces modeling concrete bases
+#Output: LIRA output
+#Next step: figure out sewing with cylinder
+#Problems solved: spheric move
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/Test6.dxf"
+Precision = 4
+Normalize = Yes
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, Orthospheric, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, Orthospheric, Y
+	Z = Preset, Orthospheric, Z
+
+	[[Transformation mapping]]
+		[[[X]]]
+		Mapping = X
+		Origin = 0
+
+		[[[Y]]]
+		Mapping = Y
+		Origin = 0
+
+		[[[Z]]]
+		Mapping = Z
+		Origin = 0
+
+		[[[D]]]
+		Scale = 1
+
+		[[[G]]]
+		Scale = 1
+
+		[[[R]]]
+		Scale = 1
+
+
+#Filters for entities to be included in the model
+
+[LowerTendons]
+Type = Filter
+Layer = "working - tendons lower level"
+Output = "DXF Output"
+Entities = POLYLINE, LINE
+Type = Filter
+PreprocessType = Preset
+Layer = "Tendons 1 internal", "Tendons 2 external", "Tendons 3 middle"
+Output = "DXF Output"
+Entities = LINE
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "working - tendons lower level":[0,0,0.4]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+
+[UpperTendons]
+Type = Filter
+Layer = "working - tendons upper level"
+Output = "DXF Output"
+Entities = POLYLINE, LINE
+
+[TestBases]
+Type = Filter
+Layer = "working - concrete bases"
+Output = "DXF Output"
+Entities = POLYLINE
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test5.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test5.dxf"
+OutputType = Preset
+Name = DXF
+	[[Element Actions]]
+		[[[Assign Layer]]]
+		Action = AssignLayer
+		Layers = '{"LowerTendons":"LowerTendons", "UpperTendons":"UpperTendons", "TestBases":"TestBases"}'

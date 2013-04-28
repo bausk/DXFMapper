@@ -100,8 +100,8 @@ def Overkill(Entities, Precision):
         #2. Delete duplicate objects
         EntityPoints = tuple(sorted((tuple(y for y in x) for x in GetRawPoints(Entity, Precision))))
         if not EntityPoints in ReferencePointArray :
-            ReferencePointArray[EntityPoints] = index
-        else :
+            ReferencePointArray[EntityPoints] = {'layer':Entity.layer}
+        elif ReferencePointArray[EntityPoints]['layer'] == Entity.layer:
             del PurgedEntities[index]
 
     return PurgedEntities.values()

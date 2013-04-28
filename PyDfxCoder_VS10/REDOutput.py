@@ -138,6 +138,7 @@ def getPointActionFunction(PointAction):
         if not Output: return False, False
         return False, Output
 
+
     def Default():
         return False, False
 
@@ -171,8 +172,11 @@ def getElementActionFunction(ElementAction):
             #Markers are checked against Element's entity_model_data
             #Element should satisfy all markers
             for marker, value in Markers.iteritems():
-                ElementValue = str(Element['entity_model_data'][marker]) if marker in Element['entity_model_data'] else None
-                if value != ElementValue : return False, False
+                ElementValue = str(Element['entity_model_data'][marker]) if Element['entity_model_data'] and (marker in Element['entity_model_data']) else None
+                if marker == "generation_order":
+                    ElementValue = Element['generation_order']
+                if str(value) != str(ElementValue) : return False, False
+                
         if Parameters['Type'] == "Dilatation":
             LoadID = 8
             ElementNumber = Element['elementnum']
@@ -182,6 +186,17 @@ def getElementActionFunction(ElementAction):
             Output['loadcase'] = 1
             Output['value'] = Parameters['Value']
             Output['string'] = "{} 0.05 0 0".format(Output['value'])
+        elif Parameters['Type'] == "VolumePressure":
+            ForceValue = json.loads(Parameters['Value'])
+            LoadID = ForceValue['loadtype']
+            ElementNumber = Element['elementnum']
+            Output['load_id'] = LoadID
+            Output['direction'] = ForceValue['axis']
+            Output['element'] = ElementNumber
+            Output['loadcase'] = 1
+            Output['value'] = ForceValue['value']
+            Output['string'] = "{} {} 0 0".format(Output['value'], ForceValue['face'])
+
         return False, Output
 
     def AssignLayer(Parameters, Element, NumberedPoints, Elements):
@@ -217,6 +232,13 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
             ExtendedData['ElementPropertyIndex'][key] = index #In this same notation we can get the index when writing elements
             Output[index] = GlobalAction[key]
         return ExtendedData, Output #Here we have Output ready to be printed and ExtendedData, a mapper to Output
+    if ActionType == 'Orphans':
+        Output = {}
+        for Number, Point in NumberedPoints['points'].iteritems():
+            ElementAmount = len(Point['elementnumbers'])
+            if ElementAmount < 2:
+                print "Orphan node {}!".format(Number)
+        return Output, False #Here we have Output ready to be printed and ExtendedData, a mapper to Output
     return False
 
 
@@ -251,7 +273,7 @@ def getFormatWriter(SettingsDict):
                 #Points[Point], NumberedPoints and Elements get updated
 
             objectType = compoundObject['elementclass']
-            objectLayer = compoundObject['entity_model_data']['layer']
+            objectLayer = compoundObject['entity_model_data']['layer'] if 'entity_model_data' in compoundObject and compoundObject['entity_model_data'] else objectType
             if objectType == 'LINE_2NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
@@ -390,18 +412,19 @@ def getFormatWriter(SettingsDict):
             for i, ListElement in enumerate(ElementActionOrder):
                 ActionName = ListElement
                 ElementAction = ElementActions.pop(ActionName)
+                ActionClass = ElementAction['Action']
                 ActionType = ElementAction['Type']
-                ElementActionFunction = getElementActionFunction(ActionType)
+                ElementActionFunction = getElementActionFunction(ActionClass)
                 NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
                 #2013-04-20 Working here
-                if Output: Format(FormatDict, ActionType, Output, ExtendedData)
+                if Output: Format(FormatDict, ActionClass, Output, ExtendedData)
 
             for ElementAction in ElementActions:
-                ActionType = ElementActions[ElementAction]['Action']
-                ElementsActionFunction = getElementActionFunction(ActionType)
+                ActionClass = ElementActions[ElementAction]['Action']
+                ElementsActionFunction = getElementActionFunction(ActionClass)
                 NewElements, Output = ElementActionFunction(ElementActions[ElementAction], Element, NumberedPoints, Elements)
                 #Points[Point], NumberedPoints and Elements get updated
-                if Output: Format(FormatDict, ActionType, Output, ExtendedData)
+                if Output: Format(FormatDict, ActionClass, Output, ExtendedData)
 
 
         Format(FormatDict, "Nodes", NumberedPoints['points'], ExtendedData)    #Forming Nodes document

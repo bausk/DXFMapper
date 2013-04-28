@@ -80,8 +80,8 @@ OutputType = Preset
 Name = DXF
 	[[Element Actions]]
 		[[[Assign Layer]]]
-		Tendons = Tendons
-		Volumes = Volumes
+		Action = AssignLayer
+		Layers = '{"LowerTendons":"LowerTendons", "UpperTendons":"UpperTendons", "TestBases":"TestBases"}'
 
 [Lira Output]
 Type = Output
@@ -127,7 +127,7 @@ ElementActionOrder =  "Pretensioning"
 	[[Element Actions]]
 		[[[Pretensioning]]]
 		Action = ElementForce
-		ActionType = Dilatation
+		Type = Dilatation
 		Filters = Tendons
 		Markers = "color:1"
 		Value = -2.3

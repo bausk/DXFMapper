@@ -72,6 +72,7 @@ def getFormat(Name):
             for Key, DataString in Data.iteritems() :
                 FormatDict[3].append("{} {}/".format(Key, DataString))
         elif Semantic == 'ElementForce':
+
             if not 'LoadStringCount' in ExtendedData:
                 ExtendedData['LoadStringCount'] = int(FormatDict[7][-1].split(' ', 1)[0]) if len(FormatDict[7]) else 0
             ExtendedData['LoadStringCount'] += 1
