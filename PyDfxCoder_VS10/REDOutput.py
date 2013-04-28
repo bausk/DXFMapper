@@ -3,6 +3,7 @@ import collections
 import sdxf
 import ShadowbinderDataTools
 from ShadowbinderFormats import *
+import simplejson as json
 #from PyDxfTools import GetPoints
 
 #PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
@@ -172,7 +173,7 @@ def getElementActionFunction(ElementAction):
             for marker, value in Markers.iteritems():
                 ElementValue = str(Element['entity_model_data'][marker]) if marker in Element['entity_model_data'] else None
                 if value != ElementValue : return False, False
-        if Parameters['ActionType'] == "Dilatation":
+        if Parameters['Type'] == "Dilatation":
             LoadID = 8
             ElementNumber = Element['elementnum']
             Output['load_id'] = LoadID
@@ -183,6 +184,14 @@ def getElementActionFunction(ElementAction):
             Output['string'] = "{} 0.05 0 0".format(Output['value'])
         return False, Output
 
+    def AssignLayer(Parameters, Element, NumberedPoints, Elements):
+        ElementFilter = Element['filter']
+        AssignedLayers = json.loads(Parameters['Layers'])
+        if ElementFilter in AssignedLayers:
+            AssignedLayer = AssignedLayers[ElementFilter]
+            Element['entity_model_data']['layer'] = AssignedLayer
+        return False, False
+
     def ElementProperty(Parameters, Element, NumberedPoints, Elements):
         Output = {}
         return False, Output
@@ -190,6 +199,7 @@ def getElementActionFunction(ElementAction):
     functions = {
         'ElementForce' : ElementForce,
         'ElementProperty' : ElementProperty,
+        'AssignLayer' : AssignLayer,
         }
 
     if ElementAction in functions:
@@ -214,24 +224,49 @@ def getFormatWriter(SettingsDict):
 
     def Dxf(Objects, Filters, Points, NumberedPoints, Elements):
         OutputFile = sdxf.Drawing()
+
+        ElementActions = SettingsDict['Element Actions'].copy() if 'Element Actions' in SettingsDict else [] #Copying because we will be pop()ping already processed Actions
+        ElementActionOrder = SettingsDict['ElementActionOrder'] if 'ElementActionOrder' in SettingsDict else []
+        ActionName = None
+        if not isinstance(ElementActionOrder, list):
+            ElementActionOrder = [ElementActionOrder]
+
         for compoundObject in Elements:
             if not compoundObject: continue
+
+
+            for i, ListElement in enumerate(ElementActionOrder):
+                ActionName = ListElement
+                ElementAction = ElementActions.pop(ActionName)
+                ActionType = ElementAction['Action']
+                ElementActionFunction = getElementActionFunction(ActionType)
+                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
+                #2013-04-20 Working here
+                if Output: Format(FormatDict, ActionType, Output, ExtendedData)
+
+            for ElementAction in ElementActions:
+                ActionType = ElementActions[ElementAction]['Action']
+                ElementActionFunction = getElementActionFunction(ActionType)
+                NewElements, Output = ElementActionFunction(ElementActions[ElementAction], compoundObject, NumberedPoints, Elements)
+                #Points[Point], NumberedPoints and Elements get updated
+
             objectType = compoundObject['elementclass']
+            objectLayer = compoundObject['entity_model_data']['layer']
             if objectType == 'LINE_2NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
-                OutputFile.append(sdxf.Line(points=[Point1, Point2], layer="Lines"))
+                OutputFile.append(sdxf.Line(points=[Point1, Point2], layer=objectLayer))
             if objectType == 'SOLID_8NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
                 Point4 = NumberedPoints['points'][compoundObject['points'][3]]['point']
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
                 Point1 = NumberedPoints['points'][compoundObject['points'][4]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][5]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][6]]['point']
                 Point4 = NumberedPoints['points'][compoundObject['points'][7]]['point']
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
             if objectType == 'SOLID_10NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
@@ -241,7 +276,7 @@ def getFormatWriter(SettingsDict):
                 #Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][1]]
                 #Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][2]]
                 #Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][3]]
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
                 #Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][5]]
                 #Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][6]]
                 #Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][7]]
@@ -251,11 +286,11 @@ def getFormatWriter(SettingsDict):
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer=objectLayer))
                 Point1 = NumberedPoints['points'][compoundObject['points'][3]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][4]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][5]]['point']
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer=objectLayer))
             if objectType == 'FACE_3NODES':
                 #Point1 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][0]])[0:2])
                 #Point2 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][1]])[0:2])
@@ -264,71 +299,25 @@ def getFormatWriter(SettingsDict):
                 Point2 = NumberedPoints['points'][compoundObject['points'][2]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][3]]['point']
                 #OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3], flag=1, layer="Polylines"))
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer=objectLayer))
             if objectType == 'FACE_4NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
                 Point4 = NumberedPoints['points'][compoundObject['points'][3]]['point']
-                OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer="Polylines"))
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer=objectLayer))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
             if objectType == 'PLINE_5NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
                 Point4 = NumberedPoints['points'][compoundObject['points'][3]]['point']
                 #OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer="Polylines"))
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
             if objectType == 'POLYLINE':
                 PointRefs = compoundObject['points']
                 PointList = [NumberedPoints['points'][x]['point'] for x in PointRefs]
-                OutputFile.append(sdxf.PolyLine(points=PointList, layer="Polylines"))
-        OutputFile.saveas(SettingsDict['OutputFile'])
-        return True
-
-    def DxfPrev(Objects, Filters, Points, NumberedPoints, Elements):
-        OutputFile = sdxf.Drawing()
-        for FilterName in Filters:
-            print "Output for filter %s\n" % FilterName
-            for compoundObject in Objects[FilterName]:
-                for objectNum, objectType in enumerate(compoundObject['elements']):
-                    if objectType == 'LINE_2NODES':
-                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][0]]
-                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][1]]
-                        OutputFile.append(sdxf.Line(points=[Point1, Point2], layer="Lines"))
-                    if objectType == 'SOLID_8NODES':
-                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][0]]
-                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][1]]
-                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][2]]
-                        Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][3]]
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
-                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][4]]
-                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][5]]
-                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][6]]
-                        Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][7]]
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
-                    if objectType == 'SOLID_6NODES':
-                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][0]]
-                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][1]]
-                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][2]]
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
-                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][3]]
-                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][4]]
-                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][5]]
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
-                    if objectType == 'FACE_3NODES':
-                        Point1 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][0]])[0:2])
-                        Point2 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][1]])[0:2])
-                        Point3 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][2]])[0:2])
-                        OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3], flag=1, layer="Polylines"))
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer="Faces"))
-                    if objectType == 'FACE_4NODES':
-                        Point1 = compoundObject['points'][compoundObject['pointlist'][objectNum][0]]
-                        Point2 = compoundObject['points'][compoundObject['pointlist'][objectNum][1]]
-                        Point3 = compoundObject['points'][compoundObject['pointlist'][objectNum][2]]
-                        Point4 = compoundObject['points'][compoundObject['pointlist'][objectNum][3]]
-                        OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer="Polylines"))
-                        OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer="Faces"))
+                OutputFile.append(sdxf.PolyLine(points=PointList, layer=objectLayer))
         OutputFile.saveas(SettingsDict['OutputFile'])
         return True
 
@@ -401,16 +390,16 @@ def getFormatWriter(SettingsDict):
             for i, ListElement in enumerate(ElementActionOrder):
                 ActionName = ListElement
                 ElementAction = ElementActions.pop(ActionName)
-                ActionType = ElementAction['Action']
+                ActionType = ElementAction['Type']
                 ElementActionFunction = getElementActionFunction(ActionType)
                 NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
                 #2013-04-20 Working here
                 if Output: Format(FormatDict, ActionType, Output, ExtendedData)
 
             for ElementAction in ElementActions:
-                ActionType = ElementAction['Action']
+                ActionType = ElementActions[ElementAction]['Action']
                 ElementsActionFunction = getElementActionFunction(ActionType)
-                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
+                NewElements, Output = ElementActionFunction(ElementActions[ElementAction], Element, NumberedPoints, Elements)
                 #Points[Point], NumberedPoints and Elements get updated
                 if Output: Format(FormatDict, ActionType, Output, ExtendedData)
 

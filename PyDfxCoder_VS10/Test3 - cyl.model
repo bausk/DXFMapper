@@ -70,6 +70,7 @@ OutputType = Preset
 Name = DXF
 	[[Element Actions]]
 		[[[Assign Layer]]]
+		Action = AssignLayer
 		Tendons = Tendons
 		Volumes = Volumes
 
@@ -117,7 +118,7 @@ ElementActionOrder =  "Pretensioning"
 	[[Element Actions]]
 		[[[Pretensioning]]]
 		Action = ElementForce
-		ActionType = Dilatation
+		Type = Dilatation
 		Filters = Tendons
 		Markers = "color:1"
 		Value = -2.2
