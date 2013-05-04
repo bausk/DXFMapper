@@ -71,13 +71,13 @@ Output = "DXF Output"
 #Output model and semantics
 [Default Output]
 Type = DefaultOutput
-OutputFile = "../Tests - Results/Test2.dxf"
+OutputFile = "../Tests - Results/Test7.dxf"
 OutputType = Preset
 Name = DXF
 
 [DXF Output]
 Type = Output
-OutputFile = "../Tests - Results/Test2.dxf"
+OutputFile = "../Tests - Results/Test7.dxf"
 OutputType = Preset
 Name = DXF
 	[[Element Actions]]
@@ -87,7 +87,7 @@ Name = DXF
 
 [Lira Output]
 Type = Output
-OutputFile = "../Tests - Results/Test2.txt"
+OutputFile = "../Tests - Results/Test7.txt"
 OutputType = Preset
 Name = Lira-Custom
 Format = Lira
@@ -128,7 +128,6 @@ ElementActionOrder =  "Pretensioning"
 		CutoffZ = 0, 53.2
 		Filters = Volumes
 		Value = UX, UY, UZ, RX, RY, RZ
-
 
 
 	[[Element Actions]]

@@ -74,7 +74,7 @@ def GetRawPoints(Entity, Precision):
 
 def GetEntityData(Entity):
     Data = {}
-    if Entity.dxftype in ["LINE", "CIRCLE", "ARC", "LWPOLYLINE", "POLYLINE"]:
+    if Entity.dxftype in ["LINE", "CIRCLE", "ARC", "LWPOLYLINE", "POLYLINE", "3DFACE"]:
         Data['color'] = Entity.color
         Data['layer'] = Entity.layer
         Data['linetype'] = Entity.linetype

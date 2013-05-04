@@ -74,7 +74,7 @@ Name = DXF
 	[[Element Actions]]
 		[[[Assign Layer]]]
 		Action = AssignLayer
-		Layers = '{"LowerTendons":"LowerTendons", "UpperTendons":"UpperTendons", "TestBases":"TestBases"}'
+		Layers = '{"Tendons":"Tendons", "Volumes":"Volumes"}'
 
 [Lira Output]
 Type = Output
@@ -97,6 +97,10 @@ ElementActionOrder =  "Pretensioning"
 		Conc2Vol = "OBI 3.25E+006 0.3 RO 2.65"
 		Conc3Vol = "OBI 3.25E+006 0.3 RO 2.65"
 		Conc4Vol = "OBI 3.25E+006 0.3 RO 2.65"
+
+		[[[Orphans]]]
+		Type = Orphans
+		Action = 1
 
 	[[Point Actions]]
 		[[[Compatible Nodes]]]
@@ -123,5 +127,11 @@ ElementActionOrder =  "Pretensioning"
 		Type = Dilatation
 		Filters = Tendons
 		Markers = "color:1"
-		Value = -2.2
+		Value = -2.4
 
+		[[[InternalPressure]]]
+		Action = ElementForce
+		Type = VolumePressure
+		Filters = Volumes
+		Markers = "generation_order:0"
+		Value = '{"loadtype":6,"axis":3,"face":5,"value":40}'

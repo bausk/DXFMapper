@@ -6,7 +6,7 @@
 
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../Tests/Test6.dxf"
+InputFileList = "../Tests/Test6-test.dxf"
 Precision = 4
 Normalize = Yes
 Entities = NONE
@@ -42,47 +42,54 @@ Entities = NONE
 
 		[[[R]]]
 		Scale = 1
+		Origin = 0.54
 
 
 #Filters for entities to be included in the model
 
 [LowerTendons]
 Type = Filter
-Layer = "working - tendons lower level"
-Output = "DXF Output"
-Entities = POLYLINE, LINE
-Type = Filter
-PreprocessType = Preset
-Layer = "Tendons 1 internal", "Tendons 2 external", "Tendons 3 middle"
+Layer = "Test6 LowerTendons"
 Output = "DXF Output"
 Entities = LINE
+PreprocessType = Preset
 	[[Preprocess]]
-	Function = "Move"
-	Parameter = '{"Method":"ByLayer", "working - tendons lower level":[0,0,0.4]}'
+	Function = "SphericMove"
+	Parameter = '{"Method":"ByLayer", "Test6 LowerTendons":[0, 0, 0.4]}'
 	Data = '{"StiffnessMarker":"Tendon1"}'
 
 [UpperTendons]
 Type = Filter
-Layer = "working - tendons upper level"
+Layer = "Test6 UpperTendons"
 Output = "DXF Output"
-Entities = POLYLINE, LINE
+Entities = LINE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "SphericMove"
+	Parameter = '{"Method":"ByLayer", "Test6 UpperTendons":[0, 0, 0.7]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
 
 [TestBases]
 Type = Filter
-Layer = "working - concrete bases"
+Layer = "Test6 TestBases"
 Output = "DXF Output"
-Entities = POLYLINE
+Entities = 3DFACE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "ExtrudeR"
+	Parameter = 0.4, 0.3, 0.4
+	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}'
 
 #Output model and semantics
 [Default Output]
 Type = DefaultOutput
-OutputFile = "../Tests - Results/Test5.dxf"
+OutputFile = "../Tests - Results/Test6.dxf"
 OutputType = Preset
 Name = DXF
 
 [DXF Output]
 Type = Output
-OutputFile = "../Tests - Results/Test5.dxf"
+OutputFile = "../Tests - Results/Test6.dxf"
 OutputType = Preset
 Name = DXF
 	[[Element Actions]]

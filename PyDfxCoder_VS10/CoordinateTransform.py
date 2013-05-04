@@ -20,9 +20,12 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
         x = getVar('X', Vars) - Parameters['X']['Origin']
         y = getVar('Y', Vars) - Parameters['Y']['Origin']
         z = getVar('Z', Vars) - Parameters['Z']['Origin']
-        d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale']
-        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
-        r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale']
+        Origin = Parameters['D']['Origin'] if 'Origin' in Parameters['D'] else 0.0
+        d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale'] - Origin
+        Origin = Parameters['G']['Origin'] if 'Origin' in Parameters['G'] else 0.0
+        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale'] - Origin
+        Origin = Parameters['R']['Origin'] if 'Origin' in Parameters['R'] else 0.0
+        r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale'] - Origin
         z1 = cos(d) * r / sqrt((cos(d)*tan(g))**2 + 1)
         x1 = z1 * tan(d)
         return x1
@@ -31,9 +34,12 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
         x = getVar('X', Vars) - Parameters['X']['Origin']
         y = getVar('Y', Vars) - Parameters['Y']['Origin']
         z = getVar('Z', Vars) - Parameters['Z']['Origin']
-        d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale']
-        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
-        r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale']
+        Origin = Parameters['D']['Origin'] if 'Origin' in Parameters['D'] else 0.0
+        d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale'] - Origin
+        Origin = Parameters['G']['Origin'] if 'Origin' in Parameters['G'] else 0.0
+        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale'] - Origin
+        Origin = Parameters['R']['Origin'] if 'Origin' in Parameters['R'] else 0.0
+        r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale'] - Origin
         z1 = cos(d) * r / sqrt((cos(d)*tan(g))**2 + 1)
         y1 = z1 * tan(g)
         return y1
@@ -42,9 +48,12 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
         x = getVar('X', Vars) - Parameters['X']['Origin']
         y = getVar('Y', Vars) - Parameters['Y']['Origin']
         z = getVar('Z', Vars) - Parameters['Z']['Origin']
-        d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale']
-        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale']
-        r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale']
+        Origin = Parameters['D']['Origin'] if 'Origin' in Parameters['D'] else 0.0
+        d = asin(x/sqrt(x**2 + z**2)) * Parameters['D']['Scale'] - Origin
+        Origin = Parameters['G']['Origin'] if 'Origin' in Parameters['G'] else 0.0
+        g = asin(y/sqrt(y**2 + z**2)) * Parameters['G']['Scale'] - Origin
+        Origin = Parameters['R']['Origin'] if 'Origin' in Parameters['R'] else 0.0
+        r = sqrt(x**2 + y**2 + z**2) * Parameters['R']['Scale'] - Origin
         z1 = cos(d) * r / sqrt((cos(d)*tan(g))**2 + 1)
         return z1
     
