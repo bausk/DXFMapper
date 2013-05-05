@@ -1,6 +1,7 @@
 from math import *
 import collections
 from PyDxfTools import GetPoints, GetEntityData
+import CoordinateTransform
 import simplejson as json
 
 PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
@@ -71,10 +72,34 @@ def getFunction(Preprocess, PrepFunctionName):
                       'extended_model_data': [],
                       'generation_order': [],
                      }
+
+
+
         for index, Parameter in enumerate(Parameters):
             #prepObject['objects'].append([])
             ExtendedModelData = json.loads(ParametersDict['Data'][index])
-            NextLevel = zip([point[0] for point in Points], [point[1] for point in Points], [round(point[2] + Parameter, 6) for point in Points])
+
+            #Injecting Spherical formula
+
+            Mapping = {
+                       'X': {'Mapping': 'X', 'Origin': 0},
+                       'Y': {'Mapping': 'Y', 'Origin': 0},
+                       'Z': {'Mapping': 'Z', 'Origin': 0},
+                       'D': {'Scale': 1, 'Origin': 0},
+                       'G': {'Scale': 1, 'Origin': 0},
+                       'R': {'Scale': 1, 'Origin': -Parameter},
+                       }
+            FormulaX = CoordinateTransform.GetFormula('Preset', 'Orthospheric', 'X', Parameters = Mapping)
+            FormulaY = CoordinateTransform.GetFormula('Preset', 'Orthospheric', 'Y', Parameters = Mapping)
+            FormulaZ = CoordinateTransform.GetFormula('Preset', 'Orthospheric', 'Z', Parameters = Mapping)
+
+            NextLevel = [(
+                    round(FormulaX( {'X': point[0], 'Y': point[1], 'Z': point[2]}), Precision),
+                    round(FormulaY( {'X': point[0], 'Y': point[1], 'Z': point[2]}), Precision),
+                    round(FormulaZ( {'X': point[0], 'Y': point[1], 'Z': point[2]}), Precision)
+                    ) for point in Points]
+
+            #NextLevel = zip([point[0] for point in Points], [point[1] for point in Points], [round(point[2] + Parameter, 6) for point in Points])
             ObjectTuple = ()
             for j, point in enumerate(Points):
                 #if prepObject['points'] and prepObject['points'][-1] == point:
@@ -159,9 +184,27 @@ def getFunction(Preprocess, PrepFunctionName):
             Vector = Parameters[Layer]
         else:
             Vector = Parameters['Default'] if 'Default' in Parameters else [0, 0, 0]
+
+        Mapping = {
+                   'X': {'Mapping': 'X', 'Origin': 0},
+                   'Y': {'Mapping': 'Y', 'Origin': 0},
+                   'Z': {'Mapping': 'Z', 'Origin': 0},
+                   'D': {'Scale': 1, 'Origin': -Vector[0]},
+                   'G': {'Scale': 1, 'Origin': -Vector[1]},
+                   'R': {'Scale': 1, 'Origin': -Vector[2]},
+                   }
+        FormulaX = CoordinateTransform.GetFormula('Preset', 'Orthospheric', 'X', Parameters = Mapping)
+        FormulaY = CoordinateTransform.GetFormula('Preset', 'Orthospheric', 'Y', Parameters = Mapping)
+        FormulaZ = CoordinateTransform.GetFormula('Preset', 'Orthospheric', 'Z', Parameters = Mapping)
+
         for point in Points:
+            Coords = (
+                    FormulaX( {'X': point[0], 'Y': point[1], 'Z': point[2]}),
+                    FormulaY( {'X': point[0], 'Y': point[1], 'Z': point[2]}),
+                    FormulaZ( {'X': point[0], 'Y': point[1], 'Z': point[2]})
+                    )
             point = tuple([point[i] + x for i, x in enumerate(Vector)])
-            prepObject['points'].append(point)
+            prepObject['points'].append(tuple([round(x, Precision) for x in Coords]))
             ObjectTuple = ObjectTuple + tuple([len(prepObject['points']) - 1])
         #prepObject = [tuple(Points)]
         prepObject['pointlist'].append(ObjectTuple)
