@@ -233,12 +233,13 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
             Output[index] = GlobalAction[key]
         return ExtendedData, Output #Here we have Output ready to be printed and ExtendedData, a mapper to Output
     if ActionType == 'Orphans':
-        Output = {}
+        Output = []
         for Number, Point in NumberedPoints['points'].iteritems():
             ElementAmount = len(Point['elementnumbers'])
             if ElementAmount < 2:
                 print "Orphan node {}!".format(Number)
-        return Output, False #Here we have Output ready to be printed and ExtendedData, a mapper to Output
+                Output.append({'element_type': 'POINT', 'position': Point['point'], 'layer': 'Errors', 'nodenumber': Number})
+        return {'information':'addObjects'}, Output#Here we have Output ready to be printed and ExtendedData, a mapper to Output
     return False
 
 
@@ -246,6 +247,17 @@ def getFormatWriter(SettingsDict):
 
     def Dxf(Objects, Filters, Points, NumberedPoints, Elements):
         OutputFile = sdxf.Drawing()
+        #ExtendedData = {}
+        GlobalActions = SettingsDict['Actions'].copy()
+        GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
+        for GlobalAction in GlobalActions:
+            ActionType = GlobalActions[GlobalAction].pop('Type')
+            ExtendedData, Output = ProcessGlobalAction(ActionType, GlobalActions[GlobalAction], NumberedPoints, Elements)
+            if ExtendedData['information'] == 'addObjects':
+                for Item in Output:
+                    if Item['element_type'] == 'POINT':
+                        OutputFile.append(sdxf.Text(text=Item['nodenumber'], point=Item['position'], layer=Item['layer']))
+
 
         ElementActions = SettingsDict['Element Actions'].copy() if 'Element Actions' in SettingsDict else [] #Copying because we will be pop()ping already processed Actions
         ElementActionOrder = SettingsDict['ElementActionOrder'] if 'ElementActionOrder' in SettingsDict else []
@@ -263,7 +275,7 @@ def getFormatWriter(SettingsDict):
                 ActionType = ElementAction['Action']
                 ElementActionFunction = getElementActionFunction(ActionType)
                 NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
-                #2013-04-20 Working here
+                #2013-04-20 Working here. ERRONEOUS CODE!
                 if Output: Format(FormatDict, ActionType, Output, ExtendedData)
 
             for ElementAction in ElementActions:

@@ -6,7 +6,7 @@
 
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../Tests/Test6-test.dxf"
+InputFileList = "../Tests/Test6-test2.dxf"
 Precision = 4
 Normalize = Yes
 Entities = NONE
@@ -42,7 +42,8 @@ Entities = NONE
 
 		[[[R]]]
 		Scale = 1
-		Origin = 0.54
+		Origin = 0
+		#Origin = 0.54
 
 
 #Filters for entities to be included in the model
@@ -92,7 +93,72 @@ Type = Output
 OutputFile = "../Tests - Results/Test6.dxf"
 OutputType = Preset
 Name = DXF
+	[[Actions]]
+		[[[Orphans]]]
+		Type = Orphans
+		Action = 1
+
 	[[Element Actions]]
 		[[[Assign Layer]]]
 		Action = AssignLayer
 		Layers = '{"LowerTendons":"LowerTendons", "UpperTendons":"UpperTendons", "TestBases":"TestBases"}'
+
+[Lira Output]
+Type = Output
+OutputFile = "../Tests - Results/Test6.txt"
+OutputType = Preset
+Name = Lira-Custom
+Format = Lira
+Semantic = "Advanced Test"
+PointActionOrder = "Compatible Nodes", "Rotate Nodes"
+ElementActionOrder =  "Pretensioning"
+	[[Actions]]
+		[[[Properties]]]
+		Type = ElementProperties
+		Tendon1 = "S6 19.500E+006 15 0"
+		Conc1Plate = "GEI 3.25E+006 0.3 0.4 RO 2.65"
+		Conc2Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc3Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc4Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc1Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc2Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc3Vol = "OBI 3.25E+006 0.3 RO 2.65"
+		Conc4Vol = "OBI 3.25E+006 0.3 RO 2.65"
+
+		#[[[Orphans]]]
+		#Type = Orphans
+		#Action = 1
+
+	[[Point Actions]]
+		[[[Compatible Nodes]]]
+		Type = Compatibility
+		Filters = TestBases, LowerTendons
+		CutoffZ = 0.2, 157.9
+
+		[[[Rotate Nodes]]]
+		Type = NodalAxisRotation
+		Filters = Tendons
+		Action = VectorSum
+		Direction = "Z+"
+
+		#[[[Supports]]]
+		#Type = Supports
+		#CutoffZ = -0.2, 0.2
+		#Filters = Volumes
+		#Value = UX, UY, UZ, RX, RY, RZ
+
+
+	[[Element Actions]]
+		[[[Pretensioning]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = LowerTendons
+		Markers = "color:1"
+		Value = -2.4
+
+		#[[[InternalPressure]]]
+		#Action = ElementForce
+		#Type = VolumePressure
+		#Filters = Volumes
+		#Markers = "generation_order:0"
+		#Value = '{"loadtype":6,"axis":3,"face":5,"value":40}'

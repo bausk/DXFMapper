@@ -1,6 +1,8 @@
+#Standard cylindric part generator
+#
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../Tests/Test3.dxf"
+InputFileList = "../Tests/Test3-test3.dxf"
 Precision = 2
 Normalize = Yes
 Entities = NONE
@@ -18,13 +20,13 @@ Entities = NONE
 	[[Transformation mapping]]
 		[[[Theta]]]
 		Mapping = X
-		Scale = 22.4758
+		Scale = 22.4759
 		Origin = 0
 
 		[[[R]]]
 		Mapping = Z
 		Scale = 1
-		Origin = -22.4758
+		Origin = -22.4759
 
 		[[[Z]]]
 		Mapping = Y
@@ -71,6 +73,10 @@ Type = Output
 OutputFile = "../Tests - Results/Test3.dxf"
 OutputType = Preset
 Name = DXF
+	[[Actions]]
+		[[[Orphans]]]
+		Type = Orphans
+		Action = 1
 	[[Element Actions]]
 		[[[Assign Layer]]]
 		Action = AssignLayer
