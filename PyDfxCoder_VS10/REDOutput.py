@@ -339,7 +339,7 @@ def getFormatWriter(SettingsDict):
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
                 Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
                 Point4 = NumberedPoints['points'][compoundObject['points'][3]]['point']
-                OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer=objectLayer))
+                #OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer=objectLayer))
                 OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
             if objectType == 'PLINE_5NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']

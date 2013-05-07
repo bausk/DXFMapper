@@ -6,8 +6,8 @@
 
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../Tests/Test6-test2.dxf"
-Precision = 4
+InputFileList = "../Tests/Test6.dxf"
+Precision = 3
 Normalize = Yes
 Entities = NONE
 
@@ -42,8 +42,8 @@ Entities = NONE
 
 		[[[R]]]
 		Scale = 1
-		Origin = 0
-		#Origin = 0.54
+		#Origin = 0
+		Origin = 0.54
 
 
 #Filters for entities to be included in the model

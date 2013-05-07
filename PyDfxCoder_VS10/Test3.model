@@ -2,7 +2,7 @@
 #
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../Tests/Test3-test3.dxf"
+InputFileList = "../Tests/Test3.dxf"
 Precision = 2
 Normalize = Yes
 Entities = NONE
