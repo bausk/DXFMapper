@@ -166,3 +166,5 @@ pip-log.txt
 
 Deleted/
 Model1/
+*.dwl
+*.bak
