@@ -91,7 +91,6 @@ Name = DXF
 		[[[Orphans]]]
 		Type = Orphans
 		Action = 1
-
 	[[Element Actions]]
 		[[[Assign Layer]]]
 		Action = AssignLayer

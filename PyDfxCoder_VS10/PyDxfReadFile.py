@@ -202,6 +202,7 @@ def main():
     Outputs = GetSections("Output", Settings)
     DefaultOutput = GetSections("DefaultOutput", Settings)['Default Output']
     for OutputName in Outputs:
+        print "Output for {}...".format(OutputName)
         FinalizedSettings = UpdateSetting(DefaultOutput, Outputs[OutputName])
         OutputWriter = REDOutput.getFormatWriter(FinalizedSettings)
         OutputWriter(ObjectList, Filters, Points, PointsNumbered, Elements)

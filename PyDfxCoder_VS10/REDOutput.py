@@ -248,7 +248,7 @@ def getFormatWriter(SettingsDict):
     def Dxf(Objects, Filters, Points, NumberedPoints, Elements):
         OutputFile = sdxf.Drawing()
         #ExtendedData = {}
-        GlobalActions = SettingsDict['Actions'].copy() if 'Actions' is SettingsDict else {}
+        GlobalActions = SettingsDict['Actions'].copy() if 'Actions' in SettingsDict else {}
         GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
         for GlobalAction in GlobalActions:
             ActionType = GlobalActions[GlobalAction].pop('Type')
@@ -291,16 +291,32 @@ def getFormatWriter(SettingsDict):
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
                 OutputFile.append(sdxf.Line(points=[Point1, Point2], layer=objectLayer))
             if objectType == 'SOLID_8NODES':
-                Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
-                Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
-                Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
-                Point4 = NumberedPoints['points'][compoundObject['points'][3]]['point']
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
-                Point1 = NumberedPoints['points'][compoundObject['points'][4]]['point']
-                Point2 = NumberedPoints['points'][compoundObject['points'][5]]['point']
-                Point3 = NumberedPoints['points'][compoundObject['points'][6]]['point']
-                Point4 = NumberedPoints['points'][compoundObject['points'][7]]['point']
-                OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
+                for x in [    [0,1,2,3],
+                              [4,5,6,7],
+                              [0,1,5,4],
+                              [1,2,6,5],
+                              [2,3,7,6],
+                              [3,0,4,7]
+                              ]:
+                    FaceVertices = [NumberedPoints['points'][compoundObject['points'][index]]['point'] for index in x]
+                    OutputFile.append(sdxf.Face(points=FaceVertices, layer=objectLayer))
+
+                #Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
+                #Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
+                #Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
+                #Point4 = NumberedPoints['points'][compoundObject['points'][3]]['point']
+                #OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
+                #Point1 = NumberedPoints['points'][compoundObject['points'][4]]['point']
+                #Point2 = NumberedPoints['points'][compoundObject['points'][5]]['point']
+                #Point3 = NumberedPoints['points'][compoundObject['points'][6]]['point']
+                #Point4 = NumberedPoints['points'][compoundObject['points'][7]]['point']
+                #OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
+                #Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
+                #Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
+                #Point3 = NumberedPoints['points'][compoundObject['points'][4]]['point']
+                #Point4 = NumberedPoints['points'][compoundObject['points'][5]]['point']
+                #OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
+
             if objectType == 'SOLID_10NODES':
                 Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
@@ -377,7 +393,7 @@ def getFormatWriter(SettingsDict):
         FormatDict = FormatDictInitializer(OutputSemantic)
         ExtendedData = {}
         #First: routine to check point actions
-        GlobalActions = SettingsDict['Actions'].copy() if 'Actions' is SettingsDict else {}
+        GlobalActions = SettingsDict['Actions'].copy() if 'Actions' in SettingsDict else {}
         GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
         for GlobalAction in GlobalActions:
             ActionType = GlobalActions[GlobalAction].pop('Type')
