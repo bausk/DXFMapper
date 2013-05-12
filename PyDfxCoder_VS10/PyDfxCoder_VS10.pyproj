@@ -37,6 +37,7 @@
     <Compile Include="sdxf.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Test9.model" />
     <Content Include="Test8.model" />
     <Content Include="Test7.model" />
     <Content Include="Test2.model" />

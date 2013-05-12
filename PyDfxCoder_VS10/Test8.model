@@ -1,4 +1,4 @@
-#Model file to test Rect2Orthospheric transform
+#Model file to test Ortho2Rect transform
 #Input: lines modeling tendons, 3dfaces modeling concrete bases
 #Output: LIRA output
 #Next step: figure out sewing with cylinder
@@ -6,10 +6,11 @@
 
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../Tests/Test8-test.dxf"
-Precision = 4
+InputFileList = "../tests/test8.dxf"
+Precision = 5
 Normalize = Yes
 Entities = NONE
+Flatten = Yes
 
 	[[Origin]]
 	X = 0
@@ -25,18 +26,18 @@ Entities = NONE
 
 		[[[Delta]]]
 		Mapping = X
-		Scale = 35.5
+		Scale = 35
 		Origin = 0
 
 		[[[Gamma]]]
 		Mapping = Y
-		Scale = 35.5
+		Scale = 35
 		Origin = 0
 
 		[[[R]]]
 		Mapping = Z
 		Scale = 1
-		Origin = -35.5
+		Origin = -34.5
 
 
 #Filters for entities to be included in the model
@@ -45,18 +46,18 @@ Entities = NONE
 Type = Filter
 Layer = "LowerTendons"
 Output = "DXF Output"
-Entities = LINE
-#PreprocessType = Preset
-#	[[Preprocess]]
-#	Function = "SphericMove"
-#	Parameter = '{"Method":"ByLayer", "LowerTendons":[0, 0, 0.4]}'
-#	Data = '{"StiffnessMarker":"Tendon1"}'
+Entities = LINE, POLYLINE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "LowerTendons":[0, 0, 0.4]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
 
 [UpperTendons]
 Type = Filter
 Layer = "UpperTendons"
 Output = "DXF Output"
-Entities = LINE
+Entities = LINE, POLYLINE
 PreprocessType = Preset
 	[[Preprocess]]
 	Function = "Move"
@@ -68,11 +69,11 @@ Type = Filter
 Layer = "Bases"
 Output = "DXF Output"
 Entities = 3DFACE
-#PreprocessType = Preset
-#	[[Preprocess]]
-#	Function = "ExtrudeR"
-#	Parameter = 0.4, 0.3, 0.4
-#	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}'
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "ExtrudeZ"
+	Parameter = 0.4, 0.3, 0.4
+	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}'
 
 #Output model and semantics
 [Default Output]

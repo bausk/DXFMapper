@@ -42,7 +42,32 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
         z = cos(Delta) * R / sqrt((cos(Delta)*tan(Gamma))**2 + 1)
         return z
 
+#---------------------------
+    def RectToOrthoDelta(Vars):
+        x = (getVar('X', Vars) - Parameters['X']['Origin']) / Parameters['X']['Scale']
+        y = (getVar('Y', Vars) - Parameters['Y']['Origin']) / Parameters['Y']['Scale']
+        z = (getVar('Z', Vars) - Parameters['Z']['Origin']) / Parameters['Z']['Scale']
 
+        d = asin(x/sqrt(x**2 + z**2))
+        return d
+
+    def RectToOrthoGamma(Vars):
+        x = (getVar('X', Vars) - Parameters['X']['Origin']) / Parameters['X']['Scale']
+        y = (getVar('Y', Vars) - Parameters['Y']['Origin']) / Parameters['Y']['Scale']
+        z = (getVar('Z', Vars) - Parameters['Z']['Origin']) / Parameters['Z']['Scale']
+
+        g = asin(y/sqrt(y**2 + z**2))
+        return g
+
+    def RectToOrthoR(Vars):
+        x = (getVar('X', Vars) - Parameters['X']['Origin']) / Parameters['X']['Scale']
+        y = (getVar('Y', Vars) - Parameters['Y']['Origin']) / Parameters['Y']['Scale']
+        z = (getVar('Z', Vars) - Parameters['Z']['Origin']) / Parameters['Z']['Scale']
+
+        r = sqrt(x**2 + y**2 + z**2)
+        return r
+
+#-------------------------
     def OrthosphericX(Vars):
         x = getVar('X', Vars) - Parameters['X']['Origin']
         y = getVar('Y', Vars) - Parameters['Y']['Origin']
@@ -91,18 +116,29 @@ def GetFormula(TransformFormat, TransformType, Coordinate, Parameters):
             'CylindricToRectangular' : CylToRectangularX,
             'Orthospheric' : OrthosphericX,
             'OrthosphericToRectangular' : OrthoToRectX,
+            'RectToOrtho' : RectToOrthoDelta,
             },
         'Y': {
             'CylindricToRectangular' : CylToRectangularY,
             'Orthospheric' : OrthosphericY,
             'OrthosphericToRectangular' : OrthoToRectY,
+            'RectToOrtho' : RectToOrthoGamma,
             },
         'Z': {
             'CylindricToRectangular' : CylToRectangularZ,
             'Orthospheric' : OrthosphericZ,
             'OrthosphericToRectangular' : OrthoToRectZ,
+            'RectToOrtho' : RectToOrthoR,
             },
-
+        'Delta': {
+            'RectToOrtho' : RectToOrthoDelta,
+            },
+        'Gamma': {
+            'RectToOrtho' : RectToOrthoGamma,
+            },
+        'R': {
+            'RectToOrtho' : RectToOrthoR,
+            },
         }
 
 

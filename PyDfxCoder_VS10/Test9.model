@@ -1,0 +1,66 @@
+#Model file to return the round massive location from Rect to Ortho
+#Also, tests Rect2Ortho
+#Also tests 
+#Input: lines modeling locaitons
+#Output: DXF
+#Next step: Stabilize the spherical dome model
+#Problems solved: Rect2Ortho
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../tests/test9.dxf"
+Precision = 5
+Normalize = No
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+	Delta = 0
+	Gamma = 0
+	R = 0
+
+	[[Target]]
+	X = Preset, RectToOrtho, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, RectToOrtho, Y
+	Z = Preset, RectToOrtho, Z
+
+	[[Transformation mapping]]
+
+		[[[X]]]
+		Mapping = X
+		Scale = 35
+		Origin = 0
+
+		[[[Y]]]
+		Mapping = Y
+		Scale = 35
+		Origin = 0
+
+		[[[Z]]]
+		Mapping = Z
+		Scale = 35
+		Origin = 0
+
+
+#Filters for entities to be included in the model
+
+[Border]
+Type = Filter
+Layer = "Border"
+Output = "DXF Output"
+Entities = LINE, POLYLINE, LWPOLYLINE
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test9.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test9.dxf"
+OutputType = Preset
+Name = DXF

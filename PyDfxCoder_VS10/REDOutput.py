@@ -248,7 +248,7 @@ def getFormatWriter(SettingsDict):
     def Dxf(Objects, Filters, Points, NumberedPoints, Elements):
         OutputFile = sdxf.Drawing()
         #ExtendedData = {}
-        GlobalActions = SettingsDict['Actions'].copy()
+        GlobalActions = SettingsDict['Actions'].copy() if 'Actions' is SettingsDict else {}
         GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
         for GlobalAction in GlobalActions:
             ActionType = GlobalActions[GlobalAction].pop('Type')
@@ -377,7 +377,7 @@ def getFormatWriter(SettingsDict):
         FormatDict = FormatDictInitializer(OutputSemantic)
         ExtendedData = {}
         #First: routine to check point actions
-        GlobalActions = SettingsDict['Actions'].copy()
+        GlobalActions = SettingsDict['Actions'].copy() if 'Actions' is SettingsDict else {}
         GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
         for GlobalAction in GlobalActions:
             ActionType = GlobalActions[GlobalAction].pop('Type')
