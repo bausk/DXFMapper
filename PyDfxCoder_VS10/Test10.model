@@ -1,0 +1,47 @@
+#Model file to test MeshPy
+#Input: 3Dfaces modeling FE region boundaries
+#Output: DXF
+#Next step: Sew together three parts of the model
+#Problems solved: meshing
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../tests/test10-test.dxf"
+Precision = 5
+Normalize = No
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+	Delta = 0
+	Gamma = 0
+	R = 0
+
+#Filters for entities to be included in the model
+
+[Boundaries]
+Type = Filter
+Layer = "Boundaries"
+Output = "DXF Output"
+Entities = 3DFACE
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test10.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test10.dxf"
+OutputType = Preset
+Name = DXF
+	[[Actions]]
+		[[[Meshing]]]
+		Type = Meshing
+		Boundaries = '{"Boundaries"}'
+		Geometry = '{"boundaries": ["Boundaries"],"points": ["Points"]}'
+		Parameters = '{"foo":"bar"}'

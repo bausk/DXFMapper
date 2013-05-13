@@ -3,6 +3,7 @@ import collections
 import sdxf
 import ShadowbinderDataTools
 from ShadowbinderFormats import *
+from meshpy.tet import MeshInfo, build, Options
 import simplejson as json
 #from PyDxfTools import GetPoints
 
@@ -240,6 +241,85 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                 print "Orphan node {}!".format(Number)
                 Output.append({'element_type': 'POINT', 'position': Point['point'], 'layer': 'Errors', 'nodenumber': Number})
         return {'information':'addObjects'}, Output#Here we have Output ready to be printed and ExtendedData, a mapper to Output
+    if ActionType == 'Meshing':
+        Boundaries = []
+        Output = []
+        Geometry = json.loads(GlobalAction['Geometry']) if 'Geometry' in GlobalAction else False
+        for Filter in Geometry['boundaries']:
+            print "Using filter {} as finite element domain boundary.".format(Filter)
+            for Element in Elements:
+                if Element and Element['filter'] == Filter and Element['elementclass'] in ['FACE_3NODES', 'FACE_4NODES']:
+                    Boundaries.append(Element)
+        print "Assembling FE domain"
+        mesh_info = MeshInfo()
+        MeshPoints = []
+        MeshFacets = []
+        MeshPointsIndex = {}
+        PointIndex = 0
+        for BoundaryElement in Boundaries:
+            MeshFacet = []
+            ElementPoints = BoundaryElement['points']
+            for point in ElementPoints:
+                if not point in MeshPointsIndex:
+                    MeshPointsIndex[point] = PointIndex
+                    MeshPoints.append(False)
+                    MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
+                    PointIndex += 1
+                if not MeshPointsIndex[point] in MeshFacet:
+                    MeshFacet.append(MeshPointsIndex[point])
+
+            MeshFacets.append(MeshFacet)
+
+        mesh_info.set_points(MeshPoints)
+        mesh_info.set_facets(MeshFacets)
+        #mesh_info.Options(switches='pq')
+        #mesh_info.set_points([
+        #    (0,0,0), (12,0,0), (12,12,0), (0,12,0),
+        #    (0,0,12), (12,0,12), (12,12,12), (0,12,12),
+        #    ])
+        #mesh_info.set_facets([
+        #    [0,1,2,3],
+        #    [4,5,6,7],
+        #    [0,4,5,1],
+        #    [1,5,6,2],
+        #    [2,6,7,3],
+        #    [3,7,4,0],
+        #    ])
+        
+        #opts = Options(switches='pq')
+        #opts.maxvolume = 0.0001
+        #opts.parse_switches()
+        mesh_info.regions.resize(1)
+        mesh_info.regions[0] = [9.8, 20.8, 57.31, # point in volume -> first box
+        0, # region tag (user-defined number)
+        1e-2, # max tet volume in region
+        ]
+        mesh = build(mesh_info)
+        mesh = build(mesh_info, volume_constraints=True)
+        #mesh.write_vtk("test.vtk")
+        #mesh.points
+        #mesh.elements
+        #mesh.faces
+        filename = "test"
+        mesh.save_elements(filename)
+        mesh.save_nodes(filename)
+        mesh.save_elements(filename)
+        mesh.save_faces(filename)
+        mesh.save_edges(filename)
+        #mesh.save_neighbors(filename)
+        #mesh.save_poly(filename)
+        for face in mesh.faces:
+            Position = [mesh.points[x] for x in face]
+            Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Faces'})
+        for element in mesh.elements:
+            Position = [mesh.points[x] for x in element]
+            Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Elements'})
+        
+        #NumberedPoints['points'][compoundObject['points'][0]]['point']
+        if not Boundaries: return False, False
+        #return False, Output
+        return {'information':'addObjects'}, Output
+
     return False
 
 
@@ -257,6 +337,10 @@ def getFormatWriter(SettingsDict):
                 for Item in Output:
                     if Item['element_type'] == 'POINT':
                         OutputFile.append(sdxf.Text(text=Item['nodenumber'], point=Item['position'], layer=Item['layer']))
+                    if Item['element_type'] == '3DFACE':
+                        if len(Item['position'])<4:
+                            Item['position'].append(Item['position'][-1])
+                        OutputFile.append(sdxf.Face(points=Item['position'], layer=Item['layer']))
 
 
         ElementActions = SettingsDict['Element Actions'].copy() if 'Element Actions' in SettingsDict else [] #Copying because we will be pop()ping already processed Actions
