@@ -50,7 +50,7 @@ Entities = LINE
 [Volumes]
 Type = Filter
 PreprocessType = Preset #Specifies tranformations before mapping.
-Layer = "Concrete bases", "Concrete bases new"
+Layer = "Concrete bases", "Concrete bases new", "Concrete bases crown"
 Entities = LWPOLYLINE
 Points = 3, 4
 Closed = Yes

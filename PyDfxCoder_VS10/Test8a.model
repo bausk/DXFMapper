@@ -1,0 +1,114 @@
+#test8a: generation of spheric FE border
+#To be used together with test3a and test10
+#Input: 3dfaces modeling concrete bases on border
+#Output: DXF only
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../tests/test8.dxf"
+Precision = 5
+Normalize = Yes
+Entities = NONE
+Flatten = Yes
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, OrthosphericToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, OrthosphericToRectangular, Y
+	Z = Preset, OrthosphericToRectangular, Z
+
+	[[Transformation mapping]]
+
+		[[[Delta]]]
+		Mapping = X
+		Scale = 35
+		Origin = 0
+
+		[[[Gamma]]]
+		Mapping = Y
+		Scale = 35
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -34.5
+
+
+#Filters for entities to be included in the model
+[LowerTendonsCrown]
+Type = Filter
+Layer = "LowerTendons Crown"
+Output = "DXF Output"
+Entities = LINE, POLYLINE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "LowerTendons Crown":[0, 0, 0.4]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+
+#[LowerTendons]
+#Type = Filter
+#Layer = "LowerTendons"
+#Output = "DXF Output"
+#Entities = LINE, POLYLINE
+#PreprocessType = Preset
+#	[[Preprocess]]
+#	Function = "Move"
+#	Parameter = '{"Method":"ByLayer", "LowerTendons":[0, 0, 0.4]}'
+#	Data = '{"StiffnessMarker":"Tendon1"}'
+
+[UpperTendonsCrown]
+Type = Filter
+Layer = "UpperTendons Crown"
+Output = "DXF Output"
+Entities = LINE, POLYLINE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "UpperTendons Crown":[0, 0, 0.7]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+
+#[UpperTendons]
+#Type = Filter
+#Layer = "UpperTendons"
+#Output = "DXF Output"
+#Entities = LINE, POLYLINE
+#PreprocessType = Preset
+#	[[Preprocess]]
+#	Function = "Move"
+#	Parameter = '{"Method":"ByLayer", "UpperTendons":[0, 0, 0.7]}'
+#	Data = '{"StiffnessMarker":"Tendon1"}'
+
+[TestBases]
+Type = Filter
+Layer = "Bases - borderline"
+Output = "DXF Output"
+Entities = 3DFACE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "ExtrudeZ"
+	Parameter = 0.4, 0.3, 0.4
+	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}'
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test8-crown.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test8-crown.dxf"
+OutputType = Preset
+Name = DXF
+	[[Element Actions]]
+		[[[Assign Layer]]]
+		Action = AssignLayer
+		Layers = '{"LowerTendons":"LowerTendons", "UpperTendons":"UpperTendons", "TestBases":"Crown wall"}'
+

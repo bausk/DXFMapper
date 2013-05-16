@@ -1,0 +1,72 @@
+#Working generator for cylindrical crown wall.
+#All parameters should be strictly the same as test3.model, except for output
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/Test3.dxf"
+Precision = 2
+Normalize = Yes
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 22.4759
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -22.4759
+
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
+
+#Filters for entities to be included in the model
+
+[Volumes]
+Type = Filter
+#PreprocessType = Preset #Specifies tranformations before mapping.
+Layer = "Concrete bases crown"
+Entities = LWPOLYLINE
+Points = 3, 4
+Closed = Yes
+Output = "DXF Output"
+#	[[Preprocess]]
+#	Function = "ExtrudeZ"
+#	Parameter = 0.4, 0.25, 0.25, 0.3
+#	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}', '{"StiffnessMarker":"Conc4Vol"}'
+
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/Test3a-test10cylcrown.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/Test3a-test10cylcrown.dxf"
+OutputType = Preset
+Name = DXF
+	[[Actions]]
+		[[[Orphans]]]
+		Type = Orphans
+		Action = 1
+	[[Element Actions]]
+		[[[Assign Layer]]]
+		Action = AssignLayer
+		Layers = '{"Volumes":"Cylindrical crown wall"}'

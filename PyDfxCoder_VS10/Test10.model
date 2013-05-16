@@ -1,14 +1,17 @@
-#Model file to test MeshPy
-#Input: 3Dfaces modeling FE region boundaries
-#Output: DXF
+#Test10.dxf: Model file to generate crown mesh
+#Test10-test.dxf: Model file to test MeshPy on a diamond 3D region
+#Test10-test2.dxf: Model file to test MeshPy on 'real' 3D region with polys
+#Test10-ill.dxf: illustration
+#Input: 3Dfaces modeling FE region boundaries, 3DPOLY's
+#Output: DXF only
 #Next step: Sew together three parts of the model
 #Problems solved: meshing
 
 [DefaultFilter]
 Type = DefaultFilter
-InputFileList = "../tests/test10-test.dxf"
+InputFileList = "../tests/test10-ill.dxf"
 Precision = 5
-Normalize = No
+Normalize = Yes
 Entities = NONE
 
 	[[Origin]]
@@ -25,7 +28,7 @@ Entities = NONE
 Type = Filter
 Layer = "Boundaries"
 Output = "DXF Output"
-Entities = 3DFACE
+Entities = 3DFACE, POLYLINE
 
 #Output model and semantics
 [Default Output]
@@ -44,4 +47,4 @@ Name = DXF
 		Type = Meshing
 		Boundaries = '{"Boundaries"}'
 		Geometry = '{"boundaries": ["Boundaries"],"points": ["Points"]}'
-		Parameters = '{"foo":"bar"}'
+		Parameters = '{"":"bar"}'

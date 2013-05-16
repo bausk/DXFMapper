@@ -1,0 +1,50 @@
+#Test10.dxf: Model file to generate crown mesh
+#Test10-test.dxf: Model file to test MeshPy on a diamond 3D region
+#Test10-test2.dxf: Model file to test MeshPy on 'real' 3D region with polys
+#Test10-ill.dxf: illustration
+#Input: 3Dfaces modeling FE region boundaries, 3DPOLY's
+#Output: DXF only
+#Next step: Sew together three parts of the model
+#Problems solved: meshing
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../tests/test10-quarter.dxf"
+Precision = 2
+Normalize = Yes
+Entities = NONE
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+	Delta = 0
+	Gamma = 0
+	R = 0
+
+#Filters for entities to be included in the model
+
+[Boundaries]
+Type = Filter
+Layer = "Crown wall side", "Cylindrical crown wall"
+Output = "DXF Output"
+Entities = 3DFACE, POLYLINE
+
+#Output model and semantics
+[Default Output]
+Type = DefaultOutput
+OutputFile = "../Tests - Results/test10-quarter.dxf"
+OutputType = Preset
+Name = DXF
+
+[DXF Output]
+Type = Output
+OutputFile = "../Tests - Results/test10-quarter.dxf"
+OutputType = Preset
+Name = DXF
+	[[Actions]]
+		[[[Meshing]]]
+		Type = Meshing
+		Boundaries = '{"Boundaries"}'
+		Geometry = '{"boundaries": ["Boundaries"],"points": ["Points"]}'
+		Parameters = '{"type":"general","maxvolume":1,"tolerance":0.001}'

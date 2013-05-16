@@ -5,6 +5,9 @@ import ShadowbinderDataTools
 from ShadowbinderFormats import *
 from meshpy.tet import MeshInfo, build, Options
 import simplejson as json
+import numpy as np
+import scipy.spatial
+
 #from PyDxfTools import GetPoints
 
 #PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
@@ -244,11 +247,12 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
     if ActionType == 'Meshing':
         Boundaries = []
         Output = []
-        Geometry = json.loads(GlobalAction['Geometry']) if 'Geometry' in GlobalAction else False
+        Geometry = json.loads(GlobalAction['Geometry']) if 'Geometry' in GlobalAction else {}
+        Parameters = json.loads(GlobalAction['Parameters']) if 'Parameters' in GlobalAction else {}
         for Filter in Geometry['boundaries']:
             print "Using filter {} as finite element domain boundary.".format(Filter)
             for Element in Elements:
-                if Element and Element['filter'] == Filter and Element['elementclass'] in ['FACE_3NODES', 'FACE_4NODES']:
+                if Element and Element['filter'] == Filter and Element['elementclass'] in ['FACE_3NODES', 'FACE_4NODES', 'POLYLINE']:
                     Boundaries.append(Element)
         print "Assembling FE domain"
         mesh_info = MeshInfo()
@@ -257,21 +261,49 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         MeshPointsIndex = {}
         PointIndex = 0
         for BoundaryElement in Boundaries:
-            MeshFacet = []
+            
             ElementPoints = BoundaryElement['points']
-            for point in ElementPoints:
-                if not point in MeshPointsIndex:
-                    MeshPointsIndex[point] = PointIndex
-                    MeshPoints.append(False)
-                    MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
-                    PointIndex += 1
-                if not MeshPointsIndex[point] in MeshFacet:
-                    MeshFacet.append(MeshPointsIndex[point])
 
-            MeshFacets.append(MeshFacet)
+            MeshFacet = []
+            if Parameters['type'] != 'general':
+                for point in [ElementPoints[0],ElementPoints[1],ElementPoints[2]]:
+                    if not point in MeshPointsIndex:
+                        MeshPointsIndex[point] = PointIndex
+                        MeshPoints.append(False)
+                        MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
+                        PointIndex += 1
+                    MeshFacet.append(MeshPointsIndex[point])
+                MeshFacets.append(MeshFacet)
+                MeshFacet = []
+                if ElementPoints[2] != ElementPoints[3]:
+                    for point in [ElementPoints[0],ElementPoints[2],ElementPoints[3]]:
+                        if not point in MeshPointsIndex:
+                            MeshPointsIndex[point] = PointIndex
+                            MeshPoints.append(False)
+                            MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
+                            PointIndex += 1
+                        MeshFacet.append(MeshPointsIndex[point])
+                    MeshFacets.append(MeshFacet)
+            else:
+                for point in ElementPoints:
+                    if not point in MeshPointsIndex:
+                        MeshPointsIndex[point] = PointIndex
+                        MeshPoints.append(False)
+                        MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
+                        PointIndex += 1
+                    if not MeshPointsIndex[point] in MeshFacet:
+                        MeshFacet.append(MeshPointsIndex[point])
+                    else:
+                        print "Mesh error or 3-point 3DFACE."
+                MeshFacets.append(MeshFacet)
+
+
+            
 
         mesh_info.set_points(MeshPoints)
         mesh_info.set_facets(MeshFacets)
+        points = np.array([list(x) for x in MeshPoints])
+        #qhull = scipy.spatial.Delaunay(points)
         #mesh_info.Options(switches='pq')
         #mesh_info.set_points([
         #    (0,0,0), (12,0,0), (12,12,0), (0,12,0),
@@ -289,13 +321,13 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         #opts = Options(switches='pq')
         #opts.maxvolume = 0.0001
         #opts.parse_switches()
+
         mesh_info.regions.resize(1)
-        mesh_info.regions[0] = [9.8, 20.8, 57.31, # point in volume -> first box
+        mesh_info.regions[0] = [MeshPoints[0][0], MeshPoints[0][1], MeshPoints[0][2], # point in volume -> first box
         0, # region tag (user-defined number)
-        1e-2, # max tet volume in region
+        1e1, # max tet volume in region
         ]
-        mesh = build(mesh_info)
-        mesh = build(mesh_info, volume_constraints=True)
+        mesh = build(mesh_info, options=Options(switches="pqT", epsilon=Parameters['tolerance']), volume_constraints=True)
         #mesh.write_vtk("test.vtk")
         #mesh.points
         #mesh.elements
@@ -308,6 +340,10 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         mesh.save_edges(filename)
         #mesh.save_neighbors(filename)
         #mesh.save_poly(filename)
+        #for element in qhull.simplices:
+        #    Position = [list(qhull.points[x]) for x in element]
+        #    Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Elements'})
+
         for face in mesh.faces:
             Position = [mesh.points[x] for x in face]
             Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Faces'})
@@ -375,15 +411,15 @@ def getFormatWriter(SettingsDict):
                 Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
                 OutputFile.append(sdxf.Line(points=[Point1, Point2], layer=objectLayer))
             if objectType == 'SOLID_8NODES':
-                for x in [    [0,1,2,3],
-                              [4,5,6,7],
-                              [0,1,5,4],
-                              [1,2,6,5],
-                              [2,3,7,6],
-                              [3,0,4,7]
+                for x in [    [[0,1,2,3], "bottom"],
+                              [[4,5,6,7], "top"],
+                              [[0,1,5,4], "side1"],
+                              [[1,2,6,5], "side2"],
+                              [[2,3,7,6], "side3"],
+                              [[3,0,4,7], "side4"]
                               ]:
-                    FaceVertices = [NumberedPoints['points'][compoundObject['points'][index]]['point'] for index in x]
-                    OutputFile.append(sdxf.Face(points=FaceVertices, layer=objectLayer))
+                    FaceVertices = [NumberedPoints['points'][compoundObject['points'][index]]['point'] for index in x[0]]
+                    OutputFile.append(sdxf.Face(points=FaceVertices, layer=objectLayer + " " + x[1]))
 
                 #Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
                 #Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
@@ -429,9 +465,9 @@ def getFormatWriter(SettingsDict):
                 #Point1 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][0]])[0:2])
                 #Point2 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][1]])[0:2])
                 #Point3 = tuple(list(compoundObject['points'][compoundObject['pointlist'][objectNum][2]])[0:2])
-                Point1 = NumberedPoints['points'][compoundObject['points'][1]]['point']
-                Point2 = NumberedPoints['points'][compoundObject['points'][2]]['point']
-                Point3 = NumberedPoints['points'][compoundObject['points'][3]]['point']
+                Point1 = NumberedPoints['points'][compoundObject['points'][0]]['point']
+                Point2 = NumberedPoints['points'][compoundObject['points'][1]]['point']
+                Point3 = NumberedPoints['points'][compoundObject['points'][2]]['point']
                 #OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3], flag=1, layer="Polylines"))
                 OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point3], layer=objectLayer))
             if objectType == 'FACE_4NODES':

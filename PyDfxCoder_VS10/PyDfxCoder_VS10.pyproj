@@ -13,7 +13,7 @@
     <Name>PyDfxCoder_VS10</Name>
     <RootNamespace>PyDfxCoder_VS10</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"Test10.model"</CommandLineArguments>
+    <CommandLineArguments>"Test8a.model"</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments />
   </PropertyGroup>
@@ -37,7 +37,11 @@
     <Compile Include="sdxf.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Test10quarter.model" />
     <Content Include="Test10.model" />
+    <Content Include="Test3a.model" />
+    <Content Include="Test8ill.model" />
+    <Content Include="Test8a.model" />
     <Content Include="Test9.model" />
     <Content Include="Test8.model" />
     <Content Include="Test7.model" />
