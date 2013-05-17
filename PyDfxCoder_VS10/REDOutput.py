@@ -249,17 +249,32 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         Output = []
         Geometry = json.loads(GlobalAction['Geometry']) if 'Geometry' in GlobalAction else {}
         Parameters = json.loads(GlobalAction['Parameters']) if 'Parameters' in GlobalAction else {}
+        AdditionalPointsFilters = json.loads(GlobalAction['AdditionalPoints']) if 'AdditionalPoints' in GlobalAction else []
         for Filter in Geometry['boundaries']:
             print "Using filter {} as finite element domain boundary.".format(Filter)
             for Element in Elements:
                 if Element and Element['filter'] == Filter and Element['elementclass'] in ['FACE_3NODES', 'FACE_4NODES', 'POLYLINE']:
                     Boundaries.append(Element)
+
+        AdditionalPoints = []
+        for Filter in AdditionalPointsFilters:
+            print "Using filter {} as additional points container.".format(Filter)
+            for Element in Elements:
+                if Element and Element['filter'] == Filter and Element['elementclass'] in ['FACE_3NODES', 'FACE_4NODES', 'POLYLINE', 'LINE_2NODES']:
+                    AdditionalPoints.extend(
+                                            Element['points']
+                                            )
+
         print "Assembling FE domain"
+
         mesh_info = MeshInfo()
+        #additional_points = MeshInfo()
+        #additional_points.set_points(list(set(AdditionalPoints)))
         MeshPoints = []
         MeshFacets = []
         MeshPointsIndex = {}
         PointIndex = 0
+
         for BoundaryElement in Boundaries:
             
             ElementPoints = BoundaryElement['points']
@@ -297,12 +312,19 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                         print "Mesh error or 3-point 3DFACE."
                 MeshFacets.append(MeshFacet)
 
+        for point in list(set(AdditionalPoints)):
+            if not point in MeshPointsIndex:
+                MeshPointsIndex[point] = PointIndex
+                MeshPoints.append(False)
+                MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
+                PointIndex += 1
 
             
 
         mesh_info.set_points(MeshPoints)
+        #insertaddpoints
         mesh_info.set_facets(MeshFacets)
-        points = np.array([list(x) for x in MeshPoints])
+        #points = np.array([list(x) for x in MeshPoints])
         #qhull = scipy.spatial.Delaunay(points)
         #mesh_info.Options(switches='pq')
         #mesh_info.set_points([
@@ -325,9 +347,11 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         mesh_info.regions.resize(1)
         mesh_info.regions[0] = [MeshPoints[0][0], MeshPoints[0][1], MeshPoints[0][2], # point in volume -> first box
         0, # region tag (user-defined number)
-        1e1, # max tet volume in region
+        Parameters['maxvolume'], # max tet volume in region
         ]
         mesh = build(mesh_info, options=Options(switches="pqT", epsilon=Parameters['tolerance']), volume_constraints=True)
+        print "Created mesh with {} points, {} faces and {} elements.".format(len(mesh.points), len(mesh.faces), len(mesh.elements))
+        #mesh = build(mesh_info, options=Options(switches="pTi", epsilon=Parameters['tolerance'], insertaddpoints=True), volume_constraints=True, insert_points=additional_points)
         #mesh.write_vtk("test.vtk")
         #mesh.points
         #mesh.elements

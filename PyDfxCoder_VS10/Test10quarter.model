@@ -26,9 +26,15 @@ Entities = NONE
 
 [Boundaries]
 Type = Filter
-Layer = "Crown wall side", "Cylindrical crown wall"
+Layer = "Crown wall side", "Cylindrical crown wall", "Crown wall side1", "Crown wall side2", "Crown wall side3", "Crown wall side4", "Boundaries"
 Output = "DXF Output"
 Entities = 3DFACE, POLYLINE
+
+[AdditionalPoints]
+Type = Filter
+Layer = "LowerTendons Crown", "UpperTendons Crown"
+Output = "DXF Output"
+Entities = LINE
 
 #Output model and semantics
 [Default Output]
@@ -46,5 +52,6 @@ Name = DXF
 		[[[Meshing]]]
 		Type = Meshing
 		Boundaries = '{"Boundaries"}'
-		Geometry = '{"boundaries": ["Boundaries"],"points": ["Points"]}'
-		Parameters = '{"type":"general","maxvolume":1,"tolerance":0.001}'
+		AdditionalPoints = '["AdditionalPoints"]'
+		Geometry = '{"boundaries": ["Boundaries"],"points": ["AdditionalPoints"]}'
+		Parameters = '{"type":"general","maxvolume":10,"tolerance":0.001}'
