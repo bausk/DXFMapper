@@ -175,10 +175,10 @@ Entities = 3DFACE, POLYLINE
 	Y = 0
 	Z = 0
 
-[AdditionalPoints]
+[AdditionalPoints1]
 Type = Filter
-InputFileList = "../Tests/Test8min.dxf"
-Layer = "LowerTendons Crown", "UpperTendons Crown"
+InputFileList = "../Tests/Test10.dxf"
+Layer = "TendonPoints1"
 Output = "DXF Output"
 CheckNeighbors = No
 Precision = 2
@@ -198,6 +198,15 @@ Entities = 3DFACE, POLYLINE
 	X = 0
 	Y = 0
 	Z = 0
+
+[AdditionalPoints3]
+Type = Filter
+InputFileList = "../Tests/Test10.dxf"
+Layer = "TendonPoints3"
+Output = "DXF Output"
+CheckNeighbors = No
+Precision = 2
+Entities = LINE
 
 [FEA]
 Type = Filter
@@ -233,8 +242,8 @@ PointActionOrder = "Compatible Nodes", "Rotate Nodes"
 
 		[[[Meshing1]]]
 		Type = Meshing
-		Geometry = '{"boundaries": ["Boundaries1"],"points": ["AdditionalPoints"]}'
-		Semantic = '{"output": "FEA", "filter": "FEA", "exclude filters": ["Boundaries1", "AdditionalPoints"]}'
+		Geometry = '{"boundaries": ["Boundaries1"],"points": ["AdditionalPoints1"]}'
+		Semantic = '{"output": "FEA", "filter": "FEA", "exclude filters": ["Boundaries1", "AdditionalPoints1", "Boundaries3", "AdditionalPoints3"]}'
 		Precision = 2
 		ExtendedModelData = '{"StiffnessMarker":"Conc1Vol"}'
 		EntityModelData = '{"color": 10, "layer": "FEA"}'
@@ -242,8 +251,8 @@ PointActionOrder = "Compatible Nodes", "Rotate Nodes"
 
 		[[[Meshing3]]]
 		Type = Meshing
-		Geometry = '{"boundaries": ["Boundaries3"],"points": ["AdditionalPoints"]}'
-		Semantic = '{"output": "FEA", "filter": "FEA", "exclude filters": ["Boundaries3", "AdditionalPoints"]}'
+		Geometry = '{"boundaries": ["Boundaries3"],"points": ["AdditionalPoints3"]}'
+		Semantic = '{"output": "FEA", "filter": "FEA", "exclude filters": ["Boundaries1", "AdditionalPoints1", "Boundaries3", "AdditionalPoints3"]}'
 		ExtendedModelData = '{"StiffnessMarker":"Conc1Vol"}'
 		Precision = 2
 		EntityModelData = '{"color": 10, "layer": "FEA"}'

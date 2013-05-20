@@ -51,7 +51,7 @@ Name = DXF
 	[[Actions]]
 		[[[Meshing]]]
 		Type = Meshing
-		Boundaries = '{"Boundaries"}'
-		AdditionalPoints = '["AdditionalPoints"]'
+		#Boundaries = '{"Boundaries"}' old version
+		#AdditionalPoints = '["AdditionalPoints"]' old version
 		Geometry = '{"boundaries": ["Boundaries"],"points": ["AdditionalPoints"]}'
 		Parameters = '{"type":"general","maxvolume":10,"tolerance":0.001}'

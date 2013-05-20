@@ -259,7 +259,7 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         Output = []
         Geometry = json.loads(GlobalAction['Geometry']) if 'Geometry' in GlobalAction else {}
         Parameters = json.loads(GlobalAction['Parameters']) if 'Parameters' in GlobalAction else {}
-        AdditionalPointsFilters = json.loads(GlobalAction['AdditionalPoints']) if 'AdditionalPoints' in GlobalAction else []
+        AdditionalPointsFilters = Geometry['points'] if 'points' in Geometry else []
         for Filter in Geometry['boundaries']:
             print "Using filter {} as finite element domain boundary.".format(Filter)
             for Element in Elements:
@@ -324,7 +324,7 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                 MeshFacet = []
 
         for point in list(set(AdditionalPoints)):
-            if not point in MeshPointsIndex:
+            if not point in MeshPointsIndex: #See whether the point is already indexed by its native number
                 MeshPointsIndex[point] = PointIndex
                 MeshPoints.append(False)
                 MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
