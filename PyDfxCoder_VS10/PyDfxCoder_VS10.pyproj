@@ -13,7 +13,7 @@
     <Name>PyDfxCoder_VS10</Name>
     <RootNamespace>PyDfxCoder_VS10</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"Test10quarter.model"</CommandLineArguments>
+    <CommandLineArguments>"Test12.model"</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments />
   </PropertyGroup>
@@ -26,6 +26,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="combinatorics.py" />
+    <Compile Include="Settings.py" />
     <Compile Include="ShadowbinderFormats.py" />
     <Compile Include="Boilerplate.py" />
     <Compile Include="ShadowbinderDataTools.py" />
@@ -37,6 +39,8 @@
     <Compile Include="sdxf.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Test12.model" />
+    <Content Include="Test11.model" />
     <Content Include="Test10quarter.model" />
     <Content Include="Test10.model" />
     <Content Include="Test3a.model" />

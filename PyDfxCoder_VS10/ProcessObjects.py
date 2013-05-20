@@ -3,6 +3,7 @@ import collections
 from PyDxfTools import GetPoints, GetEntityData
 import CoordinateTransform
 import simplejson as json
+from ShadowbinderDataTools import NearestNeighbor
 
 PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
 REMapperPointRef = collections.namedtuple('REMapperPointRef', ['FilterName', 'ObjectNumber', 'PointNumber'])
@@ -20,6 +21,8 @@ def getFunction(Preprocess, PrepFunctionName):
         Parameters = [float(param) for param in ParametersDict['Parameter']]
         
         Points = GetPoints(Entity, Precision)
+        if (-0.535, -18.725, 0) in Points:
+            pass
         EntityModelData = GetEntityData(Entity)
         prepObject = {
                       'points' : [],
@@ -48,11 +51,11 @@ def getFunction(Preprocess, PrepFunctionName):
             if ExtendedModelData: prepObject['extended_model_data'].append(ExtendedModelData)
             prepObject['generation_order'].append(index)
             
-            if len(Points) == 3:
+            if len(set(Points)) == 3:
                 prepObject['elements'].append('SOLID_6NODES')
-            elif len(Points) == 4:
+            elif len(set(Points)) == 4:
                 prepObject['elements'].append('SOLID_8NODES')
-            elif len(Points) == 5:
+            elif len(set(Points)) == 5:
                 prepObject['elements'].append('SOLID_10NODES')
             else:
                 prepObject['elements'].append('SOLID_UNKNOWN')
@@ -161,7 +164,7 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['elements'].append('FACE_4NODES')
         elif len(Points) == 5:
             prepObject['elements'].append('PLINE_5NODES')
-        elif Entity.dxftype in ['POLYLINE','CIRCLE',]:
+        elif Entity.dxftype in ['POLYLINE','CIRCLE','LWPOLYLINE']:
             prepObject['elements'].append(Entity.dxftype)
         else:
             prepObject['elements'].append('UNKNOWN')
@@ -220,7 +223,7 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['elements'].append('FACE_4NODES')
         elif len(Points) == 5:
             prepObject['elements'].append('PLINE_5NODES')
-        elif Entity.dxftype in ['POLYLINE','CIRCLE',]:
+        elif Entity.dxftype in ['POLYLINE','CIRCLE','LWPOLYLINE']:
             prepObject['elements'].append(Entity.dxftype)
         else:
             prepObject['elements'].append('UNKNOWN')
@@ -252,7 +255,7 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['elements'].append('FACE_4NODES')
         elif len(Points) == 5:
             prepObject['elements'].append('PLINE_5NODES')
-        elif Entity.dxftype in ['POLYLINE','CIRCLE',]:
+        elif Entity.dxftype in ['POLYLINE','CIRCLE','LWPOLYLINE',]:
             prepObject['elements'].append(Entity.dxftype)
         else:
             prepObject['elements'].append('UNKNOWN')

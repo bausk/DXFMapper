@@ -1,0 +1,57 @@
+#Test11.dxf: Testing two-file Merge
+#Input: 3Dfaces, lines
+#Output: DXF only
+#Problems solved: merging
+
+[DefaultFilter]
+Type = DefaultFilter
+Precision = 6
+Normalize = Yes
+Overkill = Yes
+Entities = NONE
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+	Delta = 0
+	Gamma = 0
+	R = 0
+
+#Filters for entities to be included in the model
+
+[First]
+Type = Filter
+InputFileList = "../tests/test11-1.dxf"
+Layer = "3dfaces"
+Output = "DXF Output"
+Entities = 3DFACE, POLYLINE
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+	[[Postmapping]]
+	X = 1
+	Y = 0
+	Z = 0
+
+[Second]
+Type = Filter
+InputFileList = "../tests/test11-2.dxf", "../tests/test11-1.dxf"
+Layer = "plines"
+Output = "DXF Output"
+Entities = POLYLINE, LWPOLYLINE
+	[[Origin]]
+	X = -1
+	Y = 0
+	Z = 0
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+#Output model and semantics
+[DXF Output]
+Type = Output
+Name = DXF
+OutputFile = "../Tests - Results/test11.dxf"
+OutputType = Preset

@@ -2,11 +2,14 @@ from math import *
 import collections
 import sdxf
 import ShadowbinderDataTools
+from ShadowbinderDataTools import NeighborhoodRaw
 from ShadowbinderFormats import *
 from meshpy.tet import MeshInfo, build, Options
 import simplejson as json
 import numpy as np
 import scipy.spatial
+from Settings import UpdateDict
+
 
 #from PyDxfTools import GetPoints
 
@@ -245,6 +248,13 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                 Output.append({'element_type': 'POINT', 'position': Point['point'], 'layer': 'Errors', 'nodenumber': Number})
         return {'information':'addObjects'}, Output#Here we have Output ready to be printed and ExtendedData, a mapper to Output
     if ActionType == 'Meshing':
+
+        EntityModelData = json.loads(GlobalAction['EntityModelData']) if 'EntityModelData' in GlobalAction else {}
+        ExtendedModelData = json.loads(GlobalAction['ExtendedModelData']) if 'ExtendedModelData' in GlobalAction else {}
+        Semantic = json.loads(GlobalAction['Semantic']) if 'Semantic' in GlobalAction else {}
+        if 'exclude filters' in Semantic:
+            if not 'ExcludeFilters' in ExtendedData: ExtendedData['ExcludeFilters'] = []
+            ExtendedData['ExcludeFilters'] = ExtendedData['ExcludeFilters'] + Semantic['exclude filters']
         Boundaries = []
         Output = []
         Geometry = json.loads(GlobalAction['Geometry']) if 'Geometry' in GlobalAction else {}
@@ -280,7 +290,7 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
             ElementPoints = BoundaryElement['points']
 
             MeshFacet = []
-            if Parameters['type'] != 'general':
+            if Parameters['type'] == 'divide_4p_faces':
                 for point in [ElementPoints[0],ElementPoints[1],ElementPoints[2]]:
                     if not point in MeshPointsIndex:
                         MeshPointsIndex[point] = PointIndex
@@ -311,6 +321,7 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                     else:
                         print "Mesh error or 3-point 3DFACE."
                 MeshFacets.append(MeshFacet)
+                MeshFacet = []
 
         for point in list(set(AdditionalPoints)):
             if not point in MeshPointsIndex:
@@ -320,10 +331,10 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                 PointIndex += 1
 
             
-
+        mesh_info.set_facets(MeshFacets)
         mesh_info.set_points(MeshPoints)
         #insertaddpoints
-        mesh_info.set_facets(MeshFacets)
+        
         #points = np.array([list(x) for x in MeshPoints])
         #qhull = scipy.spatial.Delaunay(points)
         #mesh_info.Options(switches='pq')
@@ -345,10 +356,11 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         #opts.parse_switches()
 
         mesh_info.regions.resize(1)
-        mesh_info.regions[0] = [MeshPoints[0][0], MeshPoints[0][1], MeshPoints[0][2], # point in volume -> first box
-        0, # region tag (user-defined number)
-        Parameters['maxvolume'], # max tet volume in region
-        ]
+        mesh_info.regions[0] = [
+                                MeshPoints[0][0], MeshPoints[0][1], MeshPoints[0][2], # point in volume -> first box
+                                0, # region tag (user-defined number)
+                                Parameters['maxvolume'], # max tet volume in region
+                                ]
         mesh = build(mesh_info, options=Options(switches="pqT", epsilon=Parameters['tolerance']), volume_constraints=True)
         print "Created mesh with {} points, {} faces and {} elements.".format(len(mesh.points), len(mesh.faces), len(mesh.elements))
         #mesh = build(mesh_info, options=Options(switches="pTi", epsilon=Parameters['tolerance'], insertaddpoints=True), volume_constraints=True, insert_points=additional_points)
@@ -367,18 +379,63 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         #for element in qhull.simplices:
         #    Position = [list(qhull.points[x]) for x in element]
         #    Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Elements'})
-
-        for face in mesh.faces:
-            Position = [mesh.points[x] for x in face]
-            Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Faces'})
-        for element in mesh.elements:
-            Position = [mesh.points[x] for x in element]
-            Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Elements'})
-        
         #NumberedPoints['points'][compoundObject['points'][0]]['point']
         if not Boundaries: return False, False
-        #return False, Output
-        return {'information':'addObjects'}, Output
+        Precision = int(GlobalAction['Precision']) if 'Precision' in GlobalAction else 4
+
+        if Semantic['output'].lower() == 'graphics':
+            for face in mesh.faces:
+                Position = [mesh.points[x] for x in face]
+                Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Faces'})
+            for element in mesh.elements:
+                Position = [mesh.points[x] for x in element]
+                Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Elements'})
+            return {'information':'addObjects'}, Output
+        elif Semantic['output'].lower() == 'fea':
+            Points = {}
+            for NumberedPoint in NumberedPoints['points']:
+                Points[NumberedPoints['points'][NumberedPoint]['point']] = NumberedPoint
+            NodeNumber = NumberedPoints['maximumNode']
+            for element in mesh.elements:
+                Position = [mesh.points[x] for x in element]
+                for i, point in enumerate(Position):
+                    Position[i] = [round(x, Precision) for x in point]
+
+                #else:
+                #    if tuple([round(x, PrepPrecision) for x in Coords]) in [(4.95,-17.69,58.9), (4.96,-17.69,58.9)]:
+                #        pass                    
+                #    object['points'][i] = tuple([round(x, PrepPrecision) for x in Coords])
+                #    if not object['points'][i] in GlobalPointIndex:
+                #        GlobalPointIndex.append(object['points'][i])
+
+
+
+                ElementPoints = []
+                ElementNumber = len(Elements)
+                for point in Position:
+                    #Update NumberedPoints and construct all necessary for Elements
+                    point = NeighborhoodRaw(tuple(point), Precision, Points)
+                    if not tuple(point) in Points:
+                        NodeNumber += 1
+                        Points[tuple(point)] = NodeNumber
+                        #PointsNumbered.append(None)
+                        NumberedPoints['points'][NodeNumber] = {'point': tuple(point), 'elementnumbers': []}
+                        NumberedPoints['maximumNode'] = NodeNumber
+                    CurrentPointNumber = Points[tuple(point)]
+                    ElementPoints.append(CurrentPointNumber)
+                    NumberedPoints['points'][CurrentPointNumber]['elementnumbers'].append(ElementNumber)
+                #Update Elements
+                Element = { 'points' : ElementPoints,
+                'elementclass' : 'SOLID_4NODES',
+                'elementnum': ElementNumber, #???
+                'filter': Semantic['filter'],
+                'entity_model_data': EntityModelData,
+                'extended_model_data': ExtendedModelData,
+                'generation_order': None,
+                }
+                Elements.append(None)
+                Elements[ElementNumber] = Element
+            return ExtendedData, False
 
     return False
 
@@ -508,7 +565,7 @@ def getFormatWriter(SettingsDict):
                 Point4 = NumberedPoints['points'][compoundObject['points'][3]]['point']
                 #OutputFile.append(sdxf.LwPolyLine(points=[Point1, Point2, Point3, Point4], flag=1, layer="Polylines"))
                 OutputFile.append(sdxf.Face(points=[Point1, Point2, Point3, Point4], layer=objectLayer))
-            if objectType == 'POLYLINE':
+            if objectType in ['POLYLINE', 'LWPOLYLINE']:
                 PointRefs = compoundObject['points']
                 PointList = [NumberedPoints['points'][x]['point'] for x in PointRefs]
                 OutputFile.append(sdxf.PolyLine(points=PointList, layer=objectLayer))
@@ -535,14 +592,16 @@ def getFormatWriter(SettingsDict):
         OutputSemantic = SettingsDict['Semantic'] if 'Semantic' in SettingsDict else False
         FormatDict = {}
         FormatDict = FormatDictInitializer(OutputSemantic)
-        ExtendedData = {}
-        #First: routine to check point actions
+        ExtendedData = {'ExcludeFilters':[],}
+
+        #First: routine to check global actions
         GlobalActions = SettingsDict['Actions'].copy() if 'Actions' in SettingsDict else {}
         GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
-        for GlobalAction in GlobalActions:
+        if not type(GlobalActionOrder) is list: GlobalActionOrder = [GlobalActionOrder]
+        for GlobalAction in GlobalActionOrder:
             ActionType = GlobalActions[GlobalAction].pop('Type')
             NewExtendedData, Output = ProcessGlobalAction(ActionType, GlobalActions[GlobalAction], NumberedPoints, Elements)
-            ExtendedData.update(NewExtendedData)
+            ExtendedData = UpdateDict(ExtendedData, NewExtendedData)
             if Output: Format(FormatDict, ActionType, Output, ExtendedData)
 
         for Point in Points:

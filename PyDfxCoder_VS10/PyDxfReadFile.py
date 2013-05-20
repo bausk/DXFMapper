@@ -7,99 +7,28 @@ from dxfgrabber.classifiedtags import ClassifiedTags
 from dxfgrabber.entities import entity_factory
 import dxfgrabber
 import collections
-from sys import argv
+
+
 from configobj import ConfigObj
 from validate import Validator
-from dxfgrabber.drawing import Drawing
-from io import StringIO
+
 import CoordinateTransform
 import ProcessObjects
 import REDOutput
 import sdxf
 import PyDxfTools
+from PyDxfTools import getDrawing, getEntities
+from Settings import *
+from ShadowbinderDataTools import Neighborhood
 
-
-def readSettings(filename):
-    v = Validator()
-    spec = ConfigObj("Parameters.spec", encoding = "UTF8", list_values=False)
-    config = ConfigObj(filename, configspec = spec, encoding = "UTF8")
-    config.validate(v)
-    return config
-
-def readSettingsKey(Section, Key, settings):
-    if Section in settings and Key in settings[Section]:
-        return (settings[Section][Key] or False)
-    else:
-        return False
-
-def getDrawing(InputFile, GrabBlocks) :
-    InputString = unicode(open(InputFile).read().decode('utf-8'))
-    InputStream = StringIO(InputString)
-    options = {
-        'grab_blocks': False
-    }
-    return Drawing(InputStream, options)
-
-def GetSections(Type, settings):
-    SectionsSet = {}
-    for Section in settings:
-        if "Type" in settings[Section] and settings[Section]["Type"] == Type:
-            SectionsSet[Section] = settings[Section]
-    return SectionsSet
-
-def FilterEntities(Entities, FilterName, SettingsDict):
-    FilteredEntities = []
-
-    Layer = False
-    if 'Layer' in SettingsDict: Layer = SettingsDict['Layer']
-    if Layer and not (type(Layer) is list): Layer = [Layer] #prevents from searching for substrings when doing in Layer
-    Color = False
-    if 'Color' in SettingsDict: Color = SettingsDict['Color']
-    if Color and not (type(Color) is list): Color = [Color]
-    FilterEntities = False
-    if 'Entities' in SettingsDict: FilterEntities = SettingsDict['Entities']
-    if FilterEntities and not (type(FilterEntities) is list): FilterEntities = [FilterEntities]
-    FilterPoints = False
-    if 'Points' in SettingsDict: FilterPoints = [int(x) for x in SettingsDict['Points']]
-    if FilterPoints and not (type(FilterPoints) is list): FilterPoints = [FilterPoints]
-    FilterClosed = False
-    if 'Closed' in SettingsDict: FilterClosed = SettingsDict['Closed']
-
-    for entity in Entities:
-#        if entity.dxftype == 'LWPOLYLINE':
-#            print
-        try:
-            if entity.is_closed == True: EntityClosed = 'yes'
-            else: EntityClosed = 'no'
-        except AttributeError:
-            FilterClosed = False
-        Condition = (not Layer or entity.layer in Layer) and \
-                    (not Color or entity.color in Color) and \
-                    (not FilterEntities or entity.dxftype in FilterEntities) and \
-                    (not FilterPoints or len(entity.points) in FilterPoints) and \
-                    (not FilterClosed or FilterClosed.lower() == EntityClosed)
-        if Condition:
-            FilteredEntities.append(entity)
-    return FilteredEntities
-
-def UpdateSetting(origin, u):
-    d = origin.copy()
-    for k, v in u.iteritems():
-        if isinstance(v, collections.Mapping):
-            r = UpdateSetting(d.get(k, {}), v)
-            d[k] = r
-        else:
-            d[k] = u[k]
-    return d
 
 def main():
-    script, filename = argv
+    script, filename = init()
     Settings = readSettings(filename)
 
-    Filters = GetSections("Filter", Settings)
+    UnorderedFilters = GetSections("Filter", Settings)
     EntitiesRefs = {} #Map to export entities
     EntitiesList = [] #Entities list
-
     FilteredEntities = {}
     ObjectList = {}
     Points = {}
@@ -107,25 +36,38 @@ def main():
     ElementNumber = 0
     Nodes = [False]
     PointsNumbered = {'points' : {}, 'maximumNode' : None}
-    DefaultFilter = GetSections("DefaultFilter", Settings)['DefaultFilter']
+    DefaultFilter = GetSections("DefaultFilter", Settings)['DefaultFilter'] if 'DefaultFilter' in Settings else {'Type':'DefaultFilter','Precision':8,'Entities':'NONE'}
     Elements = [False]
-
-    InputFile = readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
-    InputDxf = getDrawing(InputFile, False)
-    Entities = InputDxf.entities
-    Entities = PyDxfTools.Overkill(Entities, DefaultFilter['Precision'])
+    GlobalPointIndex = [(0,0,0)]
+    FilterOrder = DefaultFilter['FilterOrder'] if 'FilterOrder' in DefaultFilter else False
+    Filters = collections.OrderedDict()
+    if FilterOrder and type(FilterOrder) is list:
+        for FilterName in FilterOrder:
+            Filters[FilterName] = UnorderedFilters.pop(FilterName)
+    Filters.update(UnorderedFilters)
 
     for FilterName in Filters:
-        print "Input for filter %s\n" % FilterName
+        print "\nReading entities for filter '%s'." % FilterName
         #We iterate through filters, accept either filter values or general values or defaults
         #Then we can match the filter against the whole Drawing.entities collection
         #and map finite elements according to filter rules
 
         #1. Filter
         FinalizedSettings = UpdateSetting(DefaultFilter, Filters[FilterName])
+        InputFileList = FinalizedSettings["InputFileList"] if "InputFileList" in FinalizedSettings else "Drawing1.dxf"
+        Precision = FinalizedSettings["Precision"] if "Precision" in FinalizedSettings else 8
+        Tolerance = FinalizedSettings["Tolerance"] if "Tolerance" in FinalizedSettings else 0.00000001
+        CheckNeighbors = FinalizedSettings["CheckNeighbors"] if "CheckNeighbors" in FinalizedSettings else False
+        IncludeInIndex = FinalizedSettings["IncludeInIndex"] if "IncludeInIndex" in FinalizedSettings else False
+        #InputFile = readSettingsKey("DefaultFilter", "InputFileList", Settings) or "Default.dxf"
+        #InputDxf = getDrawing(InputFile, False)
+        Entities = getEntities(InputFileList, False)
+
+        if "Overkill" in FinalizedSettings and FinalizedSettings["Overkill"].lower() == 'yes':
+            Entities = PyDxfTools.Overkill(Entities, Precision)
         FilteredEntities[FilterName] = FilterEntities(Entities, FilterName, FinalizedSettings)
 
-        print "Prep for filter %s\n" % FilterName
+        print "\nPreprocessing for filter '%s'..." % FilterName
         #2. Preprocessor
         Preprocess = FinalizedSettings["PreprocessType"] if "PreprocessType" in FinalizedSettings else False
         PrepParameters = FinalizedSettings["Preprocess"] if "Preprocess" in FinalizedSettings else False
@@ -135,9 +77,11 @@ def main():
         ObjectList[FilterName] = ProcessObjects.prep(FilteredEntities[FilterName], PrepFunction, PrepPrecision, PrepParameters)
         
         #3. Mapping    
-        print "Mapping for filter %s\n" % FilterName
-        Target = readSettingsKey(FilterName, "Target", Settings) or readSettingsKey("DefaultFilter", "Target", Settings) or False
-        Mapping = readSettingsKey(FilterName, "Transformation mapping", Settings) or readSettingsKey("DefaultFilter", "Transformation mapping", Settings) or False
+        print "Mapping for filter '%s'..." % FilterName
+        Target = FinalizedSettings["Target"] if "Target" in FinalizedSettings else False
+        Mapping = FinalizedSettings["Transformation mapping"] if "Transformation mapping" in FinalizedSettings else False
+        Postmapping = FinalizedSettings["Postmapping"] if "Postmapping" in FinalizedSettings else False
+        if not Postmapping: Postmapping = {'X': 0, 'Y': 0, 'Z': 0}
         if Mapping:
             FormulaX = CoordinateTransform.GetFormula(*Target['X'], Parameters = Mapping)
             FormulaY = CoordinateTransform.GetFormula(*Target['Y'], Parameters = Mapping)
@@ -148,20 +92,27 @@ def main():
             #print "Input for object %s\n" % object
             #print "Processing object %s in dataset%s\n" % (object, FilterName)
             for i, Point in enumerate(object['points']):
+                Coords = (Point[0], Point[1], Point[2])
                 if Mapping:
                     Coords = (
                             FormulaX( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
                             FormulaY( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]}),
                             FormulaZ( {'X': Point[0], 'Y': Point[1], 'Z': Point[2]})
                             )
+                Coords = (Coords[0] + Postmapping['X'], Coords[1] + Postmapping['Y'], Coords[2] + Postmapping['Z'])
+                #Check tolerances
+                if CheckNeighbors == 'Yes':
+                    object['points'][i] = Neighborhood(tuple([round(x, PrepPrecision) for x in Coords]), PrepPrecision, GlobalPointIndex) if CheckNeighbors == "Yes" else tuple([round(x, PrepPrecision) for x in Coords])
+                elif IncludeInIndex == 'Yes':
+                    object['points'][i] = tuple([round(x, PrepPrecision) for x in Coords])
+                    if not object['points'][i] in GlobalPointIndex:
+                        GlobalPointIndex.append(object['points'][i])
                 else:
-                    Coords = (Point[0], Point[1], Point[2])
-                object['points'][i] = tuple([round(x, PrepPrecision) for x in Coords])
-
+                    object['points'][i] = tuple([round(x, PrepPrecision) for x in Coords])
         #4. Postprocessor
         #For the time being, we'll just compile the list of nodes
         #Placed in a separate loop for readability and structure
-        print "Postp for filter %s\n" % FilterName
+        print "Postprocessing for filter '%s'..." % FilterName
         for objnum, object in enumerate(ObjectList[FilterName]):
             EntityModelData = object['entity_model_data'] if 'entity_model_data' in object else None
             for i, ElementName in enumerate(object['elements']):
@@ -175,8 +126,6 @@ def main():
                     Point = object['points'][pointref] #Point referenced by the Element
                     if not Point in Points:
                         NodeNumber += 1
-                        if NodeNumber in [469, 474, 26, 35]:
-                            pass
                         Points[Point] = { 'number': NodeNumber, 'elementnumbers': [], 'pointObjectReferences': [], 'additionalPoints': [] }
                         #PointsNumbered.append(None)
                         PointsNumbered['points'][NodeNumber] = {'point': Point, 'elementnumbers': []}
@@ -200,9 +149,9 @@ def main():
     #5. Export
     #We treat each export entry as a different one, but that has to change later
     Outputs = GetSections("Output", Settings)
-    DefaultOutput = GetSections("DefaultOutput", Settings)['Default Output']
+    DefaultOutput = GetSections("DefaultOutput", Settings)["DefaultOutput"] if "DefaultOutput" in Settings else {'Type':'DefaultOutput', 'Name':None, 'OutputType':'None'}
     for OutputName in Outputs:
-        print "Output for {}...".format(OutputName)
+        print "\nWriting output rule '{}'.\n".format(OutputName)
         FinalizedSettings = UpdateSetting(DefaultOutput, Outputs[OutputName])
         OutputWriter = REDOutput.getFormatWriter(FinalizedSettings)
         OutputWriter(ObjectList, Filters, Points, PointsNumbered, Elements)

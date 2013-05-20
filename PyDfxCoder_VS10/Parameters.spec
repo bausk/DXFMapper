@@ -4,6 +4,7 @@ Type = string
 InputFileList = string
 OutputFileList = string
 Precision = integer
+Tolerance = float
 OriginX = float
 OriginY = float
 OriginZ = float
@@ -34,3 +35,6 @@ PreprocessParameter = float
 		Mapping = str
 		Scale = float
 		Origin = float
+
+	[[Postmapping]]
+	___many___ = float

@@ -26,7 +26,7 @@ def getFormat(Name):
             for Element in Data :
                 #if Element and Element['points'][0] == Element['points'][1]:
                 #    print
-                if not Element: continue
+                if not Element or Element['filter'] in ExtendedData['ExcludeFilters']: continue
                 ElementStiffness = Element['extended_model_data']['StiffnessMarker']
                 if Element and Element['elementclass'] == "LINE_2NODES" :
                     FormatDict[1].append("10 {} {} {}/".format(
@@ -45,6 +45,14 @@ def getFormat(Name):
                                                                                        Element['points'][5], 
                                                                                        Element['points'][7], 
                                                                                        Element['points'][6]
+                                                                                       ))
+                elif Element and Element['elementclass'] == "SOLID_4NODES" :
+                    FormatDict[1].append("32 {} {} {} {} {}/".format(
+                                                                                       ExtendedData['ElementPropertyIndex'][ElementStiffness],
+                                                                                       Element['points'][0],
+                                                                                       Element['points'][1], 
+                                                                                       Element['points'][2], 
+                                                                                       Element['points'][3], 
                                                                                        ))
                 elif Element and Element['elementclass'] == "SOLID_6NODES" :
                     FormatDict[1].append("33 {} {} {} {} {}/\n0 0 {} {}/".format(

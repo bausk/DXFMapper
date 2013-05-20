@@ -1,3 +1,33 @@
+import sys
+from io import StringIO
+from collections import OrderedDict
+from dxfgrabber.drawing import Drawing
+from dxfgrabber.entitysection import EntitySection
+
+def getDrawing(InputFile, GrabBlocks) :
+    try:
+        InputString = unicode(open(InputFile).read().decode('utf-8'))
+    except:
+        sys.exit(0)
+    InputStream = StringIO(InputString)
+    options = {
+        'grab_blocks': GrabBlocks
+    }
+    return Drawing(InputStream, options)
+
+def getEntities(InputFileList, GrabBlocks) :
+    Entities = None
+    if InputFileList and not (type(InputFileList) is list):
+        InputFileList = [InputFileList]
+    for InputFile in InputFileList:
+        InputDXF = getDrawing(InputFile, GrabBlocks)
+        NewEntities = InputDXF.entities
+        if not Entities:
+            Entities = NewEntities
+        else:
+            Entities._entities = Entities._entities + NewEntities._entities
+        print "Reading file '{}'... {} entities.".format(InputFile, len(NewEntities))
+    return Entities
 
 def GetPoints(Entity, Precision):
     #Points = []
@@ -16,16 +46,18 @@ def GetPoints(Entity, Precision):
         for point in list(Entity.points):
             point = tuple([round(x, Precision) for x in point])
             Points.append(point + (0.0,))
-        return Points
+        return list(OrderedDict.fromkeys(Points))
     elif Entity.dxftype in ("SOLID", "3DFACE"):
         Points = []
         for point in list(Entity.points):
+            if point == (-0.535, -18.725, 0):
+                pass
             point = tuple([round(x, Precision) for x in point])
             if len(point) == 2:
                 Points.append(point + (0.0,))
             else:
                 Points.append(point)
-        return Points
+        return list(OrderedDict.fromkeys(Points))
     elif Entity.dxftype in ("POLYLINE",):
         Points = []
         for point in Entity.vertices:
@@ -34,7 +66,7 @@ def GetPoints(Entity, Precision):
                 Points.append(point + (0.0,))
             else:
                 Points.append(point)
-        return Points
+        return list(OrderedDict.fromkeys(Points))
 
 def GetRawPoints(Entity, Precision):
     #Points = []
@@ -83,7 +115,6 @@ def GetEntityData(Entity):
 
 def Overkill(Entities, Precision):
     PurgedEntities = dict(enumerate(Entities))
-    print "Overkilling the DXF dataset (alpha version feature)\n"
     ReferencePointArray = {}
     for index, Entity in enumerate(Entities) :
 
@@ -103,5 +134,5 @@ def Overkill(Entities, Precision):
             ReferencePointArray[EntityPoints] = {'layer':Entity.layer}
         elif ReferencePointArray[EntityPoints]['layer'] == Entity.layer:
             del PurgedEntities[index]
-
+    print "Overkilling dataset: {} entities remain after overkill.".format(len(PurgedEntities))
     return PurgedEntities.values()
