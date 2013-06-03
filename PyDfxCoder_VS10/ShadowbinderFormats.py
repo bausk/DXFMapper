@@ -6,6 +6,11 @@ def getFormat(Name):
             ExtendedData[5].append("{} 2 3 5 6/".format(Data[0]))
             for i in Data[1:] :
                 ExtendedData[5].append("{}/".format(i))
+        elif Semantic == 'Nonlinear':
+            if not 18 in ExtendedData:
+                ExtendedData[18] = []
+            for key in Data :
+                FormatDict[12].append("{}/".format(Data[key]))
         elif Semantic == 'NodalAxisRotation':
             #Rotated nodes
             #FormatDict[12].append("{} 1/".format(Data[0]))
@@ -23,18 +28,24 @@ def getFormat(Name):
             for Key, Point in Data.iteritems() :
                 FormatDict[4].append("{} {} {}/".format(Point['point'][0], Point['point'][1], Point['point'][2]))
         elif Semantic == 'Elements':
-            for Element in Data :
+            for i, Element in enumerate(Data) :
                 #if Element and Element['points'][0] == Element['points'][1]:
                 #    print
+                #ElementNumber = 1
+                #ExtendedData['elementcounter'] = {} if not 'elementcounter' in ExtendedData else ExtendedData['elementcounter']
                 if not Element or Element['filter'] in ExtendedData['ExcludeFilters']: continue
                 ElementStiffness = Element['extended_model_data']['StiffnessMarker']
                 if Element and Element['elementclass'] == "LINE_2NODES" :
+                    #ExtendedData['elementcounter'][ElementNumber] = i
+                    #ElementNumber +=1 'FACE_4NODES'
                     FormatDict[1].append("10 {} {} {}/".format(
                                                                ExtendedData['ElementPropertyIndex'][ElementStiffness],
                                                                Element['points'][0],
                                                                Element['points'][1]
                                                                ))
                 elif Element and Element['elementclass'] == "SOLID_8NODES" :
+                    #ExtendedData['elementcounter'][ElementNumber] = i
+                    #ElementNumber +=1
                     FormatDict[1].append("36 {} {} {} {} {}/\n0 0 {} {} {} {}/".format(
                                                                                        ExtendedData['ElementPropertyIndex'][ElementStiffness],
                                                                                        Element['points'][0],
@@ -46,7 +57,29 @@ def getFormat(Name):
                                                                                        Element['points'][7], 
                                                                                        Element['points'][6]
                                                                                        ))
+                elif Element and (Element['elementclass'] == "FACE_3NODES" or (Element['elementclass'] == "FACE_4NODES" and Element['points'][3] == Element['points'][2])):
+                    #ExtendedData['elementcounter'][ElementNumber] = i
+                    #ElementNumber +=1
+                    FormatDict[1].append("42 {} {} {} {}/".format(
+                                                                                       ExtendedData['ElementPropertyIndex'][ElementStiffness],
+                                                                                       Element['points'][0],
+                                                                                       Element['points'][1], 
+                                                                                       Element['points'][2]
+                                                                                       ))
+
+                elif Element and Element['elementclass'] == "FACE_4NODES" and Element['points'][3] != Element['points'][2]:
+                    #ExtendedData['elementcounter'][ElementNumber] = i
+                    #ElementNumber +=1
+                    FormatDict[1].append("44 {} {} {} {} {}/".format(
+                                                                                       ExtendedData['ElementPropertyIndex'][ElementStiffness],
+                                                                                       Element['points'][0],
+                                                                                       Element['points'][1], 
+                                                                                       Element['points'][3],
+                                                                                       Element['points'][2]
+                                                                                       ))
                 elif Element and Element['elementclass'] == "SOLID_4NODES" :
+                    #ExtendedData['elementcounter'][ElementNumber] = i
+                    #ElementNumber +=1
                     FormatDict[1].append("32 {} {} {} {} {}/".format(
                                                                                        ExtendedData['ElementPropertyIndex'][ElementStiffness],
                                                                                        Element['points'][0],
@@ -55,7 +88,9 @@ def getFormat(Name):
                                                                                        Element['points'][3], 
                                                                                        ))
                 elif Element and Element['elementclass'] == "SOLID_6NODES" :
-                    FormatDict[1].append("33 {} {} {} {} {}/\n0 0 {} {}/".format(
+                    #ExtendedData['elementcounter'][ElementNumber] = i
+                    #ElementNumber +=1
+                    FormatDict[1].append("34 {} {} {} {} {}/\n0 0 {} {}/".format(
                                                                                  ExtendedData['ElementPropertyIndex'][ElementStiffness],
                                                                                       Element['points'][0],
                                                                                       Element['points'][1], 
@@ -65,6 +100,8 @@ def getFormat(Name):
                                                                                       Element['points'][5]
                                                                                       ))
                 elif Element and Element['elementclass'] == "SOLID_10NODES" :
+                    #ExtendedData['elementcounter'][ElementNumber] = i
+                    #ElementNumber +=1
                     FormatDict[1].append("36 {} {} {} {} {}/\n0 0 {} {} {} {}/".format(
                                                                                        ExtendedData['ElementPropertyIndex'][ElementStiffness],
                                                                                        Element['points'][0],
@@ -85,7 +122,7 @@ def getFormat(Name):
                 ExtendedData['LoadStringCount'] = int(FormatDict[7][-1].split(' ', 1)[0]) if len(FormatDict[7]) else 0
             ExtendedData['LoadStringCount'] += 1
             FormatDict[7].append("{} {}/".format(ExtendedData['LoadStringCount'], Data['string']))
-            FormatDict[6].append("{} {} {} {} {}/".format(Data['element'], Data['load_id'], Data['direction'], ExtendedData['LoadStringCount'], Data['loadcase']))
+            FormatDict[6].append("{} {} {} {} {}/".format(ExtendedData['elementcounter'][Data['element']], Data['load_id'], Data['direction'], ExtendedData['LoadStringCount'], Data['loadcase']))
             #return False
             #for Key, Elements in Data.iteritems() :
                 #FormatDict[4].append("{} {} {}/".format(Elements['point'][0], Elements['point'][1], Elements['point'][2]))
@@ -152,6 +189,7 @@ def initFormat(Name, Semantic):
                           7: ["1 1 0 /"],
                           11: [],
                           12: [],
+                          #18: [],
                           }
         elif Semantic == False:
             FormatDict = {

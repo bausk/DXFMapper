@@ -3,7 +3,7 @@ import collections
 from PyDxfTools import GetPoints, GetEntityData
 import CoordinateTransform
 import simplejson as json
-from ShadowbinderDataTools import NearestNeighbor
+#from ShadowbinderDataTools import NearestNeighbor
 
 PrepDxfObject = collections.namedtuple('PrepDxfObject', ['x', 'y'])
 REMapperPointRef = collections.namedtuple('REMapperPointRef', ['FilterName', 'ObjectNumber', 'PointNumber'])
@@ -19,8 +19,11 @@ def getFunction(Preprocess, PrepFunctionName):
 
     def ExtrudeZ(Entity, Precision, ParametersDict):
         Parameters = [float(param) for param in ParametersDict['Parameter']]
-        
-        Points = GetPoints(Entity, Precision)
+        if 'CheckDirection' in ParametersDict:
+            CheckDirection = ParametersDict['CheckDirection']
+        else:
+            CheckDirection = 'No'
+        Points = GetPoints(Entity, Precision, CheckDirection)
         if (-0.535, -18.725, 0) in Points:
             pass
         EntityModelData = GetEntityData(Entity)
@@ -230,7 +233,11 @@ def getFunction(Preprocess, PrepFunctionName):
         return prepObject
 
     def Default(Entity, Precision, ParametersDict):
-        Points = GetPoints(Entity, Precision)
+        if 'CheckDirection' in ParametersDict:
+            CheckDirection = ParametersDict['CheckDirection']
+        else:
+            CheckDirection = 'No'
+        Points = GetPoints(Entity, Precision, CheckDirection)
         EntityModelData = GetEntityData(Entity)
         prepObject = {
                       'points' : [],

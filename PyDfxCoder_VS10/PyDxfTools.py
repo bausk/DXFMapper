@@ -3,6 +3,7 @@ from io import StringIO
 from collections import OrderedDict
 from dxfgrabber.drawing import Drawing
 from dxfgrabber.entitysection import EntitySection
+import numpy as np
 
 def getDrawing(InputFile, GrabBlocks) :
     try:
@@ -29,7 +30,15 @@ def getEntities(InputFileList, GrabBlocks) :
         print "Reading file '{}'... {} entities.".format(InputFile, len(NewEntities))
     return Entities
 
-def GetPoints(Entity, Precision):
+def CheckCrossProduct(p1, p2, p3):
+    vector1 = np.array([x[1] - x[0] for x in zip(p1,p2)])
+    vector2 = np.array([x[1] - x[0] for x in zip(p2,p3)])
+    if np.cross(vector1, vector2)[2] > 0:
+        return True
+    else:
+        return False
+
+def GetPoints(Entity, Precision, CheckDirection='No'):
     #Points = []
     if Entity.dxftype == "LINE":
         point1 = Entity.start
@@ -46,7 +55,11 @@ def GetPoints(Entity, Precision):
         for point in list(Entity.points):
             point = tuple([round(x, Precision) for x in point])
             Points.append(point + (0.0,))
-        return list(OrderedDict.fromkeys(Points))
+        returnPoints = list(OrderedDict.fromkeys(Points))
+        if CheckDirection == 'Yes':
+            if not CheckCrossProduct(returnPoints[0], returnPoints[1], returnPoints[2]):
+                return list(reversed(returnPoints))
+        return returnPoints
     elif Entity.dxftype in ("SOLID", "3DFACE"):
         Points = []
         for point in list(Entity.points):
@@ -57,7 +70,11 @@ def GetPoints(Entity, Precision):
                 Points.append(point + (0.0,))
             else:
                 Points.append(point)
-        return list(OrderedDict.fromkeys(Points))
+        returnPoints = list(OrderedDict.fromkeys(Points))
+        if CheckDirection == 'Yes':
+            if not CheckCrossProduct(returnPoints[0], returnPoints[1], returnPoints[2]):
+                return list(reversed(returnPoints))
+        return returnPoints
     elif Entity.dxftype in ("POLYLINE",):
         Points = []
         for point in Entity.vertices:
@@ -66,7 +83,11 @@ def GetPoints(Entity, Precision):
                 Points.append(point + (0.0,))
             else:
                 Points.append(point)
-        return list(OrderedDict.fromkeys(Points))
+        returnPoints = list(OrderedDict.fromkeys(Points))
+        if CheckDirection == 'Yes':
+            if not CheckCrossProduct(returnPoints[0], returnPoints[1], returnPoints[2]):
+                return list(reversed(returnPoints))
+        return returnPoints
 
 def GetRawPoints(Entity, Precision):
     #Points = []

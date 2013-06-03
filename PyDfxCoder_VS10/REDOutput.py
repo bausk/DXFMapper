@@ -6,9 +6,11 @@ from ShadowbinderDataTools import NeighborhoodRaw
 from ShadowbinderFormats import *
 from meshpy.tet import MeshInfo, build, Options
 import simplejson as json
-import numpy as np
-import scipy.spatial
+#import numpy as np
+#import scipy.spatial
 from Settings import UpdateDict
+import csv
+
 
 
 #from PyDxfTools import GetPoints
@@ -29,7 +31,8 @@ from Settings import UpdateDict
 def getPointActionFunction(PointAction):
 
     def CompatibleNodes(Parameters, Point, PointTuple, NumberedPoints, Elements):
-
+        #if PointTuple == (-19.4,-4.85,58.3):
+        #    pass
         Output = []
         if 'CutoffZ' in Parameters:
             Position = PointTuple[2]
@@ -38,7 +41,10 @@ def getPointActionFunction(PointAction):
         NewNumberedPoints = {}
         FirstFilter = Parameters['Filters'][0] #First filter: its elements will stay with the Point
         FiltersInParameters = Parameters['Filters'][1:] #All except the first: these ones are given new Points with same coords
-        FiltersInPoint = [x.FilterName for x in Point['pointObjectReferences']]
+        point_number = Point['number']
+        ElementsInPoint = NumberedPoints['points'][point_number]['elementnumbers']
+        #FiltersInPoint = [x.FilterName for x in Point['pointObjectReferences']]
+        FiltersInPoint = [Elements[x]['filter'] for x in ElementsInPoint]
         if not FirstFilter in FiltersInPoint: return  False, [] #No elements from first filter? Not our client
         OldPointIndex = Point['number']
         Output.append(OldPointIndex)
@@ -47,6 +53,8 @@ def getPointActionFunction(PointAction):
             ElementIndices = [i for i, x in enumerate(FiltersInPoint) if x == ParameterFilter] #Which elements referenced by Point in Point['elementnumbers'] contain this Filter?
             #if not, then no elements are repatched and no new points are created.
             if ElementIndices: #This ParameterFilter exists in FiltersInPoint for elements referenced by ElementIndices
+                #if PointTuple == (-19.4, -4.85, 58.3):
+                #    pass
                 #ElementIndices contains elements that are referenced in Point
                 #Now we: 
                 #  create new numbered point (aka node),
@@ -92,6 +100,8 @@ def getPointActionFunction(PointAction):
             SelectedElements = [Elements[x] for x in ElementList if Elements[x]['filter'] in FiltersInParameters]
             if not SelectedElements: continue
             for SelectedElement in SelectedElements:
+                if PointTuple == (6.95,-0.53,64.2):
+                    pass
                 Point1index = SelectedElement['points'][0]
                 Point2index = SelectedElement['points'][1]
                 Coords1 = NumberedPoints['points'][Point1index]['point']
@@ -164,16 +174,23 @@ def getPointActionFunction(PointAction):
 
 def getElementActionFunction(ElementAction):
 
-    def ElementForce(Parameters, Element, NumberedPoints, Elements):
+    def ElementForce(Parameters, Element, NumberedPoints, Elements, ExtendedData):
         #Okay
         Output = {}
+
         if not Element: return False, False
+        #if (-10.64, 20.53, 57.86) in [NumberedPoints['points'][pointindex]['point'] for pointindex in Element['points']]:
+        #    if Element['elementclass'] == "LINE_2NODES" and Parameters['Filters'] == "TendonsCyl":
+        #        pass
+        #if Element['elementclass'] == "FACE_3NODES":
+        #    pass
         #First, define if element needs the ElementAction
         if 'Filters' in Parameters:
             FiltersInParameters = Parameters['Filters']
             ElementFilter = Element['filter']
             if not ElementFilter in FiltersInParameters: return False, False
         if 'Markers' in Parameters:
+            #MarkerData = json.loads(Parameters['Markers'])
             if not isinstance(Parameters['Markers'], list): Parameters['Markers'] = [Parameters['Markers']]
             Markers = dict(Marker.split(':') for Marker in Parameters['Markers'])
             #Markers are checked against Element's entity_model_data
@@ -182,31 +199,81 @@ def getElementActionFunction(ElementAction):
                 ElementValue = str(Element['entity_model_data'][marker]) if Element['entity_model_data'] and (marker in Element['entity_model_data']) else None
                 if marker == "generation_order":
                     ElementValue = Element['generation_order']
+
                 if str(value) != str(ElementValue) : return False, False
-                
+        try:
+            Value = json.loads(Parameters['Value'])
+            ForceValue = Value['value'] if type(Value) is dict else Value
+        except:
+            ForceValue = Parameters['Value']
+        
+        if type(Value) is dict and 'source' in Value:
+            #if (-14.96, -19.46, 54.93) in [NumberedPoints['points'][pointindex]['point'] for pointindex in Element['points']]:
+            #    pass
+            ValueIndex = None
+            MappingFilter = Value['map']
+            for MappingCandidate in ExtendedData['SpecialEntities']:
+                if MappingFilter == MappingCandidate['filter'] and (not ('color' in Value) or Value['color'] == MappingCandidate['entity_model_data']['color']):
+                    MappingElement = MappingCandidate
+                    break
+            ElementPointTuples = [NumberedPoints['points'][point]['point'] for point in Element['points']]
+            for i, point in enumerate(MappingElement['points']):
+                pointTuple = NumberedPoints['points'][point]['point']
+                if pointTuple in ElementPointTuples:
+                    ValueIndex = i
+            if ValueIndex != None:
+
+                SourceFile = Value['source']
+                counter = 0
+                with open(SourceFile, 'rb') as f:
+                    try:
+                        reader = csv.reader(f)
+                    except:
+                        reader = csv.reader(f, delimiter=';')
+                    for row in reader:
+                        if counter == ValueIndex:
+                            ForceValue = float(row[0])
+                            break
+                        else:
+                            counter += 1
+            else:
+                return False, False
+
         if Parameters['Type'] == "Dilatation":
+            
             LoadID = 8
             ElementNumber = Element['elementnum']
             Output['load_id'] = LoadID
             Output['direction'] = 1
             Output['element'] = ElementNumber
-            Output['loadcase'] = 1
-            Output['value'] = Parameters['Value']
-            Output['string'] = "{} 0.05 0 0".format(Output['value'])
+            Output['loadcase'] = 2
+            Output['value'] = ForceValue
+            Output['string'] = "{} 0.000012 0 0".format(Output['value'])
         elif Parameters['Type'] == "VolumePressure":
-            ForceValue = json.loads(Parameters['Value'])
-            LoadID = ForceValue['loadtype']
+            #if Element['elementclass'] == "FACE_3NODES":
+            #    pass
+            LoadID = Value['loadtype']
             ElementNumber = Element['elementnum']
             Output['load_id'] = LoadID
-            Output['direction'] = ForceValue['axis']
+            Output['direction'] = Value['axis']
             Output['element'] = ElementNumber
             Output['loadcase'] = 1
-            Output['value'] = ForceValue['value']
-            Output['string'] = "{} {} 0 0".format(Output['value'], ForceValue['face'])
-
+            Output['value'] = ForceValue
+            Output['string'] = "{} {} 0 0".format(Output['value'], Value['face'])
+        elif Parameters['Type'] == "PlatePressure":
+            #if Element['elementclass'] == "FACE_3NODES":
+            #    pass
+            LoadID = Value['loadtype']
+            ElementNumber = Element['elementnum']
+            Output['load_id'] = LoadID
+            Output['direction'] = Value['axis']
+            Output['element'] = ElementNumber
+            Output['loadcase'] = 1
+            Output['value'] = ForceValue
+            Output['string'] = "{}".format(Output['value'])
         return False, Output
 
-    def AssignLayer(Parameters, Element, NumberedPoints, Elements):
+    def AssignLayer(Parameters, Element, NumberedPoints, Elements, ExtendedData):
         ElementFilter = Element['filter']
         AssignedLayers = json.loads(Parameters['Layers'])
         if ElementFilter in AssignedLayers:
@@ -214,7 +281,7 @@ def getElementActionFunction(ElementAction):
             Element['entity_model_data']['layer'] = AssignedLayer
         return False, False
 
-    def ElementProperty(Parameters, Element, NumberedPoints, Elements):
+    def ElementProperty(Parameters, Element, NumberedPoints, Elements, ExtendedData):
         Output = {}
         return False, Output
 
@@ -230,14 +297,43 @@ def getElementActionFunction(ElementAction):
         return functions['Default']
 
 
-def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
+def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements, Points):
     ExtendedData = {'ElementPropertyIndex' : {}}
+    if ActionType == 'SpecialEntities':
+        Filters = json.loads(GlobalAction['Filters'])
+        if not 'SpecialEntities' in ExtendedData:
+            ExtendedData['SpecialEntities'] = []
+        for Element in Elements:
+            if Element and Element['filter'] in Filters:
+                ExtendedData['SpecialEntities'].append(Element)
+        return ExtendedData, False
+
+    if ActionType == 'Nonlinear':
+        Output = {}
+        #for key in GlobalAction:
+        #    if 'ElementPropertyMaxIndex' in ExtendedData:
+        #        ExtendedData['ElementPropertyMaxIndex'] += 1
+        #    else:
+        #         ExtendedData['ElementPropertyMaxIndex'] = 1
+        #    propertyindex = ExtendedData['ElementPropertyMaxIndex']
+        #    ExtendedData['ElementPropertyIndex'][key] = propertyindex
+        #    ExtendedData['NonlinearPropertyIndex'][key] = nonlinearindex
+        #
+        #
+        #    ExtendedData['ElementPropertyIndex'][key] = workingindex #In this same notation we can get the index when writing elements
+        #    Output[index] = ""
+        return ExtendedData, Output #Here we have Output ready to be printed and ExtendedData, a mapper to Output
     if ActionType == 'ElementProperties':
         Output = {}
-        for index, key in enumerate(GlobalAction):
-            index += 1
-            ExtendedData['ElementPropertyIndex'][key] = index #In this same notation we can get the index when writing elements
-            Output[index] = GlobalAction[key]
+        for key in GlobalAction:
+            if 'ElementPropertyMaxIndex' in ExtendedData:
+                ExtendedData['ElementPropertyMaxIndex'] += 1
+            else:
+                ExtendedData['ElementPropertyMaxIndex'] = 1
+            workingindex = ExtendedData['ElementPropertyMaxIndex']
+            ExtendedData['ElementPropertyIndex'][key] = workingindex #In this same notation we can get the index when writing elements
+            
+            Output[workingindex] = GlobalAction[key]
         return ExtendedData, Output #Here we have Output ready to be printed and ExtendedData, a mapper to Output
     if ActionType == 'Orphans':
         Output = []
@@ -369,11 +465,11 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
         #mesh.elements
         #mesh.faces
         filename = "test"
-        mesh.save_elements(filename)
-        mesh.save_nodes(filename)
-        mesh.save_elements(filename)
-        mesh.save_faces(filename)
-        mesh.save_edges(filename)
+        #mesh.save_elements(filename)
+        #mesh.save_nodes(filename)
+        #mesh.save_elements(filename)
+        #mesh.save_faces(filename)
+        #mesh.save_edges(filename)
         #mesh.save_neighbors(filename)
         #mesh.save_poly(filename)
         #for element in qhull.simplices:
@@ -413,7 +509,8 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                 ElementPoints = []
                 ElementNumber = len(Elements)
                 for point in Position:
-                    #Update NumberedPoints and construct all necessary for Elements
+
+                    #Update NumberedPoints and construct all necessary data for Elements
                     point = NeighborhoodRaw(tuple(point), Precision, Points)
                     if not tuple(point) in Points:
                         NodeNumber += 1
@@ -424,6 +521,10 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                     CurrentPointNumber = Points[tuple(point)]
                     ElementPoints.append(CurrentPointNumber)
                     NumberedPoints['points'][CurrentPointNumber]['elementnumbers'].append(ElementNumber)
+
+                    #Update Points if possible
+
+
                 #Update Elements
                 Element = { 'points' : ElementPoints,
                 'elementclass' : 'SOLID_4NODES',
@@ -437,6 +538,47 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements):
                 Elements[ElementNumber] = Element
             return ExtendedData, False
 
+    if ActionType == 'AddShells':
+        ExtendedData = {}
+        EntityModelData = json.loads(GlobalAction['EntityModelData']) if 'EntityModelData' in GlobalAction else {}
+        ExtendedModelData = json.loads(GlobalAction['ExtendedModelData']) if 'ExtendedModelData' in GlobalAction else {}
+        Filters = json.loads(GlobalAction['Filters']) if 'Filters' in GlobalAction else {}
+        for Element in Elements:
+            if not Element or not Element['filter'] in Filters: continue
+            if Element['generation_order'] == 0 and Element['entity_model_data']['layer'] != "Concrete bases crown":
+                ElementPoints = [Element['points'][0], Element['points'][1], Element['points'][2]]
+                ElementNumber = len(Elements)
+                NewElement = { 'points' : ElementPoints,
+                'elementclass' : 'FACE_3NODES',
+                'elementnum': ElementNumber, #???
+                'filter': GlobalAction['AssignedFilter'],
+                'entity_model_data': EntityModelData,
+                'extended_model_data': ExtendedModelData,
+                'generation_order': None,
+                }
+                Elements.append(None)
+                Elements[ElementNumber] = NewElement
+
+                if Element['elementclass'] == 'SOLID_8NODES':
+                    ElementPoints = [Element['points'][0], Element['points'][2], Element['points'][3]]
+                    ElementNumber = len(Elements)
+                    NewElement = { 'points' : ElementPoints,
+                    'elementclass' : 'FACE_3NODES',
+                    'elementnum': ElementNumber, #???
+                    'filter': GlobalAction['AssignedFilter'],
+                    'entity_model_data': EntityModelData,
+                    'extended_model_data': ExtendedModelData,
+                    'generation_order': None,
+                    }
+                    Elements.append(None)
+                    Elements[ElementNumber] = NewElement
+
+                if Element['elementclass'] == 'SOLID_10NODES':
+                    pass
+
+                pass
+                
+        return {}, {}
     return False
 
 
@@ -449,7 +591,7 @@ def getFormatWriter(SettingsDict):
         GlobalActionOrder = SettingsDict['ActionOrder'] if 'ActionOrder' in SettingsDict else False
         for GlobalAction in GlobalActions:
             ActionType = GlobalActions[GlobalAction].pop('Type')
-            ExtendedData, Output = ProcessGlobalAction(ActionType, GlobalActions[GlobalAction], NumberedPoints, Elements)
+            ExtendedData, Output = ProcessGlobalAction(ActionType, GlobalActions[GlobalAction], NumberedPoints, Elements, Points)
             if ExtendedData['information'] == 'addObjects':
                 for Item in Output:
                     if Item['element_type'] == 'POINT':
@@ -475,7 +617,7 @@ def getFormatWriter(SettingsDict):
                 ElementAction = ElementActions.pop(ActionName)
                 ActionType = ElementAction['Action']
                 ElementActionFunction = getElementActionFunction(ActionType)
-                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
+                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements, ExtendedData)
                 #2013-04-20 Working here. ERRONEOUS CODE!
                 if Output: Format(FormatDict, ActionType, Output, ExtendedData)
 
@@ -600,7 +742,9 @@ def getFormatWriter(SettingsDict):
         if not type(GlobalActionOrder) is list: GlobalActionOrder = [GlobalActionOrder]
         for GlobalAction in GlobalActionOrder:
             ActionType = GlobalActions[GlobalAction].pop('Type')
-            NewExtendedData, Output = ProcessGlobalAction(ActionType, GlobalActions[GlobalAction], NumberedPoints, Elements)
+            if ActionType == "Nonlinear":
+                pass
+            NewExtendedData, Output = ProcessGlobalAction(ActionType, GlobalActions[GlobalAction], NumberedPoints, Elements, Points)
             ExtendedData = UpdateDict(ExtendedData, NewExtendedData)
             if Output: Format(FormatDict, ActionType, Output, ExtendedData)
 
@@ -633,8 +777,17 @@ def getFormatWriter(SettingsDict):
                 if Output: Format(FormatDict, ActionType, Output, ExtendedData)
                 #if NewPoints: NumberedPoints.update(NewPoints) #Already done in PointActionFunction
 
+        #Build element index
+        ElementNumber = 1
+        ExtendedData['elementcounter'] = {}
         for Element in Elements:
-            
+            if Element and (not Element['filter'] in ExtendedData['ExcludeFilters']) and (Element['elementclass'] in ["LINE_2NODES", "SOLID_8NODES", "SOLID_4NODES", "SOLID_6NODES", "SOLID_10NODES", "FACE_3NODES", "FACE_4NODES"]):
+                ExtendedData['elementcounter'][Element['elementnum']] = ElementNumber
+                ElementNumber +=1
+
+        for Element in Elements:
+            if Element and Element['filter'] == "LowerTendonsSph" and Element['entity_model_data']['color'] == 1:
+                pass
             ElementActions = SettingsDict['Element Actions'].copy() if 'Element Actions' in SettingsDict else [] #Copying because we will be pop()ping already processed Actions
             ElementActionOrder = SettingsDict['ElementActionOrder'] if 'ElementActionOrder' in SettingsDict else []
             ActionName = None
@@ -646,14 +799,14 @@ def getFormatWriter(SettingsDict):
                 ActionClass = ElementAction['Action']
                 ActionType = ElementAction['Type']
                 ElementActionFunction = getElementActionFunction(ActionClass)
-                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements)
+                NewElements, Output = ElementActionFunction(ElementAction, Element, NumberedPoints, Elements, ExtendedData)
                 #2013-04-20 Working here
                 if Output: Format(FormatDict, ActionClass, Output, ExtendedData)
 
             for ElementAction in ElementActions:
                 ActionClass = ElementActions[ElementAction]['Action']
-                ElementsActionFunction = getElementActionFunction(ActionClass)
-                NewElements, Output = ElementActionFunction(ElementActions[ElementAction], Element, NumberedPoints, Elements)
+                ElementActionFunction = getElementActionFunction(ActionClass)
+                NewElements, Output = ElementActionFunction(ElementActions[ElementAction], Element, NumberedPoints, Elements, ExtendedData)
                 #Points[Point], NumberedPoints and Elements get updated
                 if Output: Format(FormatDict, ActionClass, Output, ExtendedData)
 

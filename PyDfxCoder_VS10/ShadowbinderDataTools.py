@@ -1,5 +1,5 @@
 from math import sqrt
-from scipy import spatial
+#from scipy import spatial
 from combinatorics import *
 
 
@@ -8,10 +8,10 @@ def getElementFromPoint(Point, ElementIndex):
     ElementPointIndex = Point['pointObjectReferences'][ElementIndex].PointNumber #gives actual point index in Elements[ElementNumber]
     return ElementNumber, ElementPointIndex
 
-def NearestNeighbor(Point, GlobalIndex):
-    tree = spatial.KDTree(GlobalIndex)
-    lowest_distance, index = tree.query(Point, k=1)
-    Neighbor = tuple(tree.data[index])
+#def NearestNeighbor(Point, GlobalIndex):
+#    tree = spatial.KDTree(GlobalIndex)
+#    lowest_distance, index = tree.query(Point, k=1)
+#    Neighbor = tuple(tree.data[index])
 #    lowest_distance = False
 #    Neighbor = False
 #    for point in GlobalIndex:
@@ -19,7 +19,7 @@ def NearestNeighbor(Point, GlobalIndex):
 #        if not lowest_distance or distance < lowest_distance:
 #            lowest_distance = distance
 #            Neighbor = point
-    return Neighbor, lowest_distance
+#    return Neighbor, lowest_distance
 
 def Neighborhood (Point, Precision, GlobalIndex):
     t = 10**(-Precision)

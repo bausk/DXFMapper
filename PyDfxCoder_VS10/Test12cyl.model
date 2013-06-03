@@ -1,0 +1,543 @@
+#Test12: Testing Merge for FEA
+#Input: 3Dfaces, lines
+#Output: DXF, LIRA
+#Problems solved: merging
+
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/empty.dxf"
+FilterOrder = "VolumesCyl", "Boundaries3", "Boundaries1", "LowerTendonsSph"
+Precision = 2
+Tolerance = 0.01
+CheckNeighbors = Yes
+IncludeInIndex = Yes
+Normalize = Yes
+Overkill = Yes
+Entities = NONE
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+	Delta = 0
+	Gamma = 0
+	R = 0
+
+#Filters for entities to be included in the model
+
+[TendonsCyl]
+Type = Filter
+InputFileList = "../Tests/Test3.dxf"
+PreprocessType = Preset
+CheckNeighbors = No
+IncludeInIndex = No
+Layer = "Tendons 1 internal", "Tendons 2 external", "Tendons 3 middle"
+Output = "DXF Output"
+Entities = LINE
+
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "Tendons 1 internal":[0,0,0.4], "Tendons 2 external":[0,0,0.9], "Tendons 3 middle":[0,0,0.65]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 22.4759
+		Origin = 0
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -22.4759
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
+
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[LowerTendonsSph]
+Type = Filter
+InputFileList = "../Tests/Test8.dxf"
+Layer = "LowerTendons", "LowerTendons Crown"
+Output = "DXF Output"
+Entities = LINE, POLYLINE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "LowerTendons":[0, 0, 0.4], "LowerTendons Crown":[0, 0, 0.4]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, OrthosphericToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, OrthosphericToRectangular, Y
+	Z = Preset, OrthosphericToRectangular, Z
+
+	[[Transformation mapping]]
+
+		[[[Delta]]]
+		Mapping = X
+		Scale = 35
+		Origin = 0
+
+		[[[Gamma]]]
+		Mapping = Y
+		Scale = 35
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -34.5
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 29.7
+
+[UpperTendonsSph]
+Type = Filter
+InputFileList = "../Tests/Test8.dxf"
+Layer = "UpperTendons", "UpperTendons Crown"
+Output = "DXF Output"
+Entities = LINE, POLYLINE
+PreprocessType = Preset
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "UpperTendons":[0, 0, 0.7], "UpperTendons Crown":[0, 0, 0.7]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, OrthosphericToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, OrthosphericToRectangular, Y
+	Z = Preset, OrthosphericToRectangular, Z
+
+	[[Transformation mapping]]
+
+		[[[Delta]]]
+		Mapping = X
+		Scale = 35
+		Origin = 0
+
+		[[[Gamma]]]
+		Mapping = Y
+		Scale = 35
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -34.5
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 29.7
+
+
+[VolumesCyl]
+Type = Filter
+InputFileList = "../Tests/Test3.dxf"
+Precision = 2
+CheckNeighbors = No
+IncludeInIndex = No
+PreprocessType = Preset
+Layer = "Concrete bases crown", "Concrete bases", "Concrete bases new"
+Output = "DXF Output"
+Entities = LWPOLYLINE
+Points = 3, 4
+Closed = Yes
+
+	[[Preprocess]]
+	CheckDirection = Yes
+	Function = "ExtrudeZ"
+	Parameter = 0.4, 0.25, 0.25, 0.3
+	Data = '{"StiffnessMarker":"Conc1Vol"}', '{"StiffnessMarker":"Conc2Vol"}', '{"StiffnessMarker":"Conc3Vol"}', '{"StiffnessMarker":"Conc4Vol"}'
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 22.4759
+		Origin = 0
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -22.4759
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
+
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[VolumesSph]
+Type = Filter
+InputFileList = "../Tests/Test8.dxf"
+Precision = 2
+PreprocessType = Preset
+Layer = "Bases", "Bases - borderline"
+Output = "DXF Output"
+Entities = 3DFACE
+
+	[[Preprocess]]
+	CheckDirection = Yes
+	Function = "ExtrudeZ"
+	Parameter = 0.4, 0.3, 0.4
+	Data = '{"StiffnessMarker":"Conc1Sph"}', '{"StiffnessMarker":"Conc2Sph"}', '{"StiffnessMarker":"Conc3Sph"}'
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, OrthosphericToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, OrthosphericToRectangular, Y
+	Z = Preset, OrthosphericToRectangular, Z
+
+	[[Transformation mapping]]
+
+		[[[Delta]]]
+		Mapping = X
+		Scale = 35
+		Origin = 0
+
+		[[[Gamma]]]
+		Mapping = Y
+		Scale = 35
+		Origin = 0
+
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -34.5
+
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 29.7
+
+[Boundaries1]
+Type = Filter
+InputFileList = "../Tests/Test10.dxf"
+Precision = 2
+CheckNeighbors = No
+Layer = "FEA1"
+Output = "DXF Output"
+Entities = 3DFACE, POLYLINE
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"Conc1Vol"}'
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[AdditionalPoints1]
+Type = Filter
+InputFileList = "../Tests/Test10.dxf"
+Layer = "TendonPoints1"
+Output = "DXF Output"
+CheckNeighbors = Yes
+Precision = 2
+Entities = LINE
+
+[Boundaries3]
+Type = Filter
+InputFileList = "../Tests/Test10.dxf"
+Precision = 2
+CheckNeighbors = No
+Layer = "FEA3"
+Output = "DXF Output"
+Entities = 3DFACE, POLYLINE
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"Conc1Vol"}'
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[Mapper]
+Type = Filter
+InputFileList = "../Tests/Test10.dxf"
+Precision = 2
+CheckNeighbors = Yes
+Layer = "Mappers"
+Output = "DXF Output"
+Entities = POLYLINE
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"Conc1Vol"}'
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[MapperCyl]
+Type = Filter
+InputFileList = "../Tests/Test3.dxf"
+PreprocessType = Preset
+IncludeInIndex = No
+CheckNeighbors = No
+Layer = "Mapper internal", "Mapper external", "Mapper middle"
+Output = "DXF Output"
+Entities = POLYLINE, LWPOLYLINE
+
+	[[Preprocess]]
+	Function = "Move"
+	Parameter = '{"Method":"ByLayer", "Mapper internal":[0,0,0.4], "Mapper external":[0,0,0.9], "Mapper middle":[0,0,0.65]}'
+	Data = '{"StiffnessMarker":"Tendon1"}'
+
+	[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+	[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 22.4759
+		Origin = 0
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -22.4759
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
+
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[AdditionalPoints3]
+Type = Filter
+InputFileList = "../Tests/Test10.dxf"
+Layer = "TendonPoints3"
+Output = "DXF Output"
+CheckNeighbors = Yes
+Precision = 2
+Entities = LINE
+
+[FEA]
+Type = Filter
+Layer = "none"
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"Conc1Vol"}'
+
+[Plates1]
+Type = Filter
+Layer = "Plates1"
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"SteelPlate"}'
+
+[SupportsSph]
+Type = Filter
+InputFileList = "../Tests/Test10.dxf"
+Layer = "SupportsSph"
+Entities = 3DFACE
+Output = "DXF Output"
+CheckNeighbors = Yes
+Precision = 2
+	[[Preprocess]]
+	Data = '{"StiffnessMarker":"ConcSupports"}'
+
+#Output model and semantics
+[DXF Output]
+Type = Output
+Name = DXF
+OutputFile = "../Tests - Results/test12.dxf"
+OutputType = Preset
+#	[[Actions]]
+#		[[[Meshing]]]
+#		Type = Meshing
+#		Geometry = '{"boundaries": ["Boundaries3"], "points": ["AdditionalPoints3"]}'
+#		Semantic = '{"output": "graphics", "filter": "FEA"}'
+#		Parameters = '{"type":"general","maxvolume":2,"tolerance":0.001}'
+
+[Lira Output]
+Type = Output
+OutputFile = "../Tests - Results/Test12cyl.txt"
+OutputType = Preset
+Name = Lira-Custom
+Format = Lira
+Semantic = "Advanced Test"
+ActionOrder = "Properties", "Meshing3", "Meshing1", "Special", "Special2"
+PointActionOrder = "Compatible Nodes 1", "Rotate Nodes 1", "Compatible Nodes 2", "Rotate Nodes 2", "Rotate Nodes 3"
+#ElementActionOrder =  "Pretensioning"
+	[[Actions]]
+
+		[[[Meshing1]]]
+		Type = Meshing
+		Geometry = '{"boundaries": ["Boundaries1"], "points": ["AdditionalPoints1"]}'
+		Semantic = '{"output": "FEA", "filter": "VolumesSph", "exclude filters": ["Boundaries1", "AdditionalPoints1", "Boundaries3", "AdditionalPoints3", "MapperCyl", "Mapper"]}'
+		Precision = 2
+		ExtendedModelData = '{"StiffnessMarker":"Conc1Crown"}'
+		EntityModelData = '{"color": 10, "layer": "FEA"}'
+		Parameters = '{"type":"general","maxvolume":5,"tolerance":0.001}'
+
+		[[[Meshing3]]]
+		Type = Meshing
+		Geometry = '{"boundaries": ["Boundaries3"], "points": ["AdditionalPoints3"]}'
+		Semantic = '{"output": "FEA", "filter": "VolumesSph", "exclude filters": ["Boundaries1", "AdditionalPoints1", "Boundaries3", "AdditionalPoints3", "MapperCyl", "Mapper"]}'
+		ExtendedModelData = '{"StiffnessMarker":"Conc1Crown"}'
+		Precision = 2
+		EntityModelData = '{"color": 15, "layer": "FEA"}'
+		Parameters = '{"type":"general","maxvolume":10,"tolerance":0.001}'
+
+		[[[Special]]]
+		Type = SpecialEntities
+		Filters = '["Mapper","MapperCyl"]'
+
+		[[[Special2]]]
+		Type = AddShells
+		Filters = '["VolumesCyl", "VolumesSph"]'
+		AssignedFilter = "Plates1"
+		EntityModelData = '{"color": 256, "layer": "Plates1"}'
+		ExtendedModelData = '{"StiffnessMarker":"SteelPlate"}'
+
+		[[[Properties]]]
+		Type = ElementProperties
+		Tendon1 = "S6 21.500E+006 15 7.8"
+		SteelPlate = "GEI 19.500E+006 0.3 0.008 RO 7.8"
+		ConcSupports = "GEI 3.25E+007 0.3 0.4 RO 0.65"
+		#Conc1Plate = "GEI 3.25E+006 0.3 0.4 RO 2.65"
+		#Conc2Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		#Conc3Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		#Conc4Plate = "GEI 3.25E+006 0.3 0.25 RO 2.65"
+		Conc1Vol = "OBI 3.18E+006 0.3 RO 2.65"
+		Conc2Vol = "OBI 2.79E+006 0.3 RO 2.65"
+		Conc3Vol = "OBI 2.79E+006 0.3 RO 2.65"
+		Conc4Vol = "OBI 3.18E+006 0.3 RO 2.65"
+		Conc1Sph = "OBI 3.18E+006 0.3 RO 2.65"
+		Conc2Sph = "OBI 2.79E+006 0.3 RO 2.65"
+		Conc3Sph = "OBI 3.18E+006 0.3 RO 2.65"
+		Conc1Crown = "OBI 3.2E+006 0.3 RO 2.65"
+
+	[[Point Actions]]
+		[[[Compatible Nodes 1]]]
+		Type = Compatibility
+		Filters = VolumesCyl, TendonsCyl
+		CutoffZ = 0.25, 58.4
+
+		[[[Compatible Nodes 2]]]
+		Type = Compatibility
+		Filters = VolumesSph, UpperTendonsSph, LowerTendonsSph
+		CutoffZ = 55.5, 89.9
+
+		[[[Rotate Nodes 1]]]
+		Type = NodalAxisRotation
+		Filters = TendonsCyl
+		Action = VectorSum
+		Direction = "Z+"
+
+		[[[Rotate Nodes 2]]]
+		Type = NodalAxisRotation
+		Filters = UpperTendonsSph
+		Action = VectorSum
+		Direction = "Y+"
+
+		[[[Rotate Nodes 3]]]
+		Type = NodalAxisRotation
+		Filters = LowerTendonsSph
+		Action = VectorSum
+		Direction = "X+"
+
+		[[[Supports]]]
+		Type = Supports
+		CutoffZ = -0.2, 0.2
+		Filters = VolumesCyl
+		Value = UX, UY, UZ
+
+
+	[[Element Actions]]
+		[[[Pretensioning1]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = LowerTendonsSph
+		Markers = "color:1"
+		Value = '{"value":-2.4,"source":"../Tests/data1.xlsx.csv","map":"Mapper","color":1}'
+
+		[[[Pretensioning2]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = UpperTendonsSph
+		Markers = "color:1"
+		Value = '{"value":-2.4,"source":"../Tests/data2.xlsx.csv","map":"Mapper","color":2}'
+
+		[[[Pretensioning3]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = LowerTendonsSph
+		Markers = "color:1"
+		Value = '{"value":-2.4,"source":"../Tests/data1.xlsx.csv","map":"Mapper","color":4}'
+		
+		[[[Pretensioning4]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = UpperTendonsSph
+		Markers = "color:1"
+		Value = '{"value":-2.4,"source":"../Tests/data2.xlsx.csv","map":"Mapper","color":5}'
+
+		[[[PretensioningExt]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = TendonsCyl
+		Markers = "color:1", "layer:Tendons 2 external"
+		Value = '{"value":-2.4,"source":"../Tests/data-external.xlsx.csv","map":"MapperCyl","color":3}'
+
+		[[[PretensioningMid]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = TendonsCyl
+		Markers = "color:1", "layer:Tendons 3 middle"
+		Value = '{"value":-2.4,"source":"../Tests/data-middle.xlsx.csv","map":"MapperCyl","color":2}'
+
+		[[[PretensioningInt]]]
+		Action = ElementForce
+		Type = Dilatation
+		Filters = TendonsCyl
+		Markers = "color:1", "layer:Tendons 1 internal"
+		Value = '{"value":-2.4,"source":"../Tests/data-internal.xlsx.csv","map":"MapperCyl","color":1}'
+
+		[[[InternalPressureCyl]]]
+		Action = ElementForce
+		Type = PlatePressure
+		Filters = Plates1
+		Value = '{"loadtype":6,"axis":3,"value":-45,"alignment point":[0,0,0]}'

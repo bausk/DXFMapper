@@ -13,7 +13,7 @@
     <Name>PyDfxCoder_VS10</Name>
     <RootNamespace>PyDfxCoder_VS10</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"Test12test.model"</CommandLineArguments>
+    <CommandLineArguments>"Test12cyl.model"</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments />
   </PropertyGroup>
@@ -27,6 +27,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="combinatorics.py" />
+    <Compile Include="module1.py" />
+    <Compile Include="octree.py" />
     <Compile Include="Settings.py" />
     <Compile Include="ShadowbinderFormats.py" />
     <Compile Include="Boilerplate.py" />
@@ -39,6 +41,7 @@
     <Compile Include="sdxf.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Test12cyl.model" />
     <Content Include="Test12test.model" />
     <Content Include="Test12.model" />
     <Content Include="Test11.model" />
