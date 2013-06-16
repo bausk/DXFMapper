@@ -170,3 +170,4 @@ Model1/
 *.bak
 *.dwg
 *.original
+Results/*.txt
