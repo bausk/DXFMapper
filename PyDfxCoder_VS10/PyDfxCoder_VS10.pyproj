@@ -29,6 +29,7 @@
     <Compile Include="combinatorics.py" />
     <Compile Include="module1.py" />
     <Compile Include="octree.py" />
+    <Compile Include="Tests.py" />
     <Compile Include="Settings.py" />
     <Compile Include="ShadowbinderFormats.py" />
     <Compile Include="Boilerplate.py" />

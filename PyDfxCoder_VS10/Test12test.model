@@ -275,7 +275,7 @@ Entities = LINE
 Type = Filter
 InputFileList = "../Tests/Test10.dxf"
 Precision = 2
-CheckNeighbors = No
+CheckNeighbors = Yes
 Layer = "FEA3"
 Output = "DXF Output"
 Entities = 3DFACE, POLYLINE
@@ -447,7 +447,7 @@ PointActionOrder = "Compatible Nodes 1", "Rotate Nodes 1", "Compatible Nodes 2",
 		Conc1Sph = "OBI 3.18E+006 0.3 RO 2.65"
 		Conc2Sph = "OBI 2.79E+006 0.3 RO 2.65"
 		Conc3Sph = "OBI 3.18E+006 0.3 RO 2.65"
-		Conc1Crown = "OBI 3.2E+006 0.3 RO 2.65"
+		Conc1Crown = "OBI 3.2E+007 0.3 RO 2.65"
 
 		[[[Nonlinear]]]
 		Type = Nonlinear
@@ -495,52 +495,52 @@ PointActionOrder = "Compatible Nodes 1", "Rotate Nodes 1", "Compatible Nodes 2",
 		Type = Dilatation
 		Filters = LowerTendonsSph
 		Markers = "color:1"
-		Value = '{"value":-2.4,"source":"../Tests/data1.xlsx.csv","map":"Mapper","color":1}'
+		Value = '{"value":-2.4,"source":"../Tests/data1.xlsx.csv","map":"Mapper","color":1,"loadcase":1}'
 
 		[[[Pretensioning2]]]
 		Action = ElementForce
 		Type = Dilatation
 		Filters = UpperTendonsSph
 		Markers = "color:1"
-		Value = '{"value":-2.4,"source":"../Tests/data2.xlsx.csv","map":"Mapper","color":2}'
+		Value = '{"value":-2.4,"source":"../Tests/data2.xlsx.csv","map":"Mapper","color":2,"loadcase":1}'
 
 		[[[Pretensioning3]]]
 		Action = ElementForce
 		Type = Dilatation
 		Filters = LowerTendonsSph
 		Markers = "color:1"
-		Value = '{"value":-2.4,"source":"../Tests/data1.xlsx.csv","map":"Mapper","color":4}'
+		Value = '{"value":-2.4,"source":"../Tests/data1.xlsx.csv","map":"Mapper","color":4,"loadcase":1}'
 		
 		[[[Pretensioning4]]]
 		Action = ElementForce
 		Type = Dilatation
 		Filters = UpperTendonsSph
 		Markers = "color:1"
-		Value = '{"value":-2.4,"source":"../Tests/data2.xlsx.csv","map":"Mapper","color":5}'
+		Value = '{"value":-2.4,"source":"../Tests/data2.xlsx.csv","map":"Mapper","color":5,"loadcase":1}'
 
 		[[[PretensioningExt]]]
 		Action = ElementForce
 		Type = Dilatation
 		Filters = TendonsCyl
 		Markers = "color:1", "layer:Tendons 2 external"
-		Value = '{"value":-2.4,"source":"../Tests/data-external.xlsx.csv","map":"MapperCyl","color":3}'
+		Value = '{"value":-2.4,"source":"../Tests/data-external.xlsx.csv","map":"MapperCyl","color":3,"loadcase":2}'
 
 		[[[PretensioningMid]]]
 		Action = ElementForce
 		Type = Dilatation
 		Filters = TendonsCyl
 		Markers = "color:1", "layer:Tendons 3 middle"
-		Value = '{"value":-2.4,"source":"../Tests/data-middle.xlsx.csv","map":"MapperCyl","color":2}'
+		Value = '{"value":-2.4,"source":"../Tests/data-middle.xlsx.csv","map":"MapperCyl","color":2,"loadcase":2}'
 
 		[[[PretensioningInt]]]
 		Action = ElementForce
 		Type = Dilatation
 		Filters = TendonsCyl
 		Markers = "color:1", "layer:Tendons 1 internal"
-		Value = '{"value":-2.4,"source":"../Tests/data-internal.xlsx.csv","map":"MapperCyl","color":1}'
+		Value = '{"value":-2.4,"source":"../Tests/data-internal.xlsx.csv","map":"MapperCyl","color":1,"loadcase":2}'
 
 		[[[InternalPressureCyl]]]
 		Action = ElementForce
 		Type = PlatePressure
 		Filters = Plates1
-		Value = '{"loadtype":6,"axis":3,"value":-45,"alignment point":[0,0,0]}'
+		Value = '{"loadtype":6,"axis":3,"value":-39.24,"alignment point":[0,0,0]}'

@@ -10,6 +10,7 @@ import simplejson as json
 #import scipy.spatial
 from Settings import UpdateDict
 import csv
+import pickle
 
 
 
@@ -25,8 +26,9 @@ import csv
 #        Result.append(Object)
 #    return Result
 
-
-
+def saveobject(obj, filename):
+    with open(filename, 'wb') as output:
+        pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL)
 
 def getPointActionFunction(PointAction):
 
@@ -238,7 +240,10 @@ def getElementActionFunction(ElementAction):
                             counter += 1
             else:
                 return False, False
-
+        if 'loadcase' in Value:
+            LoadCase = Value['loadcase']
+        else:
+            LoadCase = 1
         if Parameters['Type'] == "Dilatation":
             
             LoadID = 8
@@ -246,29 +251,32 @@ def getElementActionFunction(ElementAction):
             Output['load_id'] = LoadID
             Output['direction'] = 1
             Output['element'] = ElementNumber
-            Output['loadcase'] = 2
+
+            Output['loadcase'] = LoadCase
             Output['value'] = ForceValue
             Output['string'] = "{} 0.000012 0 0".format(Output['value'])
         elif Parameters['Type'] == "VolumePressure":
             #if Element['elementclass'] == "FACE_3NODES":
             #    pass
+            LoadCase = 3
             LoadID = Value['loadtype']
             ElementNumber = Element['elementnum']
             Output['load_id'] = LoadID
             Output['direction'] = Value['axis']
             Output['element'] = ElementNumber
-            Output['loadcase'] = 1
+            Output['loadcase'] = LoadCase
             Output['value'] = ForceValue
             Output['string'] = "{} {} 0 0".format(Output['value'], Value['face'])
         elif Parameters['Type'] == "PlatePressure":
             #if Element['elementclass'] == "FACE_3NODES":
             #    pass
+            LoadCase = 4
             LoadID = Value['loadtype']
             ElementNumber = Element['elementnum']
             Output['load_id'] = LoadID
             Output['direction'] = Value['axis']
             Output['element'] = ElementNumber
-            Output['loadcase'] = 1
+            Output['loadcase'] = LoadCase
             Output['value'] = ForceValue
             Output['string'] = "{}".format(Output['value'])
         return False, Output
@@ -359,7 +367,7 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements, Poin
         for Filter in Geometry['boundaries']:
             print "Using filter {} as finite element domain boundary.".format(Filter)
             for Element in Elements:
-                if Element and Element['filter'] == Filter and Element['elementclass'] in ['FACE_3NODES', 'FACE_4NODES', 'POLYLINE']:
+                if Element and Element['filter'] == Filter and Element['elementclass'] in ['FACE_3NODES', 'FACE_4NODES', 'POLYLINE', 'PLINE_5NODES']:
                     Boundaries.append(Element)
 
         AdditionalPoints = []
@@ -426,7 +434,9 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements, Poin
                 MeshPoints[PointIndex] = NumberedPoints['points'][point]['point']
                 PointIndex += 1
 
-            
+        
+        saveobject(MeshFacets, r'MeshFacets')
+        saveobject(MeshPoints, r'MeshPoints')            
         mesh_info.set_facets(MeshFacets)
         mesh_info.set_points(MeshPoints)
         #insertaddpoints
@@ -624,7 +634,7 @@ def getFormatWriter(SettingsDict):
             for ElementAction in ElementActions:
                 ActionType = ElementActions[ElementAction]['Action']
                 ElementActionFunction = getElementActionFunction(ActionType)
-                NewElements, Output = ElementActionFunction(ElementActions[ElementAction], compoundObject, NumberedPoints, Elements)
+                NewElements, Output = ElementActionFunction(ElementActions[ElementAction], compoundObject, NumberedPoints, Elements, ExtendedData)
                 #Points[Point], NumberedPoints and Elements get updated
 
             objectType = compoundObject['elementclass']

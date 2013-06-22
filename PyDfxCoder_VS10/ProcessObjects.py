@@ -165,7 +165,7 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['elements'].append('FACE_3NODES')
         elif len(Points) == 4:
             prepObject['elements'].append('FACE_4NODES')
-        elif len(Points) == 5:
+        elif len(Points) == 5 and Entity.is_closed != False:
             prepObject['elements'].append('PLINE_5NODES')
         elif Entity.dxftype in ['POLYLINE','CIRCLE','LWPOLYLINE']:
             prepObject['elements'].append(Entity.dxftype)
@@ -224,7 +224,7 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['elements'].append('FACE_3NODES')
         elif len(Points) == 4:
             prepObject['elements'].append('FACE_4NODES')
-        elif len(Points) == 5:
+        elif len(Points) == 5 and Entity.is_closed != False:
             prepObject['elements'].append('PLINE_5NODES')
         elif Entity.dxftype in ['POLYLINE','CIRCLE','LWPOLYLINE']:
             prepObject['elements'].append(Entity.dxftype)
@@ -260,7 +260,7 @@ def getFunction(Preprocess, PrepFunctionName):
             prepObject['elements'].append('FACE_3NODES')
         elif len(Points) == 4:
             prepObject['elements'].append('FACE_4NODES')
-        elif len(Points) == 5:
+        elif len(Points) == 5 and Entity.is_closed != False:
             prepObject['elements'].append('PLINE_5NODES')
         elif Entity.dxftype in ['POLYLINE','CIRCLE','LWPOLYLINE',]:
             prepObject['elements'].append(Entity.dxftype)
