@@ -7,7 +7,7 @@ from ShadowbinderFormats import *
 from meshpy.tet import MeshInfo, build, Options
 import simplejson as json
 #import numpy as np
-import scipy.spatial
+#import scipy.spatial
 from Settings import UpdateDict
 import csv
 import pickle
