@@ -1,0 +1,17 @@
+#Test: Zagilsky
+#Input: lines
+#Output: DXF
+
+[Layer]
+Type = Filter
+InputFileList = "../stydfile/input/zagilsky.dxf"
+PreprocessType = Preset
+Layer = "Zagilsky1"
+Output = "DXF Output"
+Entities = LINE
+
+[DXF Output]
+Type = Output
+Name = DXF
+OutputFile = "../stydfile/output/zagilsky.dxf"
+OutputType = Preset

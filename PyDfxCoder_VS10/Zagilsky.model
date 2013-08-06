@@ -1,0 +1,16 @@
+#Test: Zagilsky
+#Input: lines
+#Output: DXF
+
+[Layer]
+Type = Filter
+InputFileList = "../studfile/input/zagilsky.dxf"
+Layer = "Zagilsky1"
+Output = "DXF Output"
+Entities = LINE
+
+[DXF Output]
+Type = Output
+Name = DXF
+OutputFile = "../studfile/output/zagilsky.dxf"
+OutputType = Preset

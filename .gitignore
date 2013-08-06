@@ -172,3 +172,6 @@ Model1/
 *.dwg
 *.original
 Results/*.txt
+
+*.pyproject
+*.sln
