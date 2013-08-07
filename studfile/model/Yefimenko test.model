@@ -1,0 +1,8 @@
+[DefaultFilter]
+Type = DefaultFilter
+InputFileList = "../Tests/Test1.dxf"
+Precision = 2
+Normalize = Yes
+Entities = NONE
+
+	

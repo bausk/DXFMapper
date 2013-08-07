@@ -1,12 +1,16 @@
-[DefaultFilter]
-Type = DefaultFilter
-InputFileList = "../Yefimenko/Lines1.2(Yefimenko).dxf"
-Layer = "Lines1"
+#Yefimenko
+#lines
+
+
+[Filter]
+Type = Filter
+InputFileList = "../studfile/input/Drawing1.dxf"
+Layer = "Layer1"
 Output = "DXF Output"
 Entities = LINE
-
+	
 [DXF Output]
 Type = Output
 Name = DXF
-OutputFile = "../Results DXF/Lines1.2result(Yefimenko).dxf"
-	
+OutputFile = "../studfile/output/Empty.dxf"
+OutputType = Preset
