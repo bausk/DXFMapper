@@ -1,0 +1,52 @@
+#Test: Zagilsky
+#Input: 3Dface
+#Output: DXF
+
+[Mesh]
+Type = Filter
+InputFileList = "../studfile/input/meshzagilsky.dxf"
+Precision = 2
+CheckNeighbors = No
+IncludeInIndex = No
+Layer = "Zagilsky2"
+Output = "DXF Output"
+Entities = 3DFACE
+
+[[Origin]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[[Target]]
+	X = Preset, CylindricToRectangular, X #Mapping formula (preset or custom), Transformation type, Corresponding axis
+	Y = Preset, CylindricToRectangular, Y
+	Z = Preset, CylindricToRectangular, Z
+
+	[[Transformation mapping]]
+		[[[Theta]]]
+		Mapping = X
+		Scale = 10
+		Origin = 0
+		[[[R]]]
+		Mapping = Z
+		Scale = 1
+		Origin = -22
+		[[[Z]]]
+		Mapping = Y
+		Scale = 1
+		Origin = 0
+
+	[[Postmapping]]
+	X = 0
+	Y = 0
+	Z = 0
+
+[DXF Output]
+Type = Output
+Name = DXF
+OutputFile = "../studfile/output/meshzagilsky.dxf"
+OutputType = Preset
+
+
+
+
