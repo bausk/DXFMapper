@@ -5,7 +5,7 @@
 
 [Filter]
 Type = Filter
-InputFileList = "../studfile/input/torus.dxf"
+InputFileList = "../studfile/input/to.dxf"
 Output = "DXF Output"
 Entities = 3DFACE
 
@@ -17,12 +17,12 @@ Entities = 3DFACE
 	[[Transformation mapping]]
 		[[[Theta]]]
 		Mapping = X
-		Scale = 20
+		Scale = 50
 		Origin = 0
 		[[[R]]]
 		Mapping = Z
 		Scale = 1
-		Origin = -30
+		Origin = -500
 		[[[Z]]]
 		Mapping = Y
 		Scale = 1
@@ -36,6 +36,6 @@ Entities = 3DFACE
 	[DXF Output]
 Type = Output
 Name = DXF
-OutputFile = "../studfile/output/Empty torus.dxf"
+OutputFile = "../studfile/output/meshzagilsky.dxf"
 OutputType = Preset
 	
