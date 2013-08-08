@@ -174,4 +174,5 @@ Model1/
 Results/*.txt
 
 *.pyproject
+*.pyproj
 *.sln
