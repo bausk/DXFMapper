@@ -1,6 +1,6 @@
 from math import sqrt
 #from scipy import spatial
-from combinatorics import *
+#from combinatorics import *
 
 
 def getElementFromPoint(Point, ElementIndex):
