@@ -168,10 +168,12 @@ pip-log.txt
 Deleted/
 Model1/
 *.dwl
+*.dwl2
 *.bak
 *.dwg
 *.original
 Results/*.txt
 
 *.pyproject
+*.pyproj
 *.sln
