@@ -489,7 +489,7 @@ def ProcessGlobalAction(ActionType, GlobalAction, NumberedPoints, Elements, Poin
         if not Boundaries: return False, False
         Precision = int(GlobalAction['Precision']) if 'Precision' in GlobalAction else 4
 
-        if Semantic['output'].lower() == 'graphics':
+        if not 'output' in Semantic or Semantic['output'].lower() == 'graphics':
             for face in mesh.faces:
                 Position = [mesh.points[x] for x in face]
                 Output.append({'element_type': '3DFACE', 'position': Position, 'layer': 'Faces'})

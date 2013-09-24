@@ -5,6 +5,8 @@ import ShadowbinderDataTools
 from ShadowbinderDataTools import NeighborhoodRaw
 from ShadowbinderFormats import *
 from meshpy.tet import MeshInfo, build, Options
+from pyautocad import Autocad, APoint
+
 import simplejson as json
 #import numpy as np
 #import scipy.spatial
@@ -15,6 +17,8 @@ import pickle
 
 def main():
     #Test1: mesh testing
+
+
     MeshPoints = []
     MeshFacets = []
     with open('MeshFacets', 'rb') as input:
@@ -41,7 +45,31 @@ def main():
         pass
     print "Created mesh with {} points, {} faces and {} elements.".format(len(mesh.points), len(mesh.faces), len(mesh.elements))
 
+def test1():
+    #Test1: mesh testing
+
+    acad = Autocad()
+    acad.prompt("Hello, Autocad from Python\n")
+    print acad.doc.Name
+
+    p1 = APoint(0, 0)
+    p2 = APoint(50, 25)
+    for i in range(5):
+        text = acad.model.AddText('Hi %s!' % i, p1, 2.5)
+        acad.model.AddLine(p1, p2)
+        acad.model.AddCircle(p1, 10)
+        p1.y += 10
+
+    dp = APoint(10, 0)
+    for text in acad.iter_objects('Text'):
+        print('text: %s at: %s' % (text.TextString, text.InsertionPoint))
+        text.InsertionPoint = APoint(text.InsertionPoint) + dp
+
+    for obj in acad.iter_objects(['Circle', 'Line']):
+        print(obj.ObjectName)
+
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    test1()
