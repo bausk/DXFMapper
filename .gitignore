@@ -177,3 +177,5 @@ Results/*.txt
 *.pyproject
 *.pyproj
 *.sln
+
+.idea
