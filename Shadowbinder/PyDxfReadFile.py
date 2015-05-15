@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 __author__ = "Alex Bausk <bauskas@gmail.com>"
 
-from dxfgrabber.classifiedtags import ClassifiedTags
+#from dxfgrabber.classifiedtags import ClassifiedTags
 from dxfgrabber.entities import entity_factory
 import dxfgrabber
 import collections
